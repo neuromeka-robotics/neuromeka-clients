@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="neuromeka-clients",
     version="0.1.2",
-    author="Your Name",
+    author="Neuromeka",
     author_email="youngjin.heo@neuromeka.com",
     description="Neuromeka client protocols for Indy, Moby, Ecat, and Motor",
     long_description=long_description,
@@ -24,8 +24,6 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
     ],
     python_requires=">=3.6",
     install_requires=[
