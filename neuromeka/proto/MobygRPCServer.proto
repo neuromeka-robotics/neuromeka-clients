@@ -1,0 +1,235 @@
+syntax = "proto3";
+package GRPCMoby; //
+
+service GRPCMobyTask {
+        //  Moby EtherCAT TxPDO and RxPDO data processing
+        rpc GetMobyTxData(IntVal) returns (MotorDriverTx) {}
+        rpc GetMobyRxData(IntVal) returns (MotorDriverRx) {}
+
+        // Get Moby state
+        rpc GetMobyState(Empty) returns (MobyState) {}
+        rpc GetMobyErrorState(Empty) returns (MobyErrorState) {}
+        rpc Recover(Empty) returns (Empty) {}
+
+        // Get Moby's odometry and physical data
+        rpc GetMobyPose(Empty) returns (MobyPose) {}
+        rpc GetMobyVel(Empty) returns (MobyVel) {}
+        rpc ResetMobyPose(Empty) returns (Empty) {}
+        rpc GetRotationAngleDeg(Empty) returns (SwerveDoubles) {}
+        rpc GetDriveSpeed(Empty) returns (SwerveDoubles) {}
+        rpc GetTargetVel(Empty) returns (TargetVel) {}
+        rpc GetRotationZeroCount(Empty) returns (ZeroCount) {}
+        rpc GetCMode(Empty) returns (IntVal) {}
+
+        // Gyro value related
+        rpc GetGyroData(Empty) returns (DoubleVals) {}
+        rpc ResetGyroSensor(Empty) returns (Empty) {}
+        rpc UseGyroForOdom(BoolVal) returns (Empty) {}
+        rpc GetGyroFullData(Empty) returns (IMUData) {}
+
+        // IR sensor
+        rpc GetIRSensorData(Empty) returns (IRData) {}
+
+        // BMS data
+        rpc GetBMSData(Empty) returns (BMSData) {}
+
+        // Moby motion command
+        rpc SetStepControl(TargetVel) returns (Empty) {}
+        rpc StopMotion(Empty) returns (Empty) {}
+        rpc SetRotationAngleDeg(SwerveDoubles) returns (Empty) {}
+        rpc DriveWheel(SwerveDoubles) returns (Empty) {}
+
+        // Set Moby parameters
+        rpc SetZeroPosAsCurrentPos(Empty) returns (Empty) {}
+        rpc SetRotationVelAcc(DoubleVals) returns (Empty) {}
+        rpc SetDriveAccDec(DoubleVals) returns (Empty) {}
+        rpc SetDriveInterpolatorOnOff(BoolVal) returns (Empty) {}
+        rpc SetRotationInterpolatorParam(DoubleVals) returns (Empty) {}
+
+        // Gain setting
+        rpc SetRotationTorqueMode(BoolVal) returns (Empty) {}
+        rpc SetControlParam(RotationGain) returns (Empty) {}
+
+        // Data logging
+        rpc StartRTLogging(Empty) returns (Empty) {}
+        rpc EndRTLogging(Empty) returns (Empty) {}
+        rpc SetLoggerBuffer(IntVals) returns (Empty) {}
+        rpc RTLoggerSave(Empty) returns (Empty) {}
+}
+
+
+message Empty {
+}
+
+// Motor driver
+message JsonParam {
+    int32 idx = 1;
+    string json_str = 2;
+}
+
+message MotorDriverTx {
+    uint32 statusWord = 1;
+    int32 modeOpDisp = 2;
+    int32 actualPosition = 3;
+    int32 actualVelocity = 4;
+    int32 actualTorque = 5;
+}
+
+message MotorDriverRx {
+    uint32 controlWord = 1;
+    int32 modeOp = 2;
+    int32 targetPosition = 3;
+    int32 targetVelocity = 4;
+    int32 targetTorque = 5;
+}
+
+message MotorDriverRxs {
+    repeated MotorDriverRx motorDriverRx = 1;
+}
+
+message MobyState {
+    bool isReady = 1;
+    bool isMoving = 2;
+    bool isMoveFinished = 3;
+    bool isEmgPushed = 4;
+    bool isErrorState = 5;
+    bool isHomePose = 6;
+    bool isRotationZero = 7;
+    bool isResetting = 8;
+    bool isIMUAvailable = 9;
+    bool isCollided = 10;
+    bool isProgramRunning = 11;
+    bool isProgramPause = 12;
+}
+
+message MobyErrorState {
+    int32 errorState = 1;
+}
+
+message MobyPose {
+    double px = 1;
+    double py = 2;
+    double pw = 3;
+}
+
+message IMUData {
+    double angleX = 1;
+    double angleY= 2;
+    double angleZ = 3;
+    double angleVelX = 4;
+    double angleVelY = 5;
+    double angleVelZ = 6;
+    double linAccX = 7;
+    double linAccY = 8;
+    double linAccZ = 9;
+}
+
+message MobyVel {
+    double vx = 1;
+    double vy = 2;
+    double vw = 3;
+}
+
+message SwerveDoubles {
+    double fl = 1;
+    double fr = 2;
+    double bl = 3;
+    double br = 4;
+}
+
+
+message TargetVel {
+    double vx = 1;
+    double vy = 2;
+    double vw = 3;
+}
+
+message ZeroCount {
+    int32 fl = 1;
+    int32 fr = 2;
+    int32 bl = 3;
+    int32 br = 4;
+}
+
+message IRData {
+    int32 ir_front1 = 1;
+    int32 ir_front2 = 2;
+    int32 ir_left1 = 3;
+    int32 ir_left2 = 4;
+    int32 ir_left3 = 5;
+    int32 ir_rear = 6;
+    int32 ir_right1 = 7;
+    int32 ir_right2 = 8;
+    int32 ir_right3 = 9;
+}
+
+message BMSData {
+    repeated int32 bms_status = 1;
+    repeated int32 pack_volt = 2;
+    repeated int32 battery_volt = 3;
+    repeated int32 pack_current1 = 4;
+    repeated int32 pack_current2 = 5;
+}
+
+// Global variables
+message GBool {
+    int32 idx = 1;
+    bool val = 2;
+}
+
+message GInt {
+    int32 idx = 1;
+    int32 val = 2;
+}
+
+message GFloat {
+    int32 idx = 1;
+    float val = 2;
+}
+
+message GString {
+    int32 idx = 1;
+    string val = 2;
+}
+
+// Common use
+message BoolVal {
+    bool val = 1;
+}
+
+message IntVal {
+    int32 val = 1;
+}
+
+message IntVals {
+    repeated int32 val = 1;
+}
+
+message FloatVal {
+    float val = 1;
+}
+
+message FloatVals {
+    repeated float val = 1;
+}
+
+message DoubleVal {
+    double val = 1;
+}
+
+message DoubleVals {
+    repeated double val = 1;
+}
+
+message RotationGain {
+    int32 idx = 1;
+    double k = 2;
+    double kv = 3;
+    double kp = 4;
+}
+
+message VelAccBoundary {
+    int32 idx = 1;
+    float vmax = 2;
+    float amax = 3;
+}
