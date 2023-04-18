@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.custom.neuromeka.EyeTask";
+option java_outer_classname = "EyeTaskProto";
+option objc_class_prefix = "FDDO";
+
+package EyeTask;
+
+service EyeTask {
+    rpc GetImage(ImageRequest) returns (ImageResponse) {}
+    rpc GetClassList(Request) returns (ClassList) {}
+    rpc Detect(DetectRequest) returns (DetectResponse) {}
+    rpc Retrieve(RetrieveRequest) returns (DetectResponse) {}
+}
+
+message ImageRequest {                  // Client -> Eye
+    int32 id = 1;                       // response has same id as request
+    int32 type = 2;                     // 0=color, 1=depth, 2=both
+}
+
+message ImageResponse {                 // Eye -> Client
+    int32 id = 1;                       // response has same id as request
+    int32 type = 2;                     // 0=color, 1=depth, 2=both
+    int32 width = 3;
+    int32 height = 4;
+    bytes color = 5;                    // byte array for uint8 color image
+    bytes depth = 6;                    // byte array for uint16 depth image
+    float depth_scale = 7;              // multiplier to convert the depth values to m-scale
+    bool error_state = 8;               // response error flag: true on error
+}
+
+message Request {                       // Client -> Eye
+    int32 id = 1;                       // response has same id as request
+}
+
+message ClassList {                     // Client -> Eye
+    int32 id = 1;                       // response has same id as request
+    repeated string class_names = 2;    // list of class names
+    bool error_state = 8;               // response error flag: true on error
+}
+
+message DetectRequest {                 // Client -> Eye
+    int32 id = 1;                       // response has same id as request
+    int32 cls = 2;                      // target class index - 0: all, specific: 1~
+    repeated float pose_cmd = 3;        // current end-effector pose: x,y,z,u,v,w, (unit: m, deg)
+    string robot_ip = 4;                // ip of robot from the xavier side, for multi-robot case
+}
+
+message RetrieveRequest {               // Client -> Eye
+    int32 id = 1;                       // response has same id as request
+    int32 cls = 2;                      // target class index - 0: all, specific: 1~
+}
+
+message DetectResponse {                // Camera -> Master
+    int32 id = 1;                       // response has same id as request
+    bool detected = 2;                  // true if something detected
+    bool passed = 3;                    // true if no inspection failure occured
+    int32 cls = 4;                      // index of detected class
+    repeated float tar_ee_pose = 5;     // end-effector pose of target action : x,y,z,u,v,w, (unit: m, deg)
+    repeated float tar_tool_pose = 6;   // selected tool pose of target action : x,y,z,u,v,w, (unit: m, deg)
+    repeated float tar_obj_pose = 7;    // pose of detected object : x,y,z,u,v,w, (unit: m, deg)
+    int32 tool_idx = 8;                 // index of selected tool
+    bool error_state = 9;               // true if error is raised
+    string error_module = 10;           // name of error-causing module, if error occured
+}

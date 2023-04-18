@@ -29,6 +29,9 @@ setup(
     install_requires=[
         "grpcio==1.39.0",
         "grpcio-tools==1.39.0",
-        "protobuf==3.17.3"
+        "protobuf==3.17.3",
+        "requests",
+        "Pillow",
+        "Pillow"
     ],
 )
