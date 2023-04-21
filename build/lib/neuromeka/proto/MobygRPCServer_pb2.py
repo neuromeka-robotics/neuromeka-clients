@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14MobygRPCServer.proto\x12\x08GRPCMoby\"\x07\n\x05\x45mpty\"*\n\tJsonParam\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x10\n\x08json_str\x18\x02 \x01(\t\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"@\n\x0eMotorDriverRxs\x12.\n\rmotorDriverRx\x18\x01 \x03(\x0b\x32\x17.GRPCMoby.MotorDriverRx\"\x90\x02\n\tMobyState\x12\x0f\n\x07isReady\x18\x01 \x01(\x08\x12\x10\n\x08isMoving\x18\x02 \x01(\x08\x12\x16\n\x0eisMoveFinished\x18\x03 \x01(\x08\x12\x13\n\x0bisEmgPushed\x18\x04 \x01(\x08\x12\x14\n\x0cisErrorState\x18\x05 \x01(\x08\x12\x12\n\nisHomePose\x18\x06 \x01(\x08\x12\x16\n\x0eisRotationZero\x18\x07 \x01(\x08\x12\x13\n\x0bisResetting\x18\x08 \x01(\x08\x12\x16\n\x0eisIMUAvailable\x18\t \x01(\x08\x12\x12\n\nisCollided\x18\n \x01(\x08\x12\x18\n\x10isProgramRunning\x18\x0b \x01(\x08\x12\x16\n\x0eisProgramPause\x18\x0c \x01(\x08\"$\n\x0eMobyErrorState\x12\x12\n\nerrorState\x18\x01 \x01(\x05\".\n\x08MobyPose\x12\n\n\x02px\x18\x01 \x01(\x01\x12\n\n\x02py\x18\x02 \x01(\x01\x12\n\n\x02pw\x18\x03 \x01(\x01\"\xa5\x01\n\x07IMUData\x12\x0e\n\x06\x61ngleX\x18\x01 \x01(\x01\x12\x0e\n\x06\x61ngleY\x18\x02 \x01(\x01\x12\x0e\n\x06\x61ngleZ\x18\x03 \x01(\x01\x12\x11\n\tangleVelX\x18\x04 \x01(\x01\x12\x11\n\tangleVelY\x18\x05 \x01(\x01\x12\x11\n\tangleVelZ\x18\x06 \x01(\x01\x12\x0f\n\x07linAccX\x18\x07 \x01(\x01\x12\x0f\n\x07linAccY\x18\x08 \x01(\x01\x12\x0f\n\x07linAccZ\x18\t \x01(\x01\"-\n\x07MobyVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\"?\n\rSwerveDoubles\x12\n\n\x02\x66l\x18\x01 \x01(\x01\x12\n\n\x02\x66r\x18\x02 \x01(\x01\x12\n\n\x02\x62l\x18\x03 \x01(\x01\x12\n\n\x02\x62r\x18\x04 \x01(\x01\"/\n\tTargetVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\";\n\tZeroCount\x12\n\n\x02\x66l\x18\x01 \x01(\x05\x12\n\n\x02\x66r\x18\x02 \x01(\x05\x12\n\n\x02\x62l\x18\x03 \x01(\x05\x12\n\n\x02\x62r\x18\x04 \x01(\x05\"\xae\x01\n\x06IRData\x12\x11\n\tir_front1\x18\x01 \x01(\x05\x12\x11\n\tir_front2\x18\x02 \x01(\x05\x12\x10\n\x08ir_left1\x18\x03 \x01(\x05\x12\x10\n\x08ir_left2\x18\x04 \x01(\x05\x12\x10\n\x08ir_left3\x18\x05 \x01(\x05\x12\x0f\n\x07ir_rear\x18\x06 \x01(\x05\x12\x11\n\tir_right1\x18\x07 \x01(\x05\x12\x11\n\tir_right2\x18\x08 \x01(\x05\x12\x11\n\tir_right3\x18\t \x01(\x05\"t\n\x07\x42MSData\x12\x12\n\nbms_status\x18\x01 \x03(\x05\x12\x11\n\tpack_volt\x18\x02 \x03(\x05\x12\x14\n\x0c\x62\x61ttery_volt\x18\x03 \x03(\x05\x12\x15\n\rpack_current1\x18\x04 \x03(\x05\x12\x15\n\rpack_current2\x18\x05 \x03(\x05\"!\n\x05GBool\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x08\" \n\x04GInt\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x05\"\"\n\x06GFloat\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x02\"#\n\x07GString\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\t\"\x16\n\x07\x42oolVal\x12\x0b\n\x03val\x18\x01 \x01(\x08\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tDoubleVal\x12\x0b\n\x03val\x18\x01 \x01(\x01\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\">\n\x0cRotationGain\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\x8f\x10\n\x0cGRPCMobyTask\x12<\n\rGetMobyTxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverTx\"\x00\x12<\n\rGetMobyRxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverRx\"\x00\x12\x46\n\x17\x44irectMotorDriveControl\x12\x18.GRPCMoby.MotorDriverRxs\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x36\n\x0cGetMobyState\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.MobyState\"\x00\x12@\n\x11GetMobyErrorState\x12\x0f.GRPCMoby.Empty\x1a\x18.GRPCMoby.MobyErrorState\"\x00\x12-\n\x07Recover\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0bGetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x12.GRPCMoby.MobyPose\"\x00\x12\x32\n\nGetMobyVel\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.MobyVel\"\x00\x12\x33\n\rResetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13GetRotationAngleDeg\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12;\n\rGetDriveSpeed\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12\x36\n\x0cGetTargetVel\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.TargetVel\"\x00\x12>\n\x14GetRotationZeroCount\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.ZeroCount\"\x00\x12/\n\x08GetCMode\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IntVal\"\x00\x12\x36\n\x0bGetGyroData\x12\x0f.GRPCMoby.Empty\x1a\x14.GRPCMoby.DoubleVals\"\x00\x12\x35\n\x0fResetGyroSensor\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x36\n\x0eUseGyroForOdom\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fGetGyroFullData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.IMUData\"\x00\x12\x36\n\x0fGetIRSensorData\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IRData\"\x00\x12\x32\n\nGetBMSData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.BMSData\"\x00\x12\x38\n\x0eSetStepControl\x12\x13.GRPCMoby.TargetVel\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x30\n\nStopMotion\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13SetRotationAngleDeg\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x38\n\nDriveWheel\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x16SetZeroPosAsCurrentPos\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x11SetRotationVelAcc\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x39\n\x0eSetDriveAccDec\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x19SetDriveInterpolatorOnOff\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12G\n\x1cSetRotationInterpolatorParam\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12=\n\x15SetRotationTorqueMode\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x0fSetControlParam\x12\x16.GRPCMoby.RotationGain\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0eStartRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0c\x45ndRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fSetLoggerBuffer\x12\x11.GRPCMoby.IntVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0cRTLoggerSave\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x14MobygRPCServer.proto\x12\x08GRPCMoby\"\x07\n\x05\x45mpty\"*\n\tJsonParam\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x10\n\x08json_str\x18\x02 \x01(\t\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"@\n\x0eMotorDriverRxs\x12.\n\rmotorDriverRx\x18\x01 \x03(\x0b\x32\x17.GRPCMoby.MotorDriverRx\"\x90\x02\n\tMobyState\x12\x0f\n\x07isReady\x18\x01 \x01(\x08\x12\x10\n\x08isMoving\x18\x02 \x01(\x08\x12\x16\n\x0eisMoveFinished\x18\x03 \x01(\x08\x12\x13\n\x0bisEmgPushed\x18\x04 \x01(\x08\x12\x14\n\x0cisErrorState\x18\x05 \x01(\x08\x12\x12\n\nisHomePose\x18\x06 \x01(\x08\x12\x16\n\x0eisRotationZero\x18\x07 \x01(\x08\x12\x13\n\x0bisResetting\x18\x08 \x01(\x08\x12\x16\n\x0eisIMUAvailable\x18\t \x01(\x08\x12\x12\n\nisCollided\x18\n \x01(\x08\x12\x18\n\x10isProgramRunning\x18\x0b \x01(\x08\x12\x16\n\x0eisProgramPause\x18\x0c \x01(\x08\"$\n\x0eMobyErrorState\x12\x12\n\nerrorState\x18\x01 \x01(\x05\".\n\x08MobyPose\x12\n\n\x02px\x18\x01 \x01(\x01\x12\n\n\x02py\x18\x02 \x01(\x01\x12\n\n\x02pw\x18\x03 \x01(\x01\"\xa5\x01\n\x07IMUData\x12\x0e\n\x06\x61ngleX\x18\x01 \x01(\x01\x12\x0e\n\x06\x61ngleY\x18\x02 \x01(\x01\x12\x0e\n\x06\x61ngleZ\x18\x03 \x01(\x01\x12\x11\n\tangleVelX\x18\x04 \x01(\x01\x12\x11\n\tangleVelY\x18\x05 \x01(\x01\x12\x11\n\tangleVelZ\x18\x06 \x01(\x01\x12\x0f\n\x07linAccX\x18\x07 \x01(\x01\x12\x0f\n\x07linAccY\x18\x08 \x01(\x01\x12\x0f\n\x07linAccZ\x18\t \x01(\x01\"-\n\x07MobyVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\"?\n\rSwerveDoubles\x12\n\n\x02\x66l\x18\x01 \x01(\x01\x12\n\n\x02\x66r\x18\x02 \x01(\x01\x12\n\n\x02\x62l\x18\x03 \x01(\x01\x12\n\n\x02\x62r\x18\x04 \x01(\x01\"/\n\tTargetVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\";\n\tZeroCount\x12\n\n\x02\x66l\x18\x01 \x01(\x05\x12\n\n\x02\x66r\x18\x02 \x01(\x05\x12\n\n\x02\x62l\x18\x03 \x01(\x05\x12\n\n\x02\x62r\x18\x04 \x01(\x05\"\xae\x01\n\x06IRData\x12\x11\n\tir_front1\x18\x01 \x01(\x05\x12\x11\n\tir_front2\x18\x02 \x01(\x05\x12\x10\n\x08ir_left1\x18\x03 \x01(\x05\x12\x10\n\x08ir_left2\x18\x04 \x01(\x05\x12\x10\n\x08ir_left3\x18\x05 \x01(\x05\x12\x0f\n\x07ir_rear\x18\x06 \x01(\x05\x12\x11\n\tir_right1\x18\x07 \x01(\x05\x12\x11\n\tir_right2\x18\x08 \x01(\x05\x12\x11\n\tir_right3\x18\t \x01(\x05\"t\n\x07\x42MSData\x12\x12\n\nbms_status\x18\x01 \x03(\x05\x12\x11\n\tpack_volt\x18\x02 \x03(\x05\x12\x14\n\x0c\x62\x61ttery_volt\x18\x03 \x03(\x05\x12\x15\n\rpack_current1\x18\x04 \x03(\x05\x12\x15\n\rpack_current2\x18\x05 \x03(\x05\"!\n\x05GBool\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x08\" \n\x04GInt\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x05\"\"\n\x06GFloat\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x02\"#\n\x07GString\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\t\"\x16\n\x07\x42oolVal\x12\x0b\n\x03val\x18\x01 \x01(\x08\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tDoubleVal\x12\x0b\n\x03val\x18\x01 \x01(\x01\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\">\n\x0cRotationGain\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\xc7\x0f\n\x0cGRPCMobyTask\x12<\n\rGetMobyTxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverTx\"\x00\x12<\n\rGetMobyRxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverRx\"\x00\x12\x36\n\x0cGetMobyState\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.MobyState\"\x00\x12@\n\x11GetMobyErrorState\x12\x0f.GRPCMoby.Empty\x1a\x18.GRPCMoby.MobyErrorState\"\x00\x12-\n\x07Recover\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0bGetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x12.GRPCMoby.MobyPose\"\x00\x12\x32\n\nGetMobyVel\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.MobyVel\"\x00\x12\x33\n\rResetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13GetRotationAngleDeg\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12;\n\rGetDriveSpeed\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12\x36\n\x0cGetTargetVel\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.TargetVel\"\x00\x12>\n\x14GetRotationZeroCount\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.ZeroCount\"\x00\x12/\n\x08GetCMode\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IntVal\"\x00\x12\x36\n\x0bGetGyroData\x12\x0f.GRPCMoby.Empty\x1a\x14.GRPCMoby.DoubleVals\"\x00\x12\x35\n\x0fResetGyroSensor\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x36\n\x0eUseGyroForOdom\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fGetGyroFullData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.IMUData\"\x00\x12\x36\n\x0fGetIRSensorData\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IRData\"\x00\x12\x32\n\nGetBMSData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.BMSData\"\x00\x12\x38\n\x0eSetStepControl\x12\x13.GRPCMoby.TargetVel\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x30\n\nStopMotion\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13SetRotationAngleDeg\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x38\n\nDriveWheel\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x16SetZeroPosAsCurrentPos\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x11SetRotationVelAcc\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x39\n\x0eSetDriveAccDec\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x19SetDriveInterpolatorOnOff\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12G\n\x1cSetRotationInterpolatorParam\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12=\n\x15SetRotationTorqueMode\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x0fSetControlParam\x12\x16.GRPCMoby.RotationGain\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0eStartRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0c\x45ndRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fSetLoggerBuffer\x12\x11.GRPCMoby.IntVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0cRTLoggerSave\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x62\x06proto3'
 )
 
 
@@ -1577,7 +1577,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=1891,
-  serialized_end=3954,
+  serialized_end=3882,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMobyTxData',
@@ -1600,19 +1600,9 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='DirectMotorDriveControl',
-    full_name='GRPCMoby.GRPCMobyTask.DirectMotorDriveControl',
-    index=2,
-    containing_service=None,
-    input_type=_MOTORDRIVERRXS,
-    output_type=_EMPTY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
     name='GetMobyState',
     full_name='GRPCMoby.GRPCMobyTask.GetMobyState',
-    index=3,
+    index=2,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_MOBYSTATE,
@@ -1622,7 +1612,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetMobyErrorState',
     full_name='GRPCMoby.GRPCMobyTask.GetMobyErrorState',
-    index=4,
+    index=3,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_MOBYERRORSTATE,
@@ -1632,7 +1622,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Recover',
     full_name='GRPCMoby.GRPCMobyTask.Recover',
-    index=5,
+    index=4,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1642,7 +1632,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetMobyPose',
     full_name='GRPCMoby.GRPCMobyTask.GetMobyPose',
-    index=6,
+    index=5,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_MOBYPOSE,
@@ -1652,7 +1642,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetMobyVel',
     full_name='GRPCMoby.GRPCMobyTask.GetMobyVel',
-    index=7,
+    index=6,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_MOBYVEL,
@@ -1662,7 +1652,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ResetMobyPose',
     full_name='GRPCMoby.GRPCMobyTask.ResetMobyPose',
-    index=8,
+    index=7,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1672,7 +1662,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetRotationAngleDeg',
     full_name='GRPCMoby.GRPCMobyTask.GetRotationAngleDeg',
-    index=9,
+    index=8,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_SWERVEDOUBLES,
@@ -1682,7 +1672,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetDriveSpeed',
     full_name='GRPCMoby.GRPCMobyTask.GetDriveSpeed',
-    index=10,
+    index=9,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_SWERVEDOUBLES,
@@ -1692,7 +1682,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetTargetVel',
     full_name='GRPCMoby.GRPCMobyTask.GetTargetVel',
-    index=11,
+    index=10,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_TARGETVEL,
@@ -1702,7 +1692,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetRotationZeroCount',
     full_name='GRPCMoby.GRPCMobyTask.GetRotationZeroCount',
-    index=12,
+    index=11,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_ZEROCOUNT,
@@ -1712,7 +1702,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetCMode',
     full_name='GRPCMoby.GRPCMobyTask.GetCMode',
-    index=13,
+    index=12,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_INTVAL,
@@ -1722,7 +1712,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetGyroData',
     full_name='GRPCMoby.GRPCMobyTask.GetGyroData',
-    index=14,
+    index=13,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_DOUBLEVALS,
@@ -1732,7 +1722,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ResetGyroSensor',
     full_name='GRPCMoby.GRPCMobyTask.ResetGyroSensor',
-    index=15,
+    index=14,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1742,7 +1732,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UseGyroForOdom',
     full_name='GRPCMoby.GRPCMobyTask.UseGyroForOdom',
-    index=16,
+    index=15,
     containing_service=None,
     input_type=_BOOLVAL,
     output_type=_EMPTY,
@@ -1752,7 +1742,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetGyroFullData',
     full_name='GRPCMoby.GRPCMobyTask.GetGyroFullData',
-    index=17,
+    index=16,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_IMUDATA,
@@ -1762,7 +1752,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetIRSensorData',
     full_name='GRPCMoby.GRPCMobyTask.GetIRSensorData',
-    index=18,
+    index=17,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_IRDATA,
@@ -1772,7 +1762,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetBMSData',
     full_name='GRPCMoby.GRPCMobyTask.GetBMSData',
-    index=19,
+    index=18,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_BMSDATA,
@@ -1782,7 +1772,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetStepControl',
     full_name='GRPCMoby.GRPCMobyTask.SetStepControl',
-    index=20,
+    index=19,
     containing_service=None,
     input_type=_TARGETVEL,
     output_type=_EMPTY,
@@ -1792,7 +1782,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StopMotion',
     full_name='GRPCMoby.GRPCMobyTask.StopMotion',
-    index=21,
+    index=20,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1802,7 +1792,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationAngleDeg',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationAngleDeg',
-    index=22,
+    index=21,
     containing_service=None,
     input_type=_SWERVEDOUBLES,
     output_type=_EMPTY,
@@ -1812,7 +1802,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DriveWheel',
     full_name='GRPCMoby.GRPCMobyTask.DriveWheel',
-    index=23,
+    index=22,
     containing_service=None,
     input_type=_SWERVEDOUBLES,
     output_type=_EMPTY,
@@ -1822,7 +1812,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetZeroPosAsCurrentPos',
     full_name='GRPCMoby.GRPCMobyTask.SetZeroPosAsCurrentPos',
-    index=24,
+    index=23,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1832,7 +1822,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationVelAcc',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationVelAcc',
-    index=25,
+    index=24,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1842,7 +1832,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetDriveAccDec',
     full_name='GRPCMoby.GRPCMobyTask.SetDriveAccDec',
-    index=26,
+    index=25,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1852,7 +1842,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetDriveInterpolatorOnOff',
     full_name='GRPCMoby.GRPCMobyTask.SetDriveInterpolatorOnOff',
-    index=27,
+    index=26,
     containing_service=None,
     input_type=_BOOLVAL,
     output_type=_EMPTY,
@@ -1862,7 +1852,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationInterpolatorParam',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationInterpolatorParam',
-    index=28,
+    index=27,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1872,7 +1862,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationTorqueMode',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationTorqueMode',
-    index=29,
+    index=28,
     containing_service=None,
     input_type=_BOOLVAL,
     output_type=_EMPTY,
@@ -1882,7 +1872,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetControlParam',
     full_name='GRPCMoby.GRPCMobyTask.SetControlParam',
-    index=30,
+    index=29,
     containing_service=None,
     input_type=_ROTATIONGAIN,
     output_type=_EMPTY,
@@ -1892,7 +1882,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StartRTLogging',
     full_name='GRPCMoby.GRPCMobyTask.StartRTLogging',
-    index=31,
+    index=30,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1902,7 +1892,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='EndRTLogging',
     full_name='GRPCMoby.GRPCMobyTask.EndRTLogging',
-    index=32,
+    index=31,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1912,7 +1902,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetLoggerBuffer',
     full_name='GRPCMoby.GRPCMobyTask.SetLoggerBuffer',
-    index=33,
+    index=32,
     containing_service=None,
     input_type=_INTVALS,
     output_type=_EMPTY,
@@ -1922,7 +1912,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RTLoggerSave',
     full_name='GRPCMoby.GRPCMobyTask.RTLoggerSave',
-    index=34,
+    index=33,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
