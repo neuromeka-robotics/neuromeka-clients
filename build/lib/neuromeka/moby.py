@@ -60,7 +60,7 @@ class MobyClient:
     def recover(self):
         return self.stub.Recover()
     
-    ## Get Moby's odometry and physical data
+    ## Get Moby's odometry data
     def get_moby_pose(self):
         pose = self.stub.GetMobyPose(Empty())
         return [pose.px, pose.py, pose.pw]
@@ -72,6 +72,11 @@ class MobyClient:
     def reset_moby_pose(self):
         return self.stub.ResetMobyPose(Empty())
     
+    def get_target_vel(self):
+        target = self.stub.GetTargetVel(Empty())
+        return [target.vx, target.vy, target.vw]
+    
+    ## Swerve drive    
     def get_rotation_angle(self):
         val = self.stub.GetRotationAngleDeg(Empty())
         return {'fl': val.fl, 'fr': val.fr, 'bl':val.bl, 'br':val.br}
@@ -80,13 +85,11 @@ class MobyClient:
         val = self.stub.GetDriveSpeed(Empty())
         return {'fl': val.fl, 'fr': val.fr, 'bl':val.bl, 'br':val.br}
     
-    def get_target_vel(self):
-        target = self.stub.GetTargetVel(Empty())
-        return [target.vx, target.vy, target.vw]
-    
     def get_zero(self):
         val = self.stub.GetRotationZeroCount(Empty())
         return {'fl': val.fl, 'fr': val.fr, 'bl':val.bl, 'br':val.br}
+    
+    ## Differential drive
     
     def get_cmode(self):
         return self.stub.GetCMode(Empty()).val    

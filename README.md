@@ -47,7 +47,7 @@ Please refer to the 'example.py' file in the package for usage examples.
 If you encounter any issues or need help, please open an issue on the project's repository.
 
 ## License
-This package is released under the [LICENSE_NAME]. For more information, please refer to the LICENSE file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 

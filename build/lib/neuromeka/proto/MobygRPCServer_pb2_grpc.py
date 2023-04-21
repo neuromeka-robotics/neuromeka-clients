@@ -24,11 +24,6 @@ class GRPCMobyTaskStub(object):
                 request_serializer=MobygRPCServer__pb2.IntVal.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.MotorDriverRx.FromString,
                 )
-        self.DirectMotorDriveControl = channel.unary_unary(
-                '/GRPCMoby.GRPCMobyTask/DirectMotorDriveControl',
-                request_serializer=MobygRPCServer__pb2.MotorDriverRxs.SerializeToString,
-                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
-                )
         self.GetMobyState = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/GetMobyState',
                 request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
@@ -202,12 +197,6 @@ class GRPCMobyTaskServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetMobyRxData(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DirectMotorDriveControl(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -427,11 +416,6 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     request_deserializer=MobygRPCServer__pb2.IntVal.FromString,
                     response_serializer=MobygRPCServer__pb2.MotorDriverRx.SerializeToString,
             ),
-            'DirectMotorDriveControl': grpc.unary_unary_rpc_method_handler(
-                    servicer.DirectMotorDriveControl,
-                    request_deserializer=MobygRPCServer__pb2.MotorDriverRxs.FromString,
-                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
-            ),
             'GetMobyState': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMobyState,
                     request_deserializer=MobygRPCServer__pb2.Empty.FromString,
@@ -633,23 +617,6 @@ class GRPCMobyTask(object):
         return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/GetMobyRxData',
             MobygRPCServer__pb2.IntVal.SerializeToString,
             MobygRPCServer__pb2.MotorDriverRx.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DirectMotorDriveControl(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/DirectMotorDriveControl',
-            MobygRPCServer__pb2.MotorDriverRxs.SerializeToString,
-            MobygRPCServer__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
