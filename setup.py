@@ -6,10 +6,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="neuromeka-clients",
-    version="0.1.2",
+    version="0.1.4",
     author="Neuromeka",
     author_email="youngjin.heo@neuromeka.com",
-    description="Neuromeka client protocols for Indy, Moby, Ecat, and Motor",
+    description="Neuromeka client protocols for Indy, IndyEye, Moby, Ecat, and Motor",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/neuromeka-robotics/neuromeka-clients",
@@ -31,6 +31,7 @@ setup(
         "grpcio-tools==1.39.0",
         "protobuf==3.17.3",
         "requests",
-        "Pillow"
+        "Pillow",
+        "numpy"
     ],
 )
