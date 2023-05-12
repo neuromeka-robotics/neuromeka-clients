@@ -190,6 +190,7 @@ endif ()
 
 # Additional Apps
 add_subdirectory(src/MobyClientCpp)
+add_subdirectory(src/IndyClient3Cpp)
 
 # Installation
 
