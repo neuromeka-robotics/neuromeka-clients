@@ -1,4 +1,5 @@
 # Neuromeka Clients
+![PyPI](https://img.shields.io/pypi/v/neuromeka-clients)
 
 This package provides client protocols for users to interact with Neuromeka's products, including Indy, Moby, Ecat, and Motor.
 
@@ -14,6 +15,7 @@ pip install neuromeka-clients
 The package contatins the following client classes:
 
 * IndyClient in indy.py
+* IndyClient3 in indy_client3.py
 * MobyClient in moby.py
 * EcatClient in ecat.py
 * MotorClient in motor.py
@@ -21,11 +23,12 @@ The package contatins the following client classes:
 To use a client class, simply import it and create an instance:
 
 ```python
-from neuromeka import EcatClient, MobyClient, IndyClient, MotorClient
+from neuromeka import EcatClient, MobyClient, IndyClient, IndyClient3, MotorClient
 
 ecat = EcatClient("192.168.214.20")
-moby = IndyClient("192.168.214.20")
+moby = MobyClient("192.168.214.20")
 indy = IndyClient("192.168.0.11")
+indyclient3 = IndyClient3("192.168.0.11")
 motor = MotorClient("192.168.0.20")
 ```
 
