@@ -5,6 +5,7 @@ neuromeka/__init__.py
 neuromeka/ecat.py
 neuromeka/eye.py
 neuromeka/indy.py
+neuromeka/indy_client3.py
 neuromeka/moby.py
 neuromeka/motor.py
 neuromeka/indy_dcp/__init__.py
@@ -21,7 +22,13 @@ neuromeka/proto/MobygRPCServer_pb2_grpc.py
 neuromeka/proto/MotorControlgRPCServer_pb2.py
 neuromeka/proto/MotorControlgRPCServer_pb2_grpc.py
 neuromeka/proto/__init__.py
+neuromeka/proto/control_msgs_pb2.py
+neuromeka/proto/control_msgs_pb2_grpc.py
+neuromeka/proto/control_pb2.py
+neuromeka/proto/control_pb2_grpc.py
 neuromeka/proto/grpc_wrapper.py
+neuromeka/proto/shared_msgs_pb2.py
+neuromeka/proto/shared_msgs_pb2_grpc.py
 neuromeka_clients.egg-info/PKG-INFO
 neuromeka_clients.egg-info/SOURCES.txt
 neuromeka_clients.egg-info/dependency_links.txt
