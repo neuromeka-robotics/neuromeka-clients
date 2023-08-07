@@ -790,7 +790,7 @@ class IndyDCPClient:
     def set_default_tcp(self, tcp):
         data = Data()
         data_size = 6 * 8
-        for i in range(JOINT_DOF):
+        for i in range(6):
             data.double6dArr[i] = tcp[i]
         return (data, data_size)
 
@@ -802,7 +802,7 @@ class IndyDCPClient:
     def set_tcp_comp(self, tcp):
         data = Data()
         data_size = 6 * 8
-        for i in range(JOINT_DOF):
+        for i in range(6):
             data.double6dArr[i] = tcp[i]
         return (data, data_size)
 
@@ -814,7 +814,7 @@ class IndyDCPClient:
     def set_reference_frame(self, ref):
         data = Data()
         data_size = 6 * 8
-        for i in range(JOINT_DOF):
+        for i in range(6):
             data.double6dArr[i] = ref[i]
         return (data, data_size)
 
