@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1c\x45therCATCommgRPCServer.proto\x12\x08GRPCECat\"\x07\n\x05\x45mpty\"3\n\nServoIndex\x12\x11\n\tecatIndex\x18\x01 \x01(\x05\x12\x12\n\nservoState\x18\x02 \x01(\x08\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"\x94\x01\n\x11PanasonicDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\x12\x11\n\terrorCode\x18\x06 \x01(\r\"\xbc\x01\n\x11PanasonicDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\x12\x11\n\tmaxTorque\x18\x06 \x01(\x05\x12\x15\n\rmaxMotorSpeed\x18\x07 \x01(\x05\x12\x12\n\ntouchProbe\x18\x08 \x01(\x05\"V\n\x12MotorDriverTxIndex\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12.\n\rmotorDriverTx\x18\x02 \x01(\x0b\x32\x17.GRPCECat.MotorDriverTx\"V\n\x12MotorDriverRxIndex\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12.\n\rmotorDriverRx\x18\x02 \x01(\x0b\x32\x17.GRPCECat.MotorDriverRx\"+\n\nServoParam\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12\x0b\n\x03val\x18\x02 \x01(\x05\"T\n\nFTsensorTx\x12\n\n\x02\x66x\x18\x01 \x01(\x05\x12\n\n\x02\x66y\x18\x02 \x01(\x05\x12\n\n\x02\x66z\x18\x03 \x01(\x05\x12\n\n\x02tx\x18\x04 \x01(\x05\x12\n\n\x02ty\x18\x05 \x01(\x05\x12\n\n\x02tz\x18\x06 \x01(\x05\"w\n\tIOBoardTx\x12\r\n\x05\x64i_5v\x18\x01 \x01(\r\x12\x0b\n\x03\x64i1\x18\x02 \x01(\r\x12\x0b\n\x03\x64i2\x18\x03 \x01(\r\x12\x0b\n\x03\x61i1\x18\x04 \x01(\r\x12\x0b\n\x03\x61i2\x18\x05 \x01(\r\x12\'\n\tft_sensor\x18\x06 \x01(\x0b\x32\x14.GRPCECat.FTsensorTx\"`\n\tIOBoardRx\x12\r\n\x05\x64o_5v\x18\x01 \x01(\r\x12\x0b\n\x03\x64o1\x18\x02 \x01(\r\x12\x0b\n\x03\x64o2\x18\x03 \x01(\r\x12\x0b\n\x03\x61o1\x18\x04 \x01(\r\x12\x0b\n\x03\x61o2\x18\x05 \x01(\r\x12\x10\n\x08\x66t_param\x18\x06 \x01(\r\"&\n\x06\x44IList\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0f\n\x07\x64i_list\x18\x02 \x03(\x05\"&\n\x06\x44OList\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0f\n\x07\x64o_list\x18\x02 \x03(\x05\"U\n\x0bRobotusFTTx\x12\n\n\x02\x66x\x18\x01 \x01(\x02\x12\n\n\x02\x66y\x18\x02 \x01(\x02\x12\n\n\x02\x66z\x18\x03 \x01(\x02\x12\n\n\x02tx\x18\x04 \x01(\x02\x12\n\n\x02ty\x18\x05 \x01(\x02\x12\n\n\x02tz\x18\x06 \x01(\x02\"%\n\tTargetPos\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03pos\x18\x02 \x01(\x02\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tStringVal\x12\x0b\n\x03val\x18\x01 \x01(\t\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\xf6\x11\n\x0cGRPCECatTask\x12\x36\n\x0fGetMasterStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x36\n\x0eGetSlaveStatus\x12\x0f.GRPCECat.Empty\x1a\x11.GRPCECat.IntVals\"\x00\x12\x38\n\x11GetRxDomainStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x11GetTxDomainStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x35\n\rIsSystemReady\x12\x0f.GRPCECat.Empty\x1a\x11.GRPCECat.IntVals\"\x00\x12\x38\n\rSetServoOnOff\x12\x14.GRPCECat.ServoIndex\x1a\x0f.GRPCECat.Empty\"\x00\x12\x46\n\x13SetRxPDOMotorDriver\x12\x1c.GRPCECat.MotorDriverRxIndex\x1a\x0f.GRPCECat.Empty\"\x00\x12\x42\n\x13GetRxPDOMotorDriver\x12\x10.GRPCECat.IntVal\x1a\x17.GRPCECat.MotorDriverRx\"\x00\x12\x42\n\x13GetTxPDOMotorDriver\x12\x10.GRPCECat.IntVal\x1a\x17.GRPCECat.MotorDriverTx\"\x00\x12\x39\n\x11GetMotorDriverDIs\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x34\n\x0cGetErrorCode\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x34\n\x0cGetMaxTorque\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x37\n\x0cSetMaxTorque\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12\x38\n\x10GetMaxMotorSpeed\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12;\n\x10SetMaxMotorSpeed\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12>\n\x14SetNRMKIOBoardOutput\x12\x13.GRPCECat.IOBoardRx\x1a\x0f.GRPCECat.Empty\"\x00\x12=\n\x13GetNRMKIOBoardInput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.IOBoardTx\"\x00\x12>\n\x14GetNRMKIOBoardOutput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.IOBoardRx\"\x00\x12>\n\x14SetNRMKEndtoolOutput\x12\x13.GRPCECat.IOBoardRx\x1a\x0f.GRPCECat.Empty\"\x00\x12=\n\x13GetNRMKEndtoolInput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.IOBoardRx\"\x00\x12,\n\x05SetDO\x12\x10.GRPCECat.DOList\x1a\x0f.GRPCECat.Empty\"\x00\x12-\n\x05GetDI\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.DIList\"\x00\x12-\n\x05GetDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.DOList\"\x00\x12?\n\x12GetRobotusFTSensor\x12\x10.GRPCECat.IntVal\x1a\x15.GRPCECat.RobotusFTTx\"\x00\x12\x38\n\x11ResetWelconDriver\x12\x10.GRPCECat.IntVal\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x13GetCOREErrorCodeSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12@\n\x16GetCORETemperature1SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12@\n\x16GetCORETemperature2SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12@\n\x16GetCORETemperature3SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12>\n\x13GetNRMKFWVersionSDO\x12\x10.GRPCECat.IntVal\x1a\x13.GRPCECat.StringVal\"\x00\x12\x37\n\x0fGetMaxTorqueSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12=\n\x15GetProfileVelocitySDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x10GetProfileAccSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x10GetProfileDecSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12:\n\x0fSetMaxTorqueSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12@\n\x15SetProfileVelocitySDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x10SetProfileAccSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x10SetProfileDecSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x1c\x45therCATCommgRPCServer.proto\x12\x08GRPCECat\"\x07\n\x05\x45mpty\"3\n\nServoIndex\x12\x11\n\tecatIndex\x18\x01 \x01(\x05\x12\x12\n\nservoState\x18\x02 \x01(\x08\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"\x94\x01\n\x11PanasonicDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\x12\x11\n\terrorCode\x18\x06 \x01(\r\"\xbc\x01\n\x11PanasonicDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\x12\x11\n\tmaxTorque\x18\x06 \x01(\x05\x12\x15\n\rmaxMotorSpeed\x18\x07 \x01(\x05\x12\x12\n\ntouchProbe\x18\x08 \x01(\x05\"V\n\x12MotorDriverTxIndex\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12.\n\rmotorDriverTx\x18\x02 \x01(\x0b\x32\x17.GRPCECat.MotorDriverTx\"V\n\x12MotorDriverRxIndex\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12.\n\rmotorDriverRx\x18\x02 \x01(\x0b\x32\x17.GRPCECat.MotorDriverRx\"+\n\nServoParam\x12\x10\n\x08slaveIdx\x18\x01 \x01(\r\x12\x0b\n\x03val\x18\x02 \x01(\x05\"T\n\nFTsensorTx\x12\n\n\x02\x66x\x18\x01 \x01(\x05\x12\n\n\x02\x66y\x18\x02 \x01(\x05\x12\n\n\x02\x66z\x18\x03 \x01(\x05\x12\n\n\x02tx\x18\x04 \x01(\x05\x12\n\n\x02ty\x18\x05 \x01(\x05\x12\n\n\x02tz\x18\x06 \x01(\x05\"w\n\tIOBoardTx\x12\r\n\x05\x64i_5v\x18\x01 \x01(\r\x12\x0b\n\x03\x64i1\x18\x02 \x01(\r\x12\x0b\n\x03\x64i2\x18\x03 \x01(\r\x12\x0b\n\x03\x61i1\x18\x04 \x01(\r\x12\x0b\n\x03\x61i2\x18\x05 \x01(\r\x12\'\n\tft_sensor\x18\x06 \x01(\x0b\x32\x14.GRPCECat.FTsensorTx\"`\n\tIOBoardRx\x12\r\n\x05\x64o_5v\x18\x01 \x01(\r\x12\x0b\n\x03\x64o1\x18\x02 \x01(\r\x12\x0b\n\x03\x64o2\x18\x03 \x01(\r\x12\x0b\n\x03\x61o1\x18\x04 \x01(\r\x12\x0b\n\x03\x61o2\x18\x05 \x01(\r\x12\x10\n\x08\x66t_param\x18\x06 \x01(\r\"\x1b\n\tEndtoolTx\x12\x0e\n\x06status\x18\x01 \x01(\x05\"\x1b\n\tEndtoolRx\x12\x0e\n\x06status\x18\x01 \x01(\x05\"\xb7\x04\n\x0f\x45ndtoolRevCDTTx\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x16\n\x0e\x64ocking_status\x18\x02 \x01(\x05\x12\x16\n\x0e\x64ocking_button\x18\x03 \x01(\x05\x12\x15\n\rdocking_dist1\x18\x04 \x01(\x05\x12\x15\n\rdocking_dist2\x18\x05 \x01(\x05\x12\x15\n\rdocking_dist3\x18\x06 \x01(\x05\x12\x15\n\rdocking_dist4\x18\x07 \x01(\x05\x12\x15\n\rdocking_dist5\x18\x08 \x01(\x05\x12\x15\n\rdocking_dist6\x18\t \x01(\x05\x12\x15\n\rdocking_dist7\x18\n \x01(\x05\x12\x15\n\rdocking_dist8\x18\x0b \x01(\x05\x12\x15\n\rdirect_status\x18\x0c \x01(\x05\x12\x15\n\rdirect_button\x18\r \x01(\x05\x12\x16\n\x0e\x64irect_encoder\x18\x0e \x01(\x05\x12\x18\n\x10\x64irect_joystic1x\x18\x0f \x01(\x05\x12\x18\n\x10\x64irect_joystic1y\x18\x10 \x01(\x05\x12\x18\n\x10\x64irect_joystic2x\x18\x11 \x01(\x05\x12\x18\n\x10\x64irect_joystic2y\x18\x12 \x01(\x05\x12\x11\n\tft_status\x18\x13 \x01(\x05\x12\x11\n\tft_button\x18\x14 \x01(\x05\x12\r\n\x05\x66t_fx\x18\x15 \x01(\x05\x12\r\n\x05\x66t_fy\x18\x16 \x01(\x05\x12\r\n\x05\x66t_fz\x18\x17 \x01(\x05\x12\r\n\x05\x66t_tx\x18\x18 \x01(\x05\x12\r\n\x05\x66t_ty\x18\x19 \x01(\x05\x12\r\n\x05\x66t_tz\x18\x1a \x01(\x05\"&\n\x06\x44IList\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0f\n\x07\x64i_list\x18\x02 \x03(\x05\"&\n\x06\x44OList\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0f\n\x07\x64o_list\x18\x02 \x03(\x05\"U\n\x0bRobotusFTTx\x12\n\n\x02\x66x\x18\x01 \x01(\x02\x12\n\n\x02\x66y\x18\x02 \x01(\x02\x12\n\n\x02\x66z\x18\x03 \x01(\x02\x12\n\n\x02tx\x18\x04 \x01(\x02\x12\n\n\x02ty\x18\x05 \x01(\x02\x12\n\n\x02tz\x18\x06 \x01(\x02\"%\n\tTargetPos\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03pos\x18\x02 \x01(\x02\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tStringVal\x12\x0b\n\x03val\x18\x01 \x01(\t\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\xc1\x12\n\x0cGRPCECatTask\x12\x36\n\x0fGetMasterStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x36\n\x0eGetSlaveStatus\x12\x0f.GRPCECat.Empty\x1a\x11.GRPCECat.IntVals\"\x00\x12\x38\n\x11GetRxDomainStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x11GetTxDomainStatus\x12\x0f.GRPCECat.Empty\x1a\x10.GRPCECat.IntVal\"\x00\x12\x35\n\rIsSystemReady\x12\x0f.GRPCECat.Empty\x1a\x11.GRPCECat.IntVals\"\x00\x12\x38\n\rSetServoOnOff\x12\x14.GRPCECat.ServoIndex\x1a\x0f.GRPCECat.Empty\"\x00\x12\x46\n\x13SetRxPDOMotorDriver\x12\x1c.GRPCECat.MotorDriverRxIndex\x1a\x0f.GRPCECat.Empty\"\x00\x12\x42\n\x13GetRxPDOMotorDriver\x12\x10.GRPCECat.IntVal\x1a\x17.GRPCECat.MotorDriverRx\"\x00\x12\x42\n\x13GetTxPDOMotorDriver\x12\x10.GRPCECat.IntVal\x1a\x17.GRPCECat.MotorDriverTx\"\x00\x12\x39\n\x11GetMotorDriverDIs\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x34\n\x0cGetErrorCode\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x34\n\x0cGetMaxTorque\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x37\n\x0cSetMaxTorque\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12\x38\n\x10GetMaxMotorSpeed\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12;\n\x10SetMaxMotorSpeed\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12>\n\x14SetNRMKIOBoardOutput\x12\x13.GRPCECat.IOBoardRx\x1a\x0f.GRPCECat.Empty\"\x00\x12=\n\x13GetNRMKIOBoardInput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.IOBoardTx\"\x00\x12>\n\x14GetNRMKIOBoardOutput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.IOBoardRx\"\x00\x12>\n\x14SetNRMKEndtoolOutput\x12\x13.GRPCECat.EndtoolRx\x1a\x0f.GRPCECat.Empty\"\x00\x12=\n\x13GetNRMKEndtoolInput\x12\x0f.GRPCECat.Empty\x1a\x13.GRPCECat.EndtoolTx\"\x00\x12I\n\x19GetNRMKEndtoolRevCDTInput\x12\x0f.GRPCECat.Empty\x1a\x19.GRPCECat.EndtoolRevCDTTx\"\x00\x12,\n\x05SetDO\x12\x10.GRPCECat.DOList\x1a\x0f.GRPCECat.Empty\"\x00\x12-\n\x05GetDI\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.DIList\"\x00\x12-\n\x05GetDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.DOList\"\x00\x12?\n\x12GetRobotusFTSensor\x12\x10.GRPCECat.IntVal\x1a\x15.GRPCECat.RobotusFTTx\"\x00\x12\x38\n\x11ResetWelconDriver\x12\x10.GRPCECat.IntVal\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x13GetCOREErrorCodeSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12@\n\x16GetCORETemperature1SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12@\n\x16GetCORETemperature2SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12@\n\x16GetCORETemperature3SDO\x12\x10.GRPCECat.IntVal\x1a\x12.GRPCECat.FloatVal\"\x00\x12>\n\x13GetNRMKFWVersionSDO\x12\x10.GRPCECat.IntVal\x1a\x13.GRPCECat.StringVal\"\x00\x12\x37\n\x0fGetMaxTorqueSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12=\n\x15GetProfileVelocitySDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x10GetProfileAccSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12\x38\n\x10GetProfileDecSDO\x12\x10.GRPCECat.IntVal\x1a\x10.GRPCECat.IntVal\"\x00\x12:\n\x0fSetMaxTorqueSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12@\n\x15SetProfileVelocitySDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x10SetProfileAccSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x12;\n\x10SetProfileDecSDO\x12\x14.GRPCECat.ServoParam\x1a\x0f.GRPCECat.Empty\"\x00\x62\x06proto3'
 )
 
 
@@ -675,6 +675,277 @@ _IOBOARDRX = _descriptor.Descriptor(
 )
 
 
+_ENDTOOLTX = _descriptor.Descriptor(
+  name='EndtoolTx',
+  full_name='GRPCECat.EndtoolTx',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='GRPCECat.EndtoolTx.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1223,
+  serialized_end=1250,
+)
+
+
+_ENDTOOLRX = _descriptor.Descriptor(
+  name='EndtoolRx',
+  full_name='GRPCECat.EndtoolRx',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='GRPCECat.EndtoolRx.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1252,
+  serialized_end=1279,
+)
+
+
+_ENDTOOLREVCDTTX = _descriptor.Descriptor(
+  name='EndtoolRevCDTTx',
+  full_name='GRPCECat.EndtoolRevCDTTx',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='GRPCECat.EndtoolRevCDTTx.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_status', full_name='GRPCECat.EndtoolRevCDTTx.docking_status', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_button', full_name='GRPCECat.EndtoolRevCDTTx.docking_button', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist1', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist1', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist2', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist2', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist3', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist3', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist4', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist4', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist5', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist5', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist6', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist6', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist7', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist7', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='docking_dist8', full_name='GRPCECat.EndtoolRevCDTTx.docking_dist8', index=10,
+      number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_status', full_name='GRPCECat.EndtoolRevCDTTx.direct_status', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_button', full_name='GRPCECat.EndtoolRevCDTTx.direct_button', index=12,
+      number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_encoder', full_name='GRPCECat.EndtoolRevCDTTx.direct_encoder', index=13,
+      number=14, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_joystic1x', full_name='GRPCECat.EndtoolRevCDTTx.direct_joystic1x', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_joystic1y', full_name='GRPCECat.EndtoolRevCDTTx.direct_joystic1y', index=15,
+      number=16, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_joystic2x', full_name='GRPCECat.EndtoolRevCDTTx.direct_joystic2x', index=16,
+      number=17, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='direct_joystic2y', full_name='GRPCECat.EndtoolRevCDTTx.direct_joystic2y', index=17,
+      number=18, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_status', full_name='GRPCECat.EndtoolRevCDTTx.ft_status', index=18,
+      number=19, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_button', full_name='GRPCECat.EndtoolRevCDTTx.ft_button', index=19,
+      number=20, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_fx', full_name='GRPCECat.EndtoolRevCDTTx.ft_fx', index=20,
+      number=21, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_fy', full_name='GRPCECat.EndtoolRevCDTTx.ft_fy', index=21,
+      number=22, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_fz', full_name='GRPCECat.EndtoolRevCDTTx.ft_fz', index=22,
+      number=23, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_tx', full_name='GRPCECat.EndtoolRevCDTTx.ft_tx', index=23,
+      number=24, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_ty', full_name='GRPCECat.EndtoolRevCDTTx.ft_ty', index=24,
+      number=25, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ft_tz', full_name='GRPCECat.EndtoolRevCDTTx.ft_tz', index=25,
+      number=26, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1282,
+  serialized_end=1849,
+)
+
+
 _DILIST = _descriptor.Descriptor(
   name='DIList',
   full_name='GRPCECat.DIList',
@@ -709,8 +980,8 @@ _DILIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1223,
-  serialized_end=1261,
+  serialized_start=1851,
+  serialized_end=1889,
 )
 
 
@@ -748,8 +1019,8 @@ _DOLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1263,
-  serialized_end=1301,
+  serialized_start=1891,
+  serialized_end=1929,
 )
 
 
@@ -815,8 +1086,8 @@ _ROBOTUSFTTX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1303,
-  serialized_end=1388,
+  serialized_start=1931,
+  serialized_end=2016,
 )
 
 
@@ -854,8 +1125,8 @@ _TARGETPOS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1390,
-  serialized_end=1427,
+  serialized_start=2018,
+  serialized_end=2055,
 )
 
 
@@ -886,8 +1157,8 @@ _INTVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1429,
-  serialized_end=1450,
+  serialized_start=2057,
+  serialized_end=2078,
 )
 
 
@@ -918,8 +1189,8 @@ _INTVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1452,
-  serialized_end=1474,
+  serialized_start=2080,
+  serialized_end=2102,
 )
 
 
@@ -950,8 +1221,8 @@ _FLOATVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1476,
-  serialized_end=1499,
+  serialized_start=2104,
+  serialized_end=2127,
 )
 
 
@@ -982,8 +1253,8 @@ _FLOATVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1501,
-  serialized_end=1525,
+  serialized_start=2129,
+  serialized_end=2153,
 )
 
 
@@ -1014,8 +1285,8 @@ _STRINGVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1527,
-  serialized_end=1551,
+  serialized_start=2155,
+  serialized_end=2179,
 )
 
 
@@ -1046,8 +1317,8 @@ _DOUBLEVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1553,
-  serialized_end=1578,
+  serialized_start=2181,
+  serialized_end=2206,
 )
 
 
@@ -1092,8 +1363,8 @@ _VELACCBOUNDARY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1580,
-  serialized_end=1637,
+  serialized_start=2208,
+  serialized_end=2265,
 )
 
 _MOTORDRIVERTXINDEX.fields_by_name['motorDriverTx'].message_type = _MOTORDRIVERTX
@@ -1111,6 +1382,9 @@ DESCRIPTOR.message_types_by_name['ServoParam'] = _SERVOPARAM
 DESCRIPTOR.message_types_by_name['FTsensorTx'] = _FTSENSORTX
 DESCRIPTOR.message_types_by_name['IOBoardTx'] = _IOBOARDTX
 DESCRIPTOR.message_types_by_name['IOBoardRx'] = _IOBOARDRX
+DESCRIPTOR.message_types_by_name['EndtoolTx'] = _ENDTOOLTX
+DESCRIPTOR.message_types_by_name['EndtoolRx'] = _ENDTOOLRX
+DESCRIPTOR.message_types_by_name['EndtoolRevCDTTx'] = _ENDTOOLREVCDTTX
 DESCRIPTOR.message_types_by_name['DIList'] = _DILIST
 DESCRIPTOR.message_types_by_name['DOList'] = _DOLIST
 DESCRIPTOR.message_types_by_name['RobotusFTTx'] = _ROBOTUSFTTX
@@ -1208,6 +1482,27 @@ IOBoardRx = _reflection.GeneratedProtocolMessageType('IOBoardRx', (_message.Mess
   })
 _sym_db.RegisterMessage(IOBoardRx)
 
+EndtoolTx = _reflection.GeneratedProtocolMessageType('EndtoolTx', (_message.Message,), {
+  'DESCRIPTOR' : _ENDTOOLTX,
+  '__module__' : 'EtherCATCommgRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCECat.EndtoolTx)
+  })
+_sym_db.RegisterMessage(EndtoolTx)
+
+EndtoolRx = _reflection.GeneratedProtocolMessageType('EndtoolRx', (_message.Message,), {
+  'DESCRIPTOR' : _ENDTOOLRX,
+  '__module__' : 'EtherCATCommgRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCECat.EndtoolRx)
+  })
+_sym_db.RegisterMessage(EndtoolRx)
+
+EndtoolRevCDTTx = _reflection.GeneratedProtocolMessageType('EndtoolRevCDTTx', (_message.Message,), {
+  'DESCRIPTOR' : _ENDTOOLREVCDTTX,
+  '__module__' : 'EtherCATCommgRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCECat.EndtoolRevCDTTx)
+  })
+_sym_db.RegisterMessage(EndtoolRevCDTTx)
+
 DIList = _reflection.GeneratedProtocolMessageType('DIList', (_message.Message,), {
   'DESCRIPTOR' : _DILIST,
   '__module__' : 'EtherCATCommgRPCServer_pb2'
@@ -1294,8 +1589,8 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1640,
-  serialized_end=3934,
+  serialized_start=2268,
+  serialized_end=4637,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMasterStatus',
@@ -1482,7 +1777,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
     full_name='GRPCECat.GRPCECatTask.SetNRMKEndtoolOutput',
     index=18,
     containing_service=None,
-    input_type=_IOBOARDRX,
+    input_type=_ENDTOOLRX,
     output_type=_EMPTY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
@@ -1493,14 +1788,24 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
     index=19,
     containing_service=None,
     input_type=_EMPTY,
-    output_type=_IOBOARDRX,
+    output_type=_ENDTOOLTX,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetNRMKEndtoolRevCDTInput',
+    full_name='GRPCECat.GRPCECatTask.GetNRMKEndtoolRevCDTInput',
+    index=20,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_ENDTOOLREVCDTTX,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
     name='SetDO',
     full_name='GRPCECat.GRPCECatTask.SetDO',
-    index=20,
+    index=21,
     containing_service=None,
     input_type=_DOLIST,
     output_type=_EMPTY,
@@ -1510,7 +1815,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetDI',
     full_name='GRPCECat.GRPCECatTask.GetDI',
-    index=21,
+    index=22,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_DILIST,
@@ -1520,7 +1825,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetDO',
     full_name='GRPCECat.GRPCECatTask.GetDO',
-    index=22,
+    index=23,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_DOLIST,
@@ -1530,7 +1835,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetRobotusFTSensor',
     full_name='GRPCECat.GRPCECatTask.GetRobotusFTSensor',
-    index=23,
+    index=24,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_ROBOTUSFTTX,
@@ -1540,7 +1845,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ResetWelconDriver',
     full_name='GRPCECat.GRPCECatTask.ResetWelconDriver',
-    index=24,
+    index=25,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_EMPTY,
@@ -1550,7 +1855,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetCOREErrorCodeSDO',
     full_name='GRPCECat.GRPCECatTask.GetCOREErrorCodeSDO',
-    index=25,
+    index=26,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_INTVAL,
@@ -1560,7 +1865,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetCORETemperature1SDO',
     full_name='GRPCECat.GRPCECatTask.GetCORETemperature1SDO',
-    index=26,
+    index=27,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_FLOATVAL,
@@ -1570,7 +1875,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetCORETemperature2SDO',
     full_name='GRPCECat.GRPCECatTask.GetCORETemperature2SDO',
-    index=27,
+    index=28,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_FLOATVAL,
@@ -1580,7 +1885,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetCORETemperature3SDO',
     full_name='GRPCECat.GRPCECatTask.GetCORETemperature3SDO',
-    index=28,
+    index=29,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_FLOATVAL,
@@ -1590,7 +1895,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetNRMKFWVersionSDO',
     full_name='GRPCECat.GRPCECatTask.GetNRMKFWVersionSDO',
-    index=29,
+    index=30,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_STRINGVAL,
@@ -1600,7 +1905,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetMaxTorqueSDO',
     full_name='GRPCECat.GRPCECatTask.GetMaxTorqueSDO',
-    index=30,
+    index=31,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_INTVAL,
@@ -1610,7 +1915,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetProfileVelocitySDO',
     full_name='GRPCECat.GRPCECatTask.GetProfileVelocitySDO',
-    index=31,
+    index=32,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_INTVAL,
@@ -1620,7 +1925,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetProfileAccSDO',
     full_name='GRPCECat.GRPCECatTask.GetProfileAccSDO',
-    index=32,
+    index=33,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_INTVAL,
@@ -1630,7 +1935,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetProfileDecSDO',
     full_name='GRPCECat.GRPCECatTask.GetProfileDecSDO',
-    index=33,
+    index=34,
     containing_service=None,
     input_type=_INTVAL,
     output_type=_INTVAL,
@@ -1640,7 +1945,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetMaxTorqueSDO',
     full_name='GRPCECat.GRPCECatTask.SetMaxTorqueSDO',
-    index=34,
+    index=35,
     containing_service=None,
     input_type=_SERVOPARAM,
     output_type=_EMPTY,
@@ -1650,7 +1955,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetProfileVelocitySDO',
     full_name='GRPCECat.GRPCECatTask.SetProfileVelocitySDO',
-    index=35,
+    index=36,
     containing_service=None,
     input_type=_SERVOPARAM,
     output_type=_EMPTY,
@@ -1660,7 +1965,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetProfileAccSDO',
     full_name='GRPCECat.GRPCECatTask.SetProfileAccSDO',
-    index=36,
+    index=37,
     containing_service=None,
     input_type=_SERVOPARAM,
     output_type=_EMPTY,
@@ -1670,7 +1975,7 @@ _GRPCECATTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetProfileDecSDO',
     full_name='GRPCECat.GRPCECatTask.SetProfileDecSDO',
-    index=37,
+    index=38,
     containing_service=None,
     input_type=_SERVOPARAM,
     output_type=_EMPTY,
