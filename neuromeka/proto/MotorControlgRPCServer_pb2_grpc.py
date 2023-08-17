@@ -54,6 +54,16 @@ class GRPCMotorControlTaskStub(object):
                 request_serializer=MotorControlgRPCServer__pb2.ControlGain.SerializeToString,
                 response_deserializer=MotorControlgRPCServer__pb2.Empty.FromString,
                 )
+        self.GetControlParam = channel.unary_unary(
+                '/GRPCMotorControl.GRPCMotorControlTask/GetControlParam',
+                request_serializer=MotorControlgRPCServer__pb2.ServoIdx.SerializeToString,
+                response_deserializer=MotorControlgRPCServer__pb2.ControlParam.FromString,
+                )
+        self.SetControlParam = channel.unary_unary(
+                '/GRPCMotorControl.GRPCMotorControlTask/SetControlParam',
+                request_serializer=MotorControlgRPCServer__pb2.ControlParam.SerializeToString,
+                response_deserializer=MotorControlgRPCServer__pb2.Empty.FromString,
+                )
         self.GetTrajMaxValue = channel.unary_unary(
                 '/GRPCMotorControl.GRPCMotorControlTask/GetTrajMaxValue',
                 request_serializer=MotorControlgRPCServer__pb2.ServoIdx.SerializeToString,
@@ -186,6 +196,18 @@ class GRPCMotorControlTaskServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SetControlGain(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetControlParam(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetControlParam(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -331,6 +353,16 @@ def add_GRPCMotorControlTaskServicer_to_server(servicer, server):
             'SetControlGain': grpc.unary_unary_rpc_method_handler(
                     servicer.SetControlGain,
                     request_deserializer=MotorControlgRPCServer__pb2.ControlGain.FromString,
+                    response_serializer=MotorControlgRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'GetControlParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetControlParam,
+                    request_deserializer=MotorControlgRPCServer__pb2.ServoIdx.FromString,
+                    response_serializer=MotorControlgRPCServer__pb2.ControlParam.SerializeToString,
+            ),
+            'SetControlParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetControlParam,
+                    request_deserializer=MotorControlgRPCServer__pb2.ControlParam.FromString,
                     response_serializer=MotorControlgRPCServer__pb2.Empty.SerializeToString,
             ),
             'GetTrajMaxValue': grpc.unary_unary_rpc_method_handler(
@@ -555,6 +587,40 @@ class GRPCMotorControlTask(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/GRPCMotorControl.GRPCMotorControlTask/SetControlGain',
             MotorControlgRPCServer__pb2.ControlGain.SerializeToString,
+            MotorControlgRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetControlParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMotorControl.GRPCMotorControlTask/GetControlParam',
+            MotorControlgRPCServer__pb2.ServoIdx.SerializeToString,
+            MotorControlgRPCServer__pb2.ControlParam.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetControlParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMotorControl.GRPCMotorControlTask/SetControlParam',
+            MotorControlgRPCServer__pb2.ControlParam.SerializeToString,
             MotorControlgRPCServer__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

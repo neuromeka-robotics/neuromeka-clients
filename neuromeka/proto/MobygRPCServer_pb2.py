@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14MobygRPCServer.proto\x12\x08GRPCMoby\"\x07\n\x05\x45mpty\"*\n\tJsonParam\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x10\n\x08json_str\x18\x02 \x01(\t\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"@\n\x0eMotorDriverRxs\x12.\n\rmotorDriverRx\x18\x01 \x03(\x0b\x32\x17.GRPCMoby.MotorDriverRx\"\x90\x02\n\tMobyState\x12\x0f\n\x07isReady\x18\x01 \x01(\x08\x12\x10\n\x08isMoving\x18\x02 \x01(\x08\x12\x16\n\x0eisMoveFinished\x18\x03 \x01(\x08\x12\x13\n\x0bisEmgPushed\x18\x04 \x01(\x08\x12\x14\n\x0cisErrorState\x18\x05 \x01(\x08\x12\x12\n\nisHomePose\x18\x06 \x01(\x08\x12\x16\n\x0eisRotationZero\x18\x07 \x01(\x08\x12\x13\n\x0bisResetting\x18\x08 \x01(\x08\x12\x16\n\x0eisIMUAvailable\x18\t \x01(\x08\x12\x12\n\nisCollided\x18\n \x01(\x08\x12\x18\n\x10isProgramRunning\x18\x0b \x01(\x08\x12\x16\n\x0eisProgramPause\x18\x0c \x01(\x08\"$\n\x0eMobyErrorState\x12\x12\n\nerrorState\x18\x01 \x01(\x05\".\n\x08MobyPose\x12\n\n\x02px\x18\x01 \x01(\x01\x12\n\n\x02py\x18\x02 \x01(\x01\x12\n\n\x02pw\x18\x03 \x01(\x01\"\xa5\x01\n\x07IMUData\x12\x0e\n\x06\x61ngleX\x18\x01 \x01(\x01\x12\x0e\n\x06\x61ngleY\x18\x02 \x01(\x01\x12\x0e\n\x06\x61ngleZ\x18\x03 \x01(\x01\x12\x11\n\tangleVelX\x18\x04 \x01(\x01\x12\x11\n\tangleVelY\x18\x05 \x01(\x01\x12\x11\n\tangleVelZ\x18\x06 \x01(\x01\x12\x0f\n\x07linAccX\x18\x07 \x01(\x01\x12\x0f\n\x07linAccY\x18\x08 \x01(\x01\x12\x0f\n\x07linAccZ\x18\t \x01(\x01\"-\n\x07MobyVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\"?\n\rSwerveDoubles\x12\n\n\x02\x66l\x18\x01 \x01(\x01\x12\n\n\x02\x66r\x18\x02 \x01(\x01\x12\n\n\x02\x62l\x18\x03 \x01(\x01\x12\n\n\x02\x62r\x18\x04 \x01(\x01\"/\n\tTargetVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\";\n\tZeroCount\x12\n\n\x02\x66l\x18\x01 \x01(\x05\x12\n\n\x02\x66r\x18\x02 \x01(\x05\x12\n\n\x02\x62l\x18\x03 \x01(\x05\x12\n\n\x02\x62r\x18\x04 \x01(\x05\"\xae\x01\n\x06IRData\x12\x11\n\tir_front1\x18\x01 \x01(\x05\x12\x11\n\tir_front2\x18\x02 \x01(\x05\x12\x10\n\x08ir_left1\x18\x03 \x01(\x05\x12\x10\n\x08ir_left2\x18\x04 \x01(\x05\x12\x10\n\x08ir_left3\x18\x05 \x01(\x05\x12\x0f\n\x07ir_rear\x18\x06 \x01(\x05\x12\x11\n\tir_right1\x18\x07 \x01(\x05\x12\x11\n\tir_right2\x18\x08 \x01(\x05\x12\x11\n\tir_right3\x18\t \x01(\x05\"t\n\x07\x42MSData\x12\x12\n\nbms_status\x18\x01 \x03(\x05\x12\x11\n\tpack_volt\x18\x02 \x03(\x05\x12\x14\n\x0c\x62\x61ttery_volt\x18\x03 \x03(\x05\x12\x15\n\rpack_current1\x18\x04 \x03(\x05\x12\x15\n\rpack_current2\x18\x05 \x03(\x05\"!\n\x05GBool\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x08\" \n\x04GInt\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x05\"\"\n\x06GFloat\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x02\"#\n\x07GString\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\t\"\x16\n\x07\x42oolVal\x12\x0b\n\x03val\x18\x01 \x01(\x08\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tDoubleVal\x12\x0b\n\x03val\x18\x01 \x01(\x01\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\">\n\x0cRotationGain\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\xc7\x0f\n\x0cGRPCMobyTask\x12<\n\rGetMobyTxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverTx\"\x00\x12<\n\rGetMobyRxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverRx\"\x00\x12\x36\n\x0cGetMobyState\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.MobyState\"\x00\x12@\n\x11GetMobyErrorState\x12\x0f.GRPCMoby.Empty\x1a\x18.GRPCMoby.MobyErrorState\"\x00\x12-\n\x07Recover\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0bGetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x12.GRPCMoby.MobyPose\"\x00\x12\x32\n\nGetMobyVel\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.MobyVel\"\x00\x12\x33\n\rResetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13GetRotationAngleDeg\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12;\n\rGetDriveSpeed\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12\x36\n\x0cGetTargetVel\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.TargetVel\"\x00\x12>\n\x14GetRotationZeroCount\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.ZeroCount\"\x00\x12/\n\x08GetCMode\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IntVal\"\x00\x12\x36\n\x0bGetGyroData\x12\x0f.GRPCMoby.Empty\x1a\x14.GRPCMoby.DoubleVals\"\x00\x12\x35\n\x0fResetGyroSensor\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x36\n\x0eUseGyroForOdom\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fGetGyroFullData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.IMUData\"\x00\x12\x36\n\x0fGetIRSensorData\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IRData\"\x00\x12\x32\n\nGetBMSData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.BMSData\"\x00\x12\x38\n\x0eSetStepControl\x12\x13.GRPCMoby.TargetVel\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x30\n\nStopMotion\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13SetRotationAngleDeg\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x38\n\nDriveWheel\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x16SetZeroPosAsCurrentPos\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x11SetRotationVelAcc\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x39\n\x0eSetDriveAccDec\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x19SetDriveInterpolatorOnOff\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12G\n\x1cSetRotationInterpolatorParam\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12=\n\x15SetRotationTorqueMode\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x0fSetControlParam\x12\x16.GRPCMoby.RotationGain\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0eStartRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0c\x45ndRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fSetLoggerBuffer\x12\x11.GRPCMoby.IntVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0cRTLoggerSave\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x14MobygRPCServer.proto\x12\x08GRPCMoby\"\x07\n\x05\x45mpty\"*\n\tJsonParam\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x10\n\x08json_str\x18\x02 \x01(\t\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"@\n\x0eMotorDriverRxs\x12.\n\rmotorDriverRx\x18\x01 \x03(\x0b\x32\x17.GRPCMoby.MotorDriverRx\"\x90\x02\n\tMobyState\x12\x0f\n\x07isReady\x18\x01 \x01(\x08\x12\x10\n\x08isMoving\x18\x02 \x01(\x08\x12\x16\n\x0eisMoveFinished\x18\x03 \x01(\x08\x12\x13\n\x0bisEmgPushed\x18\x04 \x01(\x08\x12\x14\n\x0cisErrorState\x18\x05 \x01(\x08\x12\x12\n\nisHomePose\x18\x06 \x01(\x08\x12\x16\n\x0eisRotationZero\x18\x07 \x01(\x08\x12\x13\n\x0bisResetting\x18\x08 \x01(\x08\x12\x16\n\x0eisIMUAvailable\x18\t \x01(\x08\x12\x12\n\nisCollided\x18\n \x01(\x08\x12\x18\n\x10isProgramRunning\x18\x0b \x01(\x08\x12\x16\n\x0eisProgramPause\x18\x0c \x01(\x08\"c\n\x0eMobyErrorState\x12\x12\n\nerrorState\x18\x01 \x01(\x05\x12\x13\n\x0b\x65rrorIndex1\x18\x02 \x01(\x05\x12\x13\n\x0b\x65rrorIndex2\x18\x03 \x01(\x05\x12\x13\n\x0b\x65rrorIndex3\x18\x04 \x01(\x05\".\n\x08MobyPose\x12\n\n\x02px\x18\x01 \x01(\x01\x12\n\n\x02py\x18\x02 \x01(\x01\x12\n\n\x02pw\x18\x03 \x01(\x01\"\xa5\x01\n\x07IMUData\x12\x0e\n\x06\x61ngleX\x18\x01 \x01(\x01\x12\x0e\n\x06\x61ngleY\x18\x02 \x01(\x01\x12\x0e\n\x06\x61ngleZ\x18\x03 \x01(\x01\x12\x11\n\tangleVelX\x18\x04 \x01(\x01\x12\x11\n\tangleVelY\x18\x05 \x01(\x01\x12\x11\n\tangleVelZ\x18\x06 \x01(\x01\x12\x0f\n\x07linAccX\x18\x07 \x01(\x01\x12\x0f\n\x07linAccY\x18\x08 \x01(\x01\x12\x0f\n\x07linAccZ\x18\t \x01(\x01\"-\n\x07MobyVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\"?\n\rSwerveDoubles\x12\n\n\x02\x66l\x18\x01 \x01(\x01\x12\n\n\x02\x66r\x18\x02 \x01(\x01\x12\n\n\x02\x62l\x18\x03 \x01(\x01\x12\n\n\x02\x62r\x18\x04 \x01(\x01\"/\n\tTargetVel\x12\n\n\x02vx\x18\x01 \x01(\x01\x12\n\n\x02vy\x18\x02 \x01(\x01\x12\n\n\x02vw\x18\x03 \x01(\x01\";\n\tZeroCount\x12\n\n\x02\x66l\x18\x01 \x01(\x05\x12\n\n\x02\x66r\x18\x02 \x01(\x05\x12\n\n\x02\x62l\x18\x03 \x01(\x05\x12\n\n\x02\x62r\x18\x04 \x01(\x05\"5\n\x0eRobotZeroCount\x12\x10\n\x08rotation\x18\x01 \x01(\x05\x12\x11\n\televation\x18\x02 \x01(\x05\"\xae\x01\n\x06IRData\x12\x11\n\tir_front1\x18\x01 \x01(\x05\x12\x11\n\tir_front2\x18\x02 \x01(\x05\x12\x10\n\x08ir_left1\x18\x03 \x01(\x05\x12\x10\n\x08ir_left2\x18\x04 \x01(\x05\x12\x10\n\x08ir_left3\x18\x05 \x01(\x05\x12\x0f\n\x07ir_rear\x18\x06 \x01(\x05\x12\x11\n\tir_right1\x18\x07 \x01(\x05\x12\x11\n\tir_right2\x18\x08 \x01(\x05\x12\x11\n\tir_right3\x18\t \x01(\x05\"\x89\x03\n\x06USData\x12\x16\n\x0eus_front_left1\x18\x01 \x01(\x05\x12\x16\n\x0eus_front_left2\x18\x02 \x01(\x05\x12\x16\n\x0eus_front_left3\x18\x03 \x01(\x05\x12\x17\n\x0fus_front_ground\x18\x04 \x01(\x05\x12\x17\n\x0fus_front_right1\x18\x05 \x01(\x05\x12\x17\n\x0fus_front_right2\x18\x06 \x01(\x05\x12\x17\n\x0fus_front_right3\x18\x07 \x01(\x05\x12\x17\n\x0fus_front_right4\x18\x08 \x01(\x05\x12\x16\n\x0eus_back_right1\x18\t \x01(\x05\x12\x16\n\x0eus_back_right2\x18\n \x01(\x05\x12\x16\n\x0eus_back_right3\x18\x0b \x01(\x05\x12\x16\n\x0eus_back_ground\x18\x0c \x01(\x05\x12\x15\n\rus_back_left1\x18\r \x01(\x05\x12\x15\n\rus_back_left2\x18\x0e \x01(\x05\x12\x15\n\rus_back_left3\x18\x0f \x01(\x05\x12\x15\n\rus_back_left4\x18\x10 \x01(\x05\"\xcc\x03\n\x07\x42MSData\x12\x12\n\nbms_status\x18\x01 \x03(\x05\x12\x11\n\tpack_volt\x18\x02 \x03(\x05\x12\x14\n\x0c\x62\x61ttery_volt\x18\x03 \x03(\x05\x12\x15\n\rpack_current1\x18\x04 \x03(\x05\x12\x15\n\rpack_current2\x18\x05 \x03(\x05\x12\x10\n\x08isCharge\x18\x06 \x01(\x05\x12\x16\n\x0eisCellOverVolt\x18\x07 \x01(\x05\x12\x17\n\x0fisCellUnderVolt\x18\x08 \x01(\x05\x12\x17\n\x0fisOverCurCharge\x18\t \x01(\x05\x12\x18\n\x10isOverCurDischrg\x18\n \x01(\x05\x12\x16\n\x0eisShortCircuit\x18\x0b \x01(\x05\x12\x19\n\x11isOverTemperature\x18\x0c \x01(\x05\x12\x16\n\x0eisPackOverVolt\x18\r \x01(\x05\x12\x0b\n\x03SOC\x18\x0e \x01(\x05\x12\x0b\n\x03SOH\x18\x0f \x01(\x05\x12\x13\n\x0btime_charge\x18\x10 \x01(\x05\x12\x14\n\x0ctime_dcharge\x18\x11 \x01(\x05\x12\x11\n\trem_capAh\x18\x12 \x01(\x05\x12\x11\n\trem_capWh\x18\x13 \x01(\x05\x12\x17\n\x0f\x62ms_temperature\x18\x14 \x03(\x05\x12\x11\n\tcell_volt\x18\x15 \x03(\x05\"!\n\x05GBool\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x08\" \n\x04GInt\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x05\"\"\n\x06GFloat\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x02\"#\n\x07GString\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\t\"\x16\n\x07\x42oolVal\x12\x0b\n\x03val\x18\x01 \x01(\x08\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\"\x17\n\x08\x46loatVal\x12\x0b\n\x03val\x18\x01 \x01(\x02\"\x18\n\tFloatVals\x12\x0b\n\x03val\x18\x01 \x03(\x02\"\x18\n\tDoubleVal\x12\x0b\n\x03val\x18\x01 \x01(\x01\"\x19\n\nDoubleVals\x12\x0b\n\x03val\x18\x01 \x03(\x01\">\n\x0cRotationGain\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"9\n\x0eVelAccBoundary\x12\x0b\n\x03idx\x18\x01 \x01(\x05\x12\x0c\n\x04vmax\x18\x02 \x01(\x02\x12\x0c\n\x04\x61max\x18\x03 \x01(\x02\x32\xb3\x12\n\x0cGRPCMobyTask\x12<\n\rGetMobyTxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverTx\"\x00\x12<\n\rGetMobyRxData\x12\x10.GRPCMoby.IntVal\x1a\x17.GRPCMoby.MotorDriverRx\"\x00\x12\x36\n\x0cGetMobyState\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.MobyState\"\x00\x12@\n\x11GetMobyErrorState\x12\x0f.GRPCMoby.Empty\x1a\x18.GRPCMoby.MobyErrorState\"\x00\x12-\n\x07Recover\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0bGetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x12.GRPCMoby.MobyPose\"\x00\x12\x32\n\nGetMobyVel\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.MobyVel\"\x00\x12\x33\n\rResetMobyPose\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13GetRotationAngleDeg\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12;\n\rGetDriveSpeed\x12\x0f.GRPCMoby.Empty\x1a\x17.GRPCMoby.SwerveDoubles\"\x00\x12\x36\n\x0cGetTargetVel\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.TargetVel\"\x00\x12>\n\x14GetRotationZeroCount\x12\x0f.GRPCMoby.Empty\x1a\x13.GRPCMoby.ZeroCount\"\x00\x12/\n\x08GetCMode\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IntVal\"\x00\x12\x36\n\x0bGetGyroData\x12\x0f.GRPCMoby.Empty\x1a\x14.GRPCMoby.DoubleVals\"\x00\x12\x35\n\x0fResetGyroSensor\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x36\n\x0eUseGyroForOdom\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fGetGyroFullData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.IMUData\"\x00\x12\x36\n\x0fGetIRSensorData\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.IRData\"\x00\x12\x36\n\x0fGetUSSensorData\x12\x0f.GRPCMoby.Empty\x1a\x10.GRPCMoby.USData\"\x00\x12\x32\n\nGetBMSData\x12\x0f.GRPCMoby.Empty\x1a\x11.GRPCMoby.BMSData\"\x00\x12\x38\n\x0eSetStepControl\x12\x13.GRPCMoby.TargetVel\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x30\n\nStopMotion\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x13SetRotationAngleDeg\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x38\n\nDriveWheel\x12\x17.GRPCMoby.SwerveDoubles\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x16SetZeroPosAsCurrentPos\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x11SetRotationVelAcc\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12>\n\x17SetRotationInterpolator\x12\x10.GRPCMoby.IntVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x39\n\x0eSetDriveAccDec\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x41\n\x19SetDriveInterpolatorOnOff\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12G\n\x1cSetRotationInterpolatorParam\x12\x14.GRPCMoby.DoubleVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12@\n\x11GetRobotZeroCount\x12\x0f.GRPCMoby.Empty\x1a\x18.GRPCMoby.RobotZeroCount\"\x00\x12;\n\x15SetRobotZeroAsCurrent\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x34\n\x0cTurnLEDOnOff\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12=\n\x15SetRotationTorqueMode\x12\x11.GRPCMoby.BoolVal\x1a\x0f.GRPCMoby.Empty\"\x00\x12<\n\x0fSetControlParam\x12\x16.GRPCMoby.RotationGain\x1a\x0f.GRPCMoby.Empty\"\x00\x12=\n\x0fGetControlParam\x12\x10.GRPCMoby.IntVal\x1a\x16.GRPCMoby.RotationGain\"\x00\x12\x34\n\x0eStartRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0c\x45ndRTLogging\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x37\n\x0fSetLoggerBuffer\x12\x11.GRPCMoby.IntVals\x1a\x0f.GRPCMoby.Empty\"\x00\x12\x32\n\x0cRTLoggerSave\x12\x0f.GRPCMoby.Empty\x1a\x0f.GRPCMoby.Empty\"\x00\x62\x06proto3'
 )
 
 
@@ -365,6 +365,27 @@ _MOBYERRORSTATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='errorIndex1', full_name='GRPCMoby.MobyErrorState.errorIndex1', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='errorIndex2', full_name='GRPCMoby.MobyErrorState.errorIndex2', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='errorIndex3', full_name='GRPCMoby.MobyErrorState.errorIndex3', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -378,7 +399,7 @@ _MOBYERRORSTATE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=679,
-  serialized_end=715,
+  serialized_end=778,
 )
 
 
@@ -423,8 +444,8 @@ _MOBYPOSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=717,
-  serialized_end=763,
+  serialized_start=780,
+  serialized_end=826,
 )
 
 
@@ -511,8 +532,8 @@ _IMUDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=766,
-  serialized_end=931,
+  serialized_start=829,
+  serialized_end=994,
 )
 
 
@@ -557,8 +578,8 @@ _MOBYVEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=933,
-  serialized_end=978,
+  serialized_start=996,
+  serialized_end=1041,
 )
 
 
@@ -610,8 +631,8 @@ _SWERVEDOUBLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=980,
-  serialized_end=1043,
+  serialized_start=1043,
+  serialized_end=1106,
 )
 
 
@@ -656,8 +677,8 @@ _TARGETVEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1045,
-  serialized_end=1092,
+  serialized_start=1108,
+  serialized_end=1155,
 )
 
 
@@ -709,8 +730,47 @@ _ZEROCOUNT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1094,
-  serialized_end=1153,
+  serialized_start=1157,
+  serialized_end=1216,
+)
+
+
+_ROBOTZEROCOUNT = _descriptor.Descriptor(
+  name='RobotZeroCount',
+  full_name='GRPCMoby.RobotZeroCount',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rotation', full_name='GRPCMoby.RobotZeroCount.rotation', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='elevation', full_name='GRPCMoby.RobotZeroCount.elevation', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1218,
+  serialized_end=1271,
 )
 
 
@@ -797,8 +857,145 @@ _IRDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1156,
-  serialized_end=1330,
+  serialized_start=1274,
+  serialized_end=1448,
+)
+
+
+_USDATA = _descriptor.Descriptor(
+  name='USData',
+  full_name='GRPCMoby.USData',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='us_front_left1', full_name='GRPCMoby.USData.us_front_left1', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_left2', full_name='GRPCMoby.USData.us_front_left2', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_left3', full_name='GRPCMoby.USData.us_front_left3', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_ground', full_name='GRPCMoby.USData.us_front_ground', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_right1', full_name='GRPCMoby.USData.us_front_right1', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_right2', full_name='GRPCMoby.USData.us_front_right2', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_right3', full_name='GRPCMoby.USData.us_front_right3', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_front_right4', full_name='GRPCMoby.USData.us_front_right4', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_right1', full_name='GRPCMoby.USData.us_back_right1', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_right2', full_name='GRPCMoby.USData.us_back_right2', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_right3', full_name='GRPCMoby.USData.us_back_right3', index=10,
+      number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_ground', full_name='GRPCMoby.USData.us_back_ground', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_left1', full_name='GRPCMoby.USData.us_back_left1', index=12,
+      number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_left2', full_name='GRPCMoby.USData.us_back_left2', index=13,
+      number=14, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_left3', full_name='GRPCMoby.USData.us_back_left3', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='us_back_left4', full_name='GRPCMoby.USData.us_back_left4', index=15,
+      number=16, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1451,
+  serialized_end=1844,
 )
 
 
@@ -845,6 +1042,118 @@ _BMSDATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isCharge', full_name='GRPCMoby.BMSData.isCharge', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isCellOverVolt', full_name='GRPCMoby.BMSData.isCellOverVolt', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isCellUnderVolt', full_name='GRPCMoby.BMSData.isCellUnderVolt', index=7,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isOverCurCharge', full_name='GRPCMoby.BMSData.isOverCurCharge', index=8,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isOverCurDischrg', full_name='GRPCMoby.BMSData.isOverCurDischrg', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isShortCircuit', full_name='GRPCMoby.BMSData.isShortCircuit', index=10,
+      number=11, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isOverTemperature', full_name='GRPCMoby.BMSData.isOverTemperature', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='isPackOverVolt', full_name='GRPCMoby.BMSData.isPackOverVolt', index=12,
+      number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SOC', full_name='GRPCMoby.BMSData.SOC', index=13,
+      number=14, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SOH', full_name='GRPCMoby.BMSData.SOH', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_charge', full_name='GRPCMoby.BMSData.time_charge', index=15,
+      number=16, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='time_dcharge', full_name='GRPCMoby.BMSData.time_dcharge', index=16,
+      number=17, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rem_capAh', full_name='GRPCMoby.BMSData.rem_capAh', index=17,
+      number=18, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='rem_capWh', full_name='GRPCMoby.BMSData.rem_capWh', index=18,
+      number=19, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bms_temperature', full_name='GRPCMoby.BMSData.bms_temperature', index=19,
+      number=20, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cell_volt', full_name='GRPCMoby.BMSData.cell_volt', index=20,
+      number=21, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -857,8 +1166,8 @@ _BMSDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1332,
-  serialized_end=1448,
+  serialized_start=1847,
+  serialized_end=2307,
 )
 
 
@@ -896,8 +1205,8 @@ _GBOOL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1450,
-  serialized_end=1483,
+  serialized_start=2309,
+  serialized_end=2342,
 )
 
 
@@ -935,8 +1244,8 @@ _GINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1485,
-  serialized_end=1517,
+  serialized_start=2344,
+  serialized_end=2376,
 )
 
 
@@ -974,8 +1283,8 @@ _GFLOAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1519,
-  serialized_end=1553,
+  serialized_start=2378,
+  serialized_end=2412,
 )
 
 
@@ -1013,8 +1322,8 @@ _GSTRING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1555,
-  serialized_end=1590,
+  serialized_start=2414,
+  serialized_end=2449,
 )
 
 
@@ -1045,8 +1354,8 @@ _BOOLVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1592,
-  serialized_end=1614,
+  serialized_start=2451,
+  serialized_end=2473,
 )
 
 
@@ -1077,8 +1386,8 @@ _INTVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1616,
-  serialized_end=1637,
+  serialized_start=2475,
+  serialized_end=2496,
 )
 
 
@@ -1109,8 +1418,8 @@ _INTVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1639,
-  serialized_end=1661,
+  serialized_start=2498,
+  serialized_end=2520,
 )
 
 
@@ -1141,8 +1450,8 @@ _FLOATVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1663,
-  serialized_end=1686,
+  serialized_start=2522,
+  serialized_end=2545,
 )
 
 
@@ -1173,8 +1482,8 @@ _FLOATVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1688,
-  serialized_end=1712,
+  serialized_start=2547,
+  serialized_end=2571,
 )
 
 
@@ -1205,8 +1514,8 @@ _DOUBLEVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1714,
-  serialized_end=1738,
+  serialized_start=2573,
+  serialized_end=2597,
 )
 
 
@@ -1237,8 +1546,8 @@ _DOUBLEVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1740,
-  serialized_end=1765,
+  serialized_start=2599,
+  serialized_end=2624,
 )
 
 
@@ -1290,8 +1599,8 @@ _ROTATIONGAIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1767,
-  serialized_end=1829,
+  serialized_start=2626,
+  serialized_end=2688,
 )
 
 
@@ -1336,8 +1645,8 @@ _VELACCBOUNDARY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1831,
-  serialized_end=1888,
+  serialized_start=2690,
+  serialized_end=2747,
 )
 
 _MOTORDRIVERRXS.fields_by_name['motorDriverRx'].message_type = _MOTORDRIVERRX
@@ -1354,7 +1663,9 @@ DESCRIPTOR.message_types_by_name['MobyVel'] = _MOBYVEL
 DESCRIPTOR.message_types_by_name['SwerveDoubles'] = _SWERVEDOUBLES
 DESCRIPTOR.message_types_by_name['TargetVel'] = _TARGETVEL
 DESCRIPTOR.message_types_by_name['ZeroCount'] = _ZEROCOUNT
+DESCRIPTOR.message_types_by_name['RobotZeroCount'] = _ROBOTZEROCOUNT
 DESCRIPTOR.message_types_by_name['IRData'] = _IRDATA
+DESCRIPTOR.message_types_by_name['USData'] = _USDATA
 DESCRIPTOR.message_types_by_name['BMSData'] = _BMSDATA
 DESCRIPTOR.message_types_by_name['GBool'] = _GBOOL
 DESCRIPTOR.message_types_by_name['GInt'] = _GINT
@@ -1462,12 +1773,26 @@ ZeroCount = _reflection.GeneratedProtocolMessageType('ZeroCount', (_message.Mess
   })
 _sym_db.RegisterMessage(ZeroCount)
 
+RobotZeroCount = _reflection.GeneratedProtocolMessageType('RobotZeroCount', (_message.Message,), {
+  'DESCRIPTOR' : _ROBOTZEROCOUNT,
+  '__module__' : 'MobygRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCMoby.RobotZeroCount)
+  })
+_sym_db.RegisterMessage(RobotZeroCount)
+
 IRData = _reflection.GeneratedProtocolMessageType('IRData', (_message.Message,), {
   'DESCRIPTOR' : _IRDATA,
   '__module__' : 'MobygRPCServer_pb2'
   # @@protoc_insertion_point(class_scope:GRPCMoby.IRData)
   })
 _sym_db.RegisterMessage(IRData)
+
+USData = _reflection.GeneratedProtocolMessageType('USData', (_message.Message,), {
+  'DESCRIPTOR' : _USDATA,
+  '__module__' : 'MobygRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCMoby.USData)
+  })
+_sym_db.RegisterMessage(USData)
 
 BMSData = _reflection.GeneratedProtocolMessageType('BMSData', (_message.Message,), {
   'DESCRIPTOR' : _BMSDATA,
@@ -1576,8 +1901,8 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1891,
-  serialized_end=3882,
+  serialized_start=2750,
+  serialized_end=5105,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMobyTxData',
@@ -1760,9 +2085,19 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetUSSensorData',
+    full_name='GRPCMoby.GRPCMobyTask.GetUSSensorData',
+    index=18,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_USDATA,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetBMSData',
     full_name='GRPCMoby.GRPCMobyTask.GetBMSData',
-    index=18,
+    index=19,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_BMSDATA,
@@ -1772,7 +2107,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetStepControl',
     full_name='GRPCMoby.GRPCMobyTask.SetStepControl',
-    index=19,
+    index=20,
     containing_service=None,
     input_type=_TARGETVEL,
     output_type=_EMPTY,
@@ -1782,7 +2117,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StopMotion',
     full_name='GRPCMoby.GRPCMobyTask.StopMotion',
-    index=20,
+    index=21,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1792,7 +2127,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationAngleDeg',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationAngleDeg',
-    index=21,
+    index=22,
     containing_service=None,
     input_type=_SWERVEDOUBLES,
     output_type=_EMPTY,
@@ -1802,7 +2137,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DriveWheel',
     full_name='GRPCMoby.GRPCMobyTask.DriveWheel',
-    index=22,
+    index=23,
     containing_service=None,
     input_type=_SWERVEDOUBLES,
     output_type=_EMPTY,
@@ -1812,7 +2147,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetZeroPosAsCurrentPos',
     full_name='GRPCMoby.GRPCMobyTask.SetZeroPosAsCurrentPos',
-    index=23,
+    index=24,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1822,7 +2157,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationVelAcc',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationVelAcc',
-    index=24,
+    index=25,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1830,9 +2165,19 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='SetRotationInterpolator',
+    full_name='GRPCMoby.GRPCMobyTask.SetRotationInterpolator',
+    index=26,
+    containing_service=None,
+    input_type=_INTVAL,
+    output_type=_EMPTY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='SetDriveAccDec',
     full_name='GRPCMoby.GRPCMobyTask.SetDriveAccDec',
-    index=25,
+    index=27,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1842,7 +2187,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetDriveInterpolatorOnOff',
     full_name='GRPCMoby.GRPCMobyTask.SetDriveInterpolatorOnOff',
-    index=26,
+    index=28,
     containing_service=None,
     input_type=_BOOLVAL,
     output_type=_EMPTY,
@@ -1852,7 +2197,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetRotationInterpolatorParam',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationInterpolatorParam',
-    index=27,
+    index=29,
     containing_service=None,
     input_type=_DOUBLEVALS,
     output_type=_EMPTY,
@@ -1860,9 +2205,39 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetRobotZeroCount',
+    full_name='GRPCMoby.GRPCMobyTask.GetRobotZeroCount',
+    index=30,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_ROBOTZEROCOUNT,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SetRobotZeroAsCurrent',
+    full_name='GRPCMoby.GRPCMobyTask.SetRobotZeroAsCurrent',
+    index=31,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_EMPTY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TurnLEDOnOff',
+    full_name='GRPCMoby.GRPCMobyTask.TurnLEDOnOff',
+    index=32,
+    containing_service=None,
+    input_type=_BOOLVAL,
+    output_type=_EMPTY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='SetRotationTorqueMode',
     full_name='GRPCMoby.GRPCMobyTask.SetRotationTorqueMode',
-    index=28,
+    index=33,
     containing_service=None,
     input_type=_BOOLVAL,
     output_type=_EMPTY,
@@ -1872,7 +2247,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetControlParam',
     full_name='GRPCMoby.GRPCMobyTask.SetControlParam',
-    index=29,
+    index=34,
     containing_service=None,
     input_type=_ROTATIONGAIN,
     output_type=_EMPTY,
@@ -1880,9 +2255,19 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetControlParam',
+    full_name='GRPCMoby.GRPCMobyTask.GetControlParam',
+    index=35,
+    containing_service=None,
+    input_type=_INTVAL,
+    output_type=_ROTATIONGAIN,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='StartRTLogging',
     full_name='GRPCMoby.GRPCMobyTask.StartRTLogging',
-    index=30,
+    index=36,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1892,7 +2277,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='EndRTLogging',
     full_name='GRPCMoby.GRPCMobyTask.EndRTLogging',
-    index=31,
+    index=37,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1902,7 +2287,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetLoggerBuffer',
     full_name='GRPCMoby.GRPCMobyTask.SetLoggerBuffer',
-    index=32,
+    index=38,
     containing_service=None,
     input_type=_INTVALS,
     output_type=_EMPTY,
@@ -1912,7 +2297,7 @@ _GRPCMOBYTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RTLoggerSave',
     full_name='GRPCMoby.GRPCMobyTask.RTLoggerSave',
-    index=33,
+    index=39,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,

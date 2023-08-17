@@ -45,6 +45,12 @@ class MotorClient:
     def set_control_gain(self, slave_idx, k, kv, kp):
         return self.stub.SetControlGain(ControlGain(index=slave_idx, k=k, kv=kv, kp=kp))
     
+    def get_control_param(self, slave_idx):
+        return self.stub.GetControlParam(ServoIdx(index=slave_idx))
+
+    def set_control_param(self, slave_idx, m, d):
+        return self.stub.SetControlParam(ControlParam(index=slave_idx, m=m, d=d))
+
     def get_traj_max(self, slave_idx):
         return self.stub.GetTrajMaxValue(ServoIdx(index=slave_idx))
     

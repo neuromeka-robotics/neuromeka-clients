@@ -169,9 +169,10 @@ class EcatClient:
 
         ioRx = IOBoardRx(do_5v=int(do5v_str,2), do1=int(do1_str,2), do2=int(do2_str,2), ao1=0, ao2=0, ft_param=0)
         return self.stub.SetNRMKIOBoardOutput(ioRx)
-    
-    
-    
+
+    def get_endtool_revc(self):
+        return self.stub.GetNRMKEndtoolRevCDTInput(Empty())
+
     ## Reset Welcon driver
     def reset_welcon(self, slave_idx):
         return self.stub.ResetWelconDriver(IntVal(val=slave_idx))
@@ -179,15 +180,15 @@ class EcatClient:
     ## Get SDO
     def get_error_code(self, slave_idx):
         return self.stub.GetErrorCode(IntVal(val=slave_idx)).val
-    
+
     def get_core_temp1(self, slave_idx):
-        return self.stub.GetCORETemperature1(IntVal(val=slave_idx)).val
-    
+        return self.stub.GetCORETemperature1SDO(IntVal(val=slave_idx)).val
+
     def get_core_temp2(self, slave_idx):
-        return self.stub.GetCORETemperature2(IntVal(val=slave_idx)).val
-    
+        return self.stub.GetCORETemperature2SDO(IntVal(val=slave_idx)).val
+
     def get_core_temp3(self, slave_idx):
-        return self.stub.GetCORETemperature3(IntVal(val=slave_idx)).val
+        return self.stub.GetCORETemperature3SDO(IntVal(val=slave_idx)).val
     
     def get_maxTorque(self, slave_idx):
         return self.stub.GetMaxTorque(IntVal(val=slave_idx)).val
