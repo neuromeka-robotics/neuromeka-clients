@@ -104,6 +104,11 @@ class GRPCMobyTaskStub(object):
                 request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.IRData.FromString,
                 )
+        self.GetUSSensorData = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/GetUSSensorData',
+                request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.USData.FromString,
+                )
         self.GetBMSData = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/GetBMSData',
                 request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
@@ -139,6 +144,11 @@ class GRPCMobyTaskStub(object):
                 request_serializer=MobygRPCServer__pb2.DoubleVals.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.Empty.FromString,
                 )
+        self.SetRotationInterpolator = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/SetRotationInterpolator',
+                request_serializer=MobygRPCServer__pb2.IntVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
         self.SetDriveAccDec = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/SetDriveAccDec',
                 request_serializer=MobygRPCServer__pb2.DoubleVals.SerializeToString,
@@ -154,6 +164,21 @@ class GRPCMobyTaskStub(object):
                 request_serializer=MobygRPCServer__pb2.DoubleVals.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.Empty.FromString,
                 )
+        self.GetRobotZeroCount = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/GetRobotZeroCount',
+                request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.RobotZeroCount.FromString,
+                )
+        self.SetRobotZeroAsCurrent = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/SetRobotZeroAsCurrent',
+                request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
+        self.TurnLEDOnOff = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/TurnLEDOnOff',
+                request_serializer=MobygRPCServer__pb2.BoolVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
         self.SetRotationTorqueMode = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/SetRotationTorqueMode',
                 request_serializer=MobygRPCServer__pb2.BoolVal.SerializeToString,
@@ -163,6 +188,11 @@ class GRPCMobyTaskStub(object):
                 '/GRPCMoby.GRPCMobyTask/SetControlParam',
                 request_serializer=MobygRPCServer__pb2.RotationGain.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
+        self.GetControlParam = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/GetControlParam',
+                request_serializer=MobygRPCServer__pb2.IntVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.RotationGain.FromString,
                 )
         self.StartRTLogging = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/StartRTLogging',
@@ -302,6 +332,12 @@ class GRPCMobyTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetUSSensorData(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetBMSData(self, request, context):
         """BMS data
         """
@@ -347,6 +383,12 @@ class GRPCMobyTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetRotationInterpolator(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetDriveAccDec(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -365,6 +407,25 @@ class GRPCMobyTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetRobotZeroCount(self, request, context):
+        """Set Moby-Agri parameters
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetRobotZeroAsCurrent(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TurnLEDOnOff(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetRotationTorqueMode(self, request, context):
         """Gain setting
         """
@@ -373,6 +434,12 @@ class GRPCMobyTaskServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SetControlParam(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetControlParam(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -496,6 +563,11 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     request_deserializer=MobygRPCServer__pb2.Empty.FromString,
                     response_serializer=MobygRPCServer__pb2.IRData.SerializeToString,
             ),
+            'GetUSSensorData': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUSSensorData,
+                    request_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                    response_serializer=MobygRPCServer__pb2.USData.SerializeToString,
+            ),
             'GetBMSData': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBMSData,
                     request_deserializer=MobygRPCServer__pb2.Empty.FromString,
@@ -531,6 +603,11 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     request_deserializer=MobygRPCServer__pb2.DoubleVals.FromString,
                     response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
             ),
+            'SetRotationInterpolator': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRotationInterpolator,
+                    request_deserializer=MobygRPCServer__pb2.IntVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
             'SetDriveAccDec': grpc.unary_unary_rpc_method_handler(
                     servicer.SetDriveAccDec,
                     request_deserializer=MobygRPCServer__pb2.DoubleVals.FromString,
@@ -546,6 +623,21 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     request_deserializer=MobygRPCServer__pb2.DoubleVals.FromString,
                     response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
             ),
+            'GetRobotZeroCount': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRobotZeroCount,
+                    request_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                    response_serializer=MobygRPCServer__pb2.RobotZeroCount.SerializeToString,
+            ),
+            'SetRobotZeroAsCurrent': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRobotZeroAsCurrent,
+                    request_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'TurnLEDOnOff': grpc.unary_unary_rpc_method_handler(
+                    servicer.TurnLEDOnOff,
+                    request_deserializer=MobygRPCServer__pb2.BoolVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
             'SetRotationTorqueMode': grpc.unary_unary_rpc_method_handler(
                     servicer.SetRotationTorqueMode,
                     request_deserializer=MobygRPCServer__pb2.BoolVal.FromString,
@@ -555,6 +647,11 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     servicer.SetControlParam,
                     request_deserializer=MobygRPCServer__pb2.RotationGain.FromString,
                     response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'GetControlParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetControlParam,
+                    request_deserializer=MobygRPCServer__pb2.IntVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.RotationGain.SerializeToString,
             ),
             'StartRTLogging': grpc.unary_unary_rpc_method_handler(
                     servicer.StartRTLogging,
@@ -893,6 +990,23 @@ class GRPCMobyTask(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def GetUSSensorData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/GetUSSensorData',
+            MobygRPCServer__pb2.Empty.SerializeToString,
+            MobygRPCServer__pb2.USData.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetBMSData(request,
             target,
             options=(),
@@ -1012,6 +1126,23 @@ class GRPCMobyTask(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetRotationInterpolator(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/SetRotationInterpolator',
+            MobygRPCServer__pb2.IntVal.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def SetDriveAccDec(request,
             target,
             options=(),
@@ -1063,6 +1194,57 @@ class GRPCMobyTask(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def GetRobotZeroCount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/GetRobotZeroCount',
+            MobygRPCServer__pb2.Empty.SerializeToString,
+            MobygRPCServer__pb2.RobotZeroCount.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetRobotZeroAsCurrent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/SetRobotZeroAsCurrent',
+            MobygRPCServer__pb2.Empty.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TurnLEDOnOff(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/TurnLEDOnOff',
+            MobygRPCServer__pb2.BoolVal.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def SetRotationTorqueMode(request,
             target,
             options=(),
@@ -1093,6 +1275,23 @@ class GRPCMobyTask(object):
         return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/SetControlParam',
             MobygRPCServer__pb2.RotationGain.SerializeToString,
             MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetControlParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/GetControlParam',
+            MobygRPCServer__pb2.IntVal.SerializeToString,
+            MobygRPCServer__pb2.RotationGain.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1cMotorControlgRPCServer.proto\x12\x10GRPCMotorControl\"\x07\n\x05\x45mpty\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"?\n\x0b\x43ontrolGain\x12\r\n\x05index\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"\x83\x01\n\x0b\x43ontrolData\x12\t\n\x01q\x18\x01 \x01(\x01\x12\x0c\n\x04qdot\x18\x02 \x01(\x01\x12\r\n\x05qddot\x18\x03 \x01(\x01\x12\x0c\n\x04qdes\x18\x04 \x01(\x01\x12\x0f\n\x07qdotdes\x18\x05 \x01(\x01\x12\x10\n\x08qddotdes\x18\x06 \x01(\x01\x12\x0b\n\x03tau\x18\x07 \x01(\x01\x12\x0e\n\x06taudes\x18\x08 \x01(\x01\"8\n\x07TrajMax\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06maxVel\x18\x02 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x03 \x01(\x01\">\n\rPositionLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06posMin\x18\x02 \x01(\x01\x12\x0e\n\x06posMax\x18\x03 \x01(\x01\">\n\rVelocityLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06velMin\x18\x02 \x01(\x01\x12\x0e\n\x06velMax\x18\x03 \x01(\x01\",\n\x0bTorqueLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06torMax\x18\x02 \x01(\x05\"g\n\x07MoveCmd\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x14\n\x0ctargetDegree\x18\x02 \x01(\x01\x12\x10\n\x08velLevel\x18\x03 \x01(\x05\x12\x10\n\x08moveMode\x18\x04 \x01(\x05\x12\x13\n\x0bmotionBlend\x18\x05 \x01(\x08\"\x19\n\x08ServoIdx\x12\r\n\x05index\x18\x01 \x01(\x05\")\n\x0bServoIdxVal\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x01\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\x32\x9c\x0e\n\x14GRPCMotorControlTask\x12N\n\rGetMotorTxPDO\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.MotorDriverTx\"\x00\x12N\n\rGetMotorRxPDO\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.MotorDriverRx\"\x00\x12>\n\x08SetServo\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12L\n\x13SetZeroPosAsCurrent\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x17.GRPCMotorControl.Empty\"\x00\x12I\n\x0fGetZeroPosCount\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x18.GRPCMotorControl.IntVal\"\x00\x12M\n\x0eGetControlData\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.ControlData\"\x00\x12M\n\x0eGetControlGain\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.ControlGain\"\x00\x12J\n\x0eSetControlGain\x12\x1d.GRPCMotorControl.ControlGain\x1a\x17.GRPCMotorControl.Empty\"\x00\x12J\n\x0fGetTrajMaxValue\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x19.GRPCMotorControl.TrajMax\"\x00\x12G\n\x0fSetTrajMaxValue\x12\x19.GRPCMotorControl.TrajMax\x1a\x17.GRPCMotorControl.Empty\"\x00\x12Q\n\x10GetPositionLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.PositionLimit\"\x00\x12N\n\x10SetPositionLimit\x12\x1f.GRPCMotorControl.PositionLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12Q\n\x10GetVelocityLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.VelocityLimit\"\x00\x12N\n\x10SetVelocityLimit\x12\x1f.GRPCMotorControl.VelocityLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12M\n\x0eGetTorqueLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.TorqueLimit\"\x00\x12J\n\x0eSetTorqueLimit\x12\x1d.GRPCMotorControl.TorqueLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12>\n\x06MoveTo\x12\x19.GRPCMotorControl.MoveCmd\x1a\x17.GRPCMotorControl.Empty\"\x00\x12>\n\x06MoveBy\x12\x19.GRPCMotorControl.MoveCmd\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x43\n\nStopMotion\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x44\n\x0eStartRTLogging\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x42\n\x0c\x45ndRTLogging\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12G\n\x0fSetLoggerBuffer\x12\x19.GRPCMotorControl.IntVals\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x42\n\x0cRTLoggerSave\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12O\n\x13SetFilterCutoffFreq\x12\x1d.GRPCMotorControl.ServoIdxVal\x1a\x17.GRPCMotorControl.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x1cMotorControlgRPCServer.proto\x12\x10GRPCMotorControl\"\x07\n\x05\x45mpty\"}\n\rMotorDriverTx\x12\x12\n\nstatusWord\x18\x01 \x01(\r\x12\x12\n\nmodeOpDisp\x18\x02 \x01(\x05\x12\x16\n\x0e\x61\x63tualPosition\x18\x03 \x01(\x05\x12\x16\n\x0e\x61\x63tualVelocity\x18\x04 \x01(\x05\x12\x14\n\x0c\x61\x63tualTorque\x18\x05 \x01(\x05\"z\n\rMotorDriverRx\x12\x13\n\x0b\x63ontrolWord\x18\x01 \x01(\r\x12\x0e\n\x06modeOp\x18\x02 \x01(\x05\x12\x16\n\x0etargetPosition\x18\x03 \x01(\x05\x12\x16\n\x0etargetVelocity\x18\x04 \x01(\x05\x12\x14\n\x0ctargetTorque\x18\x05 \x01(\x05\"?\n\x0b\x43ontrolGain\x12\r\n\x05index\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x01\x12\n\n\x02kv\x18\x03 \x01(\x01\x12\n\n\x02kp\x18\x04 \x01(\x01\"3\n\x0c\x43ontrolParam\x12\r\n\x05index\x18\x01 \x01(\x05\x12\t\n\x01m\x18\x02 \x01(\x01\x12\t\n\x01\x64\x18\x03 \x01(\x01\"\x83\x01\n\x0b\x43ontrolData\x12\t\n\x01q\x18\x01 \x01(\x01\x12\x0c\n\x04qdot\x18\x02 \x01(\x01\x12\r\n\x05qddot\x18\x03 \x01(\x01\x12\x0c\n\x04qdes\x18\x04 \x01(\x01\x12\x0f\n\x07qdotdes\x18\x05 \x01(\x01\x12\x10\n\x08qddotdes\x18\x06 \x01(\x01\x12\x0b\n\x03tau\x18\x07 \x01(\x01\x12\x0e\n\x06taudes\x18\x08 \x01(\x01\"8\n\x07TrajMax\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06maxVel\x18\x02 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x03 \x01(\x01\">\n\rPositionLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06posMin\x18\x02 \x01(\x01\x12\x0e\n\x06posMax\x18\x03 \x01(\x01\">\n\rVelocityLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06velMin\x18\x02 \x01(\x01\x12\x0e\n\x06velMax\x18\x03 \x01(\x01\",\n\x0bTorqueLimit\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0e\n\x06torMax\x18\x02 \x01(\x05\"g\n\x07MoveCmd\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x14\n\x0ctargetDegree\x18\x02 \x01(\x01\x12\x10\n\x08velLevel\x18\x03 \x01(\x05\x12\x10\n\x08moveMode\x18\x04 \x01(\x05\x12\x13\n\x0bmotionBlend\x18\x05 \x01(\x08\"\x19\n\x08ServoIdx\x12\r\n\x05index\x18\x01 \x01(\x05\")\n\x0bServoIdxVal\x12\r\n\x05index\x18\x01 \x01(\x05\x12\x0b\n\x03val\x18\x02 \x01(\x01\"\x15\n\x06IntVal\x12\x0b\n\x03val\x18\x01 \x01(\x05\"\x16\n\x07IntVals\x12\x0b\n\x03val\x18\x01 \x03(\x05\x32\xbb\x0f\n\x14GRPCMotorControlTask\x12N\n\rGetMotorTxPDO\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.MotorDriverTx\"\x00\x12N\n\rGetMotorRxPDO\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.MotorDriverRx\"\x00\x12>\n\x08SetServo\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12L\n\x13SetZeroPosAsCurrent\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x17.GRPCMotorControl.Empty\"\x00\x12I\n\x0fGetZeroPosCount\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x18.GRPCMotorControl.IntVal\"\x00\x12M\n\x0eGetControlData\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.ControlData\"\x00\x12M\n\x0eGetControlGain\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.ControlGain\"\x00\x12J\n\x0eSetControlGain\x12\x1d.GRPCMotorControl.ControlGain\x1a\x17.GRPCMotorControl.Empty\"\x00\x12O\n\x0fGetControlParam\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1e.GRPCMotorControl.ControlParam\"\x00\x12L\n\x0fSetControlParam\x12\x1e.GRPCMotorControl.ControlParam\x1a\x17.GRPCMotorControl.Empty\"\x00\x12J\n\x0fGetTrajMaxValue\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x19.GRPCMotorControl.TrajMax\"\x00\x12G\n\x0fSetTrajMaxValue\x12\x19.GRPCMotorControl.TrajMax\x1a\x17.GRPCMotorControl.Empty\"\x00\x12Q\n\x10GetPositionLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.PositionLimit\"\x00\x12N\n\x10SetPositionLimit\x12\x1f.GRPCMotorControl.PositionLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12Q\n\x10GetVelocityLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1f.GRPCMotorControl.VelocityLimit\"\x00\x12N\n\x10SetVelocityLimit\x12\x1f.GRPCMotorControl.VelocityLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12M\n\x0eGetTorqueLimit\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x1d.GRPCMotorControl.TorqueLimit\"\x00\x12J\n\x0eSetTorqueLimit\x12\x1d.GRPCMotorControl.TorqueLimit\x1a\x17.GRPCMotorControl.Empty\"\x00\x12>\n\x06MoveTo\x12\x19.GRPCMotorControl.MoveCmd\x1a\x17.GRPCMotorControl.Empty\"\x00\x12>\n\x06MoveBy\x12\x19.GRPCMotorControl.MoveCmd\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x43\n\nStopMotion\x12\x1a.GRPCMotorControl.ServoIdx\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x44\n\x0eStartRTLogging\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x42\n\x0c\x45ndRTLogging\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12G\n\x0fSetLoggerBuffer\x12\x19.GRPCMotorControl.IntVals\x1a\x17.GRPCMotorControl.Empty\"\x00\x12\x42\n\x0cRTLoggerSave\x12\x17.GRPCMotorControl.Empty\x1a\x17.GRPCMotorControl.Empty\"\x00\x12O\n\x13SetFilterCutoffFreq\x12\x1d.GRPCMotorControl.ServoIdxVal\x1a\x17.GRPCMotorControl.Empty\"\x00\x62\x06proto3'
 )
 
 
@@ -223,6 +223,52 @@ _CONTROLGAIN = _descriptor.Descriptor(
 )
 
 
+_CONTROLPARAM = _descriptor.Descriptor(
+  name='ControlParam',
+  full_name='GRPCMotorControl.ControlParam',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='index', full_name='GRPCMotorControl.ControlParam.index', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='m', full_name='GRPCMotorControl.ControlParam.m', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='d', full_name='GRPCMotorControl.ControlParam.d', index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=375,
+  serialized_end=426,
+)
+
+
 _CONTROLDATA = _descriptor.Descriptor(
   name='ControlData',
   full_name='GRPCMotorControl.ControlData',
@@ -299,8 +345,8 @@ _CONTROLDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=376,
-  serialized_end=507,
+  serialized_start=429,
+  serialized_end=560,
 )
 
 
@@ -345,8 +391,8 @@ _TRAJMAX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=509,
-  serialized_end=565,
+  serialized_start=562,
+  serialized_end=618,
 )
 
 
@@ -391,8 +437,8 @@ _POSITIONLIMIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=567,
-  serialized_end=629,
+  serialized_start=620,
+  serialized_end=682,
 )
 
 
@@ -437,8 +483,8 @@ _VELOCITYLIMIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=631,
-  serialized_end=693,
+  serialized_start=684,
+  serialized_end=746,
 )
 
 
@@ -476,8 +522,8 @@ _TORQUELIMIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=695,
-  serialized_end=739,
+  serialized_start=748,
+  serialized_end=792,
 )
 
 
@@ -536,8 +582,8 @@ _MOVECMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=741,
-  serialized_end=844,
+  serialized_start=794,
+  serialized_end=897,
 )
 
 
@@ -568,8 +614,8 @@ _SERVOIDX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=846,
-  serialized_end=871,
+  serialized_start=899,
+  serialized_end=924,
 )
 
 
@@ -607,8 +653,8 @@ _SERVOIDXVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=873,
-  serialized_end=914,
+  serialized_start=926,
+  serialized_end=967,
 )
 
 
@@ -639,8 +685,8 @@ _INTVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=916,
-  serialized_end=937,
+  serialized_start=969,
+  serialized_end=990,
 )
 
 
@@ -671,14 +717,15 @@ _INTVALS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=939,
-  serialized_end=961,
+  serialized_start=992,
+  serialized_end=1014,
 )
 
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['MotorDriverTx'] = _MOTORDRIVERTX
 DESCRIPTOR.message_types_by_name['MotorDriverRx'] = _MOTORDRIVERRX
 DESCRIPTOR.message_types_by_name['ControlGain'] = _CONTROLGAIN
+DESCRIPTOR.message_types_by_name['ControlParam'] = _CONTROLPARAM
 DESCRIPTOR.message_types_by_name['ControlData'] = _CONTROLDATA
 DESCRIPTOR.message_types_by_name['TrajMax'] = _TRAJMAX
 DESCRIPTOR.message_types_by_name['PositionLimit'] = _POSITIONLIMIT
@@ -718,6 +765,13 @@ ControlGain = _reflection.GeneratedProtocolMessageType('ControlGain', (_message.
   # @@protoc_insertion_point(class_scope:GRPCMotorControl.ControlGain)
   })
 _sym_db.RegisterMessage(ControlGain)
+
+ControlParam = _reflection.GeneratedProtocolMessageType('ControlParam', (_message.Message,), {
+  'DESCRIPTOR' : _CONTROLPARAM,
+  '__module__' : 'MotorControlgRPCServer_pb2'
+  # @@protoc_insertion_point(class_scope:GRPCMotorControl.ControlParam)
+  })
+_sym_db.RegisterMessage(ControlParam)
 
 ControlData = _reflection.GeneratedProtocolMessageType('ControlData', (_message.Message,), {
   'DESCRIPTOR' : _CONTROLDATA,
@@ -798,8 +852,8 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=964,
-  serialized_end=2784,
+  serialized_start=1017,
+  serialized_end=2996,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMotorTxPDO',
@@ -882,9 +936,29 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='GetControlParam',
+    full_name='GRPCMotorControl.GRPCMotorControlTask.GetControlParam',
+    index=8,
+    containing_service=None,
+    input_type=_SERVOIDX,
+    output_type=_CONTROLPARAM,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='SetControlParam',
+    full_name='GRPCMotorControl.GRPCMotorControlTask.SetControlParam',
+    index=9,
+    containing_service=None,
+    input_type=_CONTROLPARAM,
+    output_type=_EMPTY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetTrajMaxValue',
     full_name='GRPCMotorControl.GRPCMotorControlTask.GetTrajMaxValue',
-    index=8,
+    index=10,
     containing_service=None,
     input_type=_SERVOIDX,
     output_type=_TRAJMAX,
@@ -894,7 +968,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetTrajMaxValue',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetTrajMaxValue',
-    index=9,
+    index=11,
     containing_service=None,
     input_type=_TRAJMAX,
     output_type=_EMPTY,
@@ -904,7 +978,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetPositionLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.GetPositionLimit',
-    index=10,
+    index=12,
     containing_service=None,
     input_type=_SERVOIDX,
     output_type=_POSITIONLIMIT,
@@ -914,7 +988,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetPositionLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetPositionLimit',
-    index=11,
+    index=13,
     containing_service=None,
     input_type=_POSITIONLIMIT,
     output_type=_EMPTY,
@@ -924,7 +998,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetVelocityLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.GetVelocityLimit',
-    index=12,
+    index=14,
     containing_service=None,
     input_type=_SERVOIDX,
     output_type=_VELOCITYLIMIT,
@@ -934,7 +1008,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetVelocityLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetVelocityLimit',
-    index=13,
+    index=15,
     containing_service=None,
     input_type=_VELOCITYLIMIT,
     output_type=_EMPTY,
@@ -944,7 +1018,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetTorqueLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.GetTorqueLimit',
-    index=14,
+    index=16,
     containing_service=None,
     input_type=_SERVOIDX,
     output_type=_TORQUELIMIT,
@@ -954,7 +1028,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetTorqueLimit',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetTorqueLimit',
-    index=15,
+    index=17,
     containing_service=None,
     input_type=_TORQUELIMIT,
     output_type=_EMPTY,
@@ -964,7 +1038,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MoveTo',
     full_name='GRPCMotorControl.GRPCMotorControlTask.MoveTo',
-    index=16,
+    index=18,
     containing_service=None,
     input_type=_MOVECMD,
     output_type=_EMPTY,
@@ -974,7 +1048,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MoveBy',
     full_name='GRPCMotorControl.GRPCMotorControlTask.MoveBy',
-    index=17,
+    index=19,
     containing_service=None,
     input_type=_MOVECMD,
     output_type=_EMPTY,
@@ -984,7 +1058,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StopMotion',
     full_name='GRPCMotorControl.GRPCMotorControlTask.StopMotion',
-    index=18,
+    index=20,
     containing_service=None,
     input_type=_SERVOIDX,
     output_type=_EMPTY,
@@ -994,7 +1068,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='StartRTLogging',
     full_name='GRPCMotorControl.GRPCMotorControlTask.StartRTLogging',
-    index=19,
+    index=21,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1004,7 +1078,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='EndRTLogging',
     full_name='GRPCMotorControl.GRPCMotorControlTask.EndRTLogging',
-    index=20,
+    index=22,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1014,7 +1088,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetLoggerBuffer',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetLoggerBuffer',
-    index=21,
+    index=23,
     containing_service=None,
     input_type=_INTVALS,
     output_type=_EMPTY,
@@ -1024,7 +1098,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='RTLoggerSave',
     full_name='GRPCMotorControl.GRPCMotorControlTask.RTLoggerSave',
-    index=22,
+    index=24,
     containing_service=None,
     input_type=_EMPTY,
     output_type=_EMPTY,
@@ -1034,7 +1108,7 @@ _GRPCMOTORCONTROLTASK = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetFilterCutoffFreq',
     full_name='GRPCMotorControl.GRPCMotorControlTask.SetFilterCutoffFreq',
-    index=23,
+    index=25,
     containing_service=None,
     input_type=_SERVOIDXVAL,
     output_type=_EMPTY,
