@@ -177,6 +177,13 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::IRData>> PrepareAsyncGetIRSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::IRData>>(PrepareAsyncGetIRSensorDataRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::USData* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>> AsyncGetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>>(AsyncGetUSSensorDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>> PrepareAsyncGetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>>(PrepareAsyncGetUSSensorDataRaw(context, request, cq));
+    }
     // BMS data
     virtual ::grpc::Status GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::BMSData* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::BMSData>> AsyncGetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -229,6 +236,13 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetRotationVelAcc(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationVelAccRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncSetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncSetRotationInterpolatorRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationInterpolatorRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::GRPCMoby::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncSetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncSetDriveAccDecRaw(context, request, cq));
@@ -250,6 +264,42 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetRotationInterpolatorParam(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationInterpolatorParamRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncSetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncSetRotationControllerTypeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationControllerTypeRaw(context, request, cq));
+    }
+    // Moby-Agri related commands
+    virtual ::grpc::Status TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncTurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncTurnLightOnOffRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncTurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncTurnLightOnOffRaw(context, request, cq));
+    }
+    virtual ::grpc::Status TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncTurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncTurnBuzzOnOffRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncTurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncTurnBuzzOnOffRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::RobotZeroCount* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>> AsyncGetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>>(AsyncGetRobotZeroCountRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>> PrepareAsyncGetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>>(PrepareAsyncGetRobotZeroCountRaw(context, request, cq));
+    }
+    virtual ::grpc::Status SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncSetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(AsyncSetRobotZeroAsCurrentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetRobotZeroAsCurrentRaw(context, request, cq));
+    }
     // Gain setting
     virtual ::grpc::Status SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> AsyncSetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
@@ -264,6 +314,13 @@ class GRPCMobyTask final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>> PrepareAsyncSetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>>(PrepareAsyncSetControlParamRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::RotationGain* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>> AsyncGetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>>(AsyncGetControlParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>> PrepareAsyncGetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>>(PrepareAsyncGetControlParamRaw(context, request, cq));
     }
     // Data logging
     virtual ::grpc::Status StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) = 0;
@@ -374,6 +431,10 @@ class GRPCMobyTask final {
       virtual void GetIRSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::IRData* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetIRSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::IRData* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void GetIRSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::IRData* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       // BMS data
       virtual void GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::BMSData* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetBMSData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::BMSData* response, std::function<void(::grpc::Status)>) = 0;
@@ -405,6 +466,10 @@ class GRPCMobyTask final {
       virtual void SetRotationVelAcc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetRotationVelAcc(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void SetRotationVelAcc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetDriveAccDec(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -417,6 +482,27 @@ class GRPCMobyTask final {
       virtual void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      // Moby-Agri related commands
+      virtual void TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       // Gain setting
       virtual void SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetRotationTorqueMode(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
@@ -426,6 +512,10 @@ class GRPCMobyTask final {
       virtual void SetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void SetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       // Data logging
       virtual void StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StartRTLogging(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) = 0;
@@ -482,6 +572,8 @@ class GRPCMobyTask final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::IMUData>* PrepareAsyncGetGyroFullDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::IRData>* AsyncGetIRSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::IRData>* PrepareAsyncGetIRSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>* AsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::USData>* PrepareAsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::BMSData>* AsyncGetBMSDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::BMSData>* PrepareAsyncGetBMSDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetStepControlRaw(::grpc::ClientContext* context, const ::GRPCMoby::TargetVel& request, ::grpc::CompletionQueue* cq) = 0;
@@ -496,16 +588,30 @@ class GRPCMobyTask final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetZeroPosAsCurrentPosRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRotationVelAccRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRotationVelAccRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetDriveAccDecRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetDriveAccDecRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetDriveInterpolatorOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetDriveInterpolatorOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRotationInterpolatorParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRotationInterpolatorParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>* AsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RobotZeroCount>* PrepareAsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetRotationTorqueModeRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetRotationTorqueModeRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncSetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncSetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>* AsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::RotationGain>* PrepareAsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncStartRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* PrepareAsyncStartRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCMoby::Empty>* AsyncEndRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) = 0;
@@ -644,6 +750,13 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::IRData>> PrepareAsyncGetIRSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::IRData>>(PrepareAsyncGetIRSensorDataRaw(context, request, cq));
     }
+    ::grpc::Status GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::USData* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>> AsyncGetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>>(AsyncGetUSSensorDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>> PrepareAsyncGetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>>(PrepareAsyncGetUSSensorDataRaw(context, request, cq));
+    }
     ::grpc::Status GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::BMSData* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::BMSData>> AsyncGetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::BMSData>>(AsyncGetBMSDataRaw(context, request, cq));
@@ -693,6 +806,13 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetRotationVelAcc(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationVelAccRaw(context, request, cq));
     }
+    ::grpc::Status SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncSetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncSetRotationInterpolatorRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationInterpolatorRaw(context, request, cq));
+    }
     ::grpc::Status SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::GRPCMoby::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncSetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncSetDriveAccDecRaw(context, request, cq));
@@ -714,6 +834,41 @@ class GRPCMobyTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetRotationInterpolatorParam(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationInterpolatorParamRaw(context, request, cq));
     }
+    ::grpc::Status SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncSetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncSetRotationControllerTypeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetRotationControllerTypeRaw(context, request, cq));
+    }
+    ::grpc::Status TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncTurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncTurnLightOnOffRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncTurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncTurnLightOnOffRaw(context, request, cq));
+    }
+    ::grpc::Status TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncTurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncTurnBuzzOnOffRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncTurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncTurnBuzzOnOffRaw(context, request, cq));
+    }
+    ::grpc::Status GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::RobotZeroCount* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>> AsyncGetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>>(AsyncGetRobotZeroCountRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>> PrepareAsyncGetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>>(PrepareAsyncGetRobotZeroCountRaw(context, request, cq));
+    }
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncSetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncSetRobotZeroAsCurrentRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetRobotZeroAsCurrentRaw(context, request, cq));
+    }
     ::grpc::Status SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncSetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(AsyncSetRotationTorqueModeRaw(context, request, cq));
@@ -727,6 +882,13 @@ class GRPCMobyTask final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> PrepareAsyncSetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>>(PrepareAsyncSetControlParamRaw(context, request, cq));
+    }
+    ::grpc::Status GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::RotationGain* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>> AsyncGetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>>(AsyncGetControlParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>> PrepareAsyncGetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>>(PrepareAsyncGetControlParamRaw(context, request, cq));
     }
     ::grpc::Status StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>> AsyncStartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -831,6 +993,10 @@ class GRPCMobyTask final {
       void GetIRSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::IRData* response, std::function<void(::grpc::Status)>) override;
       void GetIRSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::IRData* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void GetIRSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::IRData* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)>) override;
+      void GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)>) override;
+      void GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::BMSData* response, std::function<void(::grpc::Status)>) override;
       void GetBMSData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::BMSData* response, std::function<void(::grpc::Status)>) override;
       void GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::BMSData* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -859,6 +1025,10 @@ class GRPCMobyTask final {
       void SetRotationVelAcc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetRotationVelAcc(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetRotationVelAcc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetDriveAccDec(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -871,6 +1041,26 @@ class GRPCMobyTask final {
       void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetRotationInterpolatorParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)>) override;
+      void GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)>) override;
+      void GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetRotationTorqueMode(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -879,6 +1069,10 @@ class GRPCMobyTask final {
       void SetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)>) override;
+      void GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)>) override;
+      void GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void StartRTLogging(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)>) override;
       void StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -942,6 +1136,8 @@ class GRPCMobyTask final {
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::IMUData>* PrepareAsyncGetGyroFullDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::IRData>* AsyncGetIRSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::IRData>* PrepareAsyncGetIRSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>* AsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>* PrepareAsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::BMSData>* AsyncGetBMSDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::BMSData>* PrepareAsyncGetBMSDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetStepControlRaw(::grpc::ClientContext* context, const ::GRPCMoby::TargetVel& request, ::grpc::CompletionQueue* cq) override;
@@ -956,16 +1152,30 @@ class GRPCMobyTask final {
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetZeroPosAsCurrentPosRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRotationVelAccRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRotationVelAccRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetDriveAccDecRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetDriveAccDecRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetDriveInterpolatorOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetDriveInterpolatorOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRotationInterpolatorParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRotationInterpolatorParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>* AsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>* PrepareAsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetRotationTorqueModeRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetRotationTorqueModeRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncSetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncSetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>* AsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>* PrepareAsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncStartRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* PrepareAsyncStartRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* AsyncEndRTLoggingRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) override;
@@ -992,6 +1202,7 @@ class GRPCMobyTask final {
     const ::grpc::internal::RpcMethod rpcmethod_UseGyroForOdom_;
     const ::grpc::internal::RpcMethod rpcmethod_GetGyroFullData_;
     const ::grpc::internal::RpcMethod rpcmethod_GetIRSensorData_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetUSSensorData_;
     const ::grpc::internal::RpcMethod rpcmethod_GetBMSData_;
     const ::grpc::internal::RpcMethod rpcmethod_SetStepControl_;
     const ::grpc::internal::RpcMethod rpcmethod_StopMotion_;
@@ -999,11 +1210,18 @@ class GRPCMobyTask final {
     const ::grpc::internal::RpcMethod rpcmethod_DriveWheel_;
     const ::grpc::internal::RpcMethod rpcmethod_SetZeroPosAsCurrentPos_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRotationVelAcc_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetRotationInterpolator_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDriveAccDec_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDriveInterpolatorOnOff_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRotationInterpolatorParam_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetRotationControllerType_;
+    const ::grpc::internal::RpcMethod rpcmethod_TurnLightOnOff_;
+    const ::grpc::internal::RpcMethod rpcmethod_TurnBuzzOnOff_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetRobotZeroCount_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetRobotZeroAsCurrent_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRotationTorqueMode_;
     const ::grpc::internal::RpcMethod rpcmethod_SetControlParam_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetControlParam_;
     const ::grpc::internal::RpcMethod rpcmethod_StartRTLogging_;
     const ::grpc::internal::RpcMethod rpcmethod_EndRTLogging_;
     const ::grpc::internal::RpcMethod rpcmethod_SetLoggerBuffer_;
@@ -1038,6 +1256,7 @@ class GRPCMobyTask final {
     virtual ::grpc::Status GetGyroFullData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::IMUData* response);
     // IR sensor
     virtual ::grpc::Status GetIRSensorData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::IRData* response);
+    virtual ::grpc::Status GetUSSensorData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response);
     // BMS data
     virtual ::grpc::Status GetBMSData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::BMSData* response);
     // Moby motion command
@@ -1048,12 +1267,20 @@ class GRPCMobyTask final {
     // Set Moby parameters
     virtual ::grpc::Status SetZeroPosAsCurrentPos(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status SetRotationVelAcc(::grpc::ServerContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response);
+    virtual ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status SetDriveAccDec(::grpc::ServerContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status SetDriveInterpolatorOnOff(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status SetRotationInterpolatorParam(::grpc::ServerContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response);
+    virtual ::grpc::Status SetRotationControllerType(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response);
+    // Moby-Agri related commands
+    virtual ::grpc::Status TurnLightOnOff(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response);
+    virtual ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response);
+    virtual ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response);
+    virtual ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response);
     // Gain setting
     virtual ::grpc::Status SetRotationTorqueMode(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status SetControlParam(::grpc::ServerContext* context, const ::GRPCMoby::RotationGain* request, ::GRPCMoby::Empty* response);
+    virtual ::grpc::Status GetControlParam(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response);
     // Data logging
     virtual ::grpc::Status StartRTLogging(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response);
     virtual ::grpc::Status EndRTLogging(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response);
@@ -1421,12 +1648,32 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetUSSensorData() {
+      ::grpc::Service::MarkMethodAsync(18);
+    }
+    ~WithAsyncMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetUSSensorData(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::USData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetBMSData() {
-      ::grpc::Service::MarkMethodAsync(18);
+      ::grpc::Service::MarkMethodAsync(19);
     }
     ~WithAsyncMethod_GetBMSData() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1437,7 +1684,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetBMSData(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::BMSData>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1446,7 +1693,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetStepControl() {
-      ::grpc::Service::MarkMethodAsync(19);
+      ::grpc::Service::MarkMethodAsync(20);
     }
     ~WithAsyncMethod_SetStepControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1457,7 +1704,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetStepControl(::grpc::ServerContext* context, ::GRPCMoby::TargetVel* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1466,7 +1713,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_StopMotion() {
-      ::grpc::Service::MarkMethodAsync(20);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_StopMotion() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1477,7 +1724,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStopMotion(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1486,7 +1733,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRotationAngleDeg() {
-      ::grpc::Service::MarkMethodAsync(21);
+      ::grpc::Service::MarkMethodAsync(22);
     }
     ~WithAsyncMethod_SetRotationAngleDeg() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1497,7 +1744,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationAngleDeg(::grpc::ServerContext* context, ::GRPCMoby::SwerveDoubles* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1506,7 +1753,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DriveWheel() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_DriveWheel() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1517,7 +1764,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDriveWheel(::grpc::ServerContext* context, ::GRPCMoby::SwerveDoubles* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1526,7 +1773,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(24);
     }
     ~WithAsyncMethod_SetZeroPosAsCurrentPos() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1537,7 +1784,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetZeroPosAsCurrentPos(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1546,7 +1793,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRotationVelAcc() {
-      ::grpc::Service::MarkMethodAsync(24);
+      ::grpc::Service::MarkMethodAsync(25);
     }
     ~WithAsyncMethod_SetRotationVelAcc() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1557,7 +1804,27 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationVelAcc(::grpc::ServerContext* context, ::GRPCMoby::DoubleVals* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetRotationInterpolator() {
+      ::grpc::Service::MarkMethodAsync(26);
+    }
+    ~WithAsyncMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRotationInterpolator(::grpc::ServerContext* context, ::GRPCMoby::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1566,7 +1833,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDriveAccDec() {
-      ::grpc::Service::MarkMethodAsync(25);
+      ::grpc::Service::MarkMethodAsync(27);
     }
     ~WithAsyncMethod_SetDriveAccDec() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1577,7 +1844,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDriveAccDec(::grpc::ServerContext* context, ::GRPCMoby::DoubleVals* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1586,7 +1853,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::MarkMethodAsync(26);
+      ::grpc::Service::MarkMethodAsync(28);
     }
     ~WithAsyncMethod_SetDriveInterpolatorOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1597,7 +1864,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDriveInterpolatorOnOff(::grpc::ServerContext* context, ::GRPCMoby::BoolVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1606,7 +1873,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::MarkMethodAsync(27);
+      ::grpc::Service::MarkMethodAsync(29);
     }
     ~WithAsyncMethod_SetRotationInterpolatorParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1617,7 +1884,107 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationInterpolatorParam(::grpc::ServerContext* context, ::GRPCMoby::DoubleVals* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetRotationControllerType() {
+      ::grpc::Service::MarkMethodAsync(30);
+    }
+    ~WithAsyncMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRotationControllerType(::grpc::ServerContext* context, ::GRPCMoby::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_TurnLightOnOff() {
+      ::grpc::Service::MarkMethodAsync(31);
+    }
+    ~WithAsyncMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTurnLightOnOff(::grpc::ServerContext* context, ::GRPCMoby::BoolVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_TurnBuzzOnOff() {
+      ::grpc::Service::MarkMethodAsync(32);
+    }
+    ~WithAsyncMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTurnBuzzOnOff(::grpc::ServerContext* context, ::GRPCMoby::BoolVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetRobotZeroCount() {
+      ::grpc::Service::MarkMethodAsync(33);
+    }
+    ~WithAsyncMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRobotZeroCount(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::RobotZeroCount>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::MarkMethodAsync(34);
+    }
+    ~WithAsyncMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRobotZeroAsCurrent(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1626,7 +1993,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRotationTorqueMode() {
-      ::grpc::Service::MarkMethodAsync(28);
+      ::grpc::Service::MarkMethodAsync(35);
     }
     ~WithAsyncMethod_SetRotationTorqueMode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1637,7 +2004,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationTorqueMode(::grpc::ServerContext* context, ::GRPCMoby::BoolVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1646,7 +2013,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetControlParam() {
-      ::grpc::Service::MarkMethodAsync(29);
+      ::grpc::Service::MarkMethodAsync(36);
     }
     ~WithAsyncMethod_SetControlParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1657,7 +2024,27 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetControlParam(::grpc::ServerContext* context, ::GRPCMoby::RotationGain* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetControlParam() {
+      ::grpc::Service::MarkMethodAsync(37);
+    }
+    ~WithAsyncMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetControlParam(::grpc::ServerContext* context, ::GRPCMoby::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::RotationGain>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1666,7 +2053,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_StartRTLogging() {
-      ::grpc::Service::MarkMethodAsync(30);
+      ::grpc::Service::MarkMethodAsync(38);
     }
     ~WithAsyncMethod_StartRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1677,7 +2064,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStartRTLogging(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1686,7 +2073,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_EndRTLogging() {
-      ::grpc::Service::MarkMethodAsync(31);
+      ::grpc::Service::MarkMethodAsync(39);
     }
     ~WithAsyncMethod_EndRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1697,7 +2084,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestEndRTLogging(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1706,7 +2093,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetLoggerBuffer() {
-      ::grpc::Service::MarkMethodAsync(32);
+      ::grpc::Service::MarkMethodAsync(40);
     }
     ~WithAsyncMethod_SetLoggerBuffer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1717,7 +2104,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetLoggerBuffer(::grpc::ServerContext* context, ::GRPCMoby::IntVals* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1726,7 +2113,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_RTLoggerSave() {
-      ::grpc::Service::MarkMethodAsync(33);
+      ::grpc::Service::MarkMethodAsync(41);
     }
     ~WithAsyncMethod_RTLoggerSave() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1737,10 +2124,10 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRTLoggerSave(::grpc::ServerContext* context, ::GRPCMoby::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCMoby::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetMobyTxData<WithAsyncMethod_GetMobyRxData<WithAsyncMethod_GetMobyState<WithAsyncMethod_GetMobyErrorState<WithAsyncMethod_Recover<WithAsyncMethod_GetMobyPose<WithAsyncMethod_GetMobyVel<WithAsyncMethod_ResetMobyPose<WithAsyncMethod_GetRotationAngleDeg<WithAsyncMethod_GetDriveSpeed<WithAsyncMethod_GetTargetVel<WithAsyncMethod_GetRotationZeroCount<WithAsyncMethod_GetCMode<WithAsyncMethod_GetGyroData<WithAsyncMethod_ResetGyroSensor<WithAsyncMethod_UseGyroForOdom<WithAsyncMethod_GetGyroFullData<WithAsyncMethod_GetIRSensorData<WithAsyncMethod_GetBMSData<WithAsyncMethod_SetStepControl<WithAsyncMethod_StopMotion<WithAsyncMethod_SetRotationAngleDeg<WithAsyncMethod_DriveWheel<WithAsyncMethod_SetZeroPosAsCurrentPos<WithAsyncMethod_SetRotationVelAcc<WithAsyncMethod_SetDriveAccDec<WithAsyncMethod_SetDriveInterpolatorOnOff<WithAsyncMethod_SetRotationInterpolatorParam<WithAsyncMethod_SetRotationTorqueMode<WithAsyncMethod_SetControlParam<WithAsyncMethod_StartRTLogging<WithAsyncMethod_EndRTLogging<WithAsyncMethod_SetLoggerBuffer<WithAsyncMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_GetMobyTxData<WithAsyncMethod_GetMobyRxData<WithAsyncMethod_GetMobyState<WithAsyncMethod_GetMobyErrorState<WithAsyncMethod_Recover<WithAsyncMethod_GetMobyPose<WithAsyncMethod_GetMobyVel<WithAsyncMethod_ResetMobyPose<WithAsyncMethod_GetRotationAngleDeg<WithAsyncMethod_GetDriveSpeed<WithAsyncMethod_GetTargetVel<WithAsyncMethod_GetRotationZeroCount<WithAsyncMethod_GetCMode<WithAsyncMethod_GetGyroData<WithAsyncMethod_ResetGyroSensor<WithAsyncMethod_UseGyroForOdom<WithAsyncMethod_GetGyroFullData<WithAsyncMethod_GetIRSensorData<WithAsyncMethod_GetUSSensorData<WithAsyncMethod_GetBMSData<WithAsyncMethod_SetStepControl<WithAsyncMethod_StopMotion<WithAsyncMethod_SetRotationAngleDeg<WithAsyncMethod_DriveWheel<WithAsyncMethod_SetZeroPosAsCurrentPos<WithAsyncMethod_SetRotationVelAcc<WithAsyncMethod_SetRotationInterpolator<WithAsyncMethod_SetDriveAccDec<WithAsyncMethod_SetDriveInterpolatorOnOff<WithAsyncMethod_SetRotationInterpolatorParam<WithAsyncMethod_SetRotationControllerType<WithAsyncMethod_TurnLightOnOff<WithAsyncMethod_TurnBuzzOnOff<WithAsyncMethod_GetRobotZeroCount<WithAsyncMethod_SetRobotZeroAsCurrent<WithAsyncMethod_SetRotationTorqueMode<WithAsyncMethod_SetControlParam<WithAsyncMethod_GetControlParam<WithAsyncMethod_StartRTLogging<WithAsyncMethod_EndRTLogging<WithAsyncMethod_SetLoggerBuffer<WithAsyncMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetMobyTxData : public BaseClass {
    private:
@@ -2300,12 +2687,43 @@ class GRPCMobyTask final {
     virtual void GetIRSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::IRData* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_GetUSSensorData() {
+      ::grpc::Service::experimental().MarkMethodCallback(18,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::USData>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::Empty* request,
+                 ::GRPCMoby::USData* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetUSSensorData(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_GetUSSensorData(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::USData>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::USData>*>(
+          ::grpc::Service::experimental().GetHandler(18))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetBMSData() {
-      ::grpc::Service::experimental().MarkMethodCallback(18,
+      ::grpc::Service::experimental().MarkMethodCallback(19,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::BMSData>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2317,7 +2735,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_GetBMSData(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::BMSData>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::BMSData>*>(
-          ::grpc::Service::experimental().GetHandler(18))
+          ::grpc::Service::experimental().GetHandler(19))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetBMSData() override {
@@ -2336,7 +2754,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetStepControl() {
-      ::grpc::Service::experimental().MarkMethodCallback(19,
+      ::grpc::Service::experimental().MarkMethodCallback(20,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::TargetVel, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::TargetVel* request,
@@ -2348,7 +2766,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetStepControl(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::TargetVel, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::TargetVel, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(19))
+          ::grpc::Service::experimental().GetHandler(20))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetStepControl() override {
@@ -2367,7 +2785,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_StopMotion() {
-      ::grpc::Service::experimental().MarkMethodCallback(20,
+      ::grpc::Service::experimental().MarkMethodCallback(21,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2379,7 +2797,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_StopMotion(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(20))
+          ::grpc::Service::experimental().GetHandler(21))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_StopMotion() override {
@@ -2398,7 +2816,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetRotationAngleDeg() {
-      ::grpc::Service::experimental().MarkMethodCallback(21,
+      ::grpc::Service::experimental().MarkMethodCallback(22,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::SwerveDoubles* request,
@@ -2410,7 +2828,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetRotationAngleDeg(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(21))
+          ::grpc::Service::experimental().GetHandler(22))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetRotationAngleDeg() override {
@@ -2429,7 +2847,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_DriveWheel() {
-      ::grpc::Service::experimental().MarkMethodCallback(22,
+      ::grpc::Service::experimental().MarkMethodCallback(23,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::SwerveDoubles* request,
@@ -2441,7 +2859,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_DriveWheel(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(22))
+          ::grpc::Service::experimental().GetHandler(23))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_DriveWheel() override {
@@ -2460,7 +2878,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::experimental().MarkMethodCallback(23,
+      ::grpc::Service::experimental().MarkMethodCallback(24,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2472,7 +2890,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetZeroPosAsCurrentPos(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(23))
+          ::grpc::Service::experimental().GetHandler(24))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetZeroPosAsCurrentPos() override {
@@ -2491,7 +2909,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetRotationVelAcc() {
-      ::grpc::Service::experimental().MarkMethodCallback(24,
+      ::grpc::Service::experimental().MarkMethodCallback(25,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::DoubleVals* request,
@@ -2503,7 +2921,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetRotationVelAcc(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(24))
+          ::grpc::Service::experimental().GetHandler(25))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetRotationVelAcc() override {
@@ -2517,12 +2935,43 @@ class GRPCMobyTask final {
     virtual void SetRotationVelAcc(::grpc::ServerContext* /*context*/, const ::GRPCMoby::DoubleVals* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_SetRotationInterpolator() {
+      ::grpc::Service::experimental().MarkMethodCallback(26,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::IntVal* request,
+                 ::GRPCMoby::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->SetRotationInterpolator(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_SetRotationInterpolator(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>*>(
+          ::grpc::Service::experimental().GetHandler(26))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_SetDriveAccDec : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetDriveAccDec() {
-      ::grpc::Service::experimental().MarkMethodCallback(25,
+      ::grpc::Service::experimental().MarkMethodCallback(27,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::DoubleVals* request,
@@ -2534,7 +2983,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetDriveAccDec(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(25))
+          ::grpc::Service::experimental().GetHandler(27))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetDriveAccDec() override {
@@ -2553,7 +3002,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::experimental().MarkMethodCallback(26,
+      ::grpc::Service::experimental().MarkMethodCallback(28,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::BoolVal* request,
@@ -2565,7 +3014,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetDriveInterpolatorOnOff(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(26))
+          ::grpc::Service::experimental().GetHandler(28))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetDriveInterpolatorOnOff() override {
@@ -2584,7 +3033,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::experimental().MarkMethodCallback(27,
+      ::grpc::Service::experimental().MarkMethodCallback(29,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::DoubleVals* request,
@@ -2596,7 +3045,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetRotationInterpolatorParam(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(27))
+          ::grpc::Service::experimental().GetHandler(29))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetRotationInterpolatorParam() override {
@@ -2610,12 +3059,167 @@ class GRPCMobyTask final {
     virtual void SetRotationInterpolatorParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::DoubleVals* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_SetRotationControllerType() {
+      ::grpc::Service::experimental().MarkMethodCallback(30,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::IntVal* request,
+                 ::GRPCMoby::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->SetRotationControllerType(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_SetRotationControllerType(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>*>(
+          ::grpc::Service::experimental().GetHandler(30))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_TurnLightOnOff() {
+      ::grpc::Service::experimental().MarkMethodCallback(31,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::BoolVal* request,
+                 ::GRPCMoby::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->TurnLightOnOff(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_TurnLightOnOff(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>*>(
+          ::grpc::Service::experimental().GetHandler(31))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_TurnBuzzOnOff() {
+      ::grpc::Service::experimental().MarkMethodCallback(32,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::BoolVal* request,
+                 ::GRPCMoby::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->TurnBuzzOnOff(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_TurnBuzzOnOff(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>*>(
+          ::grpc::Service::experimental().GetHandler(32))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_GetRobotZeroCount() {
+      ::grpc::Service::experimental().MarkMethodCallback(33,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::RobotZeroCount>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::Empty* request,
+                 ::GRPCMoby::RobotZeroCount* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetRobotZeroCount(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_GetRobotZeroCount(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::RobotZeroCount>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::RobotZeroCount>*>(
+          ::grpc::Service::experimental().GetHandler(33))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::experimental().MarkMethodCallback(34,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::Empty* request,
+                 ::GRPCMoby::Empty* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->SetRobotZeroAsCurrent(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_SetRobotZeroAsCurrent(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
+          ::grpc::Service::experimental().GetHandler(34))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_SetRotationTorqueMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetRotationTorqueMode() {
-      ::grpc::Service::experimental().MarkMethodCallback(28,
+      ::grpc::Service::experimental().MarkMethodCallback(35,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::BoolVal* request,
@@ -2627,7 +3231,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetRotationTorqueMode(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(28))
+          ::grpc::Service::experimental().GetHandler(35))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetRotationTorqueMode() override {
@@ -2646,7 +3250,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetControlParam() {
-      ::grpc::Service::experimental().MarkMethodCallback(29,
+      ::grpc::Service::experimental().MarkMethodCallback(36,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::RotationGain, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::RotationGain* request,
@@ -2658,7 +3262,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetControlParam(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::RotationGain, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::RotationGain, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(29))
+          ::grpc::Service::experimental().GetHandler(36))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetControlParam() override {
@@ -2672,12 +3276,43 @@ class GRPCMobyTask final {
     virtual void SetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::RotationGain* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_GetControlParam() {
+      ::grpc::Service::experimental().MarkMethodCallback(37,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::RotationGain>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCMoby::IntVal* request,
+                 ::GRPCMoby::RotationGain* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetControlParam(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_GetControlParam(
+        ::grpc::experimental::MessageAllocator< ::GRPCMoby::IntVal, ::GRPCMoby::RotationGain>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::RotationGain>*>(
+          ::grpc::Service::experimental().GetHandler(37))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_StartRTLogging : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_StartRTLogging() {
-      ::grpc::Service::experimental().MarkMethodCallback(30,
+      ::grpc::Service::experimental().MarkMethodCallback(38,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2689,7 +3324,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_StartRTLogging(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(30))
+          ::grpc::Service::experimental().GetHandler(38))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_StartRTLogging() override {
@@ -2708,7 +3343,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_EndRTLogging() {
-      ::grpc::Service::experimental().MarkMethodCallback(31,
+      ::grpc::Service::experimental().MarkMethodCallback(39,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2720,7 +3355,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_EndRTLogging(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(31))
+          ::grpc::Service::experimental().GetHandler(39))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_EndRTLogging() override {
@@ -2739,7 +3374,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetLoggerBuffer() {
-      ::grpc::Service::experimental().MarkMethodCallback(32,
+      ::grpc::Service::experimental().MarkMethodCallback(40,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVals, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::IntVals* request,
@@ -2751,7 +3386,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_SetLoggerBuffer(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::IntVals, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::IntVals, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(32))
+          ::grpc::Service::experimental().GetHandler(40))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetLoggerBuffer() override {
@@ -2770,7 +3405,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_RTLoggerSave() {
-      ::grpc::Service::experimental().MarkMethodCallback(33,
+      ::grpc::Service::experimental().MarkMethodCallback(41,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCMoby::Empty* request,
@@ -2782,7 +3417,7 @@ class GRPCMobyTask final {
     void SetMessageAllocatorFor_RTLoggerSave(
         ::grpc::experimental::MessageAllocator< ::GRPCMoby::Empty, ::GRPCMoby::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(33))
+          ::grpc::Service::experimental().GetHandler(41))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_RTLoggerSave() override {
@@ -2795,7 +3430,7 @@ class GRPCMobyTask final {
     }
     virtual void RTLoggerSave(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
-  typedef ExperimentalWithCallbackMethod_GetMobyTxData<ExperimentalWithCallbackMethod_GetMobyRxData<ExperimentalWithCallbackMethod_GetMobyState<ExperimentalWithCallbackMethod_GetMobyErrorState<ExperimentalWithCallbackMethod_Recover<ExperimentalWithCallbackMethod_GetMobyPose<ExperimentalWithCallbackMethod_GetMobyVel<ExperimentalWithCallbackMethod_ResetMobyPose<ExperimentalWithCallbackMethod_GetRotationAngleDeg<ExperimentalWithCallbackMethod_GetDriveSpeed<ExperimentalWithCallbackMethod_GetTargetVel<ExperimentalWithCallbackMethod_GetRotationZeroCount<ExperimentalWithCallbackMethod_GetCMode<ExperimentalWithCallbackMethod_GetGyroData<ExperimentalWithCallbackMethod_ResetGyroSensor<ExperimentalWithCallbackMethod_UseGyroForOdom<ExperimentalWithCallbackMethod_GetGyroFullData<ExperimentalWithCallbackMethod_GetIRSensorData<ExperimentalWithCallbackMethod_GetBMSData<ExperimentalWithCallbackMethod_SetStepControl<ExperimentalWithCallbackMethod_StopMotion<ExperimentalWithCallbackMethod_SetRotationAngleDeg<ExperimentalWithCallbackMethod_DriveWheel<ExperimentalWithCallbackMethod_SetZeroPosAsCurrentPos<ExperimentalWithCallbackMethod_SetRotationVelAcc<ExperimentalWithCallbackMethod_SetDriveAccDec<ExperimentalWithCallbackMethod_SetDriveInterpolatorOnOff<ExperimentalWithCallbackMethod_SetRotationInterpolatorParam<ExperimentalWithCallbackMethod_SetRotationTorqueMode<ExperimentalWithCallbackMethod_SetControlParam<ExperimentalWithCallbackMethod_StartRTLogging<ExperimentalWithCallbackMethod_EndRTLogging<ExperimentalWithCallbackMethod_SetLoggerBuffer<ExperimentalWithCallbackMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_GetMobyTxData<ExperimentalWithCallbackMethod_GetMobyRxData<ExperimentalWithCallbackMethod_GetMobyState<ExperimentalWithCallbackMethod_GetMobyErrorState<ExperimentalWithCallbackMethod_Recover<ExperimentalWithCallbackMethod_GetMobyPose<ExperimentalWithCallbackMethod_GetMobyVel<ExperimentalWithCallbackMethod_ResetMobyPose<ExperimentalWithCallbackMethod_GetRotationAngleDeg<ExperimentalWithCallbackMethod_GetDriveSpeed<ExperimentalWithCallbackMethod_GetTargetVel<ExperimentalWithCallbackMethod_GetRotationZeroCount<ExperimentalWithCallbackMethod_GetCMode<ExperimentalWithCallbackMethod_GetGyroData<ExperimentalWithCallbackMethod_ResetGyroSensor<ExperimentalWithCallbackMethod_UseGyroForOdom<ExperimentalWithCallbackMethod_GetGyroFullData<ExperimentalWithCallbackMethod_GetIRSensorData<ExperimentalWithCallbackMethod_GetUSSensorData<ExperimentalWithCallbackMethod_GetBMSData<ExperimentalWithCallbackMethod_SetStepControl<ExperimentalWithCallbackMethod_StopMotion<ExperimentalWithCallbackMethod_SetRotationAngleDeg<ExperimentalWithCallbackMethod_DriveWheel<ExperimentalWithCallbackMethod_SetZeroPosAsCurrentPos<ExperimentalWithCallbackMethod_SetRotationVelAcc<ExperimentalWithCallbackMethod_SetRotationInterpolator<ExperimentalWithCallbackMethod_SetDriveAccDec<ExperimentalWithCallbackMethod_SetDriveInterpolatorOnOff<ExperimentalWithCallbackMethod_SetRotationInterpolatorParam<ExperimentalWithCallbackMethod_SetRotationControllerType<ExperimentalWithCallbackMethod_TurnLightOnOff<ExperimentalWithCallbackMethod_TurnBuzzOnOff<ExperimentalWithCallbackMethod_GetRobotZeroCount<ExperimentalWithCallbackMethod_SetRobotZeroAsCurrent<ExperimentalWithCallbackMethod_SetRotationTorqueMode<ExperimentalWithCallbackMethod_SetControlParam<ExperimentalWithCallbackMethod_GetControlParam<ExperimentalWithCallbackMethod_StartRTLogging<ExperimentalWithCallbackMethod_EndRTLogging<ExperimentalWithCallbackMethod_SetLoggerBuffer<ExperimentalWithCallbackMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetMobyTxData : public BaseClass {
    private:
@@ -3103,12 +3738,29 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetUSSensorData() {
+      ::grpc::Service::MarkMethodGeneric(18);
+    }
+    ~WithGenericMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetBMSData() {
-      ::grpc::Service::MarkMethodGeneric(18);
+      ::grpc::Service::MarkMethodGeneric(19);
     }
     ~WithGenericMethod_GetBMSData() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3125,7 +3777,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetStepControl() {
-      ::grpc::Service::MarkMethodGeneric(19);
+      ::grpc::Service::MarkMethodGeneric(20);
     }
     ~WithGenericMethod_SetStepControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3142,7 +3794,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_StopMotion() {
-      ::grpc::Service::MarkMethodGeneric(20);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_StopMotion() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3159,7 +3811,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRotationAngleDeg() {
-      ::grpc::Service::MarkMethodGeneric(21);
+      ::grpc::Service::MarkMethodGeneric(22);
     }
     ~WithGenericMethod_SetRotationAngleDeg() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3176,7 +3828,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DriveWheel() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_DriveWheel() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3193,7 +3845,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(24);
     }
     ~WithGenericMethod_SetZeroPosAsCurrentPos() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3210,7 +3862,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRotationVelAcc() {
-      ::grpc::Service::MarkMethodGeneric(24);
+      ::grpc::Service::MarkMethodGeneric(25);
     }
     ~WithGenericMethod_SetRotationVelAcc() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3222,12 +3874,29 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetRotationInterpolator() {
+      ::grpc::Service::MarkMethodGeneric(26);
+    }
+    ~WithGenericMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetDriveAccDec : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDriveAccDec() {
-      ::grpc::Service::MarkMethodGeneric(25);
+      ::grpc::Service::MarkMethodGeneric(27);
     }
     ~WithGenericMethod_SetDriveAccDec() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3244,7 +3913,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::MarkMethodGeneric(26);
+      ::grpc::Service::MarkMethodGeneric(28);
     }
     ~WithGenericMethod_SetDriveInterpolatorOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3261,7 +3930,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::MarkMethodGeneric(27);
+      ::grpc::Service::MarkMethodGeneric(29);
     }
     ~WithGenericMethod_SetRotationInterpolatorParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3273,12 +3942,97 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetRotationControllerType() {
+      ::grpc::Service::MarkMethodGeneric(30);
+    }
+    ~WithGenericMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_TurnLightOnOff() {
+      ::grpc::Service::MarkMethodGeneric(31);
+    }
+    ~WithGenericMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_TurnBuzzOnOff() {
+      ::grpc::Service::MarkMethodGeneric(32);
+    }
+    ~WithGenericMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetRobotZeroCount() {
+      ::grpc::Service::MarkMethodGeneric(33);
+    }
+    ~WithGenericMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::MarkMethodGeneric(34);
+    }
+    ~WithGenericMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetRotationTorqueMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRotationTorqueMode() {
-      ::grpc::Service::MarkMethodGeneric(28);
+      ::grpc::Service::MarkMethodGeneric(35);
     }
     ~WithGenericMethod_SetRotationTorqueMode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3295,7 +4049,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetControlParam() {
-      ::grpc::Service::MarkMethodGeneric(29);
+      ::grpc::Service::MarkMethodGeneric(36);
     }
     ~WithGenericMethod_SetControlParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3307,12 +4061,29 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetControlParam() {
+      ::grpc::Service::MarkMethodGeneric(37);
+    }
+    ~WithGenericMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_StartRTLogging : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_StartRTLogging() {
-      ::grpc::Service::MarkMethodGeneric(30);
+      ::grpc::Service::MarkMethodGeneric(38);
     }
     ~WithGenericMethod_StartRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3329,7 +4100,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_EndRTLogging() {
-      ::grpc::Service::MarkMethodGeneric(31);
+      ::grpc::Service::MarkMethodGeneric(39);
     }
     ~WithGenericMethod_EndRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3346,7 +4117,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetLoggerBuffer() {
-      ::grpc::Service::MarkMethodGeneric(32);
+      ::grpc::Service::MarkMethodGeneric(40);
     }
     ~WithGenericMethod_SetLoggerBuffer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3363,7 +4134,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_RTLoggerSave() {
-      ::grpc::Service::MarkMethodGeneric(33);
+      ::grpc::Service::MarkMethodGeneric(41);
     }
     ~WithGenericMethod_RTLoggerSave() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3735,12 +4506,32 @@ class GRPCMobyTask final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetUSSensorData() {
+      ::grpc::Service::MarkMethodRaw(18);
+    }
+    ~WithRawMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetUSSensorData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetBMSData() {
-      ::grpc::Service::MarkMethodRaw(18);
+      ::grpc::Service::MarkMethodRaw(19);
     }
     ~WithRawMethod_GetBMSData() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3751,7 +4542,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetBMSData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3760,7 +4551,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetStepControl() {
-      ::grpc::Service::MarkMethodRaw(19);
+      ::grpc::Service::MarkMethodRaw(20);
     }
     ~WithRawMethod_SetStepControl() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3771,7 +4562,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetStepControl(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3780,7 +4571,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_StopMotion() {
-      ::grpc::Service::MarkMethodRaw(20);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_StopMotion() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3791,7 +4582,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStopMotion(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3800,7 +4591,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRotationAngleDeg() {
-      ::grpc::Service::MarkMethodRaw(21);
+      ::grpc::Service::MarkMethodRaw(22);
     }
     ~WithRawMethod_SetRotationAngleDeg() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3811,7 +4602,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationAngleDeg(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3820,7 +4611,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DriveWheel() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_DriveWheel() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3831,7 +4622,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDriveWheel(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3840,7 +4631,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(24);
     }
     ~WithRawMethod_SetZeroPosAsCurrentPos() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3851,7 +4642,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetZeroPosAsCurrentPos(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3860,7 +4651,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRotationVelAcc() {
-      ::grpc::Service::MarkMethodRaw(24);
+      ::grpc::Service::MarkMethodRaw(25);
     }
     ~WithRawMethod_SetRotationVelAcc() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3871,7 +4662,27 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationVelAcc(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetRotationInterpolator() {
+      ::grpc::Service::MarkMethodRaw(26);
+    }
+    ~WithRawMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRotationInterpolator(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3880,7 +4691,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDriveAccDec() {
-      ::grpc::Service::MarkMethodRaw(25);
+      ::grpc::Service::MarkMethodRaw(27);
     }
     ~WithRawMethod_SetDriveAccDec() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3891,7 +4702,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDriveAccDec(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3900,7 +4711,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::MarkMethodRaw(26);
+      ::grpc::Service::MarkMethodRaw(28);
     }
     ~WithRawMethod_SetDriveInterpolatorOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3911,7 +4722,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDriveInterpolatorOnOff(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3920,7 +4731,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::MarkMethodRaw(27);
+      ::grpc::Service::MarkMethodRaw(29);
     }
     ~WithRawMethod_SetRotationInterpolatorParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3931,7 +4742,107 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationInterpolatorParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetRotationControllerType() {
+      ::grpc::Service::MarkMethodRaw(30);
+    }
+    ~WithRawMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRotationControllerType(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_TurnLightOnOff() {
+      ::grpc::Service::MarkMethodRaw(31);
+    }
+    ~WithRawMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTurnLightOnOff(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_TurnBuzzOnOff() {
+      ::grpc::Service::MarkMethodRaw(32);
+    }
+    ~WithRawMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTurnBuzzOnOff(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetRobotZeroCount() {
+      ::grpc::Service::MarkMethodRaw(33);
+    }
+    ~WithRawMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRobotZeroCount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::MarkMethodRaw(34);
+    }
+    ~WithRawMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRobotZeroAsCurrent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3940,7 +4851,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRotationTorqueMode() {
-      ::grpc::Service::MarkMethodRaw(28);
+      ::grpc::Service::MarkMethodRaw(35);
     }
     ~WithRawMethod_SetRotationTorqueMode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3951,7 +4862,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRotationTorqueMode(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3960,7 +4871,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetControlParam() {
-      ::grpc::Service::MarkMethodRaw(29);
+      ::grpc::Service::MarkMethodRaw(36);
     }
     ~WithRawMethod_SetControlParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3971,7 +4882,27 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetControlParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetControlParam() {
+      ::grpc::Service::MarkMethodRaw(37);
+    }
+    ~WithRawMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetControlParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3980,7 +4911,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_StartRTLogging() {
-      ::grpc::Service::MarkMethodRaw(30);
+      ::grpc::Service::MarkMethodRaw(38);
     }
     ~WithRawMethod_StartRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3991,7 +4922,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStartRTLogging(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4000,7 +4931,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_EndRTLogging() {
-      ::grpc::Service::MarkMethodRaw(31);
+      ::grpc::Service::MarkMethodRaw(39);
     }
     ~WithRawMethod_EndRTLogging() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4011,7 +4942,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestEndRTLogging(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4020,7 +4951,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetLoggerBuffer() {
-      ::grpc::Service::MarkMethodRaw(32);
+      ::grpc::Service::MarkMethodRaw(40);
     }
     ~WithRawMethod_SetLoggerBuffer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4031,7 +4962,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetLoggerBuffer(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4040,7 +4971,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_RTLoggerSave() {
-      ::grpc::Service::MarkMethodRaw(33);
+      ::grpc::Service::MarkMethodRaw(41);
     }
     ~WithRawMethod_RTLoggerSave() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4051,7 +4982,7 @@ class GRPCMobyTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRTLoggerSave(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4505,12 +5436,37 @@ class GRPCMobyTask final {
     virtual void GetIRSensorData(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_GetUSSensorData() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(18,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetUSSensorData(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetUSSensorData(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetBMSData() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(18,
+      ::grpc::Service::experimental().MarkMethodRawCallback(19,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4535,7 +5491,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetStepControl() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(19,
+      ::grpc::Service::experimental().MarkMethodRawCallback(20,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4560,7 +5516,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_StopMotion() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(20,
+      ::grpc::Service::experimental().MarkMethodRawCallback(21,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4585,7 +5541,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetRotationAngleDeg() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(21,
+      ::grpc::Service::experimental().MarkMethodRawCallback(22,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4610,7 +5566,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_DriveWheel() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(22,
+      ::grpc::Service::experimental().MarkMethodRawCallback(23,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4635,7 +5591,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(23,
+      ::grpc::Service::experimental().MarkMethodRawCallback(24,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4660,7 +5616,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetRotationVelAcc() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(24,
+      ::grpc::Service::experimental().MarkMethodRawCallback(25,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4680,12 +5636,37 @@ class GRPCMobyTask final {
     virtual void SetRotationVelAcc(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_SetRotationInterpolator() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(26,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->SetRotationInterpolator(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_SetDriveAccDec : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetDriveAccDec() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(25,
+      ::grpc::Service::experimental().MarkMethodRawCallback(27,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4710,7 +5691,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(26,
+      ::grpc::Service::experimental().MarkMethodRawCallback(28,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4735,7 +5716,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(27,
+      ::grpc::Service::experimental().MarkMethodRawCallback(29,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4755,12 +5736,137 @@ class GRPCMobyTask final {
     virtual void SetRotationInterpolatorParam(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_SetRotationControllerType() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(30,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->SetRotationControllerType(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_TurnLightOnOff() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(31,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->TurnLightOnOff(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_TurnBuzzOnOff() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(32,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->TurnBuzzOnOff(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_GetRobotZeroCount() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(33,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetRobotZeroCount(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(34,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->SetRobotZeroAsCurrent(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_SetRotationTorqueMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetRotationTorqueMode() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(28,
+      ::grpc::Service::experimental().MarkMethodRawCallback(35,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4785,7 +5891,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetControlParam() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(29,
+      ::grpc::Service::experimental().MarkMethodRawCallback(36,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4805,12 +5911,37 @@ class GRPCMobyTask final {
     virtual void SetControlParam(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_GetControlParam() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(37,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetControlParam(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetControlParam(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_StartRTLogging : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_StartRTLogging() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(30,
+      ::grpc::Service::experimental().MarkMethodRawCallback(38,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4835,7 +5966,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_EndRTLogging() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(31,
+      ::grpc::Service::experimental().MarkMethodRawCallback(39,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4860,7 +5991,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetLoggerBuffer() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(32,
+      ::grpc::Service::experimental().MarkMethodRawCallback(40,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4885,7 +6016,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_RTLoggerSave() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(33,
+      ::grpc::Service::experimental().MarkMethodRawCallback(41,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5265,12 +6396,32 @@ class GRPCMobyTask final {
     virtual ::grpc::Status StreamedGetIRSensorData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::Empty,::GRPCMoby::IRData>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetUSSensorData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetUSSensorData() {
+      ::grpc::Service::MarkMethodStreamed(18,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::USData>(std::bind(&WithStreamedUnaryMethod_GetUSSensorData<BaseClass>::StreamedGetUSSensorData, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetUSSensorData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetUSSensorData(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::USData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetUSSensorData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::Empty,::GRPCMoby::USData>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetBMSData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetBMSData() {
-      ::grpc::Service::MarkMethodStreamed(18,
+      ::grpc::Service::MarkMethodStreamed(19,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::BMSData>(std::bind(&WithStreamedUnaryMethod_GetBMSData<BaseClass>::StreamedGetBMSData, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetBMSData() override {
@@ -5290,7 +6441,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetStepControl() {
-      ::grpc::Service::MarkMethodStreamed(19,
+      ::grpc::Service::MarkMethodStreamed(20,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::TargetVel, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetStepControl<BaseClass>::StreamedSetStepControl, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetStepControl() override {
@@ -5310,7 +6461,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_StopMotion() {
-      ::grpc::Service::MarkMethodStreamed(20,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_StopMotion<BaseClass>::StreamedStopMotion, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_StopMotion() override {
@@ -5330,7 +6481,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRotationAngleDeg() {
-      ::grpc::Service::MarkMethodStreamed(21,
+      ::grpc::Service::MarkMethodStreamed(22,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationAngleDeg<BaseClass>::StreamedSetRotationAngleDeg, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetRotationAngleDeg() override {
@@ -5350,7 +6501,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DriveWheel() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_DriveWheel<BaseClass>::StreamedDriveWheel, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_DriveWheel() override {
@@ -5370,7 +6521,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetZeroPosAsCurrentPos() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(24,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetZeroPosAsCurrentPos<BaseClass>::StreamedSetZeroPosAsCurrentPos, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetZeroPosAsCurrentPos() override {
@@ -5390,7 +6541,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRotationVelAcc() {
-      ::grpc::Service::MarkMethodStreamed(24,
+      ::grpc::Service::MarkMethodStreamed(25,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationVelAcc<BaseClass>::StreamedSetRotationVelAcc, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetRotationVelAcc() override {
@@ -5405,12 +6556,32 @@ class GRPCMobyTask final {
     virtual ::grpc::Status StreamedSetRotationVelAcc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::DoubleVals,::GRPCMoby::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetRotationInterpolator : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetRotationInterpolator() {
+      ::grpc::Service::MarkMethodStreamed(26,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationInterpolator<BaseClass>::StreamedSetRotationInterpolator, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SetRotationInterpolator() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetRotationInterpolator(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetRotationInterpolator(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::IntVal,::GRPCMoby::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetDriveAccDec : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDriveAccDec() {
-      ::grpc::Service::MarkMethodStreamed(25,
+      ::grpc::Service::MarkMethodStreamed(27,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetDriveAccDec<BaseClass>::StreamedSetDriveAccDec, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetDriveAccDec() override {
@@ -5430,7 +6601,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDriveInterpolatorOnOff() {
-      ::grpc::Service::MarkMethodStreamed(26,
+      ::grpc::Service::MarkMethodStreamed(28,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetDriveInterpolatorOnOff<BaseClass>::StreamedSetDriveInterpolatorOnOff, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetDriveInterpolatorOnOff() override {
@@ -5450,7 +6621,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRotationInterpolatorParam() {
-      ::grpc::Service::MarkMethodStreamed(27,
+      ::grpc::Service::MarkMethodStreamed(29,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationInterpolatorParam<BaseClass>::StreamedSetRotationInterpolatorParam, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetRotationInterpolatorParam() override {
@@ -5465,12 +6636,112 @@ class GRPCMobyTask final {
     virtual ::grpc::Status StreamedSetRotationInterpolatorParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::DoubleVals,::GRPCMoby::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetRotationControllerType : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetRotationControllerType() {
+      ::grpc::Service::MarkMethodStreamed(30,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationControllerType<BaseClass>::StreamedSetRotationControllerType, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SetRotationControllerType() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetRotationControllerType(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetRotationControllerType(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::IntVal,::GRPCMoby::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_TurnLightOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_TurnLightOnOff() {
+      ::grpc::Service::MarkMethodStreamed(31,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_TurnLightOnOff<BaseClass>::StreamedTurnLightOnOff, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_TurnLightOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status TurnLightOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedTurnLightOnOff(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::BoolVal,::GRPCMoby::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_TurnBuzzOnOff : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_TurnBuzzOnOff() {
+      ::grpc::Service::MarkMethodStreamed(32,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_TurnBuzzOnOff<BaseClass>::StreamedTurnBuzzOnOff, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_TurnBuzzOnOff() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status TurnBuzzOnOff(::grpc::ServerContext* /*context*/, const ::GRPCMoby::BoolVal* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedTurnBuzzOnOff(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::BoolVal,::GRPCMoby::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetRobotZeroCount : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetRobotZeroCount() {
+      ::grpc::Service::MarkMethodStreamed(33,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::RobotZeroCount>(std::bind(&WithStreamedUnaryMethod_GetRobotZeroCount<BaseClass>::StreamedGetRobotZeroCount, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetRobotZeroCount() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetRobotZeroCount(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::RobotZeroCount* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetRobotZeroCount(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::Empty,::GRPCMoby::RobotZeroCount>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetRobotZeroAsCurrent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetRobotZeroAsCurrent() {
+      ::grpc::Service::MarkMethodStreamed(34,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRobotZeroAsCurrent<BaseClass>::StreamedSetRobotZeroAsCurrent, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SetRobotZeroAsCurrent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetRobotZeroAsCurrent(::grpc::ServerContext* /*context*/, const ::GRPCMoby::Empty* /*request*/, ::GRPCMoby::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetRobotZeroAsCurrent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::Empty,::GRPCMoby::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetRotationTorqueMode : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRotationTorqueMode() {
-      ::grpc::Service::MarkMethodStreamed(28,
+      ::grpc::Service::MarkMethodStreamed(35,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetRotationTorqueMode<BaseClass>::StreamedSetRotationTorqueMode, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetRotationTorqueMode() override {
@@ -5490,7 +6761,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetControlParam() {
-      ::grpc::Service::MarkMethodStreamed(29,
+      ::grpc::Service::MarkMethodStreamed(36,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::RotationGain, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetControlParam<BaseClass>::StreamedSetControlParam, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetControlParam() override {
@@ -5505,12 +6776,32 @@ class GRPCMobyTask final {
     virtual ::grpc::Status StreamedSetControlParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::RotationGain,::GRPCMoby::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetControlParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetControlParam() {
+      ::grpc::Service::MarkMethodStreamed(37,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::IntVal, ::GRPCMoby::RotationGain>(std::bind(&WithStreamedUnaryMethod_GetControlParam<BaseClass>::StreamedGetControlParam, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetControlParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetControlParam(::grpc::ServerContext* /*context*/, const ::GRPCMoby::IntVal* /*request*/, ::GRPCMoby::RotationGain* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetControlParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::IntVal,::GRPCMoby::RotationGain>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_StartRTLogging : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_StartRTLogging() {
-      ::grpc::Service::MarkMethodStreamed(30,
+      ::grpc::Service::MarkMethodStreamed(38,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_StartRTLogging<BaseClass>::StreamedStartRTLogging, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_StartRTLogging() override {
@@ -5530,7 +6821,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_EndRTLogging() {
-      ::grpc::Service::MarkMethodStreamed(31,
+      ::grpc::Service::MarkMethodStreamed(39,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_EndRTLogging<BaseClass>::StreamedEndRTLogging, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_EndRTLogging() override {
@@ -5550,7 +6841,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetLoggerBuffer() {
-      ::grpc::Service::MarkMethodStreamed(32,
+      ::grpc::Service::MarkMethodStreamed(40,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::IntVals, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_SetLoggerBuffer<BaseClass>::StreamedSetLoggerBuffer, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetLoggerBuffer() override {
@@ -5570,7 +6861,7 @@ class GRPCMobyTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_RTLoggerSave() {
-      ::grpc::Service::MarkMethodStreamed(33,
+      ::grpc::Service::MarkMethodStreamed(41,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCMoby::Empty, ::GRPCMoby::Empty>(std::bind(&WithStreamedUnaryMethod_RTLoggerSave<BaseClass>::StreamedRTLoggerSave, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_RTLoggerSave() override {
@@ -5584,9 +6875,9 @@ class GRPCMobyTask final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRTLoggerSave(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCMoby::Empty,::GRPCMoby::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_GetMobyTxData<WithStreamedUnaryMethod_GetMobyRxData<WithStreamedUnaryMethod_GetMobyState<WithStreamedUnaryMethod_GetMobyErrorState<WithStreamedUnaryMethod_Recover<WithStreamedUnaryMethod_GetMobyPose<WithStreamedUnaryMethod_GetMobyVel<WithStreamedUnaryMethod_ResetMobyPose<WithStreamedUnaryMethod_GetRotationAngleDeg<WithStreamedUnaryMethod_GetDriveSpeed<WithStreamedUnaryMethod_GetTargetVel<WithStreamedUnaryMethod_GetRotationZeroCount<WithStreamedUnaryMethod_GetCMode<WithStreamedUnaryMethod_GetGyroData<WithStreamedUnaryMethod_ResetGyroSensor<WithStreamedUnaryMethod_UseGyroForOdom<WithStreamedUnaryMethod_GetGyroFullData<WithStreamedUnaryMethod_GetIRSensorData<WithStreamedUnaryMethod_GetBMSData<WithStreamedUnaryMethod_SetStepControl<WithStreamedUnaryMethod_StopMotion<WithStreamedUnaryMethod_SetRotationAngleDeg<WithStreamedUnaryMethod_DriveWheel<WithStreamedUnaryMethod_SetZeroPosAsCurrentPos<WithStreamedUnaryMethod_SetRotationVelAcc<WithStreamedUnaryMethod_SetDriveAccDec<WithStreamedUnaryMethod_SetDriveInterpolatorOnOff<WithStreamedUnaryMethod_SetRotationInterpolatorParam<WithStreamedUnaryMethod_SetRotationTorqueMode<WithStreamedUnaryMethod_SetControlParam<WithStreamedUnaryMethod_StartRTLogging<WithStreamedUnaryMethod_EndRTLogging<WithStreamedUnaryMethod_SetLoggerBuffer<WithStreamedUnaryMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_GetMobyTxData<WithStreamedUnaryMethod_GetMobyRxData<WithStreamedUnaryMethod_GetMobyState<WithStreamedUnaryMethod_GetMobyErrorState<WithStreamedUnaryMethod_Recover<WithStreamedUnaryMethod_GetMobyPose<WithStreamedUnaryMethod_GetMobyVel<WithStreamedUnaryMethod_ResetMobyPose<WithStreamedUnaryMethod_GetRotationAngleDeg<WithStreamedUnaryMethod_GetDriveSpeed<WithStreamedUnaryMethod_GetTargetVel<WithStreamedUnaryMethod_GetRotationZeroCount<WithStreamedUnaryMethod_GetCMode<WithStreamedUnaryMethod_GetGyroData<WithStreamedUnaryMethod_ResetGyroSensor<WithStreamedUnaryMethod_UseGyroForOdom<WithStreamedUnaryMethod_GetGyroFullData<WithStreamedUnaryMethod_GetIRSensorData<WithStreamedUnaryMethod_GetUSSensorData<WithStreamedUnaryMethod_GetBMSData<WithStreamedUnaryMethod_SetStepControl<WithStreamedUnaryMethod_StopMotion<WithStreamedUnaryMethod_SetRotationAngleDeg<WithStreamedUnaryMethod_DriveWheel<WithStreamedUnaryMethod_SetZeroPosAsCurrentPos<WithStreamedUnaryMethod_SetRotationVelAcc<WithStreamedUnaryMethod_SetRotationInterpolator<WithStreamedUnaryMethod_SetDriveAccDec<WithStreamedUnaryMethod_SetDriveInterpolatorOnOff<WithStreamedUnaryMethod_SetRotationInterpolatorParam<WithStreamedUnaryMethod_SetRotationControllerType<WithStreamedUnaryMethod_TurnLightOnOff<WithStreamedUnaryMethod_TurnBuzzOnOff<WithStreamedUnaryMethod_GetRobotZeroCount<WithStreamedUnaryMethod_SetRobotZeroAsCurrent<WithStreamedUnaryMethod_SetRotationTorqueMode<WithStreamedUnaryMethod_SetControlParam<WithStreamedUnaryMethod_GetControlParam<WithStreamedUnaryMethod_StartRTLogging<WithStreamedUnaryMethod_EndRTLogging<WithStreamedUnaryMethod_SetLoggerBuffer<WithStreamedUnaryMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetMobyTxData<WithStreamedUnaryMethod_GetMobyRxData<WithStreamedUnaryMethod_GetMobyState<WithStreamedUnaryMethod_GetMobyErrorState<WithStreamedUnaryMethod_Recover<WithStreamedUnaryMethod_GetMobyPose<WithStreamedUnaryMethod_GetMobyVel<WithStreamedUnaryMethod_ResetMobyPose<WithStreamedUnaryMethod_GetRotationAngleDeg<WithStreamedUnaryMethod_GetDriveSpeed<WithStreamedUnaryMethod_GetTargetVel<WithStreamedUnaryMethod_GetRotationZeroCount<WithStreamedUnaryMethod_GetCMode<WithStreamedUnaryMethod_GetGyroData<WithStreamedUnaryMethod_ResetGyroSensor<WithStreamedUnaryMethod_UseGyroForOdom<WithStreamedUnaryMethod_GetGyroFullData<WithStreamedUnaryMethod_GetIRSensorData<WithStreamedUnaryMethod_GetBMSData<WithStreamedUnaryMethod_SetStepControl<WithStreamedUnaryMethod_StopMotion<WithStreamedUnaryMethod_SetRotationAngleDeg<WithStreamedUnaryMethod_DriveWheel<WithStreamedUnaryMethod_SetZeroPosAsCurrentPos<WithStreamedUnaryMethod_SetRotationVelAcc<WithStreamedUnaryMethod_SetDriveAccDec<WithStreamedUnaryMethod_SetDriveInterpolatorOnOff<WithStreamedUnaryMethod_SetRotationInterpolatorParam<WithStreamedUnaryMethod_SetRotationTorqueMode<WithStreamedUnaryMethod_SetControlParam<WithStreamedUnaryMethod_StartRTLogging<WithStreamedUnaryMethod_EndRTLogging<WithStreamedUnaryMethod_SetLoggerBuffer<WithStreamedUnaryMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_GetMobyTxData<WithStreamedUnaryMethod_GetMobyRxData<WithStreamedUnaryMethod_GetMobyState<WithStreamedUnaryMethod_GetMobyErrorState<WithStreamedUnaryMethod_Recover<WithStreamedUnaryMethod_GetMobyPose<WithStreamedUnaryMethod_GetMobyVel<WithStreamedUnaryMethod_ResetMobyPose<WithStreamedUnaryMethod_GetRotationAngleDeg<WithStreamedUnaryMethod_GetDriveSpeed<WithStreamedUnaryMethod_GetTargetVel<WithStreamedUnaryMethod_GetRotationZeroCount<WithStreamedUnaryMethod_GetCMode<WithStreamedUnaryMethod_GetGyroData<WithStreamedUnaryMethod_ResetGyroSensor<WithStreamedUnaryMethod_UseGyroForOdom<WithStreamedUnaryMethod_GetGyroFullData<WithStreamedUnaryMethod_GetIRSensorData<WithStreamedUnaryMethod_GetUSSensorData<WithStreamedUnaryMethod_GetBMSData<WithStreamedUnaryMethod_SetStepControl<WithStreamedUnaryMethod_StopMotion<WithStreamedUnaryMethod_SetRotationAngleDeg<WithStreamedUnaryMethod_DriveWheel<WithStreamedUnaryMethod_SetZeroPosAsCurrentPos<WithStreamedUnaryMethod_SetRotationVelAcc<WithStreamedUnaryMethod_SetRotationInterpolator<WithStreamedUnaryMethod_SetDriveAccDec<WithStreamedUnaryMethod_SetDriveInterpolatorOnOff<WithStreamedUnaryMethod_SetRotationInterpolatorParam<WithStreamedUnaryMethod_SetRotationControllerType<WithStreamedUnaryMethod_TurnLightOnOff<WithStreamedUnaryMethod_TurnBuzzOnOff<WithStreamedUnaryMethod_GetRobotZeroCount<WithStreamedUnaryMethod_SetRobotZeroAsCurrent<WithStreamedUnaryMethod_SetRotationTorqueMode<WithStreamedUnaryMethod_SetControlParam<WithStreamedUnaryMethod_GetControlParam<WithStreamedUnaryMethod_StartRTLogging<WithStreamedUnaryMethod_EndRTLogging<WithStreamedUnaryMethod_SetLoggerBuffer<WithStreamedUnaryMethod_RTLoggerSave<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GRPCMoby

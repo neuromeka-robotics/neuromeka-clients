@@ -39,6 +39,11 @@ class GRPCECatTaskStub(object):
                 request_serializer=EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
                 response_deserializer=EtherCATCommgRPCServer__pb2.IntVals.FromString,
                 )
+        self.IsServoOn = channel.unary_unary(
+                '/GRPCECat.GRPCECatTask/IsServoOn',
+                request_serializer=EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
+                response_deserializer=EtherCATCommgRPCServer__pb2.IntVals.FromString,
+                )
         self.SetServoOnOff = channel.unary_unary(
                 '/GRPCECat.GRPCECatTask/SetServoOnOff',
                 request_serializer=EtherCATCommgRPCServer__pb2.ServoIndex.SerializeToString,
@@ -104,10 +109,15 @@ class GRPCECatTaskStub(object):
                 request_serializer=EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
                 response_deserializer=EtherCATCommgRPCServer__pb2.IOBoardRx.FromString,
                 )
-        self.SetNRMKEndtoolOutput = channel.unary_unary(
-                '/GRPCECat.GRPCECatTask/SetNRMKEndtoolOutput',
+        self.SetNRMKEndtoolRx = channel.unary_unary(
+                '/GRPCECat.GRPCECatTask/SetNRMKEndtoolRx',
                 request_serializer=EtherCATCommgRPCServer__pb2.EndtoolRx.SerializeToString,
                 response_deserializer=EtherCATCommgRPCServer__pb2.Empty.FromString,
+                )
+        self.GetNRMKEndtoolRx = channel.unary_unary(
+                '/GRPCECat.GRPCECatTask/GetNRMKEndtoolRx',
+                request_serializer=EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
+                response_deserializer=EtherCATCommgRPCServer__pb2.EndtoolRx.FromString,
                 )
         self.GetNRMKEndtoolInput = channel.unary_unary(
                 '/GRPCECat.GRPCECatTask/GetNRMKEndtoolInput',
@@ -245,6 +255,12 @@ class GRPCECatTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def IsServoOn(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetServoOnOff(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -325,9 +341,15 @@ class GRPCECatTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SetNRMKEndtoolOutput(self, request, context):
+    def SetNRMKEndtoolRx(self, request, context):
         """Read and Write PDOs (Neuromeka Endtool)
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetNRMKEndtoolRx(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -484,6 +506,11 @@ def add_GRPCECatTaskServicer_to_server(servicer, server):
                     request_deserializer=EtherCATCommgRPCServer__pb2.Empty.FromString,
                     response_serializer=EtherCATCommgRPCServer__pb2.IntVals.SerializeToString,
             ),
+            'IsServoOn': grpc.unary_unary_rpc_method_handler(
+                    servicer.IsServoOn,
+                    request_deserializer=EtherCATCommgRPCServer__pb2.Empty.FromString,
+                    response_serializer=EtherCATCommgRPCServer__pb2.IntVals.SerializeToString,
+            ),
             'SetServoOnOff': grpc.unary_unary_rpc_method_handler(
                     servicer.SetServoOnOff,
                     request_deserializer=EtherCATCommgRPCServer__pb2.ServoIndex.FromString,
@@ -549,10 +576,15 @@ def add_GRPCECatTaskServicer_to_server(servicer, server):
                     request_deserializer=EtherCATCommgRPCServer__pb2.Empty.FromString,
                     response_serializer=EtherCATCommgRPCServer__pb2.IOBoardRx.SerializeToString,
             ),
-            'SetNRMKEndtoolOutput': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetNRMKEndtoolOutput,
+            'SetNRMKEndtoolRx': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetNRMKEndtoolRx,
                     request_deserializer=EtherCATCommgRPCServer__pb2.EndtoolRx.FromString,
                     response_serializer=EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'GetNRMKEndtoolRx': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetNRMKEndtoolRx,
+                    request_deserializer=EtherCATCommgRPCServer__pb2.Empty.FromString,
+                    response_serializer=EtherCATCommgRPCServer__pb2.EndtoolRx.SerializeToString,
             ),
             'GetNRMKEndtoolInput': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNRMKEndtoolInput,
@@ -744,6 +776,23 @@ class GRPCECatTask(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/GRPCECat.GRPCECatTask/IsSystemReady',
+            EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
+            EtherCATCommgRPCServer__pb2.IntVals.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def IsServoOn(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCECat.GRPCECatTask/IsServoOn',
             EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
             EtherCATCommgRPCServer__pb2.IntVals.FromString,
             options, channel_credentials,
@@ -971,7 +1020,7 @@ class GRPCECatTask(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def SetNRMKEndtoolOutput(request,
+    def SetNRMKEndtoolRx(request,
             target,
             options=(),
             channel_credentials=None,
@@ -981,9 +1030,26 @@ class GRPCECatTask(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GRPCECat.GRPCECatTask/SetNRMKEndtoolOutput',
+        return grpc.experimental.unary_unary(request, target, '/GRPCECat.GRPCECatTask/SetNRMKEndtoolRx',
             EtherCATCommgRPCServer__pb2.EndtoolRx.SerializeToString,
             EtherCATCommgRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetNRMKEndtoolRx(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCECat.GRPCECatTask/GetNRMKEndtoolRx',
+            EtherCATCommgRPCServer__pb2.Empty.SerializeToString,
+            EtherCATCommgRPCServer__pb2.EndtoolRx.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

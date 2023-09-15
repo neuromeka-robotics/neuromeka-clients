@@ -69,10 +69,18 @@ class ZeroCountDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ZeroCount> _instance;
 } _ZeroCount_default_instance_;
+class RobotZeroCountDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RobotZeroCount> _instance;
+} _RobotZeroCount_default_instance_;
 class IRDataDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<IRData> _instance;
 } _IRData_default_instance_;
+class USDataDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<USData> _instance;
+} _USData_default_instance_;
 class BMSDataDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<BMSData> _instance;
@@ -453,6 +461,20 @@ static void InitDefaultsscc_info_MotorDriverTx_MobygRPCServer_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MotorDriverTx_MobygRPCServer_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_MotorDriverTx_MobygRPCServer_2eproto}, {}};
 
+static void InitDefaultsscc_info_RobotZeroCount_MobygRPCServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::GRPCMoby::_RobotZeroCount_default_instance_;
+    new (ptr) ::GRPCMoby::RobotZeroCount();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::GRPCMoby::RobotZeroCount::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotZeroCount_MobygRPCServer_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_RobotZeroCount_MobygRPCServer_2eproto}, {}};
+
 static void InitDefaultsscc_info_RotationGain_MobygRPCServer_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -495,6 +517,20 @@ static void InitDefaultsscc_info_TargetVel_MobygRPCServer_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TargetVel_MobygRPCServer_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_TargetVel_MobygRPCServer_2eproto}, {}};
 
+static void InitDefaultsscc_info_USData_MobygRPCServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::GRPCMoby::_USData_default_instance_;
+    new (ptr) ::GRPCMoby::USData();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::GRPCMoby::USData::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_USData_MobygRPCServer_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_USData_MobygRPCServer_2eproto}, {}};
+
 static void InitDefaultsscc_info_VelAccBoundary_MobygRPCServer_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -523,7 +559,7 @@ static void InitDefaultsscc_info_ZeroCount_MobygRPCServer_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ZeroCount_MobygRPCServer_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_ZeroCount_MobygRPCServer_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_MobygRPCServer_2eproto[28];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_MobygRPCServer_2eproto[30];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_MobygRPCServer_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_MobygRPCServer_2eproto = nullptr;
 
@@ -589,6 +625,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MobygRPCServer_2eproto::offset
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::MobyErrorState, errorstate_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::MobyErrorState, errorindex1_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::MobyErrorState, errorindex2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::MobyErrorState, errorindex3_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::MobyPose, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -646,6 +685,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MobygRPCServer_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::ZeroCount, bl_),
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::ZeroCount, br_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::RobotZeroCount, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::RobotZeroCount, rotation_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::RobotZeroCount, elevation_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::IRData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -660,6 +706,27 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MobygRPCServer_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::IRData, ir_right2_),
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::IRData, ir_right3_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_left1_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_left2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_left3_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_ground_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_right1_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_right2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_right3_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_front_right4_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_right1_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_right2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_right3_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_ground_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_left1_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_left2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_left3_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::USData, us_back_left4_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -669,6 +736,22 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_MobygRPCServer_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, battery_volt_),
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, pack_current1_),
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, pack_current2_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, ischarge_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, iscellovervolt_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, iscellundervolt_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, isovercurcharge_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, isovercurdischrg_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, isshortcircuit_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, isovertemperature_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, ispackovervolt_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, soc_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, soh_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, time_charge_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, time_dcharge_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, rem_capah_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, rem_capwh_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, bms_temperature_),
+  PROTOBUF_FIELD_OFFSET(::GRPCMoby::BMSData, cell_volt_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::GRPCMoby::GBool, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -765,27 +848,29 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 32, -1, sizeof(::GRPCMoby::MotorDriverRxs)},
   { 38, -1, sizeof(::GRPCMoby::MobyState)},
   { 55, -1, sizeof(::GRPCMoby::MobyErrorState)},
-  { 61, -1, sizeof(::GRPCMoby::MobyPose)},
-  { 69, -1, sizeof(::GRPCMoby::IMUData)},
-  { 83, -1, sizeof(::GRPCMoby::MobyVel)},
-  { 91, -1, sizeof(::GRPCMoby::SwerveDoubles)},
-  { 100, -1, sizeof(::GRPCMoby::TargetVel)},
-  { 108, -1, sizeof(::GRPCMoby::ZeroCount)},
-  { 117, -1, sizeof(::GRPCMoby::IRData)},
-  { 131, -1, sizeof(::GRPCMoby::BMSData)},
-  { 141, -1, sizeof(::GRPCMoby::GBool)},
-  { 148, -1, sizeof(::GRPCMoby::GInt)},
-  { 155, -1, sizeof(::GRPCMoby::GFloat)},
-  { 162, -1, sizeof(::GRPCMoby::GString)},
-  { 169, -1, sizeof(::GRPCMoby::BoolVal)},
-  { 175, -1, sizeof(::GRPCMoby::IntVal)},
-  { 181, -1, sizeof(::GRPCMoby::IntVals)},
-  { 187, -1, sizeof(::GRPCMoby::FloatVal)},
-  { 193, -1, sizeof(::GRPCMoby::FloatVals)},
-  { 199, -1, sizeof(::GRPCMoby::DoubleVal)},
-  { 205, -1, sizeof(::GRPCMoby::DoubleVals)},
-  { 211, -1, sizeof(::GRPCMoby::RotationGain)},
-  { 220, -1, sizeof(::GRPCMoby::VelAccBoundary)},
+  { 64, -1, sizeof(::GRPCMoby::MobyPose)},
+  { 72, -1, sizeof(::GRPCMoby::IMUData)},
+  { 86, -1, sizeof(::GRPCMoby::MobyVel)},
+  { 94, -1, sizeof(::GRPCMoby::SwerveDoubles)},
+  { 103, -1, sizeof(::GRPCMoby::TargetVel)},
+  { 111, -1, sizeof(::GRPCMoby::ZeroCount)},
+  { 120, -1, sizeof(::GRPCMoby::RobotZeroCount)},
+  { 127, -1, sizeof(::GRPCMoby::IRData)},
+  { 141, -1, sizeof(::GRPCMoby::USData)},
+  { 162, -1, sizeof(::GRPCMoby::BMSData)},
+  { 188, -1, sizeof(::GRPCMoby::GBool)},
+  { 195, -1, sizeof(::GRPCMoby::GInt)},
+  { 202, -1, sizeof(::GRPCMoby::GFloat)},
+  { 209, -1, sizeof(::GRPCMoby::GString)},
+  { 216, -1, sizeof(::GRPCMoby::BoolVal)},
+  { 222, -1, sizeof(::GRPCMoby::IntVal)},
+  { 228, -1, sizeof(::GRPCMoby::IntVals)},
+  { 234, -1, sizeof(::GRPCMoby::FloatVal)},
+  { 240, -1, sizeof(::GRPCMoby::FloatVals)},
+  { 246, -1, sizeof(::GRPCMoby::DoubleVal)},
+  { 252, -1, sizeof(::GRPCMoby::DoubleVals)},
+  { 258, -1, sizeof(::GRPCMoby::RotationGain)},
+  { 267, -1, sizeof(::GRPCMoby::VelAccBoundary)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -802,7 +887,9 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_SwerveDoubles_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_TargetVel_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_ZeroCount_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_RobotZeroCount_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_IRData_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_USData_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_BMSData_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_GBool_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::GRPCMoby::_GInt_default_instance_),
@@ -836,92 +923,125 @@ const char descriptor_table_protodef_MobygRPCServer_2eproto[] =
   "\n\nisHomePose\030\006 \001(\010\022\026\n\016isRotationZero\030\007 \001"
   "(\010\022\023\n\013isResetting\030\010 \001(\010\022\026\n\016isIMUAvailabl"
   "e\030\t \001(\010\022\022\n\nisCollided\030\n \001(\010\022\030\n\020isProgram"
-  "Running\030\013 \001(\010\022\026\n\016isProgramPause\030\014 \001(\010\"$\n"
-  "\016MobyErrorState\022\022\n\nerrorState\030\001 \001(\005\".\n\010M"
-  "obyPose\022\n\n\002px\030\001 \001(\001\022\n\n\002py\030\002 \001(\001\022\n\n\002pw\030\003 "
-  "\001(\001\"\245\001\n\007IMUData\022\016\n\006angleX\030\001 \001(\001\022\016\n\006angle"
-  "Y\030\002 \001(\001\022\016\n\006angleZ\030\003 \001(\001\022\021\n\tangleVelX\030\004 \001"
-  "(\001\022\021\n\tangleVelY\030\005 \001(\001\022\021\n\tangleVelZ\030\006 \001(\001"
-  "\022\017\n\007linAccX\030\007 \001(\001\022\017\n\007linAccY\030\010 \001(\001\022\017\n\007li"
-  "nAccZ\030\t \001(\001\"-\n\007MobyVel\022\n\n\002vx\030\001 \001(\001\022\n\n\002vy"
-  "\030\002 \001(\001\022\n\n\002vw\030\003 \001(\001\"\?\n\rSwerveDoubles\022\n\n\002f"
-  "l\030\001 \001(\001\022\n\n\002fr\030\002 \001(\001\022\n\n\002bl\030\003 \001(\001\022\n\n\002br\030\004 "
-  "\001(\001\"/\n\tTargetVel\022\n\n\002vx\030\001 \001(\001\022\n\n\002vy\030\002 \001(\001"
-  "\022\n\n\002vw\030\003 \001(\001\";\n\tZeroCount\022\n\n\002fl\030\001 \001(\005\022\n\n"
-  "\002fr\030\002 \001(\005\022\n\n\002bl\030\003 \001(\005\022\n\n\002br\030\004 \001(\005\"\256\001\n\006IR"
-  "Data\022\021\n\tir_front1\030\001 \001(\005\022\021\n\tir_front2\030\002 \001"
-  "(\005\022\020\n\010ir_left1\030\003 \001(\005\022\020\n\010ir_left2\030\004 \001(\005\022\020"
-  "\n\010ir_left3\030\005 \001(\005\022\017\n\007ir_rear\030\006 \001(\005\022\021\n\tir_"
-  "right1\030\007 \001(\005\022\021\n\tir_right2\030\010 \001(\005\022\021\n\tir_ri"
-  "ght3\030\t \001(\005\"t\n\007BMSData\022\022\n\nbms_status\030\001 \003("
-  "\005\022\021\n\tpack_volt\030\002 \003(\005\022\024\n\014battery_volt\030\003 \003"
-  "(\005\022\025\n\rpack_current1\030\004 \003(\005\022\025\n\rpack_curren"
-  "t2\030\005 \003(\005\"!\n\005GBool\022\013\n\003idx\030\001 \001(\005\022\013\n\003val\030\002 "
-  "\001(\010\" \n\004GInt\022\013\n\003idx\030\001 \001(\005\022\013\n\003val\030\002 \001(\005\"\"\n"
-  "\006GFloat\022\013\n\003idx\030\001 \001(\005\022\013\n\003val\030\002 \001(\002\"#\n\007GSt"
-  "ring\022\013\n\003idx\030\001 \001(\005\022\013\n\003val\030\002 \001(\t\"\026\n\007BoolVa"
-  "l\022\013\n\003val\030\001 \001(\010\"\025\n\006IntVal\022\013\n\003val\030\001 \001(\005\"\026\n"
-  "\007IntVals\022\013\n\003val\030\001 \003(\005\"\027\n\010FloatVal\022\013\n\003val"
-  "\030\001 \001(\002\"\030\n\tFloatVals\022\013\n\003val\030\001 \003(\002\"\030\n\tDoub"
-  "leVal\022\013\n\003val\030\001 \001(\001\"\031\n\nDoubleVals\022\013\n\003val\030"
-  "\001 \003(\001\">\n\014RotationGain\022\013\n\003idx\030\001 \001(\005\022\t\n\001k\030"
-  "\002 \001(\001\022\n\n\002kv\030\003 \001(\001\022\n\n\002kp\030\004 \001(\001\"9\n\016VelAccB"
-  "oundary\022\013\n\003idx\030\001 \001(\005\022\014\n\004vmax\030\002 \001(\002\022\014\n\004am"
-  "ax\030\003 \001(\0022\307\017\n\014GRPCMobyTask\022<\n\rGetMobyTxDa"
-  "ta\022\020.GRPCMoby.IntVal\032\027.GRPCMoby.MotorDri"
-  "verTx\"\000\022<\n\rGetMobyRxData\022\020.GRPCMoby.IntV"
-  "al\032\027.GRPCMoby.MotorDriverRx\"\000\0226\n\014GetMoby"
-  "State\022\017.GRPCMoby.Empty\032\023.GRPCMoby.MobySt"
-  "ate\"\000\022@\n\021GetMobyErrorState\022\017.GRPCMoby.Em"
-  "pty\032\030.GRPCMoby.MobyErrorState\"\000\022-\n\007Recov"
-  "er\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\"\000\0224"
-  "\n\013GetMobyPose\022\017.GRPCMoby.Empty\032\022.GRPCMob"
-  "y.MobyPose\"\000\0222\n\nGetMobyVel\022\017.GRPCMoby.Em"
-  "pty\032\021.GRPCMoby.MobyVel\"\000\0223\n\rResetMobyPos"
-  "e\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\"\000\022A\n"
-  "\023GetRotationAngleDeg\022\017.GRPCMoby.Empty\032\027."
-  "GRPCMoby.SwerveDoubles\"\000\022;\n\rGetDriveSpee"
-  "d\022\017.GRPCMoby.Empty\032\027.GRPCMoby.SwerveDoub"
-  "les\"\000\0226\n\014GetTargetVel\022\017.GRPCMoby.Empty\032\023"
-  ".GRPCMoby.TargetVel\"\000\022>\n\024GetRotationZero"
-  "Count\022\017.GRPCMoby.Empty\032\023.GRPCMoby.ZeroCo"
-  "unt\"\000\022/\n\010GetCMode\022\017.GRPCMoby.Empty\032\020.GRP"
-  "CMoby.IntVal\"\000\0226\n\013GetGyroData\022\017.GRPCMoby"
-  ".Empty\032\024.GRPCMoby.DoubleVals\"\000\0225\n\017ResetG"
-  "yroSensor\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Em"
-  "pty\"\000\0226\n\016UseGyroForOdom\022\021.GRPCMoby.BoolV"
-  "al\032\017.GRPCMoby.Empty\"\000\0227\n\017GetGyroFullData"
-  "\022\017.GRPCMoby.Empty\032\021.GRPCMoby.IMUData\"\000\0226"
-  "\n\017GetIRSensorData\022\017.GRPCMoby.Empty\032\020.GRP"
-  "CMoby.IRData\"\000\0222\n\nGetBMSData\022\017.GRPCMoby."
-  "Empty\032\021.GRPCMoby.BMSData\"\000\0228\n\016SetStepCon"
-  "trol\022\023.GRPCMoby.TargetVel\032\017.GRPCMoby.Emp"
-  "ty\"\000\0220\n\nStopMotion\022\017.GRPCMoby.Empty\032\017.GR"
-  "PCMoby.Empty\"\000\022A\n\023SetRotationAngleDeg\022\027."
-  "GRPCMoby.SwerveDoubles\032\017.GRPCMoby.Empty\""
-  "\000\0228\n\nDriveWheel\022\027.GRPCMoby.SwerveDoubles"
-  "\032\017.GRPCMoby.Empty\"\000\022<\n\026SetZeroPosAsCurre"
-  "ntPos\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\""
-  "\000\022<\n\021SetRotationVelAcc\022\024.GRPCMoby.Double"
-  "Vals\032\017.GRPCMoby.Empty\"\000\0229\n\016SetDriveAccDe"
-  "c\022\024.GRPCMoby.DoubleVals\032\017.GRPCMoby.Empty"
-  "\"\000\022A\n\031SetDriveInterpolatorOnOff\022\021.GRPCMo"
-  "by.BoolVal\032\017.GRPCMoby.Empty\"\000\022G\n\034SetRota"
-  "tionInterpolatorParam\022\024.GRPCMoby.DoubleV"
-  "als\032\017.GRPCMoby.Empty\"\000\022=\n\025SetRotationTor"
-  "queMode\022\021.GRPCMoby.BoolVal\032\017.GRPCMoby.Em"
-  "pty\"\000\022<\n\017SetControlParam\022\026.GRPCMoby.Rota"
-  "tionGain\032\017.GRPCMoby.Empty\"\000\0224\n\016StartRTLo"
-  "gging\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\""
-  "\000\0222\n\014EndRTLogging\022\017.GRPCMoby.Empty\032\017.GRP"
-  "CMoby.Empty\"\000\0227\n\017SetLoggerBuffer\022\021.GRPCM"
-  "oby.IntVals\032\017.GRPCMoby.Empty\"\000\0222\n\014RTLogg"
-  "erSave\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty"
-  "\"\000b\006proto3"
+  "Running\030\013 \001(\010\022\026\n\016isProgramPause\030\014 \001(\010\"c\n"
+  "\016MobyErrorState\022\022\n\nerrorState\030\001 \001(\005\022\023\n\013e"
+  "rrorIndex1\030\002 \001(\005\022\023\n\013errorIndex2\030\003 \001(\005\022\023\n"
+  "\013errorIndex3\030\004 \001(\005\".\n\010MobyPose\022\n\n\002px\030\001 \001"
+  "(\001\022\n\n\002py\030\002 \001(\001\022\n\n\002pw\030\003 \001(\001\"\245\001\n\007IMUData\022\016"
+  "\n\006angleX\030\001 \001(\001\022\016\n\006angleY\030\002 \001(\001\022\016\n\006angleZ"
+  "\030\003 \001(\001\022\021\n\tangleVelX\030\004 \001(\001\022\021\n\tangleVelY\030\005"
+  " \001(\001\022\021\n\tangleVelZ\030\006 \001(\001\022\017\n\007linAccX\030\007 \001(\001"
+  "\022\017\n\007linAccY\030\010 \001(\001\022\017\n\007linAccZ\030\t \001(\001\"-\n\007Mo"
+  "byVel\022\n\n\002vx\030\001 \001(\001\022\n\n\002vy\030\002 \001(\001\022\n\n\002vw\030\003 \001("
+  "\001\"\?\n\rSwerveDoubles\022\n\n\002fl\030\001 \001(\001\022\n\n\002fr\030\002 \001"
+  "(\001\022\n\n\002bl\030\003 \001(\001\022\n\n\002br\030\004 \001(\001\"/\n\tTargetVel\022"
+  "\n\n\002vx\030\001 \001(\001\022\n\n\002vy\030\002 \001(\001\022\n\n\002vw\030\003 \001(\001\";\n\tZ"
+  "eroCount\022\n\n\002fl\030\001 \001(\005\022\n\n\002fr\030\002 \001(\005\022\n\n\002bl\030\003"
+  " \001(\005\022\n\n\002br\030\004 \001(\005\"5\n\016RobotZeroCount\022\020\n\010ro"
+  "tation\030\001 \001(\005\022\021\n\televation\030\002 \001(\005\"\256\001\n\006IRDa"
+  "ta\022\021\n\tir_front1\030\001 \001(\005\022\021\n\tir_front2\030\002 \001(\005"
+  "\022\020\n\010ir_left1\030\003 \001(\005\022\020\n\010ir_left2\030\004 \001(\005\022\020\n\010"
+  "ir_left3\030\005 \001(\005\022\017\n\007ir_rear\030\006 \001(\005\022\021\n\tir_ri"
+  "ght1\030\007 \001(\005\022\021\n\tir_right2\030\010 \001(\005\022\021\n\tir_righ"
+  "t3\030\t \001(\005\"\211\003\n\006USData\022\026\n\016us_front_left1\030\001 "
+  "\001(\005\022\026\n\016us_front_left2\030\002 \001(\005\022\026\n\016us_front_"
+  "left3\030\003 \001(\005\022\027\n\017us_front_ground\030\004 \001(\005\022\027\n\017"
+  "us_front_right1\030\005 \001(\005\022\027\n\017us_front_right2"
+  "\030\006 \001(\005\022\027\n\017us_front_right3\030\007 \001(\005\022\027\n\017us_fr"
+  "ont_right4\030\010 \001(\005\022\026\n\016us_back_right1\030\t \001(\005"
+  "\022\026\n\016us_back_right2\030\n \001(\005\022\026\n\016us_back_righ"
+  "t3\030\013 \001(\005\022\026\n\016us_back_ground\030\014 \001(\005\022\025\n\rus_b"
+  "ack_left1\030\r \001(\005\022\025\n\rus_back_left2\030\016 \001(\005\022\025"
+  "\n\rus_back_left3\030\017 \001(\005\022\025\n\rus_back_left4\030\020"
+  " \001(\005\"\314\003\n\007BMSData\022\022\n\nbms_status\030\001 \003(\005\022\021\n\t"
+  "pack_volt\030\002 \003(\005\022\024\n\014battery_volt\030\003 \003(\005\022\025\n"
+  "\rpack_current1\030\004 \003(\005\022\025\n\rpack_current2\030\005 "
+  "\003(\005\022\020\n\010isCharge\030\006 \001(\005\022\026\n\016isCellOverVolt\030"
+  "\007 \001(\005\022\027\n\017isCellUnderVolt\030\010 \001(\005\022\027\n\017isOver"
+  "CurCharge\030\t \001(\005\022\030\n\020isOverCurDischrg\030\n \001("
+  "\005\022\026\n\016isShortCircuit\030\013 \001(\005\022\031\n\021isOverTempe"
+  "rature\030\014 \001(\005\022\026\n\016isPackOverVolt\030\r \001(\005\022\013\n\003"
+  "SOC\030\016 \001(\005\022\013\n\003SOH\030\017 \001(\005\022\023\n\013time_charge\030\020 "
+  "\001(\005\022\024\n\014time_dcharge\030\021 \001(\005\022\021\n\trem_capAh\030\022"
+  " \001(\005\022\021\n\trem_capWh\030\023 \001(\005\022\027\n\017bms_temperatu"
+  "re\030\024 \003(\005\022\021\n\tcell_volt\030\025 \003(\005\"!\n\005GBool\022\013\n\003"
+  "idx\030\001 \001(\005\022\013\n\003val\030\002 \001(\010\" \n\004GInt\022\013\n\003idx\030\001 "
+  "\001(\005\022\013\n\003val\030\002 \001(\005\"\"\n\006GFloat\022\013\n\003idx\030\001 \001(\005\022"
+  "\013\n\003val\030\002 \001(\002\"#\n\007GString\022\013\n\003idx\030\001 \001(\005\022\013\n\003"
+  "val\030\002 \001(\t\"\026\n\007BoolVal\022\013\n\003val\030\001 \001(\010\"\025\n\006Int"
+  "Val\022\013\n\003val\030\001 \001(\005\"\026\n\007IntVals\022\013\n\003val\030\001 \003(\005"
+  "\"\027\n\010FloatVal\022\013\n\003val\030\001 \001(\002\"\030\n\tFloatVals\022\013"
+  "\n\003val\030\001 \003(\002\"\030\n\tDoubleVal\022\013\n\003val\030\001 \001(\001\"\031\n"
+  "\nDoubleVals\022\013\n\003val\030\001 \003(\001\">\n\014RotationGain"
+  "\022\013\n\003idx\030\001 \001(\005\022\t\n\001k\030\002 \001(\001\022\n\n\002kv\030\003 \001(\001\022\n\n\002"
+  "kp\030\004 \001(\001\"9\n\016VelAccBoundary\022\013\n\003idx\030\001 \001(\005\022"
+  "\014\n\004vmax\030\002 \001(\002\022\014\n\004amax\030\003 \001(\0022\256\023\n\014GRPCMoby"
+  "Task\022<\n\rGetMobyTxData\022\020.GRPCMoby.IntVal\032"
+  "\027.GRPCMoby.MotorDriverTx\"\000\022<\n\rGetMobyRxD"
+  "ata\022\020.GRPCMoby.IntVal\032\027.GRPCMoby.MotorDr"
+  "iverRx\"\000\0226\n\014GetMobyState\022\017.GRPCMoby.Empt"
+  "y\032\023.GRPCMoby.MobyState\"\000\022@\n\021GetMobyError"
+  "State\022\017.GRPCMoby.Empty\032\030.GRPCMoby.MobyEr"
+  "rorState\"\000\022-\n\007Recover\022\017.GRPCMoby.Empty\032\017"
+  ".GRPCMoby.Empty\"\000\0224\n\013GetMobyPose\022\017.GRPCM"
+  "oby.Empty\032\022.GRPCMoby.MobyPose\"\000\0222\n\nGetMo"
+  "byVel\022\017.GRPCMoby.Empty\032\021.GRPCMoby.MobyVe"
+  "l\"\000\0223\n\rResetMobyPose\022\017.GRPCMoby.Empty\032\017."
+  "GRPCMoby.Empty\"\000\022A\n\023GetRotationAngleDeg\022"
+  "\017.GRPCMoby.Empty\032\027.GRPCMoby.SwerveDouble"
+  "s\"\000\022;\n\rGetDriveSpeed\022\017.GRPCMoby.Empty\032\027."
+  "GRPCMoby.SwerveDoubles\"\000\0226\n\014GetTargetVel"
+  "\022\017.GRPCMoby.Empty\032\023.GRPCMoby.TargetVel\"\000"
+  "\022>\n\024GetRotationZeroCount\022\017.GRPCMoby.Empt"
+  "y\032\023.GRPCMoby.ZeroCount\"\000\022/\n\010GetCMode\022\017.G"
+  "RPCMoby.Empty\032\020.GRPCMoby.IntVal\"\000\0226\n\013Get"
+  "GyroData\022\017.GRPCMoby.Empty\032\024.GRPCMoby.Dou"
+  "bleVals\"\000\0225\n\017ResetGyroSensor\022\017.GRPCMoby."
+  "Empty\032\017.GRPCMoby.Empty\"\000\0226\n\016UseGyroForOd"
+  "om\022\021.GRPCMoby.BoolVal\032\017.GRPCMoby.Empty\"\000"
+  "\0227\n\017GetGyroFullData\022\017.GRPCMoby.Empty\032\021.G"
+  "RPCMoby.IMUData\"\000\0226\n\017GetIRSensorData\022\017.G"
+  "RPCMoby.Empty\032\020.GRPCMoby.IRData\"\000\0226\n\017Get"
+  "USSensorData\022\017.GRPCMoby.Empty\032\020.GRPCMoby"
+  ".USData\"\000\0222\n\nGetBMSData\022\017.GRPCMoby.Empty"
+  "\032\021.GRPCMoby.BMSData\"\000\0228\n\016SetStepControl\022"
+  "\023.GRPCMoby.TargetVel\032\017.GRPCMoby.Empty\"\000\022"
+  "0\n\nStopMotion\022\017.GRPCMoby.Empty\032\017.GRPCMob"
+  "y.Empty\"\000\022A\n\023SetRotationAngleDeg\022\027.GRPCM"
+  "oby.SwerveDoubles\032\017.GRPCMoby.Empty\"\000\0228\n\n"
+  "DriveWheel\022\027.GRPCMoby.SwerveDoubles\032\017.GR"
+  "PCMoby.Empty\"\000\022<\n\026SetZeroPosAsCurrentPos"
+  "\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\"\000\022<\n\021"
+  "SetRotationVelAcc\022\024.GRPCMoby.DoubleVals\032"
+  "\017.GRPCMoby.Empty\"\000\022>\n\027SetRotationInterpo"
+  "lator\022\020.GRPCMoby.IntVal\032\017.GRPCMoby.Empty"
+  "\"\000\0229\n\016SetDriveAccDec\022\024.GRPCMoby.DoubleVa"
+  "ls\032\017.GRPCMoby.Empty\"\000\022A\n\031SetDriveInterpo"
+  "latorOnOff\022\021.GRPCMoby.BoolVal\032\017.GRPCMoby"
+  ".Empty\"\000\022G\n\034SetRotationInterpolatorParam"
+  "\022\024.GRPCMoby.DoubleVals\032\017.GRPCMoby.Empty\""
+  "\000\022@\n\031SetRotationControllerType\022\020.GRPCMob"
+  "y.IntVal\032\017.GRPCMoby.Empty\"\000\0226\n\016TurnLight"
+  "OnOff\022\021.GRPCMoby.BoolVal\032\017.GRPCMoby.Empt"
+  "y\"\000\0225\n\rTurnBuzzOnOff\022\021.GRPCMoby.BoolVal\032"
+  "\017.GRPCMoby.Empty\"\000\022@\n\021GetRobotZeroCount\022"
+  "\017.GRPCMoby.Empty\032\030.GRPCMoby.RobotZeroCou"
+  "nt\"\000\022;\n\025SetRobotZeroAsCurrent\022\017.GRPCMoby"
+  ".Empty\032\017.GRPCMoby.Empty\"\000\022=\n\025SetRotation"
+  "TorqueMode\022\021.GRPCMoby.BoolVal\032\017.GRPCMoby"
+  ".Empty\"\000\022<\n\017SetControlParam\022\026.GRPCMoby.R"
+  "otationGain\032\017.GRPCMoby.Empty\"\000\022=\n\017GetCon"
+  "trolParam\022\020.GRPCMoby.IntVal\032\026.GRPCMoby.R"
+  "otationGain\"\000\0224\n\016StartRTLogging\022\017.GRPCMo"
+  "by.Empty\032\017.GRPCMoby.Empty\"\000\0222\n\014EndRTLogg"
+  "ing\022\017.GRPCMoby.Empty\032\017.GRPCMoby.Empty\"\000\022"
+  "7\n\017SetLoggerBuffer\022\021.GRPCMoby.IntVals\032\017."
+  "GRPCMoby.Empty\"\000\0222\n\014RTLoggerSave\022\017.GRPCM"
+  "oby.Empty\032\017.GRPCMoby.Empty\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_MobygRPCServer_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_MobygRPCServer_2eproto_sccs[28] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_MobygRPCServer_2eproto_sccs[30] = {
   &scc_info_BMSData_MobygRPCServer_2eproto.base,
   &scc_info_BoolVal_MobygRPCServer_2eproto.base,
   &scc_info_DoubleVal_MobygRPCServer_2eproto.base,
@@ -945,19 +1065,21 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Mob
   &scc_info_MotorDriverRx_MobygRPCServer_2eproto.base,
   &scc_info_MotorDriverRxs_MobygRPCServer_2eproto.base,
   &scc_info_MotorDriverTx_MobygRPCServer_2eproto.base,
+  &scc_info_RobotZeroCount_MobygRPCServer_2eproto.base,
   &scc_info_RotationGain_MobygRPCServer_2eproto.base,
   &scc_info_SwerveDoubles_MobygRPCServer_2eproto.base,
   &scc_info_TargetVel_MobygRPCServer_2eproto.base,
+  &scc_info_USData_MobygRPCServer_2eproto.base,
   &scc_info_VelAccBoundary_MobygRPCServer_2eproto.base,
   &scc_info_ZeroCount_MobygRPCServer_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_MobygRPCServer_2eproto_once;
 static bool descriptor_table_MobygRPCServer_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_MobygRPCServer_2eproto = {
-  &descriptor_table_MobygRPCServer_2eproto_initialized, descriptor_table_protodef_MobygRPCServer_2eproto, "MobygRPCServer.proto", 3890,
-  &descriptor_table_MobygRPCServer_2eproto_once, descriptor_table_MobygRPCServer_2eproto_sccs, descriptor_table_MobygRPCServer_2eproto_deps, 28, 0,
+  &descriptor_table_MobygRPCServer_2eproto_initialized, descriptor_table_protodef_MobygRPCServer_2eproto, "MobygRPCServer.proto", 5236,
+  &descriptor_table_MobygRPCServer_2eproto_once, descriptor_table_MobygRPCServer_2eproto_sccs, descriptor_table_MobygRPCServer_2eproto_deps, 30, 0,
   schemas, file_default_instances, TableStruct_MobygRPCServer_2eproto::offsets,
-  file_level_metadata_MobygRPCServer_2eproto, 28, file_level_enum_descriptors_MobygRPCServer_2eproto, file_level_service_descriptors_MobygRPCServer_2eproto,
+  file_level_metadata_MobygRPCServer_2eproto, 30, file_level_enum_descriptors_MobygRPCServer_2eproto, file_level_service_descriptors_MobygRPCServer_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -3334,6 +3456,9 @@ class MobyErrorState::HasBitSetters {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MobyErrorState::kErrorStateFieldNumber;
+const int MobyErrorState::kErrorIndex1FieldNumber;
+const int MobyErrorState::kErrorIndex2FieldNumber;
+const int MobyErrorState::kErrorIndex3FieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MobyErrorState::MobyErrorState()
@@ -3345,12 +3470,16 @@ MobyErrorState::MobyErrorState(const MobyErrorState& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  errorstate_ = from.errorstate_;
+  ::memcpy(&errorstate_, &from.errorstate_,
+    static_cast<size_t>(reinterpret_cast<char*>(&errorindex3_) -
+    reinterpret_cast<char*>(&errorstate_)) + sizeof(errorindex3_));
   // @@protoc_insertion_point(copy_constructor:GRPCMoby.MobyErrorState)
 }
 
 void MobyErrorState::SharedCtor() {
-  errorstate_ = 0;
+  ::memset(&errorstate_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&errorindex3_) -
+      reinterpret_cast<char*>(&errorstate_)) + sizeof(errorindex3_));
 }
 
 MobyErrorState::~MobyErrorState() {
@@ -3376,7 +3505,9 @@ void MobyErrorState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  errorstate_ = 0;
+  ::memset(&errorstate_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&errorindex3_) -
+      reinterpret_cast<char*>(&errorstate_)) + sizeof(errorindex3_));
   _internal_metadata_.Clear();
 }
 
@@ -3392,6 +3523,27 @@ const char* MobyErrorState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           errorstate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 errorIndex1 = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          errorindex1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 errorIndex2 = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          errorindex2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 errorIndex3 = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          errorindex3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -3438,6 +3590,45 @@ bool MobyErrorState::MergePartialFromCodedStream(
         break;
       }
 
+      // int32 errorIndex1 = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &errorindex1_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 errorIndex2 = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &errorindex2_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 errorIndex3 = 4;
+      case 4: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &errorindex3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -3470,6 +3661,21 @@ void MobyErrorState::SerializeWithCachedSizes(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->errorstate(), output);
   }
 
+  // int32 errorIndex1 = 2;
+  if (this->errorindex1() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->errorindex1(), output);
+  }
+
+  // int32 errorIndex2 = 3;
+  if (this->errorindex2() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(3, this->errorindex2(), output);
+  }
+
+  // int32 errorIndex3 = 4;
+  if (this->errorindex3() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(4, this->errorindex3(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -3486,6 +3692,21 @@ void MobyErrorState::SerializeWithCachedSizes(
   // int32 errorState = 1;
   if (this->errorstate() != 0) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->errorstate(), target);
+  }
+
+  // int32 errorIndex1 = 2;
+  if (this->errorindex1() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->errorindex1(), target);
+  }
+
+  // int32 errorIndex2 = 3;
+  if (this->errorindex2() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->errorindex2(), target);
+  }
+
+  // int32 errorIndex3 = 4;
+  if (this->errorindex3() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->errorindex3(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3514,6 +3735,27 @@ size_t MobyErrorState::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->errorstate());
+  }
+
+  // int32 errorIndex1 = 2;
+  if (this->errorindex1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->errorindex1());
+  }
+
+  // int32 errorIndex2 = 3;
+  if (this->errorindex2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->errorindex2());
+  }
+
+  // int32 errorIndex3 = 4;
+  if (this->errorindex3() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->errorindex3());
   }
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
@@ -3546,6 +3788,15 @@ void MobyErrorState::MergeFrom(const MobyErrorState& from) {
   if (from.errorstate() != 0) {
     set_errorstate(from.errorstate());
   }
+  if (from.errorindex1() != 0) {
+    set_errorindex1(from.errorindex1());
+  }
+  if (from.errorindex2() != 0) {
+    set_errorindex2(from.errorindex2());
+  }
+  if (from.errorindex3() != 0) {
+    set_errorindex3(from.errorindex3());
+  }
 }
 
 void MobyErrorState::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -3574,6 +3825,9 @@ void MobyErrorState::InternalSwap(MobyErrorState* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(errorstate_, other->errorstate_);
+  swap(errorindex1_, other->errorindex1_);
+  swap(errorindex2_, other->errorindex2_);
+  swap(errorindex3_, other->errorindex3_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MobyErrorState::GetMetadata() const {
@@ -5957,6 +6211,311 @@ void ZeroCount::InternalSwap(ZeroCount* other) {
 
 // ===================================================================
 
+void RobotZeroCount::InitAsDefaultInstance() {
+}
+class RobotZeroCount::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int RobotZeroCount::kRotationFieldNumber;
+const int RobotZeroCount::kElevationFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+RobotZeroCount::RobotZeroCount()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:GRPCMoby.RobotZeroCount)
+}
+RobotZeroCount::RobotZeroCount(const RobotZeroCount& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&rotation_, &from.rotation_,
+    static_cast<size_t>(reinterpret_cast<char*>(&elevation_) -
+    reinterpret_cast<char*>(&rotation_)) + sizeof(elevation_));
+  // @@protoc_insertion_point(copy_constructor:GRPCMoby.RobotZeroCount)
+}
+
+void RobotZeroCount::SharedCtor() {
+  ::memset(&rotation_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&elevation_) -
+      reinterpret_cast<char*>(&rotation_)) + sizeof(elevation_));
+}
+
+RobotZeroCount::~RobotZeroCount() {
+  // @@protoc_insertion_point(destructor:GRPCMoby.RobotZeroCount)
+  SharedDtor();
+}
+
+void RobotZeroCount::SharedDtor() {
+}
+
+void RobotZeroCount::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RobotZeroCount& RobotZeroCount::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RobotZeroCount_MobygRPCServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RobotZeroCount::Clear() {
+// @@protoc_insertion_point(message_clear_start:GRPCMoby.RobotZeroCount)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&rotation_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&elevation_) -
+      reinterpret_cast<char*>(&rotation_)) + sizeof(elevation_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* RobotZeroCount::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 rotation = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          rotation_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 elevation = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          elevation_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool RobotZeroCount::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:GRPCMoby.RobotZeroCount)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 rotation = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &rotation_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 elevation = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &elevation_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:GRPCMoby.RobotZeroCount)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:GRPCMoby.RobotZeroCount)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void RobotZeroCount::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:GRPCMoby.RobotZeroCount)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 rotation = 1;
+  if (this->rotation() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->rotation(), output);
+  }
+
+  // int32 elevation = 2;
+  if (this->elevation() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->elevation(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:GRPCMoby.RobotZeroCount)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RobotZeroCount::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:GRPCMoby.RobotZeroCount)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 rotation = 1;
+  if (this->rotation() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->rotation(), target);
+  }
+
+  // int32 elevation = 2;
+  if (this->elevation() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->elevation(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GRPCMoby.RobotZeroCount)
+  return target;
+}
+
+size_t RobotZeroCount::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:GRPCMoby.RobotZeroCount)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 rotation = 1;
+  if (this->rotation() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->rotation());
+  }
+
+  // int32 elevation = 2;
+  if (this->elevation() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->elevation());
+  }
+
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RobotZeroCount::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:GRPCMoby.RobotZeroCount)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RobotZeroCount* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RobotZeroCount>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:GRPCMoby.RobotZeroCount)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:GRPCMoby.RobotZeroCount)
+    MergeFrom(*source);
+  }
+}
+
+void RobotZeroCount::MergeFrom(const RobotZeroCount& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:GRPCMoby.RobotZeroCount)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.rotation() != 0) {
+    set_rotation(from.rotation());
+  }
+  if (from.elevation() != 0) {
+    set_elevation(from.elevation());
+  }
+}
+
+void RobotZeroCount::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:GRPCMoby.RobotZeroCount)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RobotZeroCount::CopyFrom(const RobotZeroCount& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:GRPCMoby.RobotZeroCount)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RobotZeroCount::IsInitialized() const {
+  return true;
+}
+
+void RobotZeroCount::Swap(RobotZeroCount* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void RobotZeroCount::InternalSwap(RobotZeroCount* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(rotation_, other->rotation_);
+  swap(elevation_, other->elevation_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RobotZeroCount::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void IRData::InitAsDefaultInstance() {
 }
 class IRData::HasBitSetters {
@@ -6556,6 +7115,899 @@ void IRData::InternalSwap(IRData* other) {
 
 // ===================================================================
 
+void USData::InitAsDefaultInstance() {
+}
+class USData::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int USData::kUsFrontLeft1FieldNumber;
+const int USData::kUsFrontLeft2FieldNumber;
+const int USData::kUsFrontLeft3FieldNumber;
+const int USData::kUsFrontGroundFieldNumber;
+const int USData::kUsFrontRight1FieldNumber;
+const int USData::kUsFrontRight2FieldNumber;
+const int USData::kUsFrontRight3FieldNumber;
+const int USData::kUsFrontRight4FieldNumber;
+const int USData::kUsBackRight1FieldNumber;
+const int USData::kUsBackRight2FieldNumber;
+const int USData::kUsBackRight3FieldNumber;
+const int USData::kUsBackGroundFieldNumber;
+const int USData::kUsBackLeft1FieldNumber;
+const int USData::kUsBackLeft2FieldNumber;
+const int USData::kUsBackLeft3FieldNumber;
+const int USData::kUsBackLeft4FieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+USData::USData()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:GRPCMoby.USData)
+}
+USData::USData(const USData& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&us_front_left1_, &from.us_front_left1_,
+    static_cast<size_t>(reinterpret_cast<char*>(&us_back_left4_) -
+    reinterpret_cast<char*>(&us_front_left1_)) + sizeof(us_back_left4_));
+  // @@protoc_insertion_point(copy_constructor:GRPCMoby.USData)
+}
+
+void USData::SharedCtor() {
+  ::memset(&us_front_left1_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&us_back_left4_) -
+      reinterpret_cast<char*>(&us_front_left1_)) + sizeof(us_back_left4_));
+}
+
+USData::~USData() {
+  // @@protoc_insertion_point(destructor:GRPCMoby.USData)
+  SharedDtor();
+}
+
+void USData::SharedDtor() {
+}
+
+void USData::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const USData& USData::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_USData_MobygRPCServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void USData::Clear() {
+// @@protoc_insertion_point(message_clear_start:GRPCMoby.USData)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&us_front_left1_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&us_back_left4_) -
+      reinterpret_cast<char*>(&us_front_left1_)) + sizeof(us_back_left4_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* USData::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 us_front_left1 = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          us_front_left1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_left2 = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          us_front_left2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_left3 = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          us_front_left3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_ground = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          us_front_ground_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_right1 = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          us_front_right1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_right2 = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          us_front_right2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_right3 = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          us_front_right3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_front_right4 = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          us_front_right4_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_right1 = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          us_back_right1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_right2 = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          us_back_right2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_right3 = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
+          us_back_right3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_ground = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 96)) {
+          us_back_ground_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_left1 = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 104)) {
+          us_back_left1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_left2 = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 112)) {
+          us_back_left2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_left3 = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 120)) {
+          us_back_left3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 us_back_left4 = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 128)) {
+          us_back_left4_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool USData::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:GRPCMoby.USData)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 us_front_left1 = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_left1_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_left2 = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_left2_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_left3 = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_left3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_ground = 4;
+      case 4: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_ground_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_right1 = 5;
+      case 5: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_right1_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_right2 = 6;
+      case 6: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (48 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_right2_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_right3 = 7;
+      case 7: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_right3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_front_right4 = 8;
+      case 8: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (64 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_front_right4_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_right1 = 9;
+      case 9: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (72 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_right1_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_right2 = 10;
+      case 10: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (80 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_right2_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_right3 = 11;
+      case 11: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (88 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_right3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_ground = 12;
+      case 12: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (96 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_ground_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_left1 = 13;
+      case 13: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (104 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_left1_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_left2 = 14;
+      case 14: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (112 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_left2_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_left3 = 15;
+      case 15: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (120 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_left3_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 us_back_left4 = 16;
+      case 16: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (128 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &us_back_left4_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:GRPCMoby.USData)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:GRPCMoby.USData)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void USData::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:GRPCMoby.USData)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 us_front_left1 = 1;
+  if (this->us_front_left1() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->us_front_left1(), output);
+  }
+
+  // int32 us_front_left2 = 2;
+  if (this->us_front_left2() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->us_front_left2(), output);
+  }
+
+  // int32 us_front_left3 = 3;
+  if (this->us_front_left3() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(3, this->us_front_left3(), output);
+  }
+
+  // int32 us_front_ground = 4;
+  if (this->us_front_ground() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(4, this->us_front_ground(), output);
+  }
+
+  // int32 us_front_right1 = 5;
+  if (this->us_front_right1() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(5, this->us_front_right1(), output);
+  }
+
+  // int32 us_front_right2 = 6;
+  if (this->us_front_right2() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(6, this->us_front_right2(), output);
+  }
+
+  // int32 us_front_right3 = 7;
+  if (this->us_front_right3() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(7, this->us_front_right3(), output);
+  }
+
+  // int32 us_front_right4 = 8;
+  if (this->us_front_right4() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(8, this->us_front_right4(), output);
+  }
+
+  // int32 us_back_right1 = 9;
+  if (this->us_back_right1() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(9, this->us_back_right1(), output);
+  }
+
+  // int32 us_back_right2 = 10;
+  if (this->us_back_right2() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(10, this->us_back_right2(), output);
+  }
+
+  // int32 us_back_right3 = 11;
+  if (this->us_back_right3() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(11, this->us_back_right3(), output);
+  }
+
+  // int32 us_back_ground = 12;
+  if (this->us_back_ground() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(12, this->us_back_ground(), output);
+  }
+
+  // int32 us_back_left1 = 13;
+  if (this->us_back_left1() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(13, this->us_back_left1(), output);
+  }
+
+  // int32 us_back_left2 = 14;
+  if (this->us_back_left2() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(14, this->us_back_left2(), output);
+  }
+
+  // int32 us_back_left3 = 15;
+  if (this->us_back_left3() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(15, this->us_back_left3(), output);
+  }
+
+  // int32 us_back_left4 = 16;
+  if (this->us_back_left4() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(16, this->us_back_left4(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:GRPCMoby.USData)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* USData::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:GRPCMoby.USData)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 us_front_left1 = 1;
+  if (this->us_front_left1() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->us_front_left1(), target);
+  }
+
+  // int32 us_front_left2 = 2;
+  if (this->us_front_left2() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->us_front_left2(), target);
+  }
+
+  // int32 us_front_left3 = 3;
+  if (this->us_front_left3() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->us_front_left3(), target);
+  }
+
+  // int32 us_front_ground = 4;
+  if (this->us_front_ground() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->us_front_ground(), target);
+  }
+
+  // int32 us_front_right1 = 5;
+  if (this->us_front_right1() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->us_front_right1(), target);
+  }
+
+  // int32 us_front_right2 = 6;
+  if (this->us_front_right2() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->us_front_right2(), target);
+  }
+
+  // int32 us_front_right3 = 7;
+  if (this->us_front_right3() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->us_front_right3(), target);
+  }
+
+  // int32 us_front_right4 = 8;
+  if (this->us_front_right4() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->us_front_right4(), target);
+  }
+
+  // int32 us_back_right1 = 9;
+  if (this->us_back_right1() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->us_back_right1(), target);
+  }
+
+  // int32 us_back_right2 = 10;
+  if (this->us_back_right2() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(10, this->us_back_right2(), target);
+  }
+
+  // int32 us_back_right3 = 11;
+  if (this->us_back_right3() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(11, this->us_back_right3(), target);
+  }
+
+  // int32 us_back_ground = 12;
+  if (this->us_back_ground() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(12, this->us_back_ground(), target);
+  }
+
+  // int32 us_back_left1 = 13;
+  if (this->us_back_left1() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(13, this->us_back_left1(), target);
+  }
+
+  // int32 us_back_left2 = 14;
+  if (this->us_back_left2() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(14, this->us_back_left2(), target);
+  }
+
+  // int32 us_back_left3 = 15;
+  if (this->us_back_left3() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(15, this->us_back_left3(), target);
+  }
+
+  // int32 us_back_left4 = 16;
+  if (this->us_back_left4() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(16, this->us_back_left4(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GRPCMoby.USData)
+  return target;
+}
+
+size_t USData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:GRPCMoby.USData)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 us_front_left1 = 1;
+  if (this->us_front_left1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_left1());
+  }
+
+  // int32 us_front_left2 = 2;
+  if (this->us_front_left2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_left2());
+  }
+
+  // int32 us_front_left3 = 3;
+  if (this->us_front_left3() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_left3());
+  }
+
+  // int32 us_front_ground = 4;
+  if (this->us_front_ground() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_ground());
+  }
+
+  // int32 us_front_right1 = 5;
+  if (this->us_front_right1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_right1());
+  }
+
+  // int32 us_front_right2 = 6;
+  if (this->us_front_right2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_right2());
+  }
+
+  // int32 us_front_right3 = 7;
+  if (this->us_front_right3() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_right3());
+  }
+
+  // int32 us_front_right4 = 8;
+  if (this->us_front_right4() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_front_right4());
+  }
+
+  // int32 us_back_right1 = 9;
+  if (this->us_back_right1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_right1());
+  }
+
+  // int32 us_back_right2 = 10;
+  if (this->us_back_right2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_right2());
+  }
+
+  // int32 us_back_right3 = 11;
+  if (this->us_back_right3() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_right3());
+  }
+
+  // int32 us_back_ground = 12;
+  if (this->us_back_ground() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_ground());
+  }
+
+  // int32 us_back_left1 = 13;
+  if (this->us_back_left1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_left1());
+  }
+
+  // int32 us_back_left2 = 14;
+  if (this->us_back_left2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_left2());
+  }
+
+  // int32 us_back_left3 = 15;
+  if (this->us_back_left3() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_left3());
+  }
+
+  // int32 us_back_left4 = 16;
+  if (this->us_back_left4() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->us_back_left4());
+  }
+
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void USData::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:GRPCMoby.USData)
+  GOOGLE_DCHECK_NE(&from, this);
+  const USData* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<USData>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:GRPCMoby.USData)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:GRPCMoby.USData)
+    MergeFrom(*source);
+  }
+}
+
+void USData::MergeFrom(const USData& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:GRPCMoby.USData)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.us_front_left1() != 0) {
+    set_us_front_left1(from.us_front_left1());
+  }
+  if (from.us_front_left2() != 0) {
+    set_us_front_left2(from.us_front_left2());
+  }
+  if (from.us_front_left3() != 0) {
+    set_us_front_left3(from.us_front_left3());
+  }
+  if (from.us_front_ground() != 0) {
+    set_us_front_ground(from.us_front_ground());
+  }
+  if (from.us_front_right1() != 0) {
+    set_us_front_right1(from.us_front_right1());
+  }
+  if (from.us_front_right2() != 0) {
+    set_us_front_right2(from.us_front_right2());
+  }
+  if (from.us_front_right3() != 0) {
+    set_us_front_right3(from.us_front_right3());
+  }
+  if (from.us_front_right4() != 0) {
+    set_us_front_right4(from.us_front_right4());
+  }
+  if (from.us_back_right1() != 0) {
+    set_us_back_right1(from.us_back_right1());
+  }
+  if (from.us_back_right2() != 0) {
+    set_us_back_right2(from.us_back_right2());
+  }
+  if (from.us_back_right3() != 0) {
+    set_us_back_right3(from.us_back_right3());
+  }
+  if (from.us_back_ground() != 0) {
+    set_us_back_ground(from.us_back_ground());
+  }
+  if (from.us_back_left1() != 0) {
+    set_us_back_left1(from.us_back_left1());
+  }
+  if (from.us_back_left2() != 0) {
+    set_us_back_left2(from.us_back_left2());
+  }
+  if (from.us_back_left3() != 0) {
+    set_us_back_left3(from.us_back_left3());
+  }
+  if (from.us_back_left4() != 0) {
+    set_us_back_left4(from.us_back_left4());
+  }
+}
+
+void USData::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:GRPCMoby.USData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void USData::CopyFrom(const USData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:GRPCMoby.USData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool USData::IsInitialized() const {
+  return true;
+}
+
+void USData::Swap(USData* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void USData::InternalSwap(USData* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(us_front_left1_, other->us_front_left1_);
+  swap(us_front_left2_, other->us_front_left2_);
+  swap(us_front_left3_, other->us_front_left3_);
+  swap(us_front_ground_, other->us_front_ground_);
+  swap(us_front_right1_, other->us_front_right1_);
+  swap(us_front_right2_, other->us_front_right2_);
+  swap(us_front_right3_, other->us_front_right3_);
+  swap(us_front_right4_, other->us_front_right4_);
+  swap(us_back_right1_, other->us_back_right1_);
+  swap(us_back_right2_, other->us_back_right2_);
+  swap(us_back_right3_, other->us_back_right3_);
+  swap(us_back_ground_, other->us_back_ground_);
+  swap(us_back_left1_, other->us_back_left1_);
+  swap(us_back_left2_, other->us_back_left2_);
+  swap(us_back_left3_, other->us_back_left3_);
+  swap(us_back_left4_, other->us_back_left4_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata USData::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void BMSData::InitAsDefaultInstance() {
 }
 class BMSData::HasBitSetters {
@@ -6568,6 +8020,22 @@ const int BMSData::kPackVoltFieldNumber;
 const int BMSData::kBatteryVoltFieldNumber;
 const int BMSData::kPackCurrent1FieldNumber;
 const int BMSData::kPackCurrent2FieldNumber;
+const int BMSData::kIsChargeFieldNumber;
+const int BMSData::kIsCellOverVoltFieldNumber;
+const int BMSData::kIsCellUnderVoltFieldNumber;
+const int BMSData::kIsOverCurChargeFieldNumber;
+const int BMSData::kIsOverCurDischrgFieldNumber;
+const int BMSData::kIsShortCircuitFieldNumber;
+const int BMSData::kIsOverTemperatureFieldNumber;
+const int BMSData::kIsPackOverVoltFieldNumber;
+const int BMSData::kSOCFieldNumber;
+const int BMSData::kSOHFieldNumber;
+const int BMSData::kTimeChargeFieldNumber;
+const int BMSData::kTimeDchargeFieldNumber;
+const int BMSData::kRemCapAhFieldNumber;
+const int BMSData::kRemCapWhFieldNumber;
+const int BMSData::kBmsTemperatureFieldNumber;
+const int BMSData::kCellVoltFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 BMSData::BMSData()
@@ -6582,12 +8050,20 @@ BMSData::BMSData(const BMSData& from)
       pack_volt_(from.pack_volt_),
       battery_volt_(from.battery_volt_),
       pack_current1_(from.pack_current1_),
-      pack_current2_(from.pack_current2_) {
+      pack_current2_(from.pack_current2_),
+      bms_temperature_(from.bms_temperature_),
+      cell_volt_(from.cell_volt_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&ischarge_, &from.ischarge_,
+    static_cast<size_t>(reinterpret_cast<char*>(&rem_capwh_) -
+    reinterpret_cast<char*>(&ischarge_)) + sizeof(rem_capwh_));
   // @@protoc_insertion_point(copy_constructor:GRPCMoby.BMSData)
 }
 
 void BMSData::SharedCtor() {
+  ::memset(&ischarge_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rem_capwh_) -
+      reinterpret_cast<char*>(&ischarge_)) + sizeof(rem_capwh_));
 }
 
 BMSData::~BMSData() {
@@ -6618,6 +8094,11 @@ void BMSData::Clear() {
   battery_volt_.Clear();
   pack_current1_.Clear();
   pack_current2_.Clear();
+  bms_temperature_.Clear();
+  cell_volt_.Clear();
+  ::memset(&ischarge_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rem_capwh_) -
+      reinterpret_cast<char*>(&ischarge_)) + sizeof(rem_capwh_));
   _internal_metadata_.Clear();
 }
 
@@ -6679,6 +8160,124 @@ const char* BMSData::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // int32 isCharge = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          ischarge_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isCellOverVolt = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          iscellovervolt_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isCellUnderVolt = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          iscellundervolt_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isOverCurCharge = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          isovercurcharge_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isOverCurDischrg = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          isovercurdischrg_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isShortCircuit = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
+          isshortcircuit_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isOverTemperature = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 96)) {
+          isovertemperature_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 isPackOverVolt = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 104)) {
+          ispackovervolt_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 SOC = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 112)) {
+          soc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 SOH = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 120)) {
+          soh_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 time_charge = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 128)) {
+          time_charge_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 time_dcharge = 17;
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 136)) {
+          time_dcharge_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 rem_capAh = 18;
+      case 18:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 144)) {
+          rem_capah_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 rem_capWh = 19;
+      case 19:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 152)) {
+          rem_capwh_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated int32 bms_temperature = 20;
+      case 20:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 162)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(mutable_bms_temperature(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 160) {
+          add_bms_temperature(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated int32 cell_volt = 21;
+      case 21:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(mutable_cell_volt(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 168) {
+          add_cell_volt(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -6705,7 +8304,7 @@ bool BMSData::MergePartialFromCodedStream(
   ::PROTOBUF_NAMESPACE_ID::uint32 tag;
   // @@protoc_insertion_point(parse_start:GRPCMoby.BMSData)
   for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -6783,6 +8382,220 @@ bool BMSData::MergePartialFromCodedStream(
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
                    ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
                  1, 42u, input, this->mutable_pack_current2())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isCharge = 6;
+      case 6: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (48 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ischarge_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isCellOverVolt = 7;
+      case 7: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &iscellovervolt_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isCellUnderVolt = 8;
+      case 8: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (64 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &iscellundervolt_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isOverCurCharge = 9;
+      case 9: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (72 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &isovercurcharge_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isOverCurDischrg = 10;
+      case 10: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (80 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &isovercurdischrg_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isShortCircuit = 11;
+      case 11: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (88 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &isshortcircuit_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isOverTemperature = 12;
+      case 12: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (96 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &isovertemperature_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 isPackOverVolt = 13;
+      case 13: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (104 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ispackovervolt_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 SOC = 14;
+      case 14: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (112 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &soc_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 SOH = 15;
+      case 15: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (120 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &soh_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 time_charge = 16;
+      case 16: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (128 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &time_charge_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 time_dcharge = 17;
+      case 17: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (136 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &time_dcharge_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 rem_capAh = 18;
+      case 18: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (144 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &rem_capah_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 rem_capWh = 19;
+      case 19: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (152 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &rem_capwh_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 bms_temperature = 20;
+      case 20: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (162 & 0xFF)) {
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_bms_temperature())));
+        } else if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (160 & 0xFF)) {
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 2, 162u, input, this->mutable_bms_temperature())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated int32 cell_volt = 21;
+      case 21: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (170 & 0xFF)) {
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_cell_volt())));
+        } else if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (168 & 0xFF)) {
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 2, 170u, input, this->mutable_cell_volt())));
         } else {
           goto handle_unusual;
         }
@@ -6871,6 +8684,98 @@ void BMSData::SerializeWithCachedSizes(
       this->pack_current2(i), output);
   }
 
+  // int32 isCharge = 6;
+  if (this->ischarge() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(6, this->ischarge(), output);
+  }
+
+  // int32 isCellOverVolt = 7;
+  if (this->iscellovervolt() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(7, this->iscellovervolt(), output);
+  }
+
+  // int32 isCellUnderVolt = 8;
+  if (this->iscellundervolt() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(8, this->iscellundervolt(), output);
+  }
+
+  // int32 isOverCurCharge = 9;
+  if (this->isovercurcharge() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(9, this->isovercurcharge(), output);
+  }
+
+  // int32 isOverCurDischrg = 10;
+  if (this->isovercurdischrg() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(10, this->isovercurdischrg(), output);
+  }
+
+  // int32 isShortCircuit = 11;
+  if (this->isshortcircuit() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(11, this->isshortcircuit(), output);
+  }
+
+  // int32 isOverTemperature = 12;
+  if (this->isovertemperature() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(12, this->isovertemperature(), output);
+  }
+
+  // int32 isPackOverVolt = 13;
+  if (this->ispackovervolt() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(13, this->ispackovervolt(), output);
+  }
+
+  // int32 SOC = 14;
+  if (this->soc() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(14, this->soc(), output);
+  }
+
+  // int32 SOH = 15;
+  if (this->soh() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(15, this->soh(), output);
+  }
+
+  // int32 time_charge = 16;
+  if (this->time_charge() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(16, this->time_charge(), output);
+  }
+
+  // int32 time_dcharge = 17;
+  if (this->time_dcharge() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(17, this->time_dcharge(), output);
+  }
+
+  // int32 rem_capAh = 18;
+  if (this->rem_capah() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(18, this->rem_capah(), output);
+  }
+
+  // int32 rem_capWh = 19;
+  if (this->rem_capwh() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(19, this->rem_capwh(), output);
+  }
+
+  // repeated int32 bms_temperature = 20;
+  if (this->bms_temperature_size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteTag(20, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_bms_temperature_cached_byte_size_.load(
+        std::memory_order_relaxed));
+  }
+  for (int i = 0, n = this->bms_temperature_size(); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32NoTag(
+      this->bms_temperature(i), output);
+  }
+
+  // repeated int32 cell_volt = 21;
+  if (this->cell_volt_size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteTag(21, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_cell_volt_cached_byte_size_.load(
+        std::memory_order_relaxed));
+  }
+  for (int i = 0, n = this->cell_volt_size(); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32NoTag(
+      this->cell_volt(i), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -6947,6 +8852,102 @@ void BMSData::SerializeWithCachedSizes(
          target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       WriteInt32NoTagToArray(this->pack_current2_, target);
+  }
+
+  // int32 isCharge = 6;
+  if (this->ischarge() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->ischarge(), target);
+  }
+
+  // int32 isCellOverVolt = 7;
+  if (this->iscellovervolt() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->iscellovervolt(), target);
+  }
+
+  // int32 isCellUnderVolt = 8;
+  if (this->iscellundervolt() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->iscellundervolt(), target);
+  }
+
+  // int32 isOverCurCharge = 9;
+  if (this->isovercurcharge() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->isovercurcharge(), target);
+  }
+
+  // int32 isOverCurDischrg = 10;
+  if (this->isovercurdischrg() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(10, this->isovercurdischrg(), target);
+  }
+
+  // int32 isShortCircuit = 11;
+  if (this->isshortcircuit() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(11, this->isshortcircuit(), target);
+  }
+
+  // int32 isOverTemperature = 12;
+  if (this->isovertemperature() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(12, this->isovertemperature(), target);
+  }
+
+  // int32 isPackOverVolt = 13;
+  if (this->ispackovervolt() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(13, this->ispackovervolt(), target);
+  }
+
+  // int32 SOC = 14;
+  if (this->soc() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(14, this->soc(), target);
+  }
+
+  // int32 SOH = 15;
+  if (this->soh() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(15, this->soh(), target);
+  }
+
+  // int32 time_charge = 16;
+  if (this->time_charge() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(16, this->time_charge(), target);
+  }
+
+  // int32 time_dcharge = 17;
+  if (this->time_dcharge() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(17, this->time_dcharge(), target);
+  }
+
+  // int32 rem_capAh = 18;
+  if (this->rem_capah() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(18, this->rem_capah(), target);
+  }
+
+  // int32 rem_capWh = 19;
+  if (this->rem_capwh() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(19, this->rem_capwh(), target);
+  }
+
+  // repeated int32 bms_temperature = 20;
+  if (this->bms_temperature_size() > 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteTagToArray(
+      20,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream::WriteVarint32ToArray(
+        _bms_temperature_cached_byte_size_.load(std::memory_order_relaxed),
+         target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->bms_temperature_, target);
+  }
+
+  // repeated int32 cell_volt = 21;
+  if (this->cell_volt_size() > 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteTagToArray(
+      21,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream::WriteVarint32ToArray(
+        _cell_volt_cached_byte_size_.load(std::memory_order_relaxed),
+         target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->cell_volt_, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -7045,6 +9046,134 @@ size_t BMSData::ByteSizeLong() const {
     total_size += data_size;
   }
 
+  // repeated int32 bms_temperature = 20;
+  {
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      Int32Size(this->bms_temperature_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _bms_temperature_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
+  // repeated int32 cell_volt = 21;
+  {
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      Int32Size(this->cell_volt_);
+    if (data_size > 0) {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _cell_volt_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
+  // int32 isCharge = 6;
+  if (this->ischarge() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->ischarge());
+  }
+
+  // int32 isCellOverVolt = 7;
+  if (this->iscellovervolt() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->iscellovervolt());
+  }
+
+  // int32 isCellUnderVolt = 8;
+  if (this->iscellundervolt() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->iscellundervolt());
+  }
+
+  // int32 isOverCurCharge = 9;
+  if (this->isovercurcharge() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->isovercurcharge());
+  }
+
+  // int32 isOverCurDischrg = 10;
+  if (this->isovercurdischrg() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->isovercurdischrg());
+  }
+
+  // int32 isShortCircuit = 11;
+  if (this->isshortcircuit() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->isshortcircuit());
+  }
+
+  // int32 isOverTemperature = 12;
+  if (this->isovertemperature() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->isovertemperature());
+  }
+
+  // int32 isPackOverVolt = 13;
+  if (this->ispackovervolt() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->ispackovervolt());
+  }
+
+  // int32 SOC = 14;
+  if (this->soc() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->soc());
+  }
+
+  // int32 SOH = 15;
+  if (this->soh() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->soh());
+  }
+
+  // int32 time_charge = 16;
+  if (this->time_charge() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->time_charge());
+  }
+
+  // int32 time_dcharge = 17;
+  if (this->time_dcharge() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->time_dcharge());
+  }
+
+  // int32 rem_capAh = 18;
+  if (this->rem_capah() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->rem_capah());
+  }
+
+  // int32 rem_capWh = 19;
+  if (this->rem_capwh() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->rem_capwh());
+  }
+
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -7077,6 +9206,50 @@ void BMSData::MergeFrom(const BMSData& from) {
   battery_volt_.MergeFrom(from.battery_volt_);
   pack_current1_.MergeFrom(from.pack_current1_);
   pack_current2_.MergeFrom(from.pack_current2_);
+  bms_temperature_.MergeFrom(from.bms_temperature_);
+  cell_volt_.MergeFrom(from.cell_volt_);
+  if (from.ischarge() != 0) {
+    set_ischarge(from.ischarge());
+  }
+  if (from.iscellovervolt() != 0) {
+    set_iscellovervolt(from.iscellovervolt());
+  }
+  if (from.iscellundervolt() != 0) {
+    set_iscellundervolt(from.iscellundervolt());
+  }
+  if (from.isovercurcharge() != 0) {
+    set_isovercurcharge(from.isovercurcharge());
+  }
+  if (from.isovercurdischrg() != 0) {
+    set_isovercurdischrg(from.isovercurdischrg());
+  }
+  if (from.isshortcircuit() != 0) {
+    set_isshortcircuit(from.isshortcircuit());
+  }
+  if (from.isovertemperature() != 0) {
+    set_isovertemperature(from.isovertemperature());
+  }
+  if (from.ispackovervolt() != 0) {
+    set_ispackovervolt(from.ispackovervolt());
+  }
+  if (from.soc() != 0) {
+    set_soc(from.soc());
+  }
+  if (from.soh() != 0) {
+    set_soh(from.soh());
+  }
+  if (from.time_charge() != 0) {
+    set_time_charge(from.time_charge());
+  }
+  if (from.time_dcharge() != 0) {
+    set_time_dcharge(from.time_dcharge());
+  }
+  if (from.rem_capah() != 0) {
+    set_rem_capah(from.rem_capah());
+  }
+  if (from.rem_capwh() != 0) {
+    set_rem_capwh(from.rem_capwh());
+  }
 }
 
 void BMSData::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -7109,6 +9282,22 @@ void BMSData::InternalSwap(BMSData* other) {
   battery_volt_.InternalSwap(&other->battery_volt_);
   pack_current1_.InternalSwap(&other->pack_current1_);
   pack_current2_.InternalSwap(&other->pack_current2_);
+  bms_temperature_.InternalSwap(&other->bms_temperature_);
+  cell_volt_.InternalSwap(&other->cell_volt_);
+  swap(ischarge_, other->ischarge_);
+  swap(iscellovervolt_, other->iscellovervolt_);
+  swap(iscellundervolt_, other->iscellundervolt_);
+  swap(isovercurcharge_, other->isovercurcharge_);
+  swap(isovercurdischrg_, other->isovercurdischrg_);
+  swap(isshortcircuit_, other->isshortcircuit_);
+  swap(isovertemperature_, other->isovertemperature_);
+  swap(ispackovervolt_, other->ispackovervolt_);
+  swap(soc_, other->soc_);
+  swap(soh_, other->soh_);
+  swap(time_charge_, other->time_charge_);
+  swap(time_dcharge_, other->time_dcharge_);
+  swap(rem_capah_, other->rem_capah_);
+  swap(rem_capwh_, other->rem_capwh_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BMSData::GetMetadata() const {
@@ -10981,8 +13170,14 @@ template<> PROTOBUF_NOINLINE ::GRPCMoby::TargetVel* Arena::CreateMaybeMessage< :
 template<> PROTOBUF_NOINLINE ::GRPCMoby::ZeroCount* Arena::CreateMaybeMessage< ::GRPCMoby::ZeroCount >(Arena* arena) {
   return Arena::CreateInternal< ::GRPCMoby::ZeroCount >(arena);
 }
+template<> PROTOBUF_NOINLINE ::GRPCMoby::RobotZeroCount* Arena::CreateMaybeMessage< ::GRPCMoby::RobotZeroCount >(Arena* arena) {
+  return Arena::CreateInternal< ::GRPCMoby::RobotZeroCount >(arena);
+}
 template<> PROTOBUF_NOINLINE ::GRPCMoby::IRData* Arena::CreateMaybeMessage< ::GRPCMoby::IRData >(Arena* arena) {
   return Arena::CreateInternal< ::GRPCMoby::IRData >(arena);
+}
+template<> PROTOBUF_NOINLINE ::GRPCMoby::USData* Arena::CreateMaybeMessage< ::GRPCMoby::USData >(Arena* arena) {
+  return Arena::CreateInternal< ::GRPCMoby::USData >(arena);
 }
 template<> PROTOBUF_NOINLINE ::GRPCMoby::BMSData* Arena::CreateMaybeMessage< ::GRPCMoby::BMSData >(Arena* arena) {
   return Arena::CreateInternal< ::GRPCMoby::BMSData >(arena);

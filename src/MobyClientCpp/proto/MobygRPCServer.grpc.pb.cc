@@ -37,6 +37,7 @@ static const char* GRPCMobyTask_method_names[] = {
   "/GRPCMoby.GRPCMobyTask/UseGyroForOdom",
   "/GRPCMoby.GRPCMobyTask/GetGyroFullData",
   "/GRPCMoby.GRPCMobyTask/GetIRSensorData",
+  "/GRPCMoby.GRPCMobyTask/GetUSSensorData",
   "/GRPCMoby.GRPCMobyTask/GetBMSData",
   "/GRPCMoby.GRPCMobyTask/SetStepControl",
   "/GRPCMoby.GRPCMobyTask/StopMotion",
@@ -44,11 +45,18 @@ static const char* GRPCMobyTask_method_names[] = {
   "/GRPCMoby.GRPCMobyTask/DriveWheel",
   "/GRPCMoby.GRPCMobyTask/SetZeroPosAsCurrentPos",
   "/GRPCMoby.GRPCMobyTask/SetRotationVelAcc",
+  "/GRPCMoby.GRPCMobyTask/SetRotationInterpolator",
   "/GRPCMoby.GRPCMobyTask/SetDriveAccDec",
   "/GRPCMoby.GRPCMobyTask/SetDriveInterpolatorOnOff",
   "/GRPCMoby.GRPCMobyTask/SetRotationInterpolatorParam",
+  "/GRPCMoby.GRPCMobyTask/SetRotationControllerType",
+  "/GRPCMoby.GRPCMobyTask/TurnLightOnOff",
+  "/GRPCMoby.GRPCMobyTask/TurnBuzzOnOff",
+  "/GRPCMoby.GRPCMobyTask/GetRobotZeroCount",
+  "/GRPCMoby.GRPCMobyTask/SetRobotZeroAsCurrent",
   "/GRPCMoby.GRPCMobyTask/SetRotationTorqueMode",
   "/GRPCMoby.GRPCMobyTask/SetControlParam",
+  "/GRPCMoby.GRPCMobyTask/GetControlParam",
   "/GRPCMoby.GRPCMobyTask/StartRTLogging",
   "/GRPCMoby.GRPCMobyTask/EndRTLogging",
   "/GRPCMoby.GRPCMobyTask/SetLoggerBuffer",
@@ -80,22 +88,30 @@ GRPCMobyTask::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_UseGyroForOdom_(GRPCMobyTask_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetGyroFullData_(GRPCMobyTask_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetIRSensorData_(GRPCMobyTask_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetBMSData_(GRPCMobyTask_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetStepControl_(GRPCMobyTask_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_StopMotion_(GRPCMobyTask_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRotationAngleDeg_(GRPCMobyTask_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DriveWheel_(GRPCMobyTask_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetZeroPosAsCurrentPos_(GRPCMobyTask_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRotationVelAcc_(GRPCMobyTask_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetDriveAccDec_(GRPCMobyTask_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetDriveInterpolatorOnOff_(GRPCMobyTask_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRotationInterpolatorParam_(GRPCMobyTask_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRotationTorqueMode_(GRPCMobyTask_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetControlParam_(GRPCMobyTask_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_StartRTLogging_(GRPCMobyTask_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_EndRTLogging_(GRPCMobyTask_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetLoggerBuffer_(GRPCMobyTask_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_RTLoggerSave_(GRPCMobyTask_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetUSSensorData_(GRPCMobyTask_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetBMSData_(GRPCMobyTask_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetStepControl_(GRPCMobyTask_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StopMotion_(GRPCMobyTask_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationAngleDeg_(GRPCMobyTask_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DriveWheel_(GRPCMobyTask_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetZeroPosAsCurrentPos_(GRPCMobyTask_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationVelAcc_(GRPCMobyTask_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationInterpolator_(GRPCMobyTask_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDriveAccDec_(GRPCMobyTask_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDriveInterpolatorOnOff_(GRPCMobyTask_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationInterpolatorParam_(GRPCMobyTask_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationControllerType_(GRPCMobyTask_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TurnLightOnOff_(GRPCMobyTask_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TurnBuzzOnOff_(GRPCMobyTask_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRobotZeroCount_(GRPCMobyTask_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRobotZeroAsCurrent_(GRPCMobyTask_method_names[34], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRotationTorqueMode_(GRPCMobyTask_method_names[35], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetControlParam_(GRPCMobyTask_method_names[36], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetControlParam_(GRPCMobyTask_method_names[37], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StartRTLogging_(GRPCMobyTask_method_names[38], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_EndRTLogging_(GRPCMobyTask_method_names[39], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetLoggerBuffer_(GRPCMobyTask_method_names[40], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RTLoggerSave_(GRPCMobyTask_method_names[41], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GRPCMobyTask::Stub::GetMobyTxData(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::MotorDriverTx* response) {
@@ -602,6 +618,34 @@ void GRPCMobyTask::Stub::experimental_async::GetIRSensorData(::grpc::ClientConte
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::IRData>::Create(channel_.get(), cq, rpcmethod_GetIRSensorData_, context, request, false);
 }
 
+::grpc::Status GRPCMobyTask::Stub::GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::USData* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetUSSensorData_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetUSSensorData_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetUSSensorData_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetUSSensorData(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetUSSensorData_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetUSSensorData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::USData* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetUSSensorData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>* GRPCMobyTask::Stub::AsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::USData>::Create(channel_.get(), cq, rpcmethod_GetUSSensorData_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::USData>* GRPCMobyTask::Stub::PrepareAsyncGetUSSensorDataRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::USData>::Create(channel_.get(), cq, rpcmethod_GetUSSensorData_, context, request, false);
+}
+
 ::grpc::Status GRPCMobyTask::Stub::GetBMSData(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::BMSData* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetBMSData_, context, request, response);
 }
@@ -798,6 +842,34 @@ void GRPCMobyTask::Stub::experimental_async::SetRotationVelAcc(::grpc::ClientCon
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationVelAcc_, context, request, false);
 }
 
+::grpc::Status GRPCMobyTask::Stub::SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetRotationInterpolator_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRotationInterpolator_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRotationInterpolator_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationInterpolator(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRotationInterpolator_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationInterpolator(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRotationInterpolator_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::AsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationInterpolator_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncSetRotationInterpolatorRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationInterpolator_, context, request, false);
+}
+
 ::grpc::Status GRPCMobyTask::Stub::SetDriveAccDec(::grpc::ClientContext* context, const ::GRPCMoby::DoubleVals& request, ::GRPCMoby::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetDriveAccDec_, context, request, response);
 }
@@ -882,6 +954,146 @@ void GRPCMobyTask::Stub::experimental_async::SetRotationInterpolatorParam(::grpc
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationInterpolatorParam_, context, request, false);
 }
 
+::grpc::Status GRPCMobyTask::Stub::SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetRotationControllerType_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRotationControllerType_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRotationControllerType_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationControllerType(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRotationControllerType_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRotationControllerType(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRotationControllerType_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::AsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationControllerType_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncSetRotationControllerTypeRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRotationControllerType_, context, request, false);
+}
+
+::grpc::Status GRPCMobyTask::Stub::TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_TurnLightOnOff_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TurnLightOnOff_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TurnLightOnOff_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnLightOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TurnLightOnOff_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnLightOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TurnLightOnOff_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::AsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_TurnLightOnOff_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncTurnLightOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_TurnLightOnOff_, context, request, false);
+}
+
+::grpc::Status GRPCMobyTask::Stub::TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_TurnBuzzOnOff_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TurnBuzzOnOff_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TurnBuzzOnOff_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnBuzzOnOff(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TurnBuzzOnOff_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::TurnBuzzOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_TurnBuzzOnOff_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::AsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_TurnBuzzOnOff_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncTurnBuzzOnOffRaw(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_TurnBuzzOnOff_, context, request, false);
+}
+
+::grpc::Status GRPCMobyTask::Stub::GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::RobotZeroCount* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetRobotZeroCount_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetRobotZeroCount_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetRobotZeroCount_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetRobotZeroCount(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetRobotZeroCount_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetRobotZeroCount(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RobotZeroCount* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetRobotZeroCount_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>* GRPCMobyTask::Stub::AsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::RobotZeroCount>::Create(channel_.get(), cq, rpcmethod_GetRobotZeroCount_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::RobotZeroCount>* GRPCMobyTask::Stub::PrepareAsyncGetRobotZeroCountRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::RobotZeroCount>::Create(channel_.get(), cq, rpcmethod_GetRobotZeroCount_, context, request, false);
+}
+
+::grpc::Status GRPCMobyTask::Stub::SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetRobotZeroAsCurrent_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRobotZeroAsCurrent_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetRobotZeroAsCurrent_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRobotZeroAsCurrent_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::SetRobotZeroAsCurrent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetRobotZeroAsCurrent_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::AsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRobotZeroAsCurrent_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncSetRobotZeroAsCurrentRaw(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetRobotZeroAsCurrent_, context, request, false);
+}
+
 ::grpc::Status GRPCMobyTask::Stub::SetRotationTorqueMode(::grpc::ClientContext* context, const ::GRPCMoby::BoolVal& request, ::GRPCMoby::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetRotationTorqueMode_, context, request, response);
 }
@@ -936,6 +1148,34 @@ void GRPCMobyTask::Stub::experimental_async::SetControlParam(::grpc::ClientConte
 
 ::grpc::ClientAsyncResponseReader< ::GRPCMoby::Empty>* GRPCMobyTask::Stub::PrepareAsyncSetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::RotationGain& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::Empty>::Create(channel_.get(), cq, rpcmethod_SetControlParam_, context, request, false);
+}
+
+::grpc::Status GRPCMobyTask::Stub::GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::GRPCMoby::RotationGain* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetControlParam_, context, request, response);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetControlParam_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetControlParam_, context, request, response, std::move(f));
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetControlParam(::grpc::ClientContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetControlParam_, context, request, response, reactor);
+}
+
+void GRPCMobyTask::Stub::experimental_async::GetControlParam(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCMoby::RotationGain* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetControlParam_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>* GRPCMobyTask::Stub::AsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::RotationGain>::Create(channel_.get(), cq, rpcmethod_GetControlParam_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCMoby::RotationGain>* GRPCMobyTask::Stub::PrepareAsyncGetControlParamRaw(::grpc::ClientContext* context, const ::GRPCMoby::IntVal& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCMoby::RotationGain>::Create(channel_.get(), cq, rpcmethod_GetControlParam_, context, request, false);
 }
 
 ::grpc::Status GRPCMobyTask::Stub::StartRTLogging(::grpc::ClientContext* context, const ::GRPCMoby::Empty& request, ::GRPCMoby::Empty* response) {
@@ -1144,80 +1384,120 @@ GRPCMobyTask::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCMobyTask_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::USData>(
+          std::mem_fn(&GRPCMobyTask::Service::GetUSSensorData), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[19],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::BMSData>(
           std::mem_fn(&GRPCMobyTask::Service::GetBMSData), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[19],
+      GRPCMobyTask_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::TargetVel, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetStepControl), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[20],
+      GRPCMobyTask_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::StopMotion), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[21],
+      GRPCMobyTask_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetRotationAngleDeg), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[22],
+      GRPCMobyTask_method_names[23],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::SwerveDoubles, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::DriveWheel), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[23],
+      GRPCMobyTask_method_names[24],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetZeroPosAsCurrentPos), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[24],
+      GRPCMobyTask_method_names[25],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetRotationVelAcc), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[25],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
-          std::mem_fn(&GRPCMobyTask::Service::SetDriveAccDec), this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCMobyTask_method_names[26],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
-          std::mem_fn(&GRPCMobyTask::Service::SetDriveInterpolatorOnOff), this)));
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::SetRotationInterpolator), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCMobyTask_method_names[27],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
-          std::mem_fn(&GRPCMobyTask::Service::SetRotationInterpolatorParam), this)));
+          std::mem_fn(&GRPCMobyTask::Service::SetDriveAccDec), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCMobyTask_method_names[28],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
-          std::mem_fn(&GRPCMobyTask::Service::SetRotationTorqueMode), this)));
+          std::mem_fn(&GRPCMobyTask::Service::SetDriveInterpolatorOnOff), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCMobyTask_method_names[29],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::DoubleVals, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::SetRotationInterpolatorParam), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[30],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::IntVal, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::SetRotationControllerType), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[31],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::TurnLightOnOff), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[32],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::TurnBuzzOnOff), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[33],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::RobotZeroCount>(
+          std::mem_fn(&GRPCMobyTask::Service::GetRobotZeroCount), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[34],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::SetRobotZeroAsCurrent), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[35],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::BoolVal, ::GRPCMoby::Empty>(
+          std::mem_fn(&GRPCMobyTask::Service::SetRotationTorqueMode), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[36],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::RotationGain, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetControlParam), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[30],
+      GRPCMobyTask_method_names[37],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::IntVal, ::GRPCMoby::RotationGain>(
+          std::mem_fn(&GRPCMobyTask::Service::GetControlParam), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCMobyTask_method_names[38],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::StartRTLogging), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[31],
+      GRPCMobyTask_method_names[39],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::EndRTLogging), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[32],
+      GRPCMobyTask_method_names[40],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::IntVals, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::SetLoggerBuffer), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCMobyTask_method_names[33],
+      GRPCMobyTask_method_names[41],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCMobyTask::Service, ::GRPCMoby::Empty, ::GRPCMoby::Empty>(
           std::mem_fn(&GRPCMobyTask::Service::RTLoggerSave), this)));
@@ -1352,6 +1632,13 @@ GRPCMobyTask::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status GRPCMobyTask::Service::GetUSSensorData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::USData* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status GRPCMobyTask::Service::GetBMSData(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::BMSData* response) {
   (void) context;
   (void) request;
@@ -1401,6 +1688,13 @@ GRPCMobyTask::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status GRPCMobyTask::Service::SetRotationInterpolator(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status GRPCMobyTask::Service::SetDriveAccDec(::grpc::ServerContext* context, const ::GRPCMoby::DoubleVals* request, ::GRPCMoby::Empty* response) {
   (void) context;
   (void) request;
@@ -1422,6 +1716,41 @@ GRPCMobyTask::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status GRPCMobyTask::Service::SetRotationControllerType(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCMobyTask::Service::TurnLightOnOff(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCMobyTask::Service::TurnBuzzOnOff(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCMobyTask::Service::GetRobotZeroCount(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::RobotZeroCount* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCMobyTask::Service::SetRobotZeroAsCurrent(::grpc::ServerContext* context, const ::GRPCMoby::Empty* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status GRPCMobyTask::Service::SetRotationTorqueMode(::grpc::ServerContext* context, const ::GRPCMoby::BoolVal* request, ::GRPCMoby::Empty* response) {
   (void) context;
   (void) request;
@@ -1430,6 +1759,13 @@ GRPCMobyTask::Service::~Service() {
 }
 
 ::grpc::Status GRPCMobyTask::Service::SetControlParam(::grpc::ServerContext* context, const ::GRPCMoby::RotationGain* request, ::GRPCMoby::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCMobyTask::Service::GetControlParam(::grpc::ServerContext* context, const ::GRPCMoby::IntVal* request, ::GRPCMoby::RotationGain* response) {
   (void) context;
   (void) request;
   (void) response;

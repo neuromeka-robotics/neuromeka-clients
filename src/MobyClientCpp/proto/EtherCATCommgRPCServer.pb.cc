@@ -617,7 +617,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_EtherCATCommgRPCServer_2eproto
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::GRPCECat::EndtoolRx, status_),
+  PROTOBUF_FIELD_OFFSET(::GRPCECat::EndtoolRx, eqc_),
+  PROTOBUF_FIELD_OFFSET(::GRPCECat::EndtoolRx, gripper_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::GRPCECat::EndtoolRevCDTTx, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -741,18 +742,18 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 99, -1, sizeof(::GRPCECat::IOBoardRx)},
   { 110, -1, sizeof(::GRPCECat::EndtoolTx)},
   { 116, -1, sizeof(::GRPCECat::EndtoolRx)},
-  { 122, -1, sizeof(::GRPCECat::EndtoolRevCDTTx)},
-  { 153, -1, sizeof(::GRPCECat::DIList)},
-  { 160, -1, sizeof(::GRPCECat::DOList)},
-  { 167, -1, sizeof(::GRPCECat::RobotusFTTx)},
-  { 178, -1, sizeof(::GRPCECat::TargetPos)},
-  { 185, -1, sizeof(::GRPCECat::IntVal)},
-  { 191, -1, sizeof(::GRPCECat::IntVals)},
-  { 197, -1, sizeof(::GRPCECat::FloatVal)},
-  { 203, -1, sizeof(::GRPCECat::FloatVals)},
-  { 209, -1, sizeof(::GRPCECat::StringVal)},
-  { 215, -1, sizeof(::GRPCECat::DoubleVals)},
-  { 221, -1, sizeof(::GRPCECat::VelAccBoundary)},
+  { 123, -1, sizeof(::GRPCECat::EndtoolRevCDTTx)},
+  { 154, -1, sizeof(::GRPCECat::DIList)},
+  { 161, -1, sizeof(::GRPCECat::DOList)},
+  { 168, -1, sizeof(::GRPCECat::RobotusFTTx)},
+  { 179, -1, sizeof(::GRPCECat::TargetPos)},
+  { 186, -1, sizeof(::GRPCECat::IntVal)},
+  { 192, -1, sizeof(::GRPCECat::IntVals)},
+  { 198, -1, sizeof(::GRPCECat::FloatVal)},
+  { 204, -1, sizeof(::GRPCECat::FloatVals)},
+  { 210, -1, sizeof(::GRPCECat::StringVal)},
+  { 216, -1, sizeof(::GRPCECat::DoubleVals)},
+  { 222, -1, sizeof(::GRPCECat::VelAccBoundary)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -816,92 +817,95 @@ const char descriptor_table_protodef_EtherCATCommgRPCServer_2eproto[] =
   "rTx\"`\n\tIOBoardRx\022\r\n\005do_5v\030\001 \001(\r\022\013\n\003do1\030\002"
   " \001(\r\022\013\n\003do2\030\003 \001(\r\022\013\n\003ao1\030\004 \001(\r\022\013\n\003ao2\030\005 "
   "\001(\r\022\020\n\010ft_param\030\006 \001(\r\"\033\n\tEndtoolTx\022\016\n\006st"
-  "atus\030\001 \001(\005\"\033\n\tEndtoolRx\022\016\n\006status\030\001 \001(\005\""
-  "\267\004\n\017EndtoolRevCDTTx\022\016\n\006status\030\001 \001(\005\022\026\n\016d"
-  "ocking_status\030\002 \001(\005\022\026\n\016docking_button\030\003 "
-  "\001(\005\022\025\n\rdocking_dist1\030\004 \001(\005\022\025\n\rdocking_di"
-  "st2\030\005 \001(\005\022\025\n\rdocking_dist3\030\006 \001(\005\022\025\n\rdock"
-  "ing_dist4\030\007 \001(\005\022\025\n\rdocking_dist5\030\010 \001(\005\022\025"
-  "\n\rdocking_dist6\030\t \001(\005\022\025\n\rdocking_dist7\030\n"
-  " \001(\005\022\025\n\rdocking_dist8\030\013 \001(\005\022\025\n\rdirect_st"
-  "atus\030\014 \001(\005\022\025\n\rdirect_button\030\r \001(\005\022\026\n\016dir"
-  "ect_encoder\030\016 \001(\005\022\030\n\020direct_joystic1x\030\017 "
-  "\001(\005\022\030\n\020direct_joystic1y\030\020 \001(\005\022\030\n\020direct_"
-  "joystic2x\030\021 \001(\005\022\030\n\020direct_joystic2y\030\022 \001("
-  "\005\022\021\n\tft_status\030\023 \001(\005\022\021\n\tft_button\030\024 \001(\005\022"
-  "\r\n\005ft_fx\030\025 \001(\005\022\r\n\005ft_fy\030\026 \001(\005\022\r\n\005ft_fz\030\027"
-  " \001(\005\022\r\n\005ft_tx\030\030 \001(\005\022\r\n\005ft_ty\030\031 \001(\005\022\r\n\005ft"
-  "_tz\030\032 \001(\005\"&\n\006DIList\022\013\n\003idx\030\001 \001(\005\022\017\n\007di_l"
-  "ist\030\002 \003(\005\"&\n\006DOList\022\013\n\003idx\030\001 \001(\005\022\017\n\007do_l"
-  "ist\030\002 \003(\005\"U\n\013RobotusFTTx\022\n\n\002fx\030\001 \001(\002\022\n\n\002"
-  "fy\030\002 \001(\002\022\n\n\002fz\030\003 \001(\002\022\n\n\002tx\030\004 \001(\002\022\n\n\002ty\030\005"
-  " \001(\002\022\n\n\002tz\030\006 \001(\002\"%\n\tTargetPos\022\013\n\003idx\030\001 \001"
-  "(\005\022\013\n\003pos\030\002 \001(\002\"\025\n\006IntVal\022\013\n\003val\030\001 \001(\005\"\026"
-  "\n\007IntVals\022\013\n\003val\030\001 \003(\005\"\027\n\010FloatVal\022\013\n\003va"
-  "l\030\001 \001(\002\"\030\n\tFloatVals\022\013\n\003val\030\001 \003(\002\"\030\n\tStr"
-  "ingVal\022\013\n\003val\030\001 \001(\t\"\031\n\nDoubleVals\022\013\n\003val"
-  "\030\001 \003(\001\"9\n\016VelAccBoundary\022\013\n\003idx\030\001 \001(\005\022\014\n"
-  "\004vmax\030\002 \001(\002\022\014\n\004amax\030\003 \001(\0022\301\022\n\014GRPCECatTa"
-  "sk\0226\n\017GetMasterStatus\022\017.GRPCECat.Empty\032\020"
-  ".GRPCECat.IntVal\"\000\0226\n\016GetSlaveStatus\022\017.G"
-  "RPCECat.Empty\032\021.GRPCECat.IntVals\"\000\0228\n\021Ge"
-  "tRxDomainStatus\022\017.GRPCECat.Empty\032\020.GRPCE"
-  "Cat.IntVal\"\000\0228\n\021GetTxDomainStatus\022\017.GRPC"
-  "ECat.Empty\032\020.GRPCECat.IntVal\"\000\0225\n\rIsSyst"
-  "emReady\022\017.GRPCECat.Empty\032\021.GRPCECat.IntV"
-  "als\"\000\0228\n\rSetServoOnOff\022\024.GRPCECat.ServoI"
-  "ndex\032\017.GRPCECat.Empty\"\000\022F\n\023SetRxPDOMotor"
-  "Driver\022\034.GRPCECat.MotorDriverRxIndex\032\017.G"
-  "RPCECat.Empty\"\000\022B\n\023GetRxPDOMotorDriver\022\020"
-  ".GRPCECat.IntVal\032\027.GRPCECat.MotorDriverR"
-  "x\"\000\022B\n\023GetTxPDOMotorDriver\022\020.GRPCECat.In"
-  "tVal\032\027.GRPCECat.MotorDriverTx\"\000\0229\n\021GetMo"
-  "torDriverDIs\022\020.GRPCECat.IntVal\032\020.GRPCECa"
-  "t.IntVal\"\000\0224\n\014GetErrorCode\022\020.GRPCECat.In"
-  "tVal\032\020.GRPCECat.IntVal\"\000\0224\n\014GetMaxTorque"
-  "\022\020.GRPCECat.IntVal\032\020.GRPCECat.IntVal\"\000\0227"
-  "\n\014SetMaxTorque\022\024.GRPCECat.ServoParam\032\017.G"
-  "RPCECat.Empty\"\000\0228\n\020GetMaxMotorSpeed\022\020.GR"
-  "PCECat.IntVal\032\020.GRPCECat.IntVal\"\000\022;\n\020Set"
-  "MaxMotorSpeed\022\024.GRPCECat.ServoParam\032\017.GR"
-  "PCECat.Empty\"\000\022>\n\024SetNRMKIOBoardOutput\022\023"
-  ".GRPCECat.IOBoardRx\032\017.GRPCECat.Empty\"\000\022="
-  "\n\023GetNRMKIOBoardInput\022\017.GRPCECat.Empty\032\023"
-  ".GRPCECat.IOBoardTx\"\000\022>\n\024GetNRMKIOBoardO"
-  "utput\022\017.GRPCECat.Empty\032\023.GRPCECat.IOBoar"
-  "dRx\"\000\022>\n\024SetNRMKEndtoolOutput\022\023.GRPCECat"
-  ".EndtoolRx\032\017.GRPCECat.Empty\"\000\022=\n\023GetNRMK"
-  "EndtoolInput\022\017.GRPCECat.Empty\032\023.GRPCECat"
-  ".EndtoolTx\"\000\022I\n\031GetNRMKEndtoolRevCDTInpu"
-  "t\022\017.GRPCECat.Empty\032\031.GRPCECat.EndtoolRev"
-  "CDTTx\"\000\022,\n\005SetDO\022\020.GRPCECat.DOList\032\017.GRP"
-  "CECat.Empty\"\000\022-\n\005GetDI\022\020.GRPCECat.IntVal"
-  "\032\020.GRPCECat.DIList\"\000\022-\n\005GetDO\022\020.GRPCECat"
-  ".IntVal\032\020.GRPCECat.DOList\"\000\022\?\n\022GetRobotu"
-  "sFTSensor\022\020.GRPCECat.IntVal\032\025.GRPCECat.R"
-  "obotusFTTx\"\000\0228\n\021ResetWelconDriver\022\020.GRPC"
-  "ECat.IntVal\032\017.GRPCECat.Empty\"\000\022;\n\023GetCOR"
-  "EErrorCodeSDO\022\020.GRPCECat.IntVal\032\020.GRPCEC"
-  "at.IntVal\"\000\022@\n\026GetCORETemperature1SDO\022\020."
-  "GRPCECat.IntVal\032\022.GRPCECat.FloatVal\"\000\022@\n"
-  "\026GetCORETemperature2SDO\022\020.GRPCECat.IntVa"
-  "l\032\022.GRPCECat.FloatVal\"\000\022@\n\026GetCORETemper"
-  "ature3SDO\022\020.GRPCECat.IntVal\032\022.GRPCECat.F"
-  "loatVal\"\000\022>\n\023GetNRMKFWVersionSDO\022\020.GRPCE"
-  "Cat.IntVal\032\023.GRPCECat.StringVal\"\000\0227\n\017Get"
-  "MaxTorqueSDO\022\020.GRPCECat.IntVal\032\020.GRPCECa"
-  "t.IntVal\"\000\022=\n\025GetProfileVelocitySDO\022\020.GR"
-  "PCECat.IntVal\032\020.GRPCECat.IntVal\"\000\0228\n\020Get"
-  "ProfileAccSDO\022\020.GRPCECat.IntVal\032\020.GRPCEC"
-  "at.IntVal\"\000\0228\n\020GetProfileDecSDO\022\020.GRPCEC"
-  "at.IntVal\032\020.GRPCECat.IntVal\"\000\022:\n\017SetMaxT"
-  "orqueSDO\022\024.GRPCECat.ServoParam\032\017.GRPCECa"
-  "t.Empty\"\000\022@\n\025SetProfileVelocitySDO\022\024.GRP"
-  "CECat.ServoParam\032\017.GRPCECat.Empty\"\000\022;\n\020S"
-  "etProfileAccSDO\022\024.GRPCECat.ServoParam\032\017."
-  "GRPCECat.Empty\"\000\022;\n\020SetProfileDecSDO\022\024.G"
-  "RPCECat.ServoParam\032\017.GRPCECat.Empty\"\000b\006p"
-  "roto3"
+  "atus\030\001 \001(\005\")\n\tEndtoolRx\022\013\n\003eqc\030\001 \001(\005\022\017\n\007"
+  "gripper\030\002 \001(\005\"\267\004\n\017EndtoolRevCDTTx\022\016\n\006sta"
+  "tus\030\001 \001(\005\022\026\n\016docking_status\030\002 \001(\005\022\026\n\016doc"
+  "king_button\030\003 \001(\005\022\025\n\rdocking_dist1\030\004 \001(\005"
+  "\022\025\n\rdocking_dist2\030\005 \001(\005\022\025\n\rdocking_dist3"
+  "\030\006 \001(\005\022\025\n\rdocking_dist4\030\007 \001(\005\022\025\n\rdocking"
+  "_dist5\030\010 \001(\005\022\025\n\rdocking_dist6\030\t \001(\005\022\025\n\rd"
+  "ocking_dist7\030\n \001(\005\022\025\n\rdocking_dist8\030\013 \001("
+  "\005\022\025\n\rdirect_status\030\014 \001(\005\022\025\n\rdirect_butto"
+  "n\030\r \001(\005\022\026\n\016direct_encoder\030\016 \001(\005\022\030\n\020direc"
+  "t_joystic1x\030\017 \001(\005\022\030\n\020direct_joystic1y\030\020 "
+  "\001(\005\022\030\n\020direct_joystic2x\030\021 \001(\005\022\030\n\020direct_"
+  "joystic2y\030\022 \001(\005\022\021\n\tft_status\030\023 \001(\005\022\021\n\tft"
+  "_button\030\024 \001(\005\022\r\n\005ft_fx\030\025 \001(\005\022\r\n\005ft_fy\030\026 "
+  "\001(\005\022\r\n\005ft_fz\030\027 \001(\005\022\r\n\005ft_tx\030\030 \001(\005\022\r\n\005ft_"
+  "ty\030\031 \001(\005\022\r\n\005ft_tz\030\032 \001(\005\"&\n\006DIList\022\013\n\003idx"
+  "\030\001 \001(\005\022\017\n\007di_list\030\002 \003(\005\"&\n\006DOList\022\013\n\003idx"
+  "\030\001 \001(\005\022\017\n\007do_list\030\002 \003(\005\"U\n\013RobotusFTTx\022\n"
+  "\n\002fx\030\001 \001(\002\022\n\n\002fy\030\002 \001(\002\022\n\n\002fz\030\003 \001(\002\022\n\n\002tx"
+  "\030\004 \001(\002\022\n\n\002ty\030\005 \001(\002\022\n\n\002tz\030\006 \001(\002\"%\n\tTarget"
+  "Pos\022\013\n\003idx\030\001 \001(\005\022\013\n\003pos\030\002 \001(\002\"\025\n\006IntVal\022"
+  "\013\n\003val\030\001 \001(\005\"\026\n\007IntVals\022\013\n\003val\030\001 \003(\005\"\027\n\010"
+  "FloatVal\022\013\n\003val\030\001 \001(\002\"\030\n\tFloatVals\022\013\n\003va"
+  "l\030\001 \003(\002\"\030\n\tStringVal\022\013\n\003val\030\001 \001(\t\"\031\n\nDou"
+  "bleVals\022\013\n\003val\030\001 \003(\001\"9\n\016VelAccBoundary\022\013"
+  "\n\003idx\030\001 \001(\005\022\014\n\004vmax\030\002 \001(\002\022\014\n\004amax\030\003 \001(\0022"
+  "\254\023\n\014GRPCECatTask\0226\n\017GetMasterStatus\022\017.GR"
+  "PCECat.Empty\032\020.GRPCECat.IntVal\"\000\0226\n\016GetS"
+  "laveStatus\022\017.GRPCECat.Empty\032\021.GRPCECat.I"
+  "ntVals\"\000\0228\n\021GetRxDomainStatus\022\017.GRPCECat"
+  ".Empty\032\020.GRPCECat.IntVal\"\000\0228\n\021GetTxDomai"
+  "nStatus\022\017.GRPCECat.Empty\032\020.GRPCECat.IntV"
+  "al\"\000\0225\n\rIsSystemReady\022\017.GRPCECat.Empty\032\021"
+  ".GRPCECat.IntVals\"\000\0221\n\tIsServoOn\022\017.GRPCE"
+  "Cat.Empty\032\021.GRPCECat.IntVals\"\000\0228\n\rSetSer"
+  "voOnOff\022\024.GRPCECat.ServoIndex\032\017.GRPCECat"
+  ".Empty\"\000\022F\n\023SetRxPDOMotorDriver\022\034.GRPCEC"
+  "at.MotorDriverRxIndex\032\017.GRPCECat.Empty\"\000"
+  "\022B\n\023GetRxPDOMotorDriver\022\020.GRPCECat.IntVa"
+  "l\032\027.GRPCECat.MotorDriverRx\"\000\022B\n\023GetTxPDO"
+  "MotorDriver\022\020.GRPCECat.IntVal\032\027.GRPCECat"
+  ".MotorDriverTx\"\000\0229\n\021GetMotorDriverDIs\022\020."
+  "GRPCECat.IntVal\032\020.GRPCECat.IntVal\"\000\0224\n\014G"
+  "etErrorCode\022\020.GRPCECat.IntVal\032\020.GRPCECat"
+  ".IntVal\"\000\0224\n\014GetMaxTorque\022\020.GRPCECat.Int"
+  "Val\032\020.GRPCECat.IntVal\"\000\0227\n\014SetMaxTorque\022"
+  "\024.GRPCECat.ServoParam\032\017.GRPCECat.Empty\"\000"
+  "\0228\n\020GetMaxMotorSpeed\022\020.GRPCECat.IntVal\032\020"
+  ".GRPCECat.IntVal\"\000\022;\n\020SetMaxMotorSpeed\022\024"
+  ".GRPCECat.ServoParam\032\017.GRPCECat.Empty\"\000\022"
+  ">\n\024SetNRMKIOBoardOutput\022\023.GRPCECat.IOBoa"
+  "rdRx\032\017.GRPCECat.Empty\"\000\022=\n\023GetNRMKIOBoar"
+  "dInput\022\017.GRPCECat.Empty\032\023.GRPCECat.IOBoa"
+  "rdTx\"\000\022>\n\024GetNRMKIOBoardOutput\022\017.GRPCECa"
+  "t.Empty\032\023.GRPCECat.IOBoardRx\"\000\022:\n\020SetNRM"
+  "KEndtoolRx\022\023.GRPCECat.EndtoolRx\032\017.GRPCEC"
+  "at.Empty\"\000\022:\n\020GetNRMKEndtoolRx\022\017.GRPCECa"
+  "t.Empty\032\023.GRPCECat.EndtoolRx\"\000\022=\n\023GetNRM"
+  "KEndtoolInput\022\017.GRPCECat.Empty\032\023.GRPCECa"
+  "t.EndtoolTx\"\000\022I\n\031GetNRMKEndtoolRevCDTInp"
+  "ut\022\017.GRPCECat.Empty\032\031.GRPCECat.EndtoolRe"
+  "vCDTTx\"\000\022,\n\005SetDO\022\020.GRPCECat.DOList\032\017.GR"
+  "PCECat.Empty\"\000\022-\n\005GetDI\022\020.GRPCECat.IntVa"
+  "l\032\020.GRPCECat.DIList\"\000\022-\n\005GetDO\022\020.GRPCECa"
+  "t.IntVal\032\020.GRPCECat.DOList\"\000\022\?\n\022GetRobot"
+  "usFTSensor\022\020.GRPCECat.IntVal\032\025.GRPCECat."
+  "RobotusFTTx\"\000\0228\n\021ResetWelconDriver\022\020.GRP"
+  "CECat.IntVal\032\017.GRPCECat.Empty\"\000\022;\n\023GetCO"
+  "REErrorCodeSDO\022\020.GRPCECat.IntVal\032\020.GRPCE"
+  "Cat.IntVal\"\000\022@\n\026GetCORETemperature1SDO\022\020"
+  ".GRPCECat.IntVal\032\022.GRPCECat.FloatVal\"\000\022@"
+  "\n\026GetCORETemperature2SDO\022\020.GRPCECat.IntV"
+  "al\032\022.GRPCECat.FloatVal\"\000\022@\n\026GetCORETempe"
+  "rature3SDO\022\020.GRPCECat.IntVal\032\022.GRPCECat."
+  "FloatVal\"\000\022>\n\023GetNRMKFWVersionSDO\022\020.GRPC"
+  "ECat.IntVal\032\023.GRPCECat.StringVal\"\000\0227\n\017Ge"
+  "tMaxTorqueSDO\022\020.GRPCECat.IntVal\032\020.GRPCEC"
+  "at.IntVal\"\000\022=\n\025GetProfileVelocitySDO\022\020.G"
+  "RPCECat.IntVal\032\020.GRPCECat.IntVal\"\000\0228\n\020Ge"
+  "tProfileAccSDO\022\020.GRPCECat.IntVal\032\020.GRPCE"
+  "Cat.IntVal\"\000\0228\n\020GetProfileDecSDO\022\020.GRPCE"
+  "Cat.IntVal\032\020.GRPCECat.IntVal\"\000\022:\n\017SetMax"
+  "TorqueSDO\022\024.GRPCECat.ServoParam\032\017.GRPCEC"
+  "at.Empty\"\000\022@\n\025SetProfileVelocitySDO\022\024.GR"
+  "PCECat.ServoParam\032\017.GRPCECat.Empty\"\000\022;\n\020"
+  "SetProfileAccSDO\022\024.GRPCECat.ServoParam\032\017"
+  ".GRPCECat.Empty\"\000\022;\n\020SetProfileDecSDO\022\024."
+  "GRPCECat.ServoParam\032\017.GRPCECat.Empty\"\000b\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_EtherCATCommgRPCServer_2eproto_deps[1] = {
 };
@@ -936,7 +940,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Eth
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_EtherCATCommgRPCServer_2eproto_once;
 static bool descriptor_table_EtherCATCommgRPCServer_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_EtherCATCommgRPCServer_2eproto = {
-  &descriptor_table_EtherCATCommgRPCServer_2eproto_initialized, descriptor_table_protodef_EtherCATCommgRPCServer_2eproto, "EtherCATCommgRPCServer.proto", 4645,
+  &descriptor_table_EtherCATCommgRPCServer_2eproto_initialized, descriptor_table_protodef_EtherCATCommgRPCServer_2eproto, "EtherCATCommgRPCServer.proto", 4766,
   &descriptor_table_EtherCATCommgRPCServer_2eproto_once, descriptor_table_EtherCATCommgRPCServer_2eproto_sccs, descriptor_table_EtherCATCommgRPCServer_2eproto_deps, 26, 0,
   schemas, file_default_instances, TableStruct_EtherCATCommgRPCServer_2eproto::offsets,
   file_level_metadata_EtherCATCommgRPCServer_2eproto, 26, file_level_enum_descriptors_EtherCATCommgRPCServer_2eproto, file_level_service_descriptors_EtherCATCommgRPCServer_2eproto,
@@ -5996,7 +6000,8 @@ class EndtoolRx::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int EndtoolRx::kStatusFieldNumber;
+const int EndtoolRx::kEqcFieldNumber;
+const int EndtoolRx::kGripperFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 EndtoolRx::EndtoolRx()
@@ -6008,12 +6013,16 @@ EndtoolRx::EndtoolRx(const EndtoolRx& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  status_ = from.status_;
+  ::memcpy(&eqc_, &from.eqc_,
+    static_cast<size_t>(reinterpret_cast<char*>(&gripper_) -
+    reinterpret_cast<char*>(&eqc_)) + sizeof(gripper_));
   // @@protoc_insertion_point(copy_constructor:GRPCECat.EndtoolRx)
 }
 
 void EndtoolRx::SharedCtor() {
-  status_ = 0;
+  ::memset(&eqc_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&gripper_) -
+      reinterpret_cast<char*>(&eqc_)) + sizeof(gripper_));
 }
 
 EndtoolRx::~EndtoolRx() {
@@ -6039,7 +6048,9 @@ void EndtoolRx::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  status_ = 0;
+  ::memset(&eqc_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&gripper_) -
+      reinterpret_cast<char*>(&eqc_)) + sizeof(gripper_));
   _internal_metadata_.Clear();
 }
 
@@ -6051,10 +6062,17 @@ const char* EndtoolRx::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 status = 1;
+      // int32 eqc = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          status_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          eqc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 gripper = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          gripper_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -6088,13 +6106,26 @@ bool EndtoolRx::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 status = 1;
+      // int32 eqc = 1;
       case 1: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &status_)));
+                 input, &eqc_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 gripper = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+                 input, &gripper_)));
         } else {
           goto handle_unusual;
         }
@@ -6128,9 +6159,14 @@ void EndtoolRx::SerializeWithCachedSizes(
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 status = 1;
-  if (this->status() != 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->status(), output);
+  // int32 eqc = 1;
+  if (this->eqc() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->eqc(), output);
+  }
+
+  // int32 gripper = 2;
+  if (this->gripper() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->gripper(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6146,9 +6182,14 @@ void EndtoolRx::SerializeWithCachedSizes(
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 status = 1;
-  if (this->status() != 0) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->status(), target);
+  // int32 eqc = 1;
+  if (this->eqc() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->eqc(), target);
+  }
+
+  // int32 gripper = 2;
+  if (this->gripper() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->gripper(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6172,11 +6213,18 @@ size_t EndtoolRx::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 status = 1;
-  if (this->status() != 0) {
+  // int32 eqc = 1;
+  if (this->eqc() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->status());
+        this->eqc());
+  }
+
+  // int32 gripper = 2;
+  if (this->gripper() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->gripper());
   }
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
@@ -6206,8 +6254,11 @@ void EndtoolRx::MergeFrom(const EndtoolRx& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.status() != 0) {
-    set_status(from.status());
+  if (from.eqc() != 0) {
+    set_eqc(from.eqc());
+  }
+  if (from.gripper() != 0) {
+    set_gripper(from.gripper());
   }
 }
 
@@ -6236,7 +6287,8 @@ void EndtoolRx::Swap(EndtoolRx* other) {
 void EndtoolRx::InternalSwap(EndtoolRx* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(status_, other->status_);
+  swap(eqc_, other->eqc_);
+  swap(gripper_, other->gripper_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata EndtoolRx::GetMetadata() const {

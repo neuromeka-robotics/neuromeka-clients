@@ -82,6 +82,13 @@ class GRPCECatTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>> PrepareAsyncIsSystemReady(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>>(PrepareAsyncIsSystemReadyRaw(context, request, cq));
     }
+    virtual ::grpc::Status IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::IntVals* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>> AsyncIsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>>(AsyncIsServoOnRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>> PrepareAsyncIsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>>(PrepareAsyncIsServoOnRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::GRPCECat::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>> AsyncSetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>>(AsyncSetServoOnOffRaw(context, request, cq));
@@ -176,12 +183,19 @@ class GRPCECatTask final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IOBoardRx>>(PrepareAsyncGetNRMKIOBoardOutputRaw(context, request, cq));
     }
     // Read and Write PDOs (Neuromeka Endtool)
-    virtual ::grpc::Status SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>> AsyncSetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>>(AsyncSetNRMKEndtoolOutputRaw(context, request, cq));
+    virtual ::grpc::Status SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>> AsyncSetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>>(AsyncSetNRMKEndtoolRxRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>> PrepareAsyncSetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>>(PrepareAsyncSetNRMKEndtoolOutputRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>> PrepareAsyncSetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>>(PrepareAsyncSetNRMKEndtoolRxRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolRx* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>> AsyncGetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>>(AsyncGetNRMKEndtoolRxRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>> PrepareAsyncGetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>>(PrepareAsyncGetNRMKEndtoolRxRaw(context, request, cq));
     }
     virtual ::grpc::Status GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolTx* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolTx>> AsyncGetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -351,6 +365,10 @@ class GRPCECatTask final {
       virtual void IsSystemReady(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) = 0;
       virtual void IsSystemReady(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void IsSystemReady(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetServoOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -406,10 +424,14 @@ class GRPCECatTask final {
       virtual void GetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IOBoardRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void GetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IOBoardRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       // Read and Write PDOs (Neuromeka Endtool)
-      virtual void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      virtual void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolTx* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolTx* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolTx* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -507,6 +529,8 @@ class GRPCECatTask final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVal>* PrepareAsyncGetTxDomainStatusRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>* AsyncIsSystemReadyRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>* PrepareAsyncIsSystemReadyRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>* AsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IntVals>* PrepareAsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* AsyncSetServoOnOffRaw(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* PrepareAsyncSetServoOnOffRaw(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* AsyncSetRxPDOMotorDriverRaw(::grpc::ClientContext* context, const ::GRPCECat::MotorDriverRxIndex& request, ::grpc::CompletionQueue* cq) = 0;
@@ -533,8 +557,10 @@ class GRPCECatTask final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IOBoardTx>* PrepareAsyncGetNRMKIOBoardInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IOBoardRx>* AsyncGetNRMKIOBoardOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::IOBoardRx>* PrepareAsyncGetNRMKIOBoardOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* AsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* PrepareAsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* AsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::Empty>* PrepareAsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>* AsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRx>* PrepareAsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolTx>* AsyncGetNRMKEndtoolInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolTx>* PrepareAsyncGetNRMKEndtoolInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GRPCECat::EndtoolRevCDTTx>* AsyncGetNRMKEndtoolRevCDTInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) = 0;
@@ -613,6 +639,13 @@ class GRPCECatTask final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>> PrepareAsyncIsSystemReady(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>>(PrepareAsyncIsSystemReadyRaw(context, request, cq));
+    }
+    ::grpc::Status IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::IntVals* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>> AsyncIsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>>(AsyncIsServoOnRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>> PrepareAsyncIsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>>(PrepareAsyncIsServoOnRaw(context, request, cq));
     }
     ::grpc::Status SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::GRPCECat::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>> AsyncSetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) {
@@ -705,12 +738,19 @@ class GRPCECatTask final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IOBoardRx>> PrepareAsyncGetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::IOBoardRx>>(PrepareAsyncGetNRMKIOBoardOutputRaw(context, request, cq));
     }
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>> AsyncSetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>>(AsyncSetNRMKEndtoolOutputRaw(context, request, cq));
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>> AsyncSetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>>(AsyncSetNRMKEndtoolRxRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>> PrepareAsyncSetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>>(PrepareAsyncSetNRMKEndtoolOutputRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>> PrepareAsyncSetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>>(PrepareAsyncSetNRMKEndtoolRxRaw(context, request, cq));
+    }
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolRx* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>> AsyncGetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>>(AsyncGetNRMKEndtoolRxRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>> PrepareAsyncGetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>>(PrepareAsyncGetNRMKEndtoolRxRaw(context, request, cq));
     }
     ::grpc::Status GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolTx* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolTx>> AsyncGetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -875,6 +915,10 @@ class GRPCECatTask final {
       void IsSystemReady(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) override;
       void IsSystemReady(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void IsSystemReady(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) override;
+      void IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)>) override;
+      void IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetServoOnOff(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
       void SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -927,10 +971,14 @@ class GRPCECatTask final {
       void GetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IOBoardRx* response, std::function<void(::grpc::Status)>) override;
       void GetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IOBoardRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void GetNRMKIOBoardOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IOBoardRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
-      void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
-      void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      void SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)>) override;
+      void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)>) override;
+      void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)>) override;
+      void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolTx* response, std::function<void(::grpc::Status)>) override;
       void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolTx* response, std::function<void(::grpc::Status)>) override;
       void GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolTx* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
@@ -1032,6 +1080,8 @@ class GRPCECatTask final {
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVal>* PrepareAsyncGetTxDomainStatusRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* AsyncIsSystemReadyRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* PrepareAsyncIsSystemReadyRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* AsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* PrepareAsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* AsyncSetServoOnOffRaw(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* PrepareAsyncSetServoOnOffRaw(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* AsyncSetRxPDOMotorDriverRaw(::grpc::ClientContext* context, const ::GRPCECat::MotorDriverRxIndex& request, ::grpc::CompletionQueue* cq) override;
@@ -1058,8 +1108,10 @@ class GRPCECatTask final {
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IOBoardTx>* PrepareAsyncGetNRMKIOBoardInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IOBoardRx>* AsyncGetNRMKIOBoardOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::IOBoardRx>* PrepareAsyncGetNRMKIOBoardOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* AsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* PrepareAsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* AsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* PrepareAsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>* AsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>* PrepareAsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolTx>* AsyncGetNRMKEndtoolInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolTx>* PrepareAsyncGetNRMKEndtoolInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRevCDTTx>* AsyncGetNRMKEndtoolRevCDTInputRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) override;
@@ -1105,6 +1157,7 @@ class GRPCECatTask final {
     const ::grpc::internal::RpcMethod rpcmethod_GetRxDomainStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_GetTxDomainStatus_;
     const ::grpc::internal::RpcMethod rpcmethod_IsSystemReady_;
+    const ::grpc::internal::RpcMethod rpcmethod_IsServoOn_;
     const ::grpc::internal::RpcMethod rpcmethod_SetServoOnOff_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRxPDOMotorDriver_;
     const ::grpc::internal::RpcMethod rpcmethod_GetRxPDOMotorDriver_;
@@ -1118,7 +1171,8 @@ class GRPCECatTask final {
     const ::grpc::internal::RpcMethod rpcmethod_SetNRMKIOBoardOutput_;
     const ::grpc::internal::RpcMethod rpcmethod_GetNRMKIOBoardInput_;
     const ::grpc::internal::RpcMethod rpcmethod_GetNRMKIOBoardOutput_;
-    const ::grpc::internal::RpcMethod rpcmethod_SetNRMKEndtoolOutput_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetNRMKEndtoolRx_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetNRMKEndtoolRx_;
     const ::grpc::internal::RpcMethod rpcmethod_GetNRMKEndtoolInput_;
     const ::grpc::internal::RpcMethod rpcmethod_GetNRMKEndtoolRevCDTInput_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDO_;
@@ -1152,6 +1206,7 @@ class GRPCECatTask final {
     virtual ::grpc::Status GetRxDomainStatus(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVal* response);
     virtual ::grpc::Status GetTxDomainStatus(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVal* response);
     virtual ::grpc::Status IsSystemReady(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response);
+    virtual ::grpc::Status IsServoOn(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response);
     virtual ::grpc::Status SetServoOnOff(::grpc::ServerContext* context, const ::GRPCECat::ServoIndex* request, ::GRPCECat::Empty* response);
     // Read and Write PDOs (Motor Driver)
     virtual ::grpc::Status SetRxPDOMotorDriver(::grpc::ServerContext* context, const ::GRPCECat::MotorDriverRxIndex* request, ::GRPCECat::Empty* response);
@@ -1168,7 +1223,8 @@ class GRPCECatTask final {
     virtual ::grpc::Status GetNRMKIOBoardInput(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IOBoardTx* response);
     virtual ::grpc::Status GetNRMKIOBoardOutput(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IOBoardRx* response);
     // Read and Write PDOs (Neuromeka Endtool)
-    virtual ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response);
+    virtual ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response);
+    virtual ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response);
     virtual ::grpc::Status GetNRMKEndtoolInput(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolTx* response);
     virtual ::grpc::Status GetNRMKEndtoolRevCDTInput(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRevCDTTx* response);
     // Read and Write PDOs (Beckhoff)
@@ -1295,12 +1351,32 @@ class GRPCECatTask final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_IsServoOn() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestIsServoOn(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVals>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetServoOnOff() {
-      ::grpc::Service::MarkMethodAsync(5);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_SetServoOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1311,7 +1387,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetServoOnOff(::grpc::ServerContext* context, ::GRPCECat::ServoIndex* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1320,7 +1396,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_SetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1331,7 +1407,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRxPDOMotorDriver(::grpc::ServerContext* context, ::GRPCECat::MotorDriverRxIndex* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1340,7 +1416,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_GetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1351,7 +1427,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRxPDOMotorDriver(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::MotorDriverRx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1360,7 +1436,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_GetTxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1371,7 +1447,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetTxPDOMotorDriver(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::MotorDriverTx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1380,7 +1456,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMotorDriverDIs() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_GetMotorDriverDIs() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1391,7 +1467,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMotorDriverDIs(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1400,7 +1476,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetErrorCode() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_GetErrorCode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1411,7 +1487,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetErrorCode(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1420,7 +1496,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMaxTorque() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_GetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1431,7 +1507,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxTorque(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1440,7 +1516,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetMaxTorque() {
-      ::grpc::Service::MarkMethodAsync(12);
+      ::grpc::Service::MarkMethodAsync(13);
     }
     ~WithAsyncMethod_SetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1451,7 +1527,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxTorque(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1460,7 +1536,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodAsync(13);
+      ::grpc::Service::MarkMethodAsync(14);
     }
     ~WithAsyncMethod_GetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1471,7 +1547,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxMotorSpeed(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1480,7 +1556,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodAsync(14);
+      ::grpc::Service::MarkMethodAsync(15);
     }
     ~WithAsyncMethod_SetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1491,7 +1567,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxMotorSpeed(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1500,7 +1576,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodAsync(15);
+      ::grpc::Service::MarkMethodAsync(16);
     }
     ~WithAsyncMethod_SetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1511,7 +1587,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetNRMKIOBoardOutput(::grpc::ServerContext* context, ::GRPCECat::IOBoardRx* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1520,7 +1596,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::MarkMethodAsync(16);
+      ::grpc::Service::MarkMethodAsync(17);
     }
     ~WithAsyncMethod_GetNRMKIOBoardInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1531,7 +1607,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKIOBoardInput(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IOBoardTx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1540,7 +1616,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodAsync(17);
+      ::grpc::Service::MarkMethodAsync(18);
     }
     ~WithAsyncMethod_GetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1551,27 +1627,47 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKIOBoardOutput(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IOBoardRx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class WithAsyncMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::MarkMethodAsync(18);
+    WithAsyncMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodAsync(19);
     }
-    ~WithAsyncMethod_SetNRMKEndtoolOutput() override {
+    ~WithAsyncMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetNRMKEndtoolOutput(::grpc::ServerContext* context, ::GRPCECat::EndtoolRx* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestSetNRMKEndtoolRx(::grpc::ServerContext* context, ::GRPCECat::EndtoolRx* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodAsync(20);
+    }
+    ~WithAsyncMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetNRMKEndtoolRx(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::EndtoolRx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1580,7 +1676,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::MarkMethodAsync(19);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_GetNRMKEndtoolInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1591,7 +1687,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKEndtoolInput(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::EndtoolTx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1600,7 +1696,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::MarkMethodAsync(20);
+      ::grpc::Service::MarkMethodAsync(22);
     }
     ~WithAsyncMethod_GetNRMKEndtoolRevCDTInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1611,7 +1707,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKEndtoolRevCDTInput(::grpc::ServerContext* context, ::GRPCECat::Empty* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::EndtoolRevCDTTx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1620,7 +1716,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDO() {
-      ::grpc::Service::MarkMethodAsync(21);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_SetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1631,7 +1727,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDO(::grpc::ServerContext* context, ::GRPCECat::DOList* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1640,7 +1736,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetDI() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(24);
     }
     ~WithAsyncMethod_GetDI() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1651,7 +1747,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDI(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::DIList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1660,7 +1756,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetDO() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(25);
     }
     ~WithAsyncMethod_GetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1671,7 +1767,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::DOList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1680,7 +1776,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetRobotusFTSensor() {
-      ::grpc::Service::MarkMethodAsync(24);
+      ::grpc::Service::MarkMethodAsync(26);
     }
     ~WithAsyncMethod_GetRobotusFTSensor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1691,7 +1787,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRobotusFTSensor(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::RobotusFTTx>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1700,7 +1796,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_ResetWelconDriver() {
-      ::grpc::Service::MarkMethodAsync(25);
+      ::grpc::Service::MarkMethodAsync(27);
     }
     ~WithAsyncMethod_ResetWelconDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1711,7 +1807,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestResetWelconDriver(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1720,7 +1816,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::MarkMethodAsync(26);
+      ::grpc::Service::MarkMethodAsync(28);
     }
     ~WithAsyncMethod_GetCOREErrorCodeSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1731,7 +1827,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCOREErrorCodeSDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1740,7 +1836,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::MarkMethodAsync(27);
+      ::grpc::Service::MarkMethodAsync(29);
     }
     ~WithAsyncMethod_GetCORETemperature1SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1751,7 +1847,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature1SDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::FloatVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1760,7 +1856,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::MarkMethodAsync(28);
+      ::grpc::Service::MarkMethodAsync(30);
     }
     ~WithAsyncMethod_GetCORETemperature2SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1771,7 +1867,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature2SDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::FloatVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1780,7 +1876,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::MarkMethodAsync(29);
+      ::grpc::Service::MarkMethodAsync(31);
     }
     ~WithAsyncMethod_GetCORETemperature3SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1791,7 +1887,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature3SDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::FloatVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1800,7 +1896,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::MarkMethodAsync(30);
+      ::grpc::Service::MarkMethodAsync(32);
     }
     ~WithAsyncMethod_GetNRMKFWVersionSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1811,7 +1907,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKFWVersionSDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::StringVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1820,7 +1916,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodAsync(31);
+      ::grpc::Service::MarkMethodAsync(33);
     }
     ~WithAsyncMethod_GetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1831,7 +1927,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxTorqueSDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1840,7 +1936,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodAsync(32);
+      ::grpc::Service::MarkMethodAsync(34);
     }
     ~WithAsyncMethod_GetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1851,7 +1947,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileVelocitySDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1860,7 +1956,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetProfileAccSDO() {
-      ::grpc::Service::MarkMethodAsync(33);
+      ::grpc::Service::MarkMethodAsync(35);
     }
     ~WithAsyncMethod_GetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1871,7 +1967,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileAccSDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1880,7 +1976,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetProfileDecSDO() {
-      ::grpc::Service::MarkMethodAsync(34);
+      ::grpc::Service::MarkMethodAsync(36);
     }
     ~WithAsyncMethod_GetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1891,7 +1987,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileDecSDO(::grpc::ServerContext* context, ::GRPCECat::IntVal* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::IntVal>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1900,7 +1996,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodAsync(35);
+      ::grpc::Service::MarkMethodAsync(37);
     }
     ~WithAsyncMethod_SetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1911,7 +2007,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxTorqueSDO(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1920,7 +2016,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodAsync(36);
+      ::grpc::Service::MarkMethodAsync(38);
     }
     ~WithAsyncMethod_SetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1931,7 +2027,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileVelocitySDO(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1940,7 +2036,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetProfileAccSDO() {
-      ::grpc::Service::MarkMethodAsync(37);
+      ::grpc::Service::MarkMethodAsync(39);
     }
     ~WithAsyncMethod_SetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1951,7 +2047,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileAccSDO(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1960,7 +2056,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetProfileDecSDO() {
-      ::grpc::Service::MarkMethodAsync(38);
+      ::grpc::Service::MarkMethodAsync(40);
     }
     ~WithAsyncMethod_SetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1971,10 +2067,10 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileDecSDO(::grpc::ServerContext* context, ::GRPCECat::ServoParam* request, ::grpc::ServerAsyncResponseWriter< ::GRPCECat::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetMasterStatus<WithAsyncMethod_GetSlaveStatus<WithAsyncMethod_GetRxDomainStatus<WithAsyncMethod_GetTxDomainStatus<WithAsyncMethod_IsSystemReady<WithAsyncMethod_SetServoOnOff<WithAsyncMethod_SetRxPDOMotorDriver<WithAsyncMethod_GetRxPDOMotorDriver<WithAsyncMethod_GetTxPDOMotorDriver<WithAsyncMethod_GetMotorDriverDIs<WithAsyncMethod_GetErrorCode<WithAsyncMethod_GetMaxTorque<WithAsyncMethod_SetMaxTorque<WithAsyncMethod_GetMaxMotorSpeed<WithAsyncMethod_SetMaxMotorSpeed<WithAsyncMethod_SetNRMKIOBoardOutput<WithAsyncMethod_GetNRMKIOBoardInput<WithAsyncMethod_GetNRMKIOBoardOutput<WithAsyncMethod_SetNRMKEndtoolOutput<WithAsyncMethod_GetNRMKEndtoolInput<WithAsyncMethod_GetNRMKEndtoolRevCDTInput<WithAsyncMethod_SetDO<WithAsyncMethod_GetDI<WithAsyncMethod_GetDO<WithAsyncMethod_GetRobotusFTSensor<WithAsyncMethod_ResetWelconDriver<WithAsyncMethod_GetCOREErrorCodeSDO<WithAsyncMethod_GetCORETemperature1SDO<WithAsyncMethod_GetCORETemperature2SDO<WithAsyncMethod_GetCORETemperature3SDO<WithAsyncMethod_GetNRMKFWVersionSDO<WithAsyncMethod_GetMaxTorqueSDO<WithAsyncMethod_GetProfileVelocitySDO<WithAsyncMethod_GetProfileAccSDO<WithAsyncMethod_GetProfileDecSDO<WithAsyncMethod_SetMaxTorqueSDO<WithAsyncMethod_SetProfileVelocitySDO<WithAsyncMethod_SetProfileAccSDO<WithAsyncMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_GetMasterStatus<WithAsyncMethod_GetSlaveStatus<WithAsyncMethod_GetRxDomainStatus<WithAsyncMethod_GetTxDomainStatus<WithAsyncMethod_IsSystemReady<WithAsyncMethod_IsServoOn<WithAsyncMethod_SetServoOnOff<WithAsyncMethod_SetRxPDOMotorDriver<WithAsyncMethod_GetRxPDOMotorDriver<WithAsyncMethod_GetTxPDOMotorDriver<WithAsyncMethod_GetMotorDriverDIs<WithAsyncMethod_GetErrorCode<WithAsyncMethod_GetMaxTorque<WithAsyncMethod_SetMaxTorque<WithAsyncMethod_GetMaxMotorSpeed<WithAsyncMethod_SetMaxMotorSpeed<WithAsyncMethod_SetNRMKIOBoardOutput<WithAsyncMethod_GetNRMKIOBoardInput<WithAsyncMethod_GetNRMKIOBoardOutput<WithAsyncMethod_SetNRMKEndtoolRx<WithAsyncMethod_GetNRMKEndtoolRx<WithAsyncMethod_GetNRMKEndtoolInput<WithAsyncMethod_GetNRMKEndtoolRevCDTInput<WithAsyncMethod_SetDO<WithAsyncMethod_GetDI<WithAsyncMethod_GetDO<WithAsyncMethod_GetRobotusFTSensor<WithAsyncMethod_ResetWelconDriver<WithAsyncMethod_GetCOREErrorCodeSDO<WithAsyncMethod_GetCORETemperature1SDO<WithAsyncMethod_GetCORETemperature2SDO<WithAsyncMethod_GetCORETemperature3SDO<WithAsyncMethod_GetNRMKFWVersionSDO<WithAsyncMethod_GetMaxTorqueSDO<WithAsyncMethod_GetProfileVelocitySDO<WithAsyncMethod_GetProfileAccSDO<WithAsyncMethod_GetProfileDecSDO<WithAsyncMethod_SetMaxTorqueSDO<WithAsyncMethod_SetProfileVelocitySDO<WithAsyncMethod_SetProfileAccSDO<WithAsyncMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetMasterStatus : public BaseClass {
    private:
@@ -2131,12 +2227,43 @@ class GRPCECatTask final {
     virtual void IsSystemReady(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_IsServoOn() {
+      ::grpc::Service::experimental().MarkMethodCallback(5,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IntVals>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCECat::Empty* request,
+                 ::GRPCECat::IntVals* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->IsServoOn(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_IsServoOn(
+        ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::IntVals>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IntVals>*>(
+          ::grpc::Service::experimental().GetHandler(5))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetServoOnOff() {
-      ::grpc::Service::experimental().MarkMethodCallback(5,
+      ::grpc::Service::experimental().MarkMethodCallback(6,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoIndex, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoIndex* request,
@@ -2148,7 +2275,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetServoOnOff(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoIndex, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoIndex, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(5))
+          ::grpc::Service::experimental().GetHandler(6))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetServoOnOff() override {
@@ -2167,7 +2294,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodCallback(6,
+      ::grpc::Service::experimental().MarkMethodCallback(7,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::MotorDriverRxIndex, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::MotorDriverRxIndex* request,
@@ -2179,7 +2306,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetRxPDOMotorDriver(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::MotorDriverRxIndex, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::MotorDriverRxIndex, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(6))
+          ::grpc::Service::experimental().GetHandler(7))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetRxPDOMotorDriver() override {
@@ -2198,7 +2325,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodCallback(7,
+      ::grpc::Service::experimental().MarkMethodCallback(8,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverRx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2210,7 +2337,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetRxPDOMotorDriver(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverRx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverRx>*>(
-          ::grpc::Service::experimental().GetHandler(7))
+          ::grpc::Service::experimental().GetHandler(8))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetRxPDOMotorDriver() override {
@@ -2229,7 +2356,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodCallback(8,
+      ::grpc::Service::experimental().MarkMethodCallback(9,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverTx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2241,7 +2368,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetTxPDOMotorDriver(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverTx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverTx>*>(
-          ::grpc::Service::experimental().GetHandler(8))
+          ::grpc::Service::experimental().GetHandler(9))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetTxPDOMotorDriver() override {
@@ -2260,7 +2387,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetMotorDriverDIs() {
-      ::grpc::Service::experimental().MarkMethodCallback(9,
+      ::grpc::Service::experimental().MarkMethodCallback(10,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2272,7 +2399,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetMotorDriverDIs(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(9))
+          ::grpc::Service::experimental().GetHandler(10))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetMotorDriverDIs() override {
@@ -2291,7 +2418,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetErrorCode() {
-      ::grpc::Service::experimental().MarkMethodCallback(10,
+      ::grpc::Service::experimental().MarkMethodCallback(11,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2303,7 +2430,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetErrorCode(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(10))
+          ::grpc::Service::experimental().GetHandler(11))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetErrorCode() override {
@@ -2322,7 +2449,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetMaxTorque() {
-      ::grpc::Service::experimental().MarkMethodCallback(11,
+      ::grpc::Service::experimental().MarkMethodCallback(12,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2334,7 +2461,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetMaxTorque(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(11))
+          ::grpc::Service::experimental().GetHandler(12))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetMaxTorque() override {
@@ -2353,7 +2480,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetMaxTorque() {
-      ::grpc::Service::experimental().MarkMethodCallback(12,
+      ::grpc::Service::experimental().MarkMethodCallback(13,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -2365,7 +2492,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetMaxTorque(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(12))
+          ::grpc::Service::experimental().GetHandler(13))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetMaxTorque() override {
@@ -2384,7 +2511,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::experimental().MarkMethodCallback(13,
+      ::grpc::Service::experimental().MarkMethodCallback(14,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2396,7 +2523,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetMaxMotorSpeed(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(13))
+          ::grpc::Service::experimental().GetHandler(14))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetMaxMotorSpeed() override {
@@ -2415,7 +2542,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::experimental().MarkMethodCallback(14,
+      ::grpc::Service::experimental().MarkMethodCallback(15,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -2427,7 +2554,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetMaxMotorSpeed(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(14))
+          ::grpc::Service::experimental().GetHandler(15))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetMaxMotorSpeed() override {
@@ -2446,7 +2573,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::experimental().MarkMethodCallback(15,
+      ::grpc::Service::experimental().MarkMethodCallback(16,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IOBoardRx, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IOBoardRx* request,
@@ -2458,7 +2585,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetNRMKIOBoardOutput(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IOBoardRx, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IOBoardRx, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(15))
+          ::grpc::Service::experimental().GetHandler(16))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetNRMKIOBoardOutput() override {
@@ -2477,7 +2604,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::experimental().MarkMethodCallback(16,
+      ::grpc::Service::experimental().MarkMethodCallback(17,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardTx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::Empty* request,
@@ -2489,7 +2616,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetNRMKIOBoardInput(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::IOBoardTx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardTx>*>(
-          ::grpc::Service::experimental().GetHandler(16))
+          ::grpc::Service::experimental().GetHandler(17))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetNRMKIOBoardInput() override {
@@ -2508,7 +2635,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::experimental().MarkMethodCallback(17,
+      ::grpc::Service::experimental().MarkMethodCallback(18,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardRx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::Empty* request,
@@ -2520,7 +2647,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetNRMKIOBoardOutput(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::IOBoardRx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardRx>*>(
-          ::grpc::Service::experimental().GetHandler(17))
+          ::grpc::Service::experimental().GetHandler(18))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetNRMKIOBoardOutput() override {
@@ -2534,35 +2661,66 @@ class GRPCECatTask final {
     virtual void GetNRMKIOBoardOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IOBoardRx* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class ExperimentalWithCallbackMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::experimental().MarkMethodCallback(18,
+    ExperimentalWithCallbackMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::experimental().MarkMethodCallback(19,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::EndtoolRx* request,
                  ::GRPCECat::Empty* response,
                  ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   return this->SetNRMKEndtoolOutput(context, request, response, controller);
+                   return this->SetNRMKEndtoolRx(context, request, response, controller);
                  }));
     }
-    void SetMessageAllocatorFor_SetNRMKEndtoolOutput(
+    void SetMessageAllocatorFor_SetNRMKEndtoolRx(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(18))
+          ::grpc::Service::experimental().GetHandler(19))
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_SetNRMKEndtoolOutput() override {
+    ~ExperimentalWithCallbackMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual void SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::experimental().MarkMethodCallback(20,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRx>(
+          [this](::grpc::ServerContext* context,
+                 const ::GRPCECat::Empty* request,
+                 ::GRPCECat::EndtoolRx* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->GetNRMKEndtoolRx(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_GetNRMKEndtoolRx(
+        ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::EndtoolRx>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRx>*>(
+          ::grpc::Service::experimental().GetHandler(20))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_GetNRMKEndtoolInput : public BaseClass {
@@ -2570,7 +2728,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::experimental().MarkMethodCallback(19,
+      ::grpc::Service::experimental().MarkMethodCallback(21,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolTx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::Empty* request,
@@ -2582,7 +2740,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetNRMKEndtoolInput(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::EndtoolTx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolTx>*>(
-          ::grpc::Service::experimental().GetHandler(19))
+          ::grpc::Service::experimental().GetHandler(21))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetNRMKEndtoolInput() override {
@@ -2601,7 +2759,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::experimental().MarkMethodCallback(20,
+      ::grpc::Service::experimental().MarkMethodCallback(22,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRevCDTTx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::Empty* request,
@@ -2613,7 +2771,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetNRMKEndtoolRevCDTInput(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::Empty, ::GRPCECat::EndtoolRevCDTTx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRevCDTTx>*>(
-          ::grpc::Service::experimental().GetHandler(20))
+          ::grpc::Service::experimental().GetHandler(22))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetNRMKEndtoolRevCDTInput() override {
@@ -2632,7 +2790,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(21,
+      ::grpc::Service::experimental().MarkMethodCallback(23,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::DOList, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::DOList* request,
@@ -2644,7 +2802,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::DOList, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::DOList, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(21))
+          ::grpc::Service::experimental().GetHandler(23))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetDO() override {
@@ -2663,7 +2821,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetDI() {
-      ::grpc::Service::experimental().MarkMethodCallback(22,
+      ::grpc::Service::experimental().MarkMethodCallback(24,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DIList>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2675,7 +2833,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetDI(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::DIList>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DIList>*>(
-          ::grpc::Service::experimental().GetHandler(22))
+          ::grpc::Service::experimental().GetHandler(24))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetDI() override {
@@ -2694,7 +2852,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(23,
+      ::grpc::Service::experimental().MarkMethodCallback(25,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DOList>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2706,7 +2864,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::DOList>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DOList>*>(
-          ::grpc::Service::experimental().GetHandler(23))
+          ::grpc::Service::experimental().GetHandler(25))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetDO() override {
@@ -2725,7 +2883,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetRobotusFTSensor() {
-      ::grpc::Service::experimental().MarkMethodCallback(24,
+      ::grpc::Service::experimental().MarkMethodCallback(26,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::RobotusFTTx>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2737,7 +2895,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetRobotusFTSensor(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::RobotusFTTx>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::RobotusFTTx>*>(
-          ::grpc::Service::experimental().GetHandler(24))
+          ::grpc::Service::experimental().GetHandler(26))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetRobotusFTSensor() override {
@@ -2756,7 +2914,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_ResetWelconDriver() {
-      ::grpc::Service::experimental().MarkMethodCallback(25,
+      ::grpc::Service::experimental().MarkMethodCallback(27,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2768,7 +2926,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_ResetWelconDriver(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(25))
+          ::grpc::Service::experimental().GetHandler(27))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_ResetWelconDriver() override {
@@ -2787,7 +2945,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(26,
+      ::grpc::Service::experimental().MarkMethodCallback(28,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2799,7 +2957,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetCOREErrorCodeSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(26))
+          ::grpc::Service::experimental().GetHandler(28))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetCOREErrorCodeSDO() override {
@@ -2818,7 +2976,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(27,
+      ::grpc::Service::experimental().MarkMethodCallback(29,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2830,7 +2988,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetCORETemperature1SDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>*>(
-          ::grpc::Service::experimental().GetHandler(27))
+          ::grpc::Service::experimental().GetHandler(29))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetCORETemperature1SDO() override {
@@ -2849,7 +3007,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(28,
+      ::grpc::Service::experimental().MarkMethodCallback(30,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2861,7 +3019,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetCORETemperature2SDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>*>(
-          ::grpc::Service::experimental().GetHandler(28))
+          ::grpc::Service::experimental().GetHandler(30))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetCORETemperature2SDO() override {
@@ -2880,7 +3038,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(29,
+      ::grpc::Service::experimental().MarkMethodCallback(31,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2892,7 +3050,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetCORETemperature3SDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>*>(
-          ::grpc::Service::experimental().GetHandler(29))
+          ::grpc::Service::experimental().GetHandler(31))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetCORETemperature3SDO() override {
@@ -2911,7 +3069,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(30,
+      ::grpc::Service::experimental().MarkMethodCallback(32,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::StringVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2923,7 +3081,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetNRMKFWVersionSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::StringVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::StringVal>*>(
-          ::grpc::Service::experimental().GetHandler(30))
+          ::grpc::Service::experimental().GetHandler(32))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetNRMKFWVersionSDO() override {
@@ -2942,7 +3100,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(31,
+      ::grpc::Service::experimental().MarkMethodCallback(33,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2954,7 +3112,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetMaxTorqueSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(31))
+          ::grpc::Service::experimental().GetHandler(33))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetMaxTorqueSDO() override {
@@ -2973,7 +3131,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(32,
+      ::grpc::Service::experimental().MarkMethodCallback(34,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -2985,7 +3143,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetProfileVelocitySDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(32))
+          ::grpc::Service::experimental().GetHandler(34))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetProfileVelocitySDO() override {
@@ -3004,7 +3162,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetProfileAccSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(33,
+      ::grpc::Service::experimental().MarkMethodCallback(35,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -3016,7 +3174,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetProfileAccSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(33))
+          ::grpc::Service::experimental().GetHandler(35))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetProfileAccSDO() override {
@@ -3035,7 +3193,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_GetProfileDecSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(34,
+      ::grpc::Service::experimental().MarkMethodCallback(36,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::IntVal* request,
@@ -3047,7 +3205,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_GetProfileDecSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::IntVal, ::GRPCECat::IntVal>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>*>(
-          ::grpc::Service::experimental().GetHandler(34))
+          ::grpc::Service::experimental().GetHandler(36))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_GetProfileDecSDO() override {
@@ -3066,7 +3224,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(35,
+      ::grpc::Service::experimental().MarkMethodCallback(37,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -3078,7 +3236,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetMaxTorqueSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(35))
+          ::grpc::Service::experimental().GetHandler(37))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetMaxTorqueSDO() override {
@@ -3097,7 +3255,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(36,
+      ::grpc::Service::experimental().MarkMethodCallback(38,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -3109,7 +3267,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetProfileVelocitySDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(36))
+          ::grpc::Service::experimental().GetHandler(38))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetProfileVelocitySDO() override {
@@ -3128,7 +3286,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetProfileAccSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(37,
+      ::grpc::Service::experimental().MarkMethodCallback(39,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -3140,7 +3298,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetProfileAccSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(37))
+          ::grpc::Service::experimental().GetHandler(39))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetProfileAccSDO() override {
@@ -3159,7 +3317,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithCallbackMethod_SetProfileDecSDO() {
-      ::grpc::Service::experimental().MarkMethodCallback(38,
+      ::grpc::Service::experimental().MarkMethodCallback(40,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           [this](::grpc::ServerContext* context,
                  const ::GRPCECat::ServoParam* request,
@@ -3171,7 +3329,7 @@ class GRPCECatTask final {
     void SetMessageAllocatorFor_SetProfileDecSDO(
         ::grpc::experimental::MessageAllocator< ::GRPCECat::ServoParam, ::GRPCECat::Empty>* allocator) {
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>*>(
-          ::grpc::Service::experimental().GetHandler(38))
+          ::grpc::Service::experimental().GetHandler(40))
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_SetProfileDecSDO() override {
@@ -3184,7 +3342,7 @@ class GRPCECatTask final {
     }
     virtual void SetProfileDecSDO(::grpc::ServerContext* /*context*/, const ::GRPCECat::ServoParam* /*request*/, ::GRPCECat::Empty* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
-  typedef ExperimentalWithCallbackMethod_GetMasterStatus<ExperimentalWithCallbackMethod_GetSlaveStatus<ExperimentalWithCallbackMethod_GetRxDomainStatus<ExperimentalWithCallbackMethod_GetTxDomainStatus<ExperimentalWithCallbackMethod_IsSystemReady<ExperimentalWithCallbackMethod_SetServoOnOff<ExperimentalWithCallbackMethod_SetRxPDOMotorDriver<ExperimentalWithCallbackMethod_GetRxPDOMotorDriver<ExperimentalWithCallbackMethod_GetTxPDOMotorDriver<ExperimentalWithCallbackMethod_GetMotorDriverDIs<ExperimentalWithCallbackMethod_GetErrorCode<ExperimentalWithCallbackMethod_GetMaxTorque<ExperimentalWithCallbackMethod_SetMaxTorque<ExperimentalWithCallbackMethod_GetMaxMotorSpeed<ExperimentalWithCallbackMethod_SetMaxMotorSpeed<ExperimentalWithCallbackMethod_SetNRMKIOBoardOutput<ExperimentalWithCallbackMethod_GetNRMKIOBoardInput<ExperimentalWithCallbackMethod_GetNRMKIOBoardOutput<ExperimentalWithCallbackMethod_SetNRMKEndtoolOutput<ExperimentalWithCallbackMethod_GetNRMKEndtoolInput<ExperimentalWithCallbackMethod_GetNRMKEndtoolRevCDTInput<ExperimentalWithCallbackMethod_SetDO<ExperimentalWithCallbackMethod_GetDI<ExperimentalWithCallbackMethod_GetDO<ExperimentalWithCallbackMethod_GetRobotusFTSensor<ExperimentalWithCallbackMethod_ResetWelconDriver<ExperimentalWithCallbackMethod_GetCOREErrorCodeSDO<ExperimentalWithCallbackMethod_GetCORETemperature1SDO<ExperimentalWithCallbackMethod_GetCORETemperature2SDO<ExperimentalWithCallbackMethod_GetCORETemperature3SDO<ExperimentalWithCallbackMethod_GetNRMKFWVersionSDO<ExperimentalWithCallbackMethod_GetMaxTorqueSDO<ExperimentalWithCallbackMethod_GetProfileVelocitySDO<ExperimentalWithCallbackMethod_GetProfileAccSDO<ExperimentalWithCallbackMethod_GetProfileDecSDO<ExperimentalWithCallbackMethod_SetMaxTorqueSDO<ExperimentalWithCallbackMethod_SetProfileVelocitySDO<ExperimentalWithCallbackMethod_SetProfileAccSDO<ExperimentalWithCallbackMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_GetMasterStatus<ExperimentalWithCallbackMethod_GetSlaveStatus<ExperimentalWithCallbackMethod_GetRxDomainStatus<ExperimentalWithCallbackMethod_GetTxDomainStatus<ExperimentalWithCallbackMethod_IsSystemReady<ExperimentalWithCallbackMethod_IsServoOn<ExperimentalWithCallbackMethod_SetServoOnOff<ExperimentalWithCallbackMethod_SetRxPDOMotorDriver<ExperimentalWithCallbackMethod_GetRxPDOMotorDriver<ExperimentalWithCallbackMethod_GetTxPDOMotorDriver<ExperimentalWithCallbackMethod_GetMotorDriverDIs<ExperimentalWithCallbackMethod_GetErrorCode<ExperimentalWithCallbackMethod_GetMaxTorque<ExperimentalWithCallbackMethod_SetMaxTorque<ExperimentalWithCallbackMethod_GetMaxMotorSpeed<ExperimentalWithCallbackMethod_SetMaxMotorSpeed<ExperimentalWithCallbackMethod_SetNRMKIOBoardOutput<ExperimentalWithCallbackMethod_GetNRMKIOBoardInput<ExperimentalWithCallbackMethod_GetNRMKIOBoardOutput<ExperimentalWithCallbackMethod_SetNRMKEndtoolRx<ExperimentalWithCallbackMethod_GetNRMKEndtoolRx<ExperimentalWithCallbackMethod_GetNRMKEndtoolInput<ExperimentalWithCallbackMethod_GetNRMKEndtoolRevCDTInput<ExperimentalWithCallbackMethod_SetDO<ExperimentalWithCallbackMethod_GetDI<ExperimentalWithCallbackMethod_GetDO<ExperimentalWithCallbackMethod_GetRobotusFTSensor<ExperimentalWithCallbackMethod_ResetWelconDriver<ExperimentalWithCallbackMethod_GetCOREErrorCodeSDO<ExperimentalWithCallbackMethod_GetCORETemperature1SDO<ExperimentalWithCallbackMethod_GetCORETemperature2SDO<ExperimentalWithCallbackMethod_GetCORETemperature3SDO<ExperimentalWithCallbackMethod_GetNRMKFWVersionSDO<ExperimentalWithCallbackMethod_GetMaxTorqueSDO<ExperimentalWithCallbackMethod_GetProfileVelocitySDO<ExperimentalWithCallbackMethod_GetProfileAccSDO<ExperimentalWithCallbackMethod_GetProfileDecSDO<ExperimentalWithCallbackMethod_SetMaxTorqueSDO<ExperimentalWithCallbackMethod_SetProfileVelocitySDO<ExperimentalWithCallbackMethod_SetProfileAccSDO<ExperimentalWithCallbackMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetMasterStatus : public BaseClass {
    private:
@@ -3271,12 +3429,29 @@ class GRPCECatTask final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_IsServoOn() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetServoOnOff() {
-      ::grpc::Service::MarkMethodGeneric(5);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_SetServoOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3293,7 +3468,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_SetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3310,7 +3485,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_GetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3327,7 +3502,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_GetTxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3344,7 +3519,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMotorDriverDIs() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_GetMotorDriverDIs() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3361,7 +3536,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetErrorCode() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_GetErrorCode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3378,7 +3553,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMaxTorque() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_GetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3395,7 +3570,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetMaxTorque() {
-      ::grpc::Service::MarkMethodGeneric(12);
+      ::grpc::Service::MarkMethodGeneric(13);
     }
     ~WithGenericMethod_SetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3412,7 +3587,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodGeneric(13);
+      ::grpc::Service::MarkMethodGeneric(14);
     }
     ~WithGenericMethod_GetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3429,7 +3604,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodGeneric(14);
+      ::grpc::Service::MarkMethodGeneric(15);
     }
     ~WithGenericMethod_SetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3446,7 +3621,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodGeneric(15);
+      ::grpc::Service::MarkMethodGeneric(16);
     }
     ~WithGenericMethod_SetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3463,7 +3638,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::MarkMethodGeneric(16);
+      ::grpc::Service::MarkMethodGeneric(17);
     }
     ~WithGenericMethod_GetNRMKIOBoardInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3480,7 +3655,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodGeneric(17);
+      ::grpc::Service::MarkMethodGeneric(18);
     }
     ~WithGenericMethod_GetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3492,18 +3667,35 @@ class GRPCECatTask final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class WithGenericMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::MarkMethodGeneric(18);
+    WithGenericMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodGeneric(19);
     }
-    ~WithGenericMethod_SetNRMKEndtoolOutput() override {
+    ~WithGenericMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodGeneric(20);
+    }
+    ~WithGenericMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -3514,7 +3706,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::MarkMethodGeneric(19);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_GetNRMKEndtoolInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3531,7 +3723,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::MarkMethodGeneric(20);
+      ::grpc::Service::MarkMethodGeneric(22);
     }
     ~WithGenericMethod_GetNRMKEndtoolRevCDTInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3548,7 +3740,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDO() {
-      ::grpc::Service::MarkMethodGeneric(21);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_SetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3565,7 +3757,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetDI() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(24);
     }
     ~WithGenericMethod_GetDI() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3582,7 +3774,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetDO() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(25);
     }
     ~WithGenericMethod_GetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3599,7 +3791,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetRobotusFTSensor() {
-      ::grpc::Service::MarkMethodGeneric(24);
+      ::grpc::Service::MarkMethodGeneric(26);
     }
     ~WithGenericMethod_GetRobotusFTSensor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3616,7 +3808,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_ResetWelconDriver() {
-      ::grpc::Service::MarkMethodGeneric(25);
+      ::grpc::Service::MarkMethodGeneric(27);
     }
     ~WithGenericMethod_ResetWelconDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3633,7 +3825,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::MarkMethodGeneric(26);
+      ::grpc::Service::MarkMethodGeneric(28);
     }
     ~WithGenericMethod_GetCOREErrorCodeSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3650,7 +3842,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::MarkMethodGeneric(27);
+      ::grpc::Service::MarkMethodGeneric(29);
     }
     ~WithGenericMethod_GetCORETemperature1SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3667,7 +3859,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::MarkMethodGeneric(28);
+      ::grpc::Service::MarkMethodGeneric(30);
     }
     ~WithGenericMethod_GetCORETemperature2SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3684,7 +3876,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::MarkMethodGeneric(29);
+      ::grpc::Service::MarkMethodGeneric(31);
     }
     ~WithGenericMethod_GetCORETemperature3SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3701,7 +3893,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::MarkMethodGeneric(30);
+      ::grpc::Service::MarkMethodGeneric(32);
     }
     ~WithGenericMethod_GetNRMKFWVersionSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3718,7 +3910,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodGeneric(31);
+      ::grpc::Service::MarkMethodGeneric(33);
     }
     ~WithGenericMethod_GetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3735,7 +3927,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodGeneric(32);
+      ::grpc::Service::MarkMethodGeneric(34);
     }
     ~WithGenericMethod_GetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3752,7 +3944,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetProfileAccSDO() {
-      ::grpc::Service::MarkMethodGeneric(33);
+      ::grpc::Service::MarkMethodGeneric(35);
     }
     ~WithGenericMethod_GetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3769,7 +3961,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetProfileDecSDO() {
-      ::grpc::Service::MarkMethodGeneric(34);
+      ::grpc::Service::MarkMethodGeneric(36);
     }
     ~WithGenericMethod_GetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3786,7 +3978,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodGeneric(35);
+      ::grpc::Service::MarkMethodGeneric(37);
     }
     ~WithGenericMethod_SetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3803,7 +3995,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodGeneric(36);
+      ::grpc::Service::MarkMethodGeneric(38);
     }
     ~WithGenericMethod_SetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3820,7 +4012,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetProfileAccSDO() {
-      ::grpc::Service::MarkMethodGeneric(37);
+      ::grpc::Service::MarkMethodGeneric(39);
     }
     ~WithGenericMethod_SetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3837,7 +4029,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetProfileDecSDO() {
-      ::grpc::Service::MarkMethodGeneric(38);
+      ::grpc::Service::MarkMethodGeneric(40);
     }
     ~WithGenericMethod_SetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3949,12 +4141,32 @@ class GRPCECatTask final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_IsServoOn() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestIsServoOn(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetServoOnOff() {
-      ::grpc::Service::MarkMethodRaw(5);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_SetServoOnOff() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3965,7 +4177,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetServoOnOff(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3974,7 +4186,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(7);
     }
     ~WithRawMethod_SetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3985,7 +4197,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRxPDOMotorDriver(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3994,7 +4206,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_GetRxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4005,7 +4217,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRxPDOMotorDriver(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4014,7 +4226,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_GetTxPDOMotorDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4025,7 +4237,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetTxPDOMotorDriver(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4034,7 +4246,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMotorDriverDIs() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_GetMotorDriverDIs() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4045,7 +4257,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMotorDriverDIs(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4054,7 +4266,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetErrorCode() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_GetErrorCode() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4065,7 +4277,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetErrorCode(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4074,7 +4286,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMaxTorque() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(12);
     }
     ~WithRawMethod_GetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4085,7 +4297,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxTorque(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4094,7 +4306,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetMaxTorque() {
-      ::grpc::Service::MarkMethodRaw(12);
+      ::grpc::Service::MarkMethodRaw(13);
     }
     ~WithRawMethod_SetMaxTorque() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4105,7 +4317,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxTorque(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4114,7 +4326,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodRaw(13);
+      ::grpc::Service::MarkMethodRaw(14);
     }
     ~WithRawMethod_GetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4125,7 +4337,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxMotorSpeed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4134,7 +4346,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodRaw(14);
+      ::grpc::Service::MarkMethodRaw(15);
     }
     ~WithRawMethod_SetMaxMotorSpeed() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4145,7 +4357,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxMotorSpeed(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4154,7 +4366,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodRaw(15);
+      ::grpc::Service::MarkMethodRaw(16);
     }
     ~WithRawMethod_SetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4165,7 +4377,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetNRMKIOBoardOutput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4174,7 +4386,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::MarkMethodRaw(16);
+      ::grpc::Service::MarkMethodRaw(17);
     }
     ~WithRawMethod_GetNRMKIOBoardInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4185,7 +4397,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKIOBoardInput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4194,7 +4406,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodRaw(17);
+      ::grpc::Service::MarkMethodRaw(18);
     }
     ~WithRawMethod_GetNRMKIOBoardOutput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4205,27 +4417,47 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKIOBoardOutput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class WithRawMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::MarkMethodRaw(18);
+    WithRawMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodRaw(19);
     }
-    ~WithRawMethod_SetNRMKEndtoolOutput() override {
+    ~WithRawMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSetNRMKEndtoolOutput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestSetNRMKEndtoolRx(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodRaw(20);
+    }
+    ~WithRawMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetNRMKEndtoolRx(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4234,7 +4466,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::MarkMethodRaw(19);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_GetNRMKEndtoolInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4245,7 +4477,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKEndtoolInput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4254,7 +4486,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::MarkMethodRaw(20);
+      ::grpc::Service::MarkMethodRaw(22);
     }
     ~WithRawMethod_GetNRMKEndtoolRevCDTInput() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4265,7 +4497,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKEndtoolRevCDTInput(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4274,7 +4506,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDO() {
-      ::grpc::Service::MarkMethodRaw(21);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_SetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4285,7 +4517,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4294,7 +4526,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetDI() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(24);
     }
     ~WithRawMethod_GetDI() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4305,7 +4537,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDI(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4314,7 +4546,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetDO() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(25);
     }
     ~WithRawMethod_GetDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4325,7 +4557,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4334,7 +4566,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetRobotusFTSensor() {
-      ::grpc::Service::MarkMethodRaw(24);
+      ::grpc::Service::MarkMethodRaw(26);
     }
     ~WithRawMethod_GetRobotusFTSensor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4345,7 +4577,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRobotusFTSensor(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4354,7 +4586,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_ResetWelconDriver() {
-      ::grpc::Service::MarkMethodRaw(25);
+      ::grpc::Service::MarkMethodRaw(27);
     }
     ~WithRawMethod_ResetWelconDriver() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4365,7 +4597,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestResetWelconDriver(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4374,7 +4606,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::MarkMethodRaw(26);
+      ::grpc::Service::MarkMethodRaw(28);
     }
     ~WithRawMethod_GetCOREErrorCodeSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4385,7 +4617,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCOREErrorCodeSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4394,7 +4626,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::MarkMethodRaw(27);
+      ::grpc::Service::MarkMethodRaw(29);
     }
     ~WithRawMethod_GetCORETemperature1SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4405,7 +4637,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature1SDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4414,7 +4646,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::MarkMethodRaw(28);
+      ::grpc::Service::MarkMethodRaw(30);
     }
     ~WithRawMethod_GetCORETemperature2SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4425,7 +4657,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature2SDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4434,7 +4666,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::MarkMethodRaw(29);
+      ::grpc::Service::MarkMethodRaw(31);
     }
     ~WithRawMethod_GetCORETemperature3SDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4445,7 +4677,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetCORETemperature3SDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4454,7 +4686,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::MarkMethodRaw(30);
+      ::grpc::Service::MarkMethodRaw(32);
     }
     ~WithRawMethod_GetNRMKFWVersionSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4465,7 +4697,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetNRMKFWVersionSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4474,7 +4706,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodRaw(31);
+      ::grpc::Service::MarkMethodRaw(33);
     }
     ~WithRawMethod_GetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4485,7 +4717,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMaxTorqueSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4494,7 +4726,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodRaw(32);
+      ::grpc::Service::MarkMethodRaw(34);
     }
     ~WithRawMethod_GetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4505,7 +4737,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileVelocitySDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4514,7 +4746,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetProfileAccSDO() {
-      ::grpc::Service::MarkMethodRaw(33);
+      ::grpc::Service::MarkMethodRaw(35);
     }
     ~WithRawMethod_GetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4525,7 +4757,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileAccSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4534,7 +4766,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetProfileDecSDO() {
-      ::grpc::Service::MarkMethodRaw(34);
+      ::grpc::Service::MarkMethodRaw(36);
     }
     ~WithRawMethod_GetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4545,7 +4777,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetProfileDecSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4554,7 +4786,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodRaw(35);
+      ::grpc::Service::MarkMethodRaw(37);
     }
     ~WithRawMethod_SetMaxTorqueSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4565,7 +4797,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMaxTorqueSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4574,7 +4806,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodRaw(36);
+      ::grpc::Service::MarkMethodRaw(38);
     }
     ~WithRawMethod_SetProfileVelocitySDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4585,7 +4817,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileVelocitySDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4594,7 +4826,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetProfileAccSDO() {
-      ::grpc::Service::MarkMethodRaw(37);
+      ::grpc::Service::MarkMethodRaw(39);
     }
     ~WithRawMethod_SetProfileAccSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4605,7 +4837,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileAccSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4614,7 +4846,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetProfileDecSDO() {
-      ::grpc::Service::MarkMethodRaw(38);
+      ::grpc::Service::MarkMethodRaw(40);
     }
     ~WithRawMethod_SetProfileDecSDO() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4625,7 +4857,7 @@ class GRPCECatTask final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetProfileDecSDO(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4754,12 +4986,37 @@ class GRPCECatTask final {
     virtual void IsSystemReady(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_IsServoOn() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(5,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->IsServoOn(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void IsServoOn(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetServoOnOff() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(5,
+      ::grpc::Service::experimental().MarkMethodRawCallback(6,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4784,7 +5041,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(6,
+      ::grpc::Service::experimental().MarkMethodRawCallback(7,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4809,7 +5066,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(7,
+      ::grpc::Service::experimental().MarkMethodRawCallback(8,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4834,7 +5091,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(8,
+      ::grpc::Service::experimental().MarkMethodRawCallback(9,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4859,7 +5116,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetMotorDriverDIs() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(9,
+      ::grpc::Service::experimental().MarkMethodRawCallback(10,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4884,7 +5141,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetErrorCode() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(10,
+      ::grpc::Service::experimental().MarkMethodRawCallback(11,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4909,7 +5166,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetMaxTorque() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(11,
+      ::grpc::Service::experimental().MarkMethodRawCallback(12,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4934,7 +5191,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetMaxTorque() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(12,
+      ::grpc::Service::experimental().MarkMethodRawCallback(13,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4959,7 +5216,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(13,
+      ::grpc::Service::experimental().MarkMethodRawCallback(14,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -4984,7 +5241,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(14,
+      ::grpc::Service::experimental().MarkMethodRawCallback(15,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5009,7 +5266,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(15,
+      ::grpc::Service::experimental().MarkMethodRawCallback(16,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5034,7 +5291,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(16,
+      ::grpc::Service::experimental().MarkMethodRawCallback(17,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5059,7 +5316,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(17,
+      ::grpc::Service::experimental().MarkMethodRawCallback(18,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5079,29 +5336,54 @@ class GRPCECatTask final {
     virtual void GetNRMKIOBoardOutput(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(18,
+    ExperimentalWithRawCallbackMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(19,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
                  ::grpc::ByteBuffer* response,
                  ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   this->SetNRMKEndtoolOutput(context, request, response, controller);
+                   this->SetNRMKEndtoolRx(context, request, response, controller);
                  }));
     }
-    ~ExperimentalWithRawCallbackMethod_SetNRMKEndtoolOutput() override {
+    ~ExperimentalWithRawCallbackMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual void SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(20,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->GetNRMKEndtoolRx(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_GetNRMKEndtoolInput : public BaseClass {
@@ -5109,7 +5391,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(19,
+      ::grpc::Service::experimental().MarkMethodRawCallback(21,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5134,7 +5416,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(20,
+      ::grpc::Service::experimental().MarkMethodRawCallback(22,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5159,7 +5441,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(21,
+      ::grpc::Service::experimental().MarkMethodRawCallback(23,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5184,7 +5466,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetDI() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(22,
+      ::grpc::Service::experimental().MarkMethodRawCallback(24,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5209,7 +5491,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(23,
+      ::grpc::Service::experimental().MarkMethodRawCallback(25,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5234,7 +5516,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetRobotusFTSensor() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(24,
+      ::grpc::Service::experimental().MarkMethodRawCallback(26,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5259,7 +5541,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_ResetWelconDriver() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(25,
+      ::grpc::Service::experimental().MarkMethodRawCallback(27,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5284,7 +5566,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(26,
+      ::grpc::Service::experimental().MarkMethodRawCallback(28,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5309,7 +5591,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(27,
+      ::grpc::Service::experimental().MarkMethodRawCallback(29,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5334,7 +5616,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(28,
+      ::grpc::Service::experimental().MarkMethodRawCallback(30,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5359,7 +5641,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(29,
+      ::grpc::Service::experimental().MarkMethodRawCallback(31,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5384,7 +5666,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(30,
+      ::grpc::Service::experimental().MarkMethodRawCallback(32,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5409,7 +5691,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(31,
+      ::grpc::Service::experimental().MarkMethodRawCallback(33,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5434,7 +5716,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(32,
+      ::grpc::Service::experimental().MarkMethodRawCallback(34,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5459,7 +5741,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetProfileAccSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(33,
+      ::grpc::Service::experimental().MarkMethodRawCallback(35,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5484,7 +5766,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_GetProfileDecSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(34,
+      ::grpc::Service::experimental().MarkMethodRawCallback(36,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5509,7 +5791,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(35,
+      ::grpc::Service::experimental().MarkMethodRawCallback(37,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5534,7 +5816,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(36,
+      ::grpc::Service::experimental().MarkMethodRawCallback(38,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5559,7 +5841,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetProfileAccSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(37,
+      ::grpc::Service::experimental().MarkMethodRawCallback(39,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5584,7 +5866,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     ExperimentalWithRawCallbackMethod_SetProfileDecSDO() {
-      ::grpc::Service::experimental().MarkMethodRawCallback(38,
+      ::grpc::Service::experimental().MarkMethodRawCallback(40,
         new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
@@ -5704,12 +5986,32 @@ class GRPCECatTask final {
     virtual ::grpc::Status StreamedIsSystemReady(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::Empty,::GRPCECat::IntVals>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_IsServoOn : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_IsServoOn() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IntVals>(std::bind(&WithStreamedUnaryMethod_IsServoOn<BaseClass>::StreamedIsServoOn, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_IsServoOn() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status IsServoOn(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::IntVals* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedIsServoOn(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::Empty,::GRPCECat::IntVals>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetServoOnOff : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetServoOnOff() {
-      ::grpc::Service::MarkMethodStreamed(5,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoIndex, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetServoOnOff<BaseClass>::StreamedSetServoOnOff, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetServoOnOff() override {
@@ -5729,7 +6031,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::MotorDriverRxIndex, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetRxPDOMotorDriver<BaseClass>::StreamedSetRxPDOMotorDriver, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetRxPDOMotorDriver() override {
@@ -5749,7 +6051,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetRxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverRx>(std::bind(&WithStreamedUnaryMethod_GetRxPDOMotorDriver<BaseClass>::StreamedGetRxPDOMotorDriver, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetRxPDOMotorDriver() override {
@@ -5769,7 +6071,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetTxPDOMotorDriver() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::MotorDriverTx>(std::bind(&WithStreamedUnaryMethod_GetTxPDOMotorDriver<BaseClass>::StreamedGetTxPDOMotorDriver, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetTxPDOMotorDriver() override {
@@ -5789,7 +6091,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMotorDriverDIs() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetMotorDriverDIs<BaseClass>::StreamedGetMotorDriverDIs, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMotorDriverDIs() override {
@@ -5809,7 +6111,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetErrorCode() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetErrorCode<BaseClass>::StreamedGetErrorCode, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetErrorCode() override {
@@ -5829,7 +6131,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMaxTorque() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetMaxTorque<BaseClass>::StreamedGetMaxTorque, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMaxTorque() override {
@@ -5849,7 +6151,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetMaxTorque() {
-      ::grpc::Service::MarkMethodStreamed(12,
+      ::grpc::Service::MarkMethodStreamed(13,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetMaxTorque<BaseClass>::StreamedSetMaxTorque, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetMaxTorque() override {
@@ -5869,7 +6171,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodStreamed(13,
+      ::grpc::Service::MarkMethodStreamed(14,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetMaxMotorSpeed<BaseClass>::StreamedGetMaxMotorSpeed, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMaxMotorSpeed() override {
@@ -5889,7 +6191,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetMaxMotorSpeed() {
-      ::grpc::Service::MarkMethodStreamed(14,
+      ::grpc::Service::MarkMethodStreamed(15,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetMaxMotorSpeed<BaseClass>::StreamedSetMaxMotorSpeed, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetMaxMotorSpeed() override {
@@ -5909,7 +6211,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodStreamed(15,
+      ::grpc::Service::MarkMethodStreamed(16,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IOBoardRx, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetNRMKIOBoardOutput<BaseClass>::StreamedSetNRMKIOBoardOutput, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetNRMKIOBoardOutput() override {
@@ -5929,7 +6231,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetNRMKIOBoardInput() {
-      ::grpc::Service::MarkMethodStreamed(16,
+      ::grpc::Service::MarkMethodStreamed(17,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardTx>(std::bind(&WithStreamedUnaryMethod_GetNRMKIOBoardInput<BaseClass>::StreamedGetNRMKIOBoardInput, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetNRMKIOBoardInput() override {
@@ -5949,7 +6251,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetNRMKIOBoardOutput() {
-      ::grpc::Service::MarkMethodStreamed(17,
+      ::grpc::Service::MarkMethodStreamed(18,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::IOBoardRx>(std::bind(&WithStreamedUnaryMethod_GetNRMKIOBoardOutput<BaseClass>::StreamedGetNRMKIOBoardOutput, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetNRMKIOBoardOutput() override {
@@ -5964,24 +6266,44 @@ class GRPCECatTask final {
     virtual ::grpc::Status StreamedGetNRMKIOBoardOutput(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::Empty,::GRPCECat::IOBoardRx>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_SetNRMKEndtoolOutput : public BaseClass {
+  class WithStreamedUnaryMethod_SetNRMKEndtoolRx : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_SetNRMKEndtoolOutput() {
-      ::grpc::Service::MarkMethodStreamed(18,
-        new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetNRMKEndtoolOutput<BaseClass>::StreamedSetNRMKEndtoolOutput, this, std::placeholders::_1, std::placeholders::_2)));
+    WithStreamedUnaryMethod_SetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodStreamed(19,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetNRMKEndtoolRx<BaseClass>::StreamedSetNRMKEndtoolRx, this, std::placeholders::_1, std::placeholders::_2)));
     }
-    ~WithStreamedUnaryMethod_SetNRMKEndtoolOutput() override {
+    ~WithStreamedUnaryMethod_SetNRMKEndtoolRx() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SetNRMKEndtoolOutput(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
+    ::grpc::Status SetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::EndtoolRx* /*request*/, ::GRPCECat::Empty* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedSetNRMKEndtoolOutput(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::EndtoolRx,::GRPCECat::Empty>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSetNRMKEndtoolRx(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::EndtoolRx,::GRPCECat::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetNRMKEndtoolRx : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetNRMKEndtoolRx() {
+      ::grpc::Service::MarkMethodStreamed(20,
+        new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRx>(std::bind(&WithStreamedUnaryMethod_GetNRMKEndtoolRx<BaseClass>::StreamedGetNRMKEndtoolRx, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetNRMKEndtoolRx() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetNRMKEndtoolRx(::grpc::ServerContext* /*context*/, const ::GRPCECat::Empty* /*request*/, ::GRPCECat::EndtoolRx* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetNRMKEndtoolRx(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::Empty,::GRPCECat::EndtoolRx>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetNRMKEndtoolInput : public BaseClass {
@@ -5989,7 +6311,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetNRMKEndtoolInput() {
-      ::grpc::Service::MarkMethodStreamed(19,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolTx>(std::bind(&WithStreamedUnaryMethod_GetNRMKEndtoolInput<BaseClass>::StreamedGetNRMKEndtoolInput, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetNRMKEndtoolInput() override {
@@ -6009,7 +6331,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput() {
-      ::grpc::Service::MarkMethodStreamed(20,
+      ::grpc::Service::MarkMethodStreamed(22,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::Empty, ::GRPCECat::EndtoolRevCDTTx>(std::bind(&WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput<BaseClass>::StreamedGetNRMKEndtoolRevCDTInput, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput() override {
@@ -6029,7 +6351,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDO() {
-      ::grpc::Service::MarkMethodStreamed(21,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::DOList, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetDO<BaseClass>::StreamedSetDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetDO() override {
@@ -6049,7 +6371,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetDI() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(24,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DIList>(std::bind(&WithStreamedUnaryMethod_GetDI<BaseClass>::StreamedGetDI, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetDI() override {
@@ -6069,7 +6391,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetDO() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(25,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::DOList>(std::bind(&WithStreamedUnaryMethod_GetDO<BaseClass>::StreamedGetDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetDO() override {
@@ -6089,7 +6411,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetRobotusFTSensor() {
-      ::grpc::Service::MarkMethodStreamed(24,
+      ::grpc::Service::MarkMethodStreamed(26,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::RobotusFTTx>(std::bind(&WithStreamedUnaryMethod_GetRobotusFTSensor<BaseClass>::StreamedGetRobotusFTSensor, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetRobotusFTSensor() override {
@@ -6109,7 +6431,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_ResetWelconDriver() {
-      ::grpc::Service::MarkMethodStreamed(25,
+      ::grpc::Service::MarkMethodStreamed(27,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_ResetWelconDriver<BaseClass>::StreamedResetWelconDriver, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_ResetWelconDriver() override {
@@ -6129,7 +6451,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetCOREErrorCodeSDO() {
-      ::grpc::Service::MarkMethodStreamed(26,
+      ::grpc::Service::MarkMethodStreamed(28,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetCOREErrorCodeSDO<BaseClass>::StreamedGetCOREErrorCodeSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetCOREErrorCodeSDO() override {
@@ -6149,7 +6471,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetCORETemperature1SDO() {
-      ::grpc::Service::MarkMethodStreamed(27,
+      ::grpc::Service::MarkMethodStreamed(29,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(std::bind(&WithStreamedUnaryMethod_GetCORETemperature1SDO<BaseClass>::StreamedGetCORETemperature1SDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetCORETemperature1SDO() override {
@@ -6169,7 +6491,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetCORETemperature2SDO() {
-      ::grpc::Service::MarkMethodStreamed(28,
+      ::grpc::Service::MarkMethodStreamed(30,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(std::bind(&WithStreamedUnaryMethod_GetCORETemperature2SDO<BaseClass>::StreamedGetCORETemperature2SDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetCORETemperature2SDO() override {
@@ -6189,7 +6511,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetCORETemperature3SDO() {
-      ::grpc::Service::MarkMethodStreamed(29,
+      ::grpc::Service::MarkMethodStreamed(31,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(std::bind(&WithStreamedUnaryMethod_GetCORETemperature3SDO<BaseClass>::StreamedGetCORETemperature3SDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetCORETemperature3SDO() override {
@@ -6209,7 +6531,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetNRMKFWVersionSDO() {
-      ::grpc::Service::MarkMethodStreamed(30,
+      ::grpc::Service::MarkMethodStreamed(32,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::StringVal>(std::bind(&WithStreamedUnaryMethod_GetNRMKFWVersionSDO<BaseClass>::StreamedGetNRMKFWVersionSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetNRMKFWVersionSDO() override {
@@ -6229,7 +6551,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodStreamed(31,
+      ::grpc::Service::MarkMethodStreamed(33,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetMaxTorqueSDO<BaseClass>::StreamedGetMaxTorqueSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMaxTorqueSDO() override {
@@ -6249,7 +6571,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodStreamed(32,
+      ::grpc::Service::MarkMethodStreamed(34,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetProfileVelocitySDO<BaseClass>::StreamedGetProfileVelocitySDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetProfileVelocitySDO() override {
@@ -6269,7 +6591,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetProfileAccSDO() {
-      ::grpc::Service::MarkMethodStreamed(33,
+      ::grpc::Service::MarkMethodStreamed(35,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetProfileAccSDO<BaseClass>::StreamedGetProfileAccSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetProfileAccSDO() override {
@@ -6289,7 +6611,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetProfileDecSDO() {
-      ::grpc::Service::MarkMethodStreamed(34,
+      ::grpc::Service::MarkMethodStreamed(36,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::IntVal, ::GRPCECat::IntVal>(std::bind(&WithStreamedUnaryMethod_GetProfileDecSDO<BaseClass>::StreamedGetProfileDecSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetProfileDecSDO() override {
@@ -6309,7 +6631,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetMaxTorqueSDO() {
-      ::grpc::Service::MarkMethodStreamed(35,
+      ::grpc::Service::MarkMethodStreamed(37,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetMaxTorqueSDO<BaseClass>::StreamedSetMaxTorqueSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetMaxTorqueSDO() override {
@@ -6329,7 +6651,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetProfileVelocitySDO() {
-      ::grpc::Service::MarkMethodStreamed(36,
+      ::grpc::Service::MarkMethodStreamed(38,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetProfileVelocitySDO<BaseClass>::StreamedSetProfileVelocitySDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetProfileVelocitySDO() override {
@@ -6349,7 +6671,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetProfileAccSDO() {
-      ::grpc::Service::MarkMethodStreamed(37,
+      ::grpc::Service::MarkMethodStreamed(39,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetProfileAccSDO<BaseClass>::StreamedSetProfileAccSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetProfileAccSDO() override {
@@ -6369,7 +6691,7 @@ class GRPCECatTask final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetProfileDecSDO() {
-      ::grpc::Service::MarkMethodStreamed(38,
+      ::grpc::Service::MarkMethodStreamed(40,
         new ::grpc::internal::StreamedUnaryHandler< ::GRPCECat::ServoParam, ::GRPCECat::Empty>(std::bind(&WithStreamedUnaryMethod_SetProfileDecSDO<BaseClass>::StreamedSetProfileDecSDO, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetProfileDecSDO() override {
@@ -6383,9 +6705,9 @@ class GRPCECatTask final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSetProfileDecSDO(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GRPCECat::ServoParam,::GRPCECat::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_GetMasterStatus<WithStreamedUnaryMethod_GetSlaveStatus<WithStreamedUnaryMethod_GetRxDomainStatus<WithStreamedUnaryMethod_GetTxDomainStatus<WithStreamedUnaryMethod_IsSystemReady<WithStreamedUnaryMethod_SetServoOnOff<WithStreamedUnaryMethod_SetRxPDOMotorDriver<WithStreamedUnaryMethod_GetRxPDOMotorDriver<WithStreamedUnaryMethod_GetTxPDOMotorDriver<WithStreamedUnaryMethod_GetMotorDriverDIs<WithStreamedUnaryMethod_GetErrorCode<WithStreamedUnaryMethod_GetMaxTorque<WithStreamedUnaryMethod_SetMaxTorque<WithStreamedUnaryMethod_GetMaxMotorSpeed<WithStreamedUnaryMethod_SetMaxMotorSpeed<WithStreamedUnaryMethod_SetNRMKIOBoardOutput<WithStreamedUnaryMethod_GetNRMKIOBoardInput<WithStreamedUnaryMethod_GetNRMKIOBoardOutput<WithStreamedUnaryMethod_SetNRMKEndtoolOutput<WithStreamedUnaryMethod_GetNRMKEndtoolInput<WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput<WithStreamedUnaryMethod_SetDO<WithStreamedUnaryMethod_GetDI<WithStreamedUnaryMethod_GetDO<WithStreamedUnaryMethod_GetRobotusFTSensor<WithStreamedUnaryMethod_ResetWelconDriver<WithStreamedUnaryMethod_GetCOREErrorCodeSDO<WithStreamedUnaryMethod_GetCORETemperature1SDO<WithStreamedUnaryMethod_GetCORETemperature2SDO<WithStreamedUnaryMethod_GetCORETemperature3SDO<WithStreamedUnaryMethod_GetNRMKFWVersionSDO<WithStreamedUnaryMethod_GetMaxTorqueSDO<WithStreamedUnaryMethod_GetProfileVelocitySDO<WithStreamedUnaryMethod_GetProfileAccSDO<WithStreamedUnaryMethod_GetProfileDecSDO<WithStreamedUnaryMethod_SetMaxTorqueSDO<WithStreamedUnaryMethod_SetProfileVelocitySDO<WithStreamedUnaryMethod_SetProfileAccSDO<WithStreamedUnaryMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_GetMasterStatus<WithStreamedUnaryMethod_GetSlaveStatus<WithStreamedUnaryMethod_GetRxDomainStatus<WithStreamedUnaryMethod_GetTxDomainStatus<WithStreamedUnaryMethod_IsSystemReady<WithStreamedUnaryMethod_IsServoOn<WithStreamedUnaryMethod_SetServoOnOff<WithStreamedUnaryMethod_SetRxPDOMotorDriver<WithStreamedUnaryMethod_GetRxPDOMotorDriver<WithStreamedUnaryMethod_GetTxPDOMotorDriver<WithStreamedUnaryMethod_GetMotorDriverDIs<WithStreamedUnaryMethod_GetErrorCode<WithStreamedUnaryMethod_GetMaxTorque<WithStreamedUnaryMethod_SetMaxTorque<WithStreamedUnaryMethod_GetMaxMotorSpeed<WithStreamedUnaryMethod_SetMaxMotorSpeed<WithStreamedUnaryMethod_SetNRMKIOBoardOutput<WithStreamedUnaryMethod_GetNRMKIOBoardInput<WithStreamedUnaryMethod_GetNRMKIOBoardOutput<WithStreamedUnaryMethod_SetNRMKEndtoolRx<WithStreamedUnaryMethod_GetNRMKEndtoolRx<WithStreamedUnaryMethod_GetNRMKEndtoolInput<WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput<WithStreamedUnaryMethod_SetDO<WithStreamedUnaryMethod_GetDI<WithStreamedUnaryMethod_GetDO<WithStreamedUnaryMethod_GetRobotusFTSensor<WithStreamedUnaryMethod_ResetWelconDriver<WithStreamedUnaryMethod_GetCOREErrorCodeSDO<WithStreamedUnaryMethod_GetCORETemperature1SDO<WithStreamedUnaryMethod_GetCORETemperature2SDO<WithStreamedUnaryMethod_GetCORETemperature3SDO<WithStreamedUnaryMethod_GetNRMKFWVersionSDO<WithStreamedUnaryMethod_GetMaxTorqueSDO<WithStreamedUnaryMethod_GetProfileVelocitySDO<WithStreamedUnaryMethod_GetProfileAccSDO<WithStreamedUnaryMethod_GetProfileDecSDO<WithStreamedUnaryMethod_SetMaxTorqueSDO<WithStreamedUnaryMethod_SetProfileVelocitySDO<WithStreamedUnaryMethod_SetProfileAccSDO<WithStreamedUnaryMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetMasterStatus<WithStreamedUnaryMethod_GetSlaveStatus<WithStreamedUnaryMethod_GetRxDomainStatus<WithStreamedUnaryMethod_GetTxDomainStatus<WithStreamedUnaryMethod_IsSystemReady<WithStreamedUnaryMethod_SetServoOnOff<WithStreamedUnaryMethod_SetRxPDOMotorDriver<WithStreamedUnaryMethod_GetRxPDOMotorDriver<WithStreamedUnaryMethod_GetTxPDOMotorDriver<WithStreamedUnaryMethod_GetMotorDriverDIs<WithStreamedUnaryMethod_GetErrorCode<WithStreamedUnaryMethod_GetMaxTorque<WithStreamedUnaryMethod_SetMaxTorque<WithStreamedUnaryMethod_GetMaxMotorSpeed<WithStreamedUnaryMethod_SetMaxMotorSpeed<WithStreamedUnaryMethod_SetNRMKIOBoardOutput<WithStreamedUnaryMethod_GetNRMKIOBoardInput<WithStreamedUnaryMethod_GetNRMKIOBoardOutput<WithStreamedUnaryMethod_SetNRMKEndtoolOutput<WithStreamedUnaryMethod_GetNRMKEndtoolInput<WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput<WithStreamedUnaryMethod_SetDO<WithStreamedUnaryMethod_GetDI<WithStreamedUnaryMethod_GetDO<WithStreamedUnaryMethod_GetRobotusFTSensor<WithStreamedUnaryMethod_ResetWelconDriver<WithStreamedUnaryMethod_GetCOREErrorCodeSDO<WithStreamedUnaryMethod_GetCORETemperature1SDO<WithStreamedUnaryMethod_GetCORETemperature2SDO<WithStreamedUnaryMethod_GetCORETemperature3SDO<WithStreamedUnaryMethod_GetNRMKFWVersionSDO<WithStreamedUnaryMethod_GetMaxTorqueSDO<WithStreamedUnaryMethod_GetProfileVelocitySDO<WithStreamedUnaryMethod_GetProfileAccSDO<WithStreamedUnaryMethod_GetProfileDecSDO<WithStreamedUnaryMethod_SetMaxTorqueSDO<WithStreamedUnaryMethod_SetProfileVelocitySDO<WithStreamedUnaryMethod_SetProfileAccSDO<WithStreamedUnaryMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_GetMasterStatus<WithStreamedUnaryMethod_GetSlaveStatus<WithStreamedUnaryMethod_GetRxDomainStatus<WithStreamedUnaryMethod_GetTxDomainStatus<WithStreamedUnaryMethod_IsSystemReady<WithStreamedUnaryMethod_IsServoOn<WithStreamedUnaryMethod_SetServoOnOff<WithStreamedUnaryMethod_SetRxPDOMotorDriver<WithStreamedUnaryMethod_GetRxPDOMotorDriver<WithStreamedUnaryMethod_GetTxPDOMotorDriver<WithStreamedUnaryMethod_GetMotorDriverDIs<WithStreamedUnaryMethod_GetErrorCode<WithStreamedUnaryMethod_GetMaxTorque<WithStreamedUnaryMethod_SetMaxTorque<WithStreamedUnaryMethod_GetMaxMotorSpeed<WithStreamedUnaryMethod_SetMaxMotorSpeed<WithStreamedUnaryMethod_SetNRMKIOBoardOutput<WithStreamedUnaryMethod_GetNRMKIOBoardInput<WithStreamedUnaryMethod_GetNRMKIOBoardOutput<WithStreamedUnaryMethod_SetNRMKEndtoolRx<WithStreamedUnaryMethod_GetNRMKEndtoolRx<WithStreamedUnaryMethod_GetNRMKEndtoolInput<WithStreamedUnaryMethod_GetNRMKEndtoolRevCDTInput<WithStreamedUnaryMethod_SetDO<WithStreamedUnaryMethod_GetDI<WithStreamedUnaryMethod_GetDO<WithStreamedUnaryMethod_GetRobotusFTSensor<WithStreamedUnaryMethod_ResetWelconDriver<WithStreamedUnaryMethod_GetCOREErrorCodeSDO<WithStreamedUnaryMethod_GetCORETemperature1SDO<WithStreamedUnaryMethod_GetCORETemperature2SDO<WithStreamedUnaryMethod_GetCORETemperature3SDO<WithStreamedUnaryMethod_GetNRMKFWVersionSDO<WithStreamedUnaryMethod_GetMaxTorqueSDO<WithStreamedUnaryMethod_GetProfileVelocitySDO<WithStreamedUnaryMethod_GetProfileAccSDO<WithStreamedUnaryMethod_GetProfileDecSDO<WithStreamedUnaryMethod_SetMaxTorqueSDO<WithStreamedUnaryMethod_SetProfileVelocitySDO<WithStreamedUnaryMethod_SetProfileAccSDO<WithStreamedUnaryMethod_SetProfileDecSDO<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GRPCECat

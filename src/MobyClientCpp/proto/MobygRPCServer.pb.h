@@ -47,7 +47,7 @@ struct TableStruct_MobygRPCServer_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[28]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[30]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -124,6 +124,9 @@ extern MotorDriverRxsDefaultTypeInternal _MotorDriverRxs_default_instance_;
 class MotorDriverTx;
 class MotorDriverTxDefaultTypeInternal;
 extern MotorDriverTxDefaultTypeInternal _MotorDriverTx_default_instance_;
+class RobotZeroCount;
+class RobotZeroCountDefaultTypeInternal;
+extern RobotZeroCountDefaultTypeInternal _RobotZeroCount_default_instance_;
 class RotationGain;
 class RotationGainDefaultTypeInternal;
 extern RotationGainDefaultTypeInternal _RotationGain_default_instance_;
@@ -133,6 +136,9 @@ extern SwerveDoublesDefaultTypeInternal _SwerveDoubles_default_instance_;
 class TargetVel;
 class TargetVelDefaultTypeInternal;
 extern TargetVelDefaultTypeInternal _TargetVel_default_instance_;
+class USData;
+class USDataDefaultTypeInternal;
+extern USDataDefaultTypeInternal _USData_default_instance_;
 class VelAccBoundary;
 class VelAccBoundaryDefaultTypeInternal;
 extern VelAccBoundaryDefaultTypeInternal _VelAccBoundary_default_instance_;
@@ -164,9 +170,11 @@ template<> ::GRPCMoby::MobyVel* Arena::CreateMaybeMessage<::GRPCMoby::MobyVel>(A
 template<> ::GRPCMoby::MotorDriverRx* Arena::CreateMaybeMessage<::GRPCMoby::MotorDriverRx>(Arena*);
 template<> ::GRPCMoby::MotorDriverRxs* Arena::CreateMaybeMessage<::GRPCMoby::MotorDriverRxs>(Arena*);
 template<> ::GRPCMoby::MotorDriverTx* Arena::CreateMaybeMessage<::GRPCMoby::MotorDriverTx>(Arena*);
+template<> ::GRPCMoby::RobotZeroCount* Arena::CreateMaybeMessage<::GRPCMoby::RobotZeroCount>(Arena*);
 template<> ::GRPCMoby::RotationGain* Arena::CreateMaybeMessage<::GRPCMoby::RotationGain>(Arena*);
 template<> ::GRPCMoby::SwerveDoubles* Arena::CreateMaybeMessage<::GRPCMoby::SwerveDoubles>(Arena*);
 template<> ::GRPCMoby::TargetVel* Arena::CreateMaybeMessage<::GRPCMoby::TargetVel>(Arena*);
+template<> ::GRPCMoby::USData* Arena::CreateMaybeMessage<::GRPCMoby::USData>(Arena*);
 template<> ::GRPCMoby::VelAccBoundary* Arena::CreateMaybeMessage<::GRPCMoby::VelAccBoundary>(Arena*);
 template<> ::GRPCMoby::ZeroCount* Arena::CreateMaybeMessage<::GRPCMoby::ZeroCount>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1190,12 +1198,33 @@ class MobyErrorState :
   ::PROTOBUF_NAMESPACE_ID::int32 errorstate() const;
   void set_errorstate(::PROTOBUF_NAMESPACE_ID::int32 value);
 
+  // int32 errorIndex1 = 2;
+  void clear_errorindex1();
+  static const int kErrorIndex1FieldNumber = 2;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex1() const;
+  void set_errorindex1(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 errorIndex2 = 3;
+  void clear_errorindex2();
+  static const int kErrorIndex2FieldNumber = 3;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex2() const;
+  void set_errorindex2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 errorIndex3 = 4;
+  void clear_errorindex3();
+  static const int kErrorIndex3FieldNumber = 4;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex3() const;
+  void set_errorindex3(::PROTOBUF_NAMESPACE_ID::int32 value);
+
   // @@protoc_insertion_point(class_scope:GRPCMoby.MobyErrorState)
  private:
   class HasBitSetters;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::int32 errorstate_;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex2_;
+  ::PROTOBUF_NAMESPACE_ID::int32 errorindex3_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_MobygRPCServer_2eproto;
 };
@@ -2097,6 +2126,139 @@ class ZeroCount :
 };
 // -------------------------------------------------------------------
 
+class RobotZeroCount :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GRPCMoby.RobotZeroCount) */ {
+ public:
+  RobotZeroCount();
+  virtual ~RobotZeroCount();
+
+  RobotZeroCount(const RobotZeroCount& from);
+  RobotZeroCount(RobotZeroCount&& from) noexcept
+    : RobotZeroCount() {
+    *this = ::std::move(from);
+  }
+
+  inline RobotZeroCount& operator=(const RobotZeroCount& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RobotZeroCount& operator=(RobotZeroCount&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RobotZeroCount& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RobotZeroCount* internal_default_instance() {
+    return reinterpret_cast<const RobotZeroCount*>(
+               &_RobotZeroCount_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  void Swap(RobotZeroCount* other);
+  friend void swap(RobotZeroCount& a, RobotZeroCount& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RobotZeroCount* New() const final {
+    return CreateMaybeMessage<RobotZeroCount>(nullptr);
+  }
+
+  RobotZeroCount* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RobotZeroCount>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RobotZeroCount& from);
+  void MergeFrom(const RobotZeroCount& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RobotZeroCount* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "GRPCMoby.RobotZeroCount";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_MobygRPCServer_2eproto);
+    return ::descriptor_table_MobygRPCServer_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 rotation = 1;
+  void clear_rotation();
+  static const int kRotationFieldNumber = 1;
+  ::PROTOBUF_NAMESPACE_ID::int32 rotation() const;
+  void set_rotation(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 elevation = 2;
+  void clear_elevation();
+  static const int kElevationFieldNumber = 2;
+  ::PROTOBUF_NAMESPACE_ID::int32 elevation() const;
+  void set_elevation(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GRPCMoby.RobotZeroCount)
+ private:
+  class HasBitSetters;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int32 rotation_;
+  ::PROTOBUF_NAMESPACE_ID::int32 elevation_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_MobygRPCServer_2eproto;
+};
+// -------------------------------------------------------------------
+
 class IRData :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GRPCMoby.IRData) */ {
  public:
@@ -2139,7 +2301,7 @@ class IRData :
                &_IRData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   void Swap(IRData* other);
   friend void swap(IRData& a, IRData& b) {
@@ -2279,6 +2441,237 @@ class IRData :
 };
 // -------------------------------------------------------------------
 
+class USData :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GRPCMoby.USData) */ {
+ public:
+  USData();
+  virtual ~USData();
+
+  USData(const USData& from);
+  USData(USData&& from) noexcept
+    : USData() {
+    *this = ::std::move(from);
+  }
+
+  inline USData& operator=(const USData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline USData& operator=(USData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const USData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const USData* internal_default_instance() {
+    return reinterpret_cast<const USData*>(
+               &_USData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  void Swap(USData* other);
+  friend void swap(USData& a, USData& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline USData* New() const final {
+    return CreateMaybeMessage<USData>(nullptr);
+  }
+
+  USData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<USData>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const USData& from);
+  void MergeFrom(const USData& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(USData* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "GRPCMoby.USData";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_MobygRPCServer_2eproto);
+    return ::descriptor_table_MobygRPCServer_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 us_front_left1 = 1;
+  void clear_us_front_left1();
+  static const int kUsFrontLeft1FieldNumber = 1;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left1() const;
+  void set_us_front_left1(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_left2 = 2;
+  void clear_us_front_left2();
+  static const int kUsFrontLeft2FieldNumber = 2;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left2() const;
+  void set_us_front_left2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_left3 = 3;
+  void clear_us_front_left3();
+  static const int kUsFrontLeft3FieldNumber = 3;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left3() const;
+  void set_us_front_left3(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_ground = 4;
+  void clear_us_front_ground();
+  static const int kUsFrontGroundFieldNumber = 4;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_ground() const;
+  void set_us_front_ground(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_right1 = 5;
+  void clear_us_front_right1();
+  static const int kUsFrontRight1FieldNumber = 5;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right1() const;
+  void set_us_front_right1(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_right2 = 6;
+  void clear_us_front_right2();
+  static const int kUsFrontRight2FieldNumber = 6;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right2() const;
+  void set_us_front_right2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_right3 = 7;
+  void clear_us_front_right3();
+  static const int kUsFrontRight3FieldNumber = 7;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right3() const;
+  void set_us_front_right3(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_front_right4 = 8;
+  void clear_us_front_right4();
+  static const int kUsFrontRight4FieldNumber = 8;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right4() const;
+  void set_us_front_right4(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_right1 = 9;
+  void clear_us_back_right1();
+  static const int kUsBackRight1FieldNumber = 9;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right1() const;
+  void set_us_back_right1(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_right2 = 10;
+  void clear_us_back_right2();
+  static const int kUsBackRight2FieldNumber = 10;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right2() const;
+  void set_us_back_right2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_right3 = 11;
+  void clear_us_back_right3();
+  static const int kUsBackRight3FieldNumber = 11;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right3() const;
+  void set_us_back_right3(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_ground = 12;
+  void clear_us_back_ground();
+  static const int kUsBackGroundFieldNumber = 12;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_ground() const;
+  void set_us_back_ground(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_left1 = 13;
+  void clear_us_back_left1();
+  static const int kUsBackLeft1FieldNumber = 13;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left1() const;
+  void set_us_back_left1(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_left2 = 14;
+  void clear_us_back_left2();
+  static const int kUsBackLeft2FieldNumber = 14;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left2() const;
+  void set_us_back_left2(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_left3 = 15;
+  void clear_us_back_left3();
+  static const int kUsBackLeft3FieldNumber = 15;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left3() const;
+  void set_us_back_left3(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 us_back_left4 = 16;
+  void clear_us_back_left4();
+  static const int kUsBackLeft4FieldNumber = 16;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left4() const;
+  void set_us_back_left4(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // @@protoc_insertion_point(class_scope:GRPCMoby.USData)
+ private:
+  class HasBitSetters;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left2_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_left3_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_ground_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right2_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right3_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_front_right4_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right2_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_right3_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_ground_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left2_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left3_;
+  ::PROTOBUF_NAMESPACE_ID::int32 us_back_left4_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_MobygRPCServer_2eproto;
+};
+// -------------------------------------------------------------------
+
 class BMSData :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GRPCMoby.BMSData) */ {
  public:
@@ -2321,7 +2714,7 @@ class BMSData :
                &_BMSData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   void Swap(BMSData* other);
   friend void swap(BMSData& a, BMSData& b) {
@@ -2448,6 +2841,114 @@ class BMSData :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_pack_current2();
 
+  // repeated int32 bms_temperature = 20;
+  int bms_temperature_size() const;
+  void clear_bms_temperature();
+  static const int kBmsTemperatureFieldNumber = 20;
+  ::PROTOBUF_NAMESPACE_ID::int32 bms_temperature(int index) const;
+  void set_bms_temperature(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_bms_temperature(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+      bms_temperature() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+      mutable_bms_temperature();
+
+  // repeated int32 cell_volt = 21;
+  int cell_volt_size() const;
+  void clear_cell_volt();
+  static const int kCellVoltFieldNumber = 21;
+  ::PROTOBUF_NAMESPACE_ID::int32 cell_volt(int index) const;
+  void set_cell_volt(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_cell_volt(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+      cell_volt() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+      mutable_cell_volt();
+
+  // int32 isCharge = 6;
+  void clear_ischarge();
+  static const int kIsChargeFieldNumber = 6;
+  ::PROTOBUF_NAMESPACE_ID::int32 ischarge() const;
+  void set_ischarge(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isCellOverVolt = 7;
+  void clear_iscellovervolt();
+  static const int kIsCellOverVoltFieldNumber = 7;
+  ::PROTOBUF_NAMESPACE_ID::int32 iscellovervolt() const;
+  void set_iscellovervolt(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isCellUnderVolt = 8;
+  void clear_iscellundervolt();
+  static const int kIsCellUnderVoltFieldNumber = 8;
+  ::PROTOBUF_NAMESPACE_ID::int32 iscellundervolt() const;
+  void set_iscellundervolt(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isOverCurCharge = 9;
+  void clear_isovercurcharge();
+  static const int kIsOverCurChargeFieldNumber = 9;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovercurcharge() const;
+  void set_isovercurcharge(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isOverCurDischrg = 10;
+  void clear_isovercurdischrg();
+  static const int kIsOverCurDischrgFieldNumber = 10;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovercurdischrg() const;
+  void set_isovercurdischrg(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isShortCircuit = 11;
+  void clear_isshortcircuit();
+  static const int kIsShortCircuitFieldNumber = 11;
+  ::PROTOBUF_NAMESPACE_ID::int32 isshortcircuit() const;
+  void set_isshortcircuit(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isOverTemperature = 12;
+  void clear_isovertemperature();
+  static const int kIsOverTemperatureFieldNumber = 12;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovertemperature() const;
+  void set_isovertemperature(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 isPackOverVolt = 13;
+  void clear_ispackovervolt();
+  static const int kIsPackOverVoltFieldNumber = 13;
+  ::PROTOBUF_NAMESPACE_ID::int32 ispackovervolt() const;
+  void set_ispackovervolt(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 SOC = 14;
+  void clear_soc();
+  static const int kSOCFieldNumber = 14;
+  ::PROTOBUF_NAMESPACE_ID::int32 soc() const;
+  void set_soc(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 SOH = 15;
+  void clear_soh();
+  static const int kSOHFieldNumber = 15;
+  ::PROTOBUF_NAMESPACE_ID::int32 soh() const;
+  void set_soh(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 time_charge = 16;
+  void clear_time_charge();
+  static const int kTimeChargeFieldNumber = 16;
+  ::PROTOBUF_NAMESPACE_ID::int32 time_charge() const;
+  void set_time_charge(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 time_dcharge = 17;
+  void clear_time_dcharge();
+  static const int kTimeDchargeFieldNumber = 17;
+  ::PROTOBUF_NAMESPACE_ID::int32 time_dcharge() const;
+  void set_time_dcharge(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 rem_capAh = 18;
+  void clear_rem_capah();
+  static const int kRemCapAhFieldNumber = 18;
+  ::PROTOBUF_NAMESPACE_ID::int32 rem_capah() const;
+  void set_rem_capah(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 rem_capWh = 19;
+  void clear_rem_capwh();
+  static const int kRemCapWhFieldNumber = 19;
+  ::PROTOBUF_NAMESPACE_ID::int32 rem_capwh() const;
+  void set_rem_capwh(::PROTOBUF_NAMESPACE_ID::int32 value);
+
   // @@protoc_insertion_point(class_scope:GRPCMoby.BMSData)
  private:
   class HasBitSetters;
@@ -2463,6 +2964,24 @@ class BMSData :
   mutable std::atomic<int> _pack_current1_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > pack_current2_;
   mutable std::atomic<int> _pack_current2_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > bms_temperature_;
+  mutable std::atomic<int> _bms_temperature_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > cell_volt_;
+  mutable std::atomic<int> _cell_volt_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::int32 ischarge_;
+  ::PROTOBUF_NAMESPACE_ID::int32 iscellovervolt_;
+  ::PROTOBUF_NAMESPACE_ID::int32 iscellundervolt_;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovercurcharge_;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovercurdischrg_;
+  ::PROTOBUF_NAMESPACE_ID::int32 isshortcircuit_;
+  ::PROTOBUF_NAMESPACE_ID::int32 isovertemperature_;
+  ::PROTOBUF_NAMESPACE_ID::int32 ispackovervolt_;
+  ::PROTOBUF_NAMESPACE_ID::int32 soc_;
+  ::PROTOBUF_NAMESPACE_ID::int32 soh_;
+  ::PROTOBUF_NAMESPACE_ID::int32 time_charge_;
+  ::PROTOBUF_NAMESPACE_ID::int32 time_dcharge_;
+  ::PROTOBUF_NAMESPACE_ID::int32 rem_capah_;
+  ::PROTOBUF_NAMESPACE_ID::int32 rem_capwh_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_MobygRPCServer_2eproto;
 };
@@ -2510,7 +3029,7 @@ class GBool :
                &_GBool_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    17;
 
   void Swap(GBool* other);
   friend void swap(GBool& a, GBool& b) {
@@ -2643,7 +3162,7 @@ class GInt :
                &_GInt_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   void Swap(GInt* other);
   friend void swap(GInt& a, GInt& b) {
@@ -2776,7 +3295,7 @@ class GFloat :
                &_GFloat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    19;
 
   void Swap(GFloat* other);
   friend void swap(GFloat& a, GFloat& b) {
@@ -2909,7 +3428,7 @@ class GString :
                &_GString_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    20;
 
   void Swap(GString* other);
   friend void swap(GString& a, GString& b) {
@@ -3048,7 +3567,7 @@ class BoolVal :
                &_BoolVal_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    21;
 
   void Swap(BoolVal* other);
   friend void swap(BoolVal& a, BoolVal& b) {
@@ -3174,7 +3693,7 @@ class IntVal :
                &_IntVal_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    22;
 
   void Swap(IntVal* other);
   friend void swap(IntVal& a, IntVal& b) {
@@ -3300,7 +3819,7 @@ class IntVals :
                &_IntVals_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   void Swap(IntVals* other);
   friend void swap(IntVals& a, IntVals& b) {
@@ -3433,7 +3952,7 @@ class FloatVal :
                &_FloatVal_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   void Swap(FloatVal* other);
   friend void swap(FloatVal& a, FloatVal& b) {
@@ -3559,7 +4078,7 @@ class FloatVals :
                &_FloatVals_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    25;
 
   void Swap(FloatVals* other);
   friend void swap(FloatVals& a, FloatVals& b) {
@@ -3692,7 +4211,7 @@ class DoubleVal :
                &_DoubleVal_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   void Swap(DoubleVal* other);
   friend void swap(DoubleVal& a, DoubleVal& b) {
@@ -3818,7 +4337,7 @@ class DoubleVals :
                &_DoubleVals_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    27;
 
   void Swap(DoubleVals* other);
   friend void swap(DoubleVals& a, DoubleVals& b) {
@@ -3951,7 +4470,7 @@ class RotationGain :
                &_RotationGain_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    28;
 
   void Swap(RotationGain* other);
   friend void swap(RotationGain& a, RotationGain& b) {
@@ -4098,7 +4617,7 @@ class VelAccBoundary :
                &_VelAccBoundary_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    29;
 
   void Swap(VelAccBoundary* other);
   friend void swap(VelAccBoundary& a, VelAccBoundary& b) {
@@ -4646,6 +5165,48 @@ inline void MobyErrorState::set_errorstate(::PROTOBUF_NAMESPACE_ID::int32 value)
   // @@protoc_insertion_point(field_set:GRPCMoby.MobyErrorState.errorState)
 }
 
+// int32 errorIndex1 = 2;
+inline void MobyErrorState::clear_errorindex1() {
+  errorindex1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 MobyErrorState::errorindex1() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.MobyErrorState.errorIndex1)
+  return errorindex1_;
+}
+inline void MobyErrorState::set_errorindex1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  errorindex1_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.MobyErrorState.errorIndex1)
+}
+
+// int32 errorIndex2 = 3;
+inline void MobyErrorState::clear_errorindex2() {
+  errorindex2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 MobyErrorState::errorindex2() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.MobyErrorState.errorIndex2)
+  return errorindex2_;
+}
+inline void MobyErrorState::set_errorindex2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  errorindex2_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.MobyErrorState.errorIndex2)
+}
+
+// int32 errorIndex3 = 4;
+inline void MobyErrorState::clear_errorindex3() {
+  errorindex3_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 MobyErrorState::errorindex3() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.MobyErrorState.errorIndex3)
+  return errorindex3_;
+}
+inline void MobyErrorState::set_errorindex3(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  errorindex3_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.MobyErrorState.errorIndex3)
+}
+
 // -------------------------------------------------------------------
 
 // MobyPose
@@ -5036,6 +5597,38 @@ inline void ZeroCount::set_br(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // -------------------------------------------------------------------
 
+// RobotZeroCount
+
+// int32 rotation = 1;
+inline void RobotZeroCount::clear_rotation() {
+  rotation_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RobotZeroCount::rotation() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.RobotZeroCount.rotation)
+  return rotation_;
+}
+inline void RobotZeroCount::set_rotation(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  rotation_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.RobotZeroCount.rotation)
+}
+
+// int32 elevation = 2;
+inline void RobotZeroCount::clear_elevation() {
+  elevation_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RobotZeroCount::elevation() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.RobotZeroCount.elevation)
+  return elevation_;
+}
+inline void RobotZeroCount::set_elevation(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  elevation_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.RobotZeroCount.elevation)
+}
+
+// -------------------------------------------------------------------
+
 // IRData
 
 // int32 ir_front1 = 1;
@@ -5162,6 +5755,234 @@ inline void IRData::set_ir_right3(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   ir_right3_ = value;
   // @@protoc_insertion_point(field_set:GRPCMoby.IRData.ir_right3)
+}
+
+// -------------------------------------------------------------------
+
+// USData
+
+// int32 us_front_left1 = 1;
+inline void USData::clear_us_front_left1() {
+  us_front_left1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_left1() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_left1)
+  return us_front_left1_;
+}
+inline void USData::set_us_front_left1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_left1_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_left1)
+}
+
+// int32 us_front_left2 = 2;
+inline void USData::clear_us_front_left2() {
+  us_front_left2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_left2() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_left2)
+  return us_front_left2_;
+}
+inline void USData::set_us_front_left2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_left2_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_left2)
+}
+
+// int32 us_front_left3 = 3;
+inline void USData::clear_us_front_left3() {
+  us_front_left3_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_left3() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_left3)
+  return us_front_left3_;
+}
+inline void USData::set_us_front_left3(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_left3_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_left3)
+}
+
+// int32 us_front_ground = 4;
+inline void USData::clear_us_front_ground() {
+  us_front_ground_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_ground() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_ground)
+  return us_front_ground_;
+}
+inline void USData::set_us_front_ground(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_ground_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_ground)
+}
+
+// int32 us_front_right1 = 5;
+inline void USData::clear_us_front_right1() {
+  us_front_right1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_right1() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_right1)
+  return us_front_right1_;
+}
+inline void USData::set_us_front_right1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_right1_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_right1)
+}
+
+// int32 us_front_right2 = 6;
+inline void USData::clear_us_front_right2() {
+  us_front_right2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_right2() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_right2)
+  return us_front_right2_;
+}
+inline void USData::set_us_front_right2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_right2_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_right2)
+}
+
+// int32 us_front_right3 = 7;
+inline void USData::clear_us_front_right3() {
+  us_front_right3_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_right3() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_right3)
+  return us_front_right3_;
+}
+inline void USData::set_us_front_right3(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_right3_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_right3)
+}
+
+// int32 us_front_right4 = 8;
+inline void USData::clear_us_front_right4() {
+  us_front_right4_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_front_right4() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_front_right4)
+  return us_front_right4_;
+}
+inline void USData::set_us_front_right4(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_front_right4_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_front_right4)
+}
+
+// int32 us_back_right1 = 9;
+inline void USData::clear_us_back_right1() {
+  us_back_right1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_right1() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_right1)
+  return us_back_right1_;
+}
+inline void USData::set_us_back_right1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_right1_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_right1)
+}
+
+// int32 us_back_right2 = 10;
+inline void USData::clear_us_back_right2() {
+  us_back_right2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_right2() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_right2)
+  return us_back_right2_;
+}
+inline void USData::set_us_back_right2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_right2_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_right2)
+}
+
+// int32 us_back_right3 = 11;
+inline void USData::clear_us_back_right3() {
+  us_back_right3_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_right3() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_right3)
+  return us_back_right3_;
+}
+inline void USData::set_us_back_right3(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_right3_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_right3)
+}
+
+// int32 us_back_ground = 12;
+inline void USData::clear_us_back_ground() {
+  us_back_ground_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_ground() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_ground)
+  return us_back_ground_;
+}
+inline void USData::set_us_back_ground(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_ground_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_ground)
+}
+
+// int32 us_back_left1 = 13;
+inline void USData::clear_us_back_left1() {
+  us_back_left1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_left1() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_left1)
+  return us_back_left1_;
+}
+inline void USData::set_us_back_left1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_left1_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_left1)
+}
+
+// int32 us_back_left2 = 14;
+inline void USData::clear_us_back_left2() {
+  us_back_left2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_left2() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_left2)
+  return us_back_left2_;
+}
+inline void USData::set_us_back_left2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_left2_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_left2)
+}
+
+// int32 us_back_left3 = 15;
+inline void USData::clear_us_back_left3() {
+  us_back_left3_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_left3() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_left3)
+  return us_back_left3_;
+}
+inline void USData::set_us_back_left3(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_left3_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_left3)
+}
+
+// int32 us_back_left4 = 16;
+inline void USData::clear_us_back_left4() {
+  us_back_left4_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 USData::us_back_left4() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.USData.us_back_left4)
+  return us_back_left4_;
+}
+inline void USData::set_us_back_left4(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  us_back_left4_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.USData.us_back_left4)
 }
 
 // -------------------------------------------------------------------
@@ -5316,6 +6137,262 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
 BMSData::mutable_pack_current2() {
   // @@protoc_insertion_point(field_mutable_list:GRPCMoby.BMSData.pack_current2)
   return &pack_current2_;
+}
+
+// int32 isCharge = 6;
+inline void BMSData::clear_ischarge() {
+  ischarge_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::ischarge() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isCharge)
+  return ischarge_;
+}
+inline void BMSData::set_ischarge(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  ischarge_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isCharge)
+}
+
+// int32 isCellOverVolt = 7;
+inline void BMSData::clear_iscellovervolt() {
+  iscellovervolt_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::iscellovervolt() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isCellOverVolt)
+  return iscellovervolt_;
+}
+inline void BMSData::set_iscellovervolt(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  iscellovervolt_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isCellOverVolt)
+}
+
+// int32 isCellUnderVolt = 8;
+inline void BMSData::clear_iscellundervolt() {
+  iscellundervolt_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::iscellundervolt() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isCellUnderVolt)
+  return iscellundervolt_;
+}
+inline void BMSData::set_iscellundervolt(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  iscellundervolt_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isCellUnderVolt)
+}
+
+// int32 isOverCurCharge = 9;
+inline void BMSData::clear_isovercurcharge() {
+  isovercurcharge_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::isovercurcharge() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isOverCurCharge)
+  return isovercurcharge_;
+}
+inline void BMSData::set_isovercurcharge(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  isovercurcharge_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isOverCurCharge)
+}
+
+// int32 isOverCurDischrg = 10;
+inline void BMSData::clear_isovercurdischrg() {
+  isovercurdischrg_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::isovercurdischrg() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isOverCurDischrg)
+  return isovercurdischrg_;
+}
+inline void BMSData::set_isovercurdischrg(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  isovercurdischrg_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isOverCurDischrg)
+}
+
+// int32 isShortCircuit = 11;
+inline void BMSData::clear_isshortcircuit() {
+  isshortcircuit_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::isshortcircuit() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isShortCircuit)
+  return isshortcircuit_;
+}
+inline void BMSData::set_isshortcircuit(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  isshortcircuit_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isShortCircuit)
+}
+
+// int32 isOverTemperature = 12;
+inline void BMSData::clear_isovertemperature() {
+  isovertemperature_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::isovertemperature() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isOverTemperature)
+  return isovertemperature_;
+}
+inline void BMSData::set_isovertemperature(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  isovertemperature_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isOverTemperature)
+}
+
+// int32 isPackOverVolt = 13;
+inline void BMSData::clear_ispackovervolt() {
+  ispackovervolt_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::ispackovervolt() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.isPackOverVolt)
+  return ispackovervolt_;
+}
+inline void BMSData::set_ispackovervolt(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  ispackovervolt_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.isPackOverVolt)
+}
+
+// int32 SOC = 14;
+inline void BMSData::clear_soc() {
+  soc_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::soc() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.SOC)
+  return soc_;
+}
+inline void BMSData::set_soc(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  soc_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.SOC)
+}
+
+// int32 SOH = 15;
+inline void BMSData::clear_soh() {
+  soh_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::soh() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.SOH)
+  return soh_;
+}
+inline void BMSData::set_soh(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  soh_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.SOH)
+}
+
+// int32 time_charge = 16;
+inline void BMSData::clear_time_charge() {
+  time_charge_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::time_charge() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.time_charge)
+  return time_charge_;
+}
+inline void BMSData::set_time_charge(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  time_charge_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.time_charge)
+}
+
+// int32 time_dcharge = 17;
+inline void BMSData::clear_time_dcharge() {
+  time_dcharge_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::time_dcharge() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.time_dcharge)
+  return time_dcharge_;
+}
+inline void BMSData::set_time_dcharge(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  time_dcharge_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.time_dcharge)
+}
+
+// int32 rem_capAh = 18;
+inline void BMSData::clear_rem_capah() {
+  rem_capah_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::rem_capah() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.rem_capAh)
+  return rem_capah_;
+}
+inline void BMSData::set_rem_capah(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  rem_capah_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.rem_capAh)
+}
+
+// int32 rem_capWh = 19;
+inline void BMSData::clear_rem_capwh() {
+  rem_capwh_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::rem_capwh() const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.rem_capWh)
+  return rem_capwh_;
+}
+inline void BMSData::set_rem_capwh(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  rem_capwh_ = value;
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.rem_capWh)
+}
+
+// repeated int32 bms_temperature = 20;
+inline int BMSData::bms_temperature_size() const {
+  return bms_temperature_.size();
+}
+inline void BMSData::clear_bms_temperature() {
+  bms_temperature_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::bms_temperature(int index) const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.bms_temperature)
+  return bms_temperature_.Get(index);
+}
+inline void BMSData::set_bms_temperature(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
+  bms_temperature_.Set(index, value);
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.bms_temperature)
+}
+inline void BMSData::add_bms_temperature(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  bms_temperature_.Add(value);
+  // @@protoc_insertion_point(field_add:GRPCMoby.BMSData.bms_temperature)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+BMSData::bms_temperature() const {
+  // @@protoc_insertion_point(field_list:GRPCMoby.BMSData.bms_temperature)
+  return bms_temperature_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+BMSData::mutable_bms_temperature() {
+  // @@protoc_insertion_point(field_mutable_list:GRPCMoby.BMSData.bms_temperature)
+  return &bms_temperature_;
+}
+
+// repeated int32 cell_volt = 21;
+inline int BMSData::cell_volt_size() const {
+  return cell_volt_.size();
+}
+inline void BMSData::clear_cell_volt() {
+  cell_volt_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BMSData::cell_volt(int index) const {
+  // @@protoc_insertion_point(field_get:GRPCMoby.BMSData.cell_volt)
+  return cell_volt_.Get(index);
+}
+inline void BMSData::set_cell_volt(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
+  cell_volt_.Set(index, value);
+  // @@protoc_insertion_point(field_set:GRPCMoby.BMSData.cell_volt)
+}
+inline void BMSData::add_cell_volt(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  cell_volt_.Add(value);
+  // @@protoc_insertion_point(field_add:GRPCMoby.BMSData.cell_volt)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+BMSData::cell_volt() const {
+  // @@protoc_insertion_point(field_list:GRPCMoby.BMSData.cell_volt)
+  return cell_volt_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+BMSData::mutable_cell_volt() {
+  // @@protoc_insertion_point(field_mutable_list:GRPCMoby.BMSData.cell_volt)
+  return &cell_volt_;
 }
 
 // -------------------------------------------------------------------
@@ -5766,6 +6843,10 @@ inline void VelAccBoundary::set_amax(float value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

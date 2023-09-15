@@ -2188,18 +2188,25 @@ class EndtoolRx :
 
   // accessors -------------------------------------------------------
 
-  // int32 status = 1;
-  void clear_status();
-  static const int kStatusFieldNumber = 1;
-  ::PROTOBUF_NAMESPACE_ID::int32 status() const;
-  void set_status(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 eqc = 1;
+  void clear_eqc();
+  static const int kEqcFieldNumber = 1;
+  ::PROTOBUF_NAMESPACE_ID::int32 eqc() const;
+  void set_eqc(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // int32 gripper = 2;
+  void clear_gripper();
+  static const int kGripperFieldNumber = 2;
+  ::PROTOBUF_NAMESPACE_ID::int32 gripper() const;
+  void set_gripper(::PROTOBUF_NAMESPACE_ID::int32 value);
 
   // @@protoc_insertion_point(class_scope:GRPCECat.EndtoolRx)
  private:
   class HasBitSetters;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::int32 status_;
+  ::PROTOBUF_NAMESPACE_ID::int32 eqc_;
+  ::PROTOBUF_NAMESPACE_ID::int32 gripper_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_EtherCATCommgRPCServer_2eproto;
 };
@@ -4889,18 +4896,32 @@ inline void EndtoolTx::set_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // EndtoolRx
 
-// int32 status = 1;
-inline void EndtoolRx::clear_status() {
-  status_ = 0;
+// int32 eqc = 1;
+inline void EndtoolRx::clear_eqc() {
+  eqc_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 EndtoolRx::status() const {
-  // @@protoc_insertion_point(field_get:GRPCECat.EndtoolRx.status)
-  return status_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 EndtoolRx::eqc() const {
+  // @@protoc_insertion_point(field_get:GRPCECat.EndtoolRx.eqc)
+  return eqc_;
 }
-inline void EndtoolRx::set_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void EndtoolRx::set_eqc(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  status_ = value;
-  // @@protoc_insertion_point(field_set:GRPCECat.EndtoolRx.status)
+  eqc_ = value;
+  // @@protoc_insertion_point(field_set:GRPCECat.EndtoolRx.eqc)
+}
+
+// int32 gripper = 2;
+inline void EndtoolRx::clear_gripper() {
+  gripper_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 EndtoolRx::gripper() const {
+  // @@protoc_insertion_point(field_get:GRPCECat.EndtoolRx.gripper)
+  return gripper_;
+}
+inline void EndtoolRx::set_gripper(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  gripper_ = value;
+  // @@protoc_insertion_point(field_set:GRPCECat.EndtoolRx.gripper)
 }
 
 // -------------------------------------------------------------------

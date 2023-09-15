@@ -24,6 +24,7 @@ static const char* GRPCECatTask_method_names[] = {
   "/GRPCECat.GRPCECatTask/GetRxDomainStatus",
   "/GRPCECat.GRPCECatTask/GetTxDomainStatus",
   "/GRPCECat.GRPCECatTask/IsSystemReady",
+  "/GRPCECat.GRPCECatTask/IsServoOn",
   "/GRPCECat.GRPCECatTask/SetServoOnOff",
   "/GRPCECat.GRPCECatTask/SetRxPDOMotorDriver",
   "/GRPCECat.GRPCECatTask/GetRxPDOMotorDriver",
@@ -37,7 +38,8 @@ static const char* GRPCECatTask_method_names[] = {
   "/GRPCECat.GRPCECatTask/SetNRMKIOBoardOutput",
   "/GRPCECat.GRPCECatTask/GetNRMKIOBoardInput",
   "/GRPCECat.GRPCECatTask/GetNRMKIOBoardOutput",
-  "/GRPCECat.GRPCECatTask/SetNRMKEndtoolOutput",
+  "/GRPCECat.GRPCECatTask/SetNRMKEndtoolRx",
+  "/GRPCECat.GRPCECatTask/GetNRMKEndtoolRx",
   "/GRPCECat.GRPCECatTask/GetNRMKEndtoolInput",
   "/GRPCECat.GRPCECatTask/GetNRMKEndtoolRevCDTInput",
   "/GRPCECat.GRPCECatTask/SetDO",
@@ -72,40 +74,42 @@ GRPCECatTask::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetRxDomainStatus_(GRPCECatTask_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetTxDomainStatus_(GRPCECatTask_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_IsSystemReady_(GRPCECatTask_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetServoOnOff_(GRPCECatTask_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRxPDOMotorDriver_(GRPCECatTask_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetRxPDOMotorDriver_(GRPCECatTask_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetTxPDOMotorDriver_(GRPCECatTask_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMotorDriverDIs_(GRPCECatTask_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetErrorCode_(GRPCECatTask_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMaxTorque_(GRPCECatTask_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMaxTorque_(GRPCECatTask_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMaxMotorSpeed_(GRPCECatTask_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMaxMotorSpeed_(GRPCECatTask_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetNRMKIOBoardOutput_(GRPCECatTask_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetNRMKIOBoardInput_(GRPCECatTask_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetNRMKIOBoardOutput_(GRPCECatTask_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetNRMKEndtoolOutput_(GRPCECatTask_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetNRMKEndtoolInput_(GRPCECatTask_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetNRMKEndtoolRevCDTInput_(GRPCECatTask_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetDO_(GRPCECatTask_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDI_(GRPCECatTask_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDO_(GRPCECatTask_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetRobotusFTSensor_(GRPCECatTask_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ResetWelconDriver_(GRPCECatTask_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetCOREErrorCodeSDO_(GRPCECatTask_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetCORETemperature1SDO_(GRPCECatTask_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetCORETemperature2SDO_(GRPCECatTask_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetCORETemperature3SDO_(GRPCECatTask_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetNRMKFWVersionSDO_(GRPCECatTask_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMaxTorqueSDO_(GRPCECatTask_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetProfileVelocitySDO_(GRPCECatTask_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetProfileAccSDO_(GRPCECatTask_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetProfileDecSDO_(GRPCECatTask_method_names[34], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMaxTorqueSDO_(GRPCECatTask_method_names[35], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetProfileVelocitySDO_(GRPCECatTask_method_names[36], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetProfileAccSDO_(GRPCECatTask_method_names[37], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetProfileDecSDO_(GRPCECatTask_method_names[38], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_IsServoOn_(GRPCECatTask_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetServoOnOff_(GRPCECatTask_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRxPDOMotorDriver_(GRPCECatTask_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRxPDOMotorDriver_(GRPCECatTask_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetTxPDOMotorDriver_(GRPCECatTask_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMotorDriverDIs_(GRPCECatTask_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetErrorCode_(GRPCECatTask_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMaxTorque_(GRPCECatTask_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMaxTorque_(GRPCECatTask_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMaxMotorSpeed_(GRPCECatTask_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMaxMotorSpeed_(GRPCECatTask_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetNRMKIOBoardOutput_(GRPCECatTask_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKIOBoardInput_(GRPCECatTask_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKIOBoardOutput_(GRPCECatTask_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetNRMKEndtoolRx_(GRPCECatTask_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKEndtoolRx_(GRPCECatTask_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKEndtoolInput_(GRPCECatTask_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKEndtoolRevCDTInput_(GRPCECatTask_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDO_(GRPCECatTask_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDI_(GRPCECatTask_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDO_(GRPCECatTask_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRobotusFTSensor_(GRPCECatTask_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ResetWelconDriver_(GRPCECatTask_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetCOREErrorCodeSDO_(GRPCECatTask_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetCORETemperature1SDO_(GRPCECatTask_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetCORETemperature2SDO_(GRPCECatTask_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetCORETemperature3SDO_(GRPCECatTask_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetNRMKFWVersionSDO_(GRPCECatTask_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMaxTorqueSDO_(GRPCECatTask_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetProfileVelocitySDO_(GRPCECatTask_method_names[34], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetProfileAccSDO_(GRPCECatTask_method_names[35], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetProfileDecSDO_(GRPCECatTask_method_names[36], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMaxTorqueSDO_(GRPCECatTask_method_names[37], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetProfileVelocitySDO_(GRPCECatTask_method_names[38], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetProfileAccSDO_(GRPCECatTask_method_names[39], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetProfileDecSDO_(GRPCECatTask_method_names[40], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GRPCECatTask::Stub::GetMasterStatus(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::IntVal* response) {
@@ -246,6 +250,34 @@ void GRPCECatTask::Stub::experimental_async::IsSystemReady(::grpc::ClientContext
 
 ::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* GRPCECatTask::Stub::PrepareAsyncIsSystemReadyRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::IntVals>::Create(channel_.get(), cq, rpcmethod_IsSystemReady_, context, request, false);
+}
+
+::grpc::Status GRPCECatTask::Stub::IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::IntVals* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_IsServoOn_, context, request, response);
+}
+
+void GRPCECatTask::Stub::experimental_async::IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_IsServoOn_, context, request, response, std::move(f));
+}
+
+void GRPCECatTask::Stub::experimental_async::IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_IsServoOn_, context, request, response, std::move(f));
+}
+
+void GRPCECatTask::Stub::experimental_async::IsServoOn(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_IsServoOn_, context, request, response, reactor);
+}
+
+void GRPCECatTask::Stub::experimental_async::IsServoOn(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::IntVals* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_IsServoOn_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* GRPCECatTask::Stub::AsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::IntVals>::Create(channel_.get(), cq, rpcmethod_IsServoOn_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCECat::IntVals>* GRPCECatTask::Stub::PrepareAsyncIsServoOnRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::IntVals>::Create(channel_.get(), cq, rpcmethod_IsServoOn_, context, request, false);
 }
 
 ::grpc::Status GRPCECatTask::Stub::SetServoOnOff(::grpc::ClientContext* context, const ::GRPCECat::ServoIndex& request, ::GRPCECat::Empty* response) {
@@ -612,32 +644,60 @@ void GRPCECatTask::Stub::experimental_async::GetNRMKIOBoardOutput(::grpc::Client
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::IOBoardRx>::Create(channel_.get(), cq, rpcmethod_GetNRMKIOBoardOutput_, context, request, false);
 }
 
-::grpc::Status GRPCECatTask::Stub::SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetNRMKEndtoolOutput_, context, request, response);
+::grpc::Status GRPCECatTask::Stub::SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::GRPCECat::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SetNRMKEndtoolRx_, context, request, response);
 }
 
-void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolOutput_, context, request, response, std::move(f));
+void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolRx_, context, request, response, std::move(f));
 }
 
-void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolOutput_, context, request, response, std::move(f));
+void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolRx_, context, request, response, std::move(f));
 }
 
-void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolOutput_, context, request, response, reactor);
+void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolRx_, context, request, response, reactor);
 }
 
-void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolOutput(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolOutput_, context, request, response, reactor);
+void GRPCECatTask::Stub::experimental_async::SetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SetNRMKEndtoolRx_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* GRPCECatTask::Stub::AsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::Empty>::Create(channel_.get(), cq, rpcmethod_SetNRMKEndtoolOutput_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* GRPCECatTask::Stub::AsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::Empty>::Create(channel_.get(), cq, rpcmethod_SetNRMKEndtoolRx_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* GRPCECatTask::Stub::PrepareAsyncSetNRMKEndtoolOutputRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::Empty>::Create(channel_.get(), cq, rpcmethod_SetNRMKEndtoolOutput_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::GRPCECat::Empty>* GRPCECatTask::Stub::PrepareAsyncSetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::EndtoolRx& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::Empty>::Create(channel_.get(), cq, rpcmethod_SetNRMKEndtoolRx_, context, request, false);
+}
+
+::grpc::Status GRPCECatTask::Stub::GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolRx* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetNRMKEndtoolRx_, context, request, response);
+}
+
+void GRPCECatTask::Stub::experimental_async::GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetNRMKEndtoolRx_, context, request, response, std::move(f));
+}
+
+void GRPCECatTask::Stub::experimental_async::GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetNRMKEndtoolRx_, context, request, response, std::move(f));
+}
+
+void GRPCECatTask::Stub::experimental_async::GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetNRMKEndtoolRx_, context, request, response, reactor);
+}
+
+void GRPCECatTask::Stub::experimental_async::GetNRMKEndtoolRx(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::GRPCECat::EndtoolRx* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetNRMKEndtoolRx_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>* GRPCECatTask::Stub::AsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::EndtoolRx>::Create(channel_.get(), cq, rpcmethod_GetNRMKEndtoolRx_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::GRPCECat::EndtoolRx>* GRPCECatTask::Stub::PrepareAsyncGetNRMKEndtoolRxRaw(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::GRPCECat::EndtoolRx>::Create(channel_.get(), cq, rpcmethod_GetNRMKEndtoolRx_, context, request, false);
 }
 
 ::grpc::Status GRPCECatTask::Stub::GetNRMKEndtoolInput(::grpc::ClientContext* context, const ::GRPCECat::Empty& request, ::GRPCECat::EndtoolTx* response) {
@@ -1229,170 +1289,180 @@ GRPCECatTask::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GRPCECatTask_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::IntVals>(
+          std::mem_fn(&GRPCECatTask::Service::IsServoOn), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCECatTask_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoIndex, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetServoOnOff), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[6],
+      GRPCECatTask_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::MotorDriverRxIndex, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetRxPDOMotorDriver), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[7],
+      GRPCECatTask_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::MotorDriverRx>(
           std::mem_fn(&GRPCECatTask::Service::GetRxPDOMotorDriver), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[8],
+      GRPCECatTask_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::MotorDriverTx>(
           std::mem_fn(&GRPCECatTask::Service::GetTxPDOMotorDriver), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[9],
+      GRPCECatTask_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetMotorDriverDIs), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[10],
+      GRPCECatTask_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetErrorCode), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[11],
+      GRPCECatTask_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetMaxTorque), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[12],
+      GRPCECatTask_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetMaxTorque), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[13],
+      GRPCECatTask_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetMaxMotorSpeed), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[14],
+      GRPCECatTask_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetMaxMotorSpeed), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[15],
+      GRPCECatTask_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IOBoardRx, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetNRMKIOBoardOutput), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[16],
+      GRPCECatTask_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::IOBoardTx>(
           std::mem_fn(&GRPCECatTask::Service::GetNRMKIOBoardInput), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[17],
+      GRPCECatTask_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::IOBoardRx>(
           std::mem_fn(&GRPCECatTask::Service::GetNRMKIOBoardOutput), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[18],
+      GRPCECatTask_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::EndtoolRx, ::GRPCECat::Empty>(
-          std::mem_fn(&GRPCECatTask::Service::SetNRMKEndtoolOutput), this)));
+          std::mem_fn(&GRPCECatTask::Service::SetNRMKEndtoolRx), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[19],
+      GRPCECatTask_method_names[20],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::EndtoolRx>(
+          std::mem_fn(&GRPCECatTask::Service::GetNRMKEndtoolRx), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GRPCECatTask_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::EndtoolTx>(
           std::mem_fn(&GRPCECatTask::Service::GetNRMKEndtoolInput), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[20],
+      GRPCECatTask_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::Empty, ::GRPCECat::EndtoolRevCDTTx>(
           std::mem_fn(&GRPCECatTask::Service::GetNRMKEndtoolRevCDTInput), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[21],
+      GRPCECatTask_method_names[23],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::DOList, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[22],
+      GRPCECatTask_method_names[24],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::DIList>(
           std::mem_fn(&GRPCECatTask::Service::GetDI), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[23],
+      GRPCECatTask_method_names[25],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::DOList>(
           std::mem_fn(&GRPCECatTask::Service::GetDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[24],
+      GRPCECatTask_method_names[26],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::RobotusFTTx>(
           std::mem_fn(&GRPCECatTask::Service::GetRobotusFTSensor), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[25],
+      GRPCECatTask_method_names[27],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::ResetWelconDriver), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[26],
+      GRPCECatTask_method_names[28],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetCOREErrorCodeSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[27],
+      GRPCECatTask_method_names[29],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           std::mem_fn(&GRPCECatTask::Service::GetCORETemperature1SDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[28],
+      GRPCECatTask_method_names[30],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           std::mem_fn(&GRPCECatTask::Service::GetCORETemperature2SDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[29],
+      GRPCECatTask_method_names[31],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::FloatVal>(
           std::mem_fn(&GRPCECatTask::Service::GetCORETemperature3SDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[30],
+      GRPCECatTask_method_names[32],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::StringVal>(
           std::mem_fn(&GRPCECatTask::Service::GetNRMKFWVersionSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[31],
+      GRPCECatTask_method_names[33],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetMaxTorqueSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[32],
+      GRPCECatTask_method_names[34],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetProfileVelocitySDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[33],
+      GRPCECatTask_method_names[35],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetProfileAccSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[34],
+      GRPCECatTask_method_names[36],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::IntVal, ::GRPCECat::IntVal>(
           std::mem_fn(&GRPCECatTask::Service::GetProfileDecSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[35],
+      GRPCECatTask_method_names[37],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetMaxTorqueSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[36],
+      GRPCECatTask_method_names[38],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetProfileVelocitySDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[37],
+      GRPCECatTask_method_names[39],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetProfileAccSDO), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GRPCECatTask_method_names[38],
+      GRPCECatTask_method_names[40],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GRPCECatTask::Service, ::GRPCECat::ServoParam, ::GRPCECat::Empty>(
           std::mem_fn(&GRPCECatTask::Service::SetProfileDecSDO), this)));
@@ -1430,6 +1500,13 @@ GRPCECatTask::Service::~Service() {
 }
 
 ::grpc::Status GRPCECatTask::Service::IsSystemReady(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCECatTask::Service::IsServoOn(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::IntVals* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -1527,7 +1604,14 @@ GRPCECatTask::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GRPCECatTask::Service::SetNRMKEndtoolOutput(::grpc::ServerContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response) {
+::grpc::Status GRPCECatTask::Service::SetNRMKEndtoolRx(::grpc::ServerContext* context, const ::GRPCECat::EndtoolRx* request, ::GRPCECat::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GRPCECatTask::Service::GetNRMKEndtoolRx(::grpc::ServerContext* context, const ::GRPCECat::Empty* request, ::GRPCECat::EndtoolRx* response) {
   (void) context;
   (void) request;
   (void) response;

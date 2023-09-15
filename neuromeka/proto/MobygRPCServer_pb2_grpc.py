@@ -164,6 +164,21 @@ class GRPCMobyTaskStub(object):
                 request_serializer=MobygRPCServer__pb2.DoubleVals.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.Empty.FromString,
                 )
+        self.SetRotationControllerType = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/SetRotationControllerType',
+                request_serializer=MobygRPCServer__pb2.IntVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
+        self.TurnLightOnOff = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/TurnLightOnOff',
+                request_serializer=MobygRPCServer__pb2.BoolVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
+        self.TurnBuzzOnOff = channel.unary_unary(
+                '/GRPCMoby.GRPCMobyTask/TurnBuzzOnOff',
+                request_serializer=MobygRPCServer__pb2.BoolVal.SerializeToString,
+                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
+                )
         self.GetRobotZeroCount = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/GetRobotZeroCount',
                 request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
@@ -172,11 +187,6 @@ class GRPCMobyTaskStub(object):
         self.SetRobotZeroAsCurrent = channel.unary_unary(
                 '/GRPCMoby.GRPCMobyTask/SetRobotZeroAsCurrent',
                 request_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
-                response_deserializer=MobygRPCServer__pb2.Empty.FromString,
-                )
-        self.TurnLEDOnOff = channel.unary_unary(
-                '/GRPCMoby.GRPCMobyTask/TurnLEDOnOff',
-                request_serializer=MobygRPCServer__pb2.BoolVal.SerializeToString,
                 response_deserializer=MobygRPCServer__pb2.Empty.FromString,
                 )
         self.SetRotationTorqueMode = channel.unary_unary(
@@ -407,20 +417,32 @@ class GRPCMobyTaskServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetRobotZeroCount(self, request, context):
-        """Set Moby-Agri parameters
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SetRobotZeroAsCurrent(self, request, context):
+    def SetRotationControllerType(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def TurnLEDOnOff(self, request, context):
+    def TurnLightOnOff(self, request, context):
+        """Moby-Agri related commands
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def TurnBuzzOnOff(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetRobotZeroCount(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetRobotZeroAsCurrent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -623,6 +645,21 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
                     request_deserializer=MobygRPCServer__pb2.DoubleVals.FromString,
                     response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
             ),
+            'SetRotationControllerType': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRotationControllerType,
+                    request_deserializer=MobygRPCServer__pb2.IntVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'TurnLightOnOff': grpc.unary_unary_rpc_method_handler(
+                    servicer.TurnLightOnOff,
+                    request_deserializer=MobygRPCServer__pb2.BoolVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
+            'TurnBuzzOnOff': grpc.unary_unary_rpc_method_handler(
+                    servicer.TurnBuzzOnOff,
+                    request_deserializer=MobygRPCServer__pb2.BoolVal.FromString,
+                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
+            ),
             'GetRobotZeroCount': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRobotZeroCount,
                     request_deserializer=MobygRPCServer__pb2.Empty.FromString,
@@ -631,11 +668,6 @@ def add_GRPCMobyTaskServicer_to_server(servicer, server):
             'SetRobotZeroAsCurrent': grpc.unary_unary_rpc_method_handler(
                     servicer.SetRobotZeroAsCurrent,
                     request_deserializer=MobygRPCServer__pb2.Empty.FromString,
-                    response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
-            ),
-            'TurnLEDOnOff': grpc.unary_unary_rpc_method_handler(
-                    servicer.TurnLEDOnOff,
-                    request_deserializer=MobygRPCServer__pb2.BoolVal.FromString,
                     response_serializer=MobygRPCServer__pb2.Empty.SerializeToString,
             ),
             'SetRotationTorqueMode': grpc.unary_unary_rpc_method_handler(
@@ -1194,6 +1226,57 @@ class GRPCMobyTask(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetRotationControllerType(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/SetRotationControllerType',
+            MobygRPCServer__pb2.IntVal.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TurnLightOnOff(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/TurnLightOnOff',
+            MobygRPCServer__pb2.BoolVal.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def TurnBuzzOnOff(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/TurnBuzzOnOff',
+            MobygRPCServer__pb2.BoolVal.SerializeToString,
+            MobygRPCServer__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetRobotZeroCount(request,
             target,
             options=(),
@@ -1223,23 +1306,6 @@ class GRPCMobyTask(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/SetRobotZeroAsCurrent',
             MobygRPCServer__pb2.Empty.SerializeToString,
-            MobygRPCServer__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def TurnLEDOnOff(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GRPCMoby.GRPCMobyTask/TurnLEDOnOff',
-            MobygRPCServer__pb2.BoolVal.SerializeToString,
             MobygRPCServer__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
