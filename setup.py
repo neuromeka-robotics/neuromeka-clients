@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="neuromeka-clients",
-    version="0.1.11",
+    version="0.1.12",
     author="Neuromeka",
     author_email="youngjin.heo@neuromeka.com",
     description="Neuromeka client protocols for Indy, IndyEye, Moby, Ecat, and Motor",

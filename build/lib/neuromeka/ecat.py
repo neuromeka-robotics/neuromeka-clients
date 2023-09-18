@@ -5,7 +5,7 @@ import math
 
 from .proto.grpc_wrapper import GRPCECatTaskStub
 from .proto.grpc_wrapper import *
-from .proto.EtherCATCommgRPCServer_pb2 import *
+from EtherCATCommgRPCServer_pb2 import *
 
 
 class EcatClient:
@@ -72,6 +72,9 @@ class EcatClient:
         
     def is_system_ready(self):
         return list(self.stub.IsSystemReady(Empty()).val)
+    
+    def is_servo_on(self):
+        return list(self.stub.IsServoOn(Empty()).val)
     
     def set_servo(self, slave_idx, state):
         return self.stub.SetServoOnOff(ServoIndex(ecatIndex=slave_idx, servoState=state))
@@ -168,11 +171,11 @@ class EcatClient:
         do5v_str = ''.join(do5v_str)
 
         ioRx = IOBoardRx(do_5v=int(do5v_str,2), do1=int(do1_str,2), do2=int(do2_str,2), ao1=0, ao2=0, ft_param=0)
-        return self.stub.SetNRMKIOBoardOutput(ioRx)
-
+        return self.stub.SetNRMKIOBoardOutput(ioRx)    
+    
     def get_endtool_revc(self):
         return self.stub.GetNRMKEndtoolRevCDTInput(Empty())
-
+    
     ## Reset Welcon driver
     def reset_welcon(self, slave_idx):
         return self.stub.ResetWelconDriver(IntVal(val=slave_idx))
@@ -180,13 +183,13 @@ class EcatClient:
     ## Get SDO
     def get_error_code(self, slave_idx):
         return self.stub.GetErrorCode(IntVal(val=slave_idx)).val
-
+    
     def get_core_temp1(self, slave_idx):
         return self.stub.GetCORETemperature1SDO(IntVal(val=slave_idx)).val
-
+    
     def get_core_temp2(self, slave_idx):
         return self.stub.GetCORETemperature2SDO(IntVal(val=slave_idx)).val
-
+    
     def get_core_temp3(self, slave_idx):
         return self.stub.GetCORETemperature3SDO(IntVal(val=slave_idx)).val
     

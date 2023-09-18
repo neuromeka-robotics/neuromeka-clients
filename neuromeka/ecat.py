@@ -5,6 +5,7 @@ import math
 
 from .proto.grpc_wrapper import GRPCECatTaskStub
 from .proto.grpc_wrapper import *
+from EtherCATCommgRPCServer_pb2 import *
 
 
 class EcatClient:

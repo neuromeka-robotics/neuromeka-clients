@@ -47,7 +47,7 @@ class MobyClient:
                 'is_home_pose': state.isHomePose, 'is_resetting': state.isResetting,
                 'is_imu_avail': state.isIMUAvailable, 'is_program_running': state.isProgramRunning,
                 'is_program_pause': state.isProgramPause, 'is_rotation_zero': state.isRotationZero}
-
+    
     def get_moby_error_state(self):
         error = self.stub.GetMobyErrorState(Empty())
         error_code = error.errorState
@@ -74,7 +74,7 @@ class MobyClient:
         return error_dict.get(error_code, "Normal (UNKNOWN ERROR CODE)"), error_index1, error_index2, error_index3
 
     def recover(self):
-        return self.stub.Recover()
+        return self.stub.Recover(Empty())
 
     ## Get Moby's odometry and physical data
     def get_moby_pose(self):
@@ -109,7 +109,7 @@ class MobyClient:
     def get_cmode(self):
         return self.stub.GetCMode(Empty()).val
 
-        ## Get sensor data
+    ## Get sensor data
 
     def get_gyro_data(self):
         return self.stub.GetGyroData(Empty()).val
@@ -214,8 +214,14 @@ class MobyClient:
 
     def set_torque_mode(self, isOn):
         return self.stub.SetRotationTorqueMode(BoolVal(val=isOn))
+        
+    def set_controller_type(self, cont_type):
+        return self.stub.SetRotationControllerType(IntVal(val=cont_type))
 
-        ## Set Moby-Agri parameters
+    def turn_buzzer(self, on):
+        return self.stub.TurnBuzzOnOff(BoolVal(val=on))
+        
+    ## Set Moby-Agri parameters
 
     def get_robot_zero_count(self):
         data = self.stub.GetRobotZeroCount(Empty())
@@ -225,7 +231,9 @@ class MobyClient:
         return self.stub.SetRobotZeroAsCurrent(Empty())
 
     def turn_led(self, on):
-        return self.stub.TurnLEDOnOff(BoolVal(val=on))
+        return self.stub.TurnLightOnOff(BoolVal(val=on))
+
+
 
     ## Data logger
     def start_logging(self):
@@ -239,9 +247,3 @@ class MobyClient:
 
     def save_logger(self):
         return self.stub.RTLoggerSave(Empty())
-
-
-
-
-
-
